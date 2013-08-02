@@ -13,6 +13,6 @@ public class VirtiousBlock extends Block
 	
 	public void registerIcons(IconRegister r)
 	{
-		r.registerIcon("virtious:" + this.getUnlocalizedName().substring(5));
+		this.blockIcon = r.registerIcon("virtious:" + this.getUnlocalizedName().substring(5));
 	}
 }
