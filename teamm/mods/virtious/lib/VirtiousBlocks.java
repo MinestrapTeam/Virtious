@@ -19,6 +19,7 @@ public class VirtiousBlocks
 	public static Block portalBlock;
 	public static Block virtianstone;
 	public static Block virtianGrass;
+	public static Block virtianSoil;
 	
 	/**
 	 * Loads all block objects
@@ -44,6 +45,11 @@ public class VirtiousBlocks
 		int virtianGrassId = idVirtianGrass.getInt();
 		virtianGrass = new BlockVirtianGrass(virtianGrassId).setHardness(0.6F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("virtianGrass");
 		registerBlock(virtianGrass, "Virtian Grass");
+		
+		Property idVirtianSoil = Virtious.config.getBlock("Virtian Soil ID", Config.idVirtianSoil);
+		int virtianSoilId = idVirtianSoil.getInt();
+		virtianSoil = new VirtiousBlock(virtianSoilId, Material.ground).setHardness(0.6F).setUnlocalizedName("VirtianSoil").setStepSound(Block.soundGravelFootstep);
+		registerBlock(virtianSoil, "Virtian Soil");
 		
 		//TODO add all block objects here
 	}

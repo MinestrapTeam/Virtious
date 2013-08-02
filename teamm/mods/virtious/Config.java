@@ -6,6 +6,7 @@ public class Config {
 	public static int idDeedStone = 200;
 	public static int idVirtianstone = 201;
 	public static int idVirtianGrass = 202;
+	public static int idVirtianSoil = 203;
 	
 	//Blocks
 	public static int idPortal = 2000;
