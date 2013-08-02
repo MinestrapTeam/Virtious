@@ -150,7 +150,7 @@ public class VirtiousChunkProvider extends ChunkProviderGenerate
     {
         byte b0 = 4;
         byte b1 = 16;
-        byte b2 = 63;
+        byte seeLevel = 63;
         int k = b0 + 1;
         byte b3 = 17;
         int l = b0 + 1;
@@ -192,11 +192,15 @@ public class VirtiousChunkProvider extends ChunkProviderGenerate
 
                             for (int k2 = 0; k2 < 4; ++k2)
                             {
-                                if ((d16 += d15) > 0.0D)
+                            	double var = d16 += d15;
+                                if (var > 0.0D)
                                 {
-                                    par3ArrayOfByte[j2 += short1] = (byte)VirtiousBlocks.virtianstone.blockID;
+                                	if(var < 200D)
+                                    	par3ArrayOfByte[j2 += short1] = (byte)VirtiousBlocks.virtianstone.blockID;
+                                	else
+                                        par3ArrayOfByte[j2 += short1] = (byte)VirtiousBlocks.deepStone.blockID;
                                 }
-                                else if (k1 * 8 + l1 < b2)
+                                else if (k1 * 8 + l1 < seeLevel)
                                 {
                                     par3ArrayOfByte[j2 += short1] = (byte)Block.waterStill.blockID;
                                 }
