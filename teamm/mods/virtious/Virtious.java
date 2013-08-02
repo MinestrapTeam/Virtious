@@ -4,6 +4,7 @@ import java.io.File;
 
 import teamm.mods.virtious.lib.VirtiousBlocks;
 import teamm.mods.virtious.lib.VirtiousItems;
+import teamm.mods.virtious.lib.VirtiousRecipes;
 import teamm.mods.virtious.world.VirtiousProvider;
 
 import net.minecraftforge.common.DimensionManager;
@@ -48,6 +49,8 @@ public class Virtious {
 			//ItemStack config
 			new VirtiousBlocks();
 			new VirtiousItems();
+			
+			new VirtiousRecipes();
 		
 		} catch(Exception e)
 		{
