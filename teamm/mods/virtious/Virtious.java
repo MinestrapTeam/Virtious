@@ -10,6 +10,7 @@ import teamm.mods.virtious.lib.VirtiousRecipes;
 import teamm.mods.virtious.proxy.CommonProxy;
 import teamm.mods.virtious.world.VirtiousProvider;
 import teamm.mods.virtious.world.biome.BiomeGenVirtious;
+import teamm.mods.virtious.world.gen.VirtiousOreGenerator;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -97,8 +98,10 @@ public class Virtious {
 	{
 		virtiousBiome = new BiomeGenVirtious(Virtious.virtiousBiomeID);
 		
+		GameRegistry.registerWorldGenerator(new VirtiousOreGenerator());
 		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
 		proxy.registerRenderThings();
+		
 	}
 }
