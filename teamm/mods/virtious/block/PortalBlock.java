@@ -31,38 +31,26 @@ public class PortalBlock extends VirtiousBlock
         return null;
     }
     
-  
-
-
-    /**
-     * Checks to see if this location is valid to create a portal and will return True if it does. Args: world, x, y, z
-     */
-    public boolean tryToCreatePortal(World par1World, int par2, int par3, int par4)
-    {
-        par1World.setBlock(par2, par3, par4, this.blockID, 0, 2);
-        return true;
-    }
-
     /**
      * Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity
      */
     public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity entity)
     {
+		if(entity instanceof EntityPlayerMP){
+			EntityPlayerMP player = (EntityPlayerMP) entity;
 
-        if (entity.ridingEntity == null && entity.riddenByEntity == null)
-        {
-        	if(entity.dimension == Virtious.dimensionID)
-        	{
-        		
-        	}
-        	else
-        	{
-        		if(entity instanceof EntityPlayerMP){
-        			EntityPlayerMP player = (EntityPlayerMP) entity;
+	        if (player.ridingEntity == null && player.riddenByEntity == null)
+	        {
+	        	if(player.dimension == Virtious.dimensionID)
+	        	{
+        			player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 1);
+	        	}
+	        	else
+	        	{
         			player.mcServer.getConfigurationManager().transferPlayerToDimension(player, Virtious.dimensionID);
-        		}
-        	}
-        }
+	        	}
+        	}    
+		}
     }
 
 

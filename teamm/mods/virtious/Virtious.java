@@ -48,7 +48,7 @@ public class Virtious {
 			config.load();
 			
 			//Other config
-			Property idDim = Virtious.config.get("Special", "dimensionID", Config.DimensionID);
+			Property idDim = Virtious.config.get("Special", "dimensionID", DimensionManager.getNextFreeDimId());
 			dimensionID = idDim.getInt();
 			
 			//ItemStack config

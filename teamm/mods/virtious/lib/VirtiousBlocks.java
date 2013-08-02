@@ -28,11 +28,11 @@ public class VirtiousBlocks
 		deepStone = new DeepStone(deepStoneID, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("DeepStone");
 		registerBlock(deepStone, "Deep Stone");
 		
-		
-		Property idPortalBlock = Virtious.config.getBlock("idStone", Config.idPortal);
+		Property idPortalBlock = Virtious.config.getBlock("idPortalBlock", Config.idPortal);
 		int portalBlockID = idPortalBlock.getInt();
-		portalBlock = new PortalBlock(portalBlockID).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("vPortal").setCreativeTab(CreativeTabs.tabBlock);
-		registerBlock(portalBlock, "Portal block");
+		portalBlock = new PortalBlock(portalBlockID).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("vPortal");
+		registerBlock(portalBlock, "Portal");
+		
 		
 		//TODO add all block objects here
 	}
