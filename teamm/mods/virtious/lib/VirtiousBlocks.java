@@ -19,6 +19,7 @@ public class VirtiousBlocks
 	public static Block deepStone;
 	public static Block portalBlock;
 	public static Block virtianstone;
+	public static Block virtiancobblestone;
 	public static Block virtianGrass;
 	public static Block virtianSoil;
 	public static Block deepStoneMossy;
@@ -45,6 +46,11 @@ public class VirtiousBlocks
 		int virtianstoneID = idVirtianstone.getInt();
 		virtianstone = new VirtiousBlock(virtianstoneID, Material.rock).setHardness(1.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("Virtianstone");
 		registerBlock(virtianstone, "Virtianstone");
+		
+		Property idVirtiancobblestone = Virtious.config.getBlock("Virtian Cobblestone Id", Config.idvirtiancobblestone);
+		int virtiancobblestoneId = idVirtiancobblestone.getInt();
+		virtiancobblestone = new VirtiousBlock(virtiancobblestoneId, Material.rock).setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("VirtianCobblestone");
+		registerBlock(virtiancobblestone, "Virtian Cobblestone");
 		
 		Property idVirtianGrass = Virtious.config.getTerrainBlock("worldgen", "Virtian Grass ID", Config.idVirtianGrass, null);
 		int virtianGrassId = idVirtianGrass.getInt();

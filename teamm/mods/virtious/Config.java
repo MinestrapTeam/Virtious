@@ -11,17 +11,17 @@ public class Config {
 	public static int iddeepStoneMossy = 204;
 	
 	//Blocks
-	public static int idPortal = 2000;
-	public static int idoreVIron = 2001;
-	public static int idoreTak = 2002;
-	public static int idoreBrazeum = 2003;
+	public static int idvirtiancobblestone = 2000;
+	public static int idPortal = 2001;
+	public static int idoreVIron = 2002;
+	public static int idoreTak = 2003;
+	public static int idoreBrazeum = 2004;
 
 	//Items
 	public static int idIngotBrazeum = 5000;
 	public static int idShardAquieus = 5001;
 	public static int idGemPluthorium = 5002;
 	public static int idTak = 5003;
-	
 	
 	public static int idTeleporterWand = 5500;
 	
