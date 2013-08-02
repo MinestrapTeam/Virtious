@@ -9,10 +9,14 @@ import net.minecraftforge.common.Property;
 import teamm.mods.virtious.Config;
 import teamm.mods.virtious.Virtious;
 import teamm.mods.virtious.block.DeepStone;
+import teamm.mods.virtious.block.PortalBlock;
 
 public class VirtiousBlocks 
 {
 	public static Block deepStone;
+	
+	
+	public static Block portalBlock;
 	
 	/**
 	 * Loads all block objects
@@ -23,6 +27,12 @@ public class VirtiousBlocks
 		int deepStoneID = idDeedStone.getInt();
 		deepStone = new DeepStone(deepStoneID, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("DeepStone").setCreativeTab(CreativeTabs.tabBlock);
 		registerBlock(deepStone, "Deep Stone");
+		
+		
+		Property idPortalBlock = Virtious.config.getBlock("idStone", Config.idDeedStone);
+		int portalBlockID = idPortalBlock.getInt();
+		portalBlock = new PortalBlock(portalBlockID).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("vPortal").setCreativeTab(CreativeTabs.tabBlock);
+		registerBlock(portalBlock, "Portal block");
 		
 		//TODO add all block objects here
 	}
