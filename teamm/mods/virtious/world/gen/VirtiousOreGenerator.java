@@ -25,9 +25,63 @@ public class VirtiousOreGenerator implements IWorldGenerator
 	public void generateVirtious(Random random, int blockX, int blockZ, World world)
 	{
 		//Tak Ore
-		for(int l = 0; l < 17; l ++)
+		for(int l = 0; l < 15; l ++)
 		{
 			new VirtiousGenMinable(VirtiousBlocks.oreTak.blockID, 9).generate(world, random, blockX + random.nextInt(16), random.nextInt(64), blockZ + random.nextInt(16));
+		}
+		
+		//VIron
+		for(int l = 0; l < 10; l ++)
+		{
+			new VirtiousGenMinable(VirtiousBlocks.oreVIron.blockID, 8).generate(world, random, blockX + random.nextInt(16), random.nextInt(63), blockZ + random.nextInt(16));
+		}
+		
+		//Brazeum
+		for(int l = 0; l < 9; l ++)
+		{
+			new VirtiousGenDeepstone(VirtiousBlocks.oreBrazeum.blockID, 8).generate(world, random, blockX + random.nextInt(16), random.nextInt(40), blockZ + random.nextInt(16));
+		}
+		
+		//Aquieus
+		for(int l = 0; l < 7; l ++)
+		{
+			new VirtiousGenDeepstone(VirtiousBlocks.oreAquieus.blockID, 6).generate(world, random, blockX + random.nextInt(16), random.nextInt(32), blockZ + random.nextInt(16));
+		}
+		
+		//Pluthorium
+		for(int l = 0; l < 3; l ++)
+		{
+			new VirtiousGenDeepstone(VirtiousBlocks.orePluthorium.blockID, 6).generate(world, random, blockX + random.nextInt(16), random.nextInt(16), blockZ + random.nextInt(16));
+		}
+		
+		//Illuminous
+		for(int l = 0; l < 11; l ++)
+		{
+			new VirtiousGenMinable(VirtiousBlocks.oreIlluminous.blockID, 7).generate(world, random, blockX + random.nextInt(16), random.nextInt(64), blockZ + random.nextInt(16));
+		}
+		
+		//Deep Illuminous
+		for(int l = 0; l < 11; l ++)
+		{
+			new VirtiousGenDeepstone(VirtiousBlocks.oreDeepIlluminous.blockID, 7).generate(world, random, blockX + random.nextInt(16), random.nextInt(64), blockZ + random.nextInt(16));
+		}
+		
+		//Deep Tak
+		for(int l = 0; l < 15; l ++)
+		{
+			new VirtiousGenDeepstone(VirtiousBlocks.oreDeepTak.blockID, 9).generate(world, random, blockX + random.nextInt(16), random.nextInt(40), blockZ + random.nextInt(16));
+		}
+		
+		//Deep Tak
+		for(int l = 0; l < 10; l ++)
+		{
+			new VirtiousGenDeepstone(VirtiousBlocks.oreDeepIron.blockID, 8).generate(world, random, blockX + random.nextInt(16), random.nextInt(40), blockZ + random.nextInt(16));
+		}
+		
+		//Deep Tak
+		for(int l = 0; l < 9; l ++)
+		{
+			new VirtiousGenDeepstone(VirtiousBlocks.deepStoneMossy.blockID, 8).generate(world, random, blockX + random.nextInt(16), random.nextInt(40), blockZ + random.nextInt(16));
 		}
 	}
 	
