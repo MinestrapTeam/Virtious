@@ -17,19 +17,16 @@ public class VirtiousOreGenerator implements IWorldGenerator
 	{
 		if(world.provider.dimensionId == Virtious.dimensionID)
 		{
-			generateVirtious(random, chunkX, chunkZ, world);
+			generateVirtious(random, chunkX *16, chunkZ * 16, world);
 		}
 	} 
 	
-	public void generateVirtious(Random random, int chunkx, int chunkz, World world)
+	public void generateVirtious(Random random, int blockX, int blockZ, World world)
 	{
 		//Tak Ore
 		for(int l = 0; l < 17; l ++)
 		{
-			int i1 = chunkx + random.nextInt(128);
-			int i2 = random.nextInt(64);
-			int i3 = chunkz + random.nextInt(128);
-			(new VirtiousGenMinable(VirtiousBlocks.oreTak.blockID, 9)).generate(world, random, i1, i2, i3);
+			new VirtiousGenMinable(VirtiousBlocks.oreTak.blockID, 9).generate(world, random, blockX + random.nextInt(16), random.nextInt(128), blockZ + random.nextInt(16));;
 		}
 	}
 	
