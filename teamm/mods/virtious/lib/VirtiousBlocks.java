@@ -21,7 +21,7 @@ public class VirtiousBlocks
 	{
 		Property idDeedStone = Virtious.config.getBlock("idStone", Config.idDeedStone);
 		int deepStoneID = idDeedStone.getInt();
-		deepStone = new DeepStone(deepStoneID, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("deepStone").setCreativeTab(CreativeTabs.tabBlock);
+		deepStone = new DeepStone(deepStoneID, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("DeepStone").setCreativeTab(CreativeTabs.tabBlock);
 		registerBlock(deepStone, "Deep Stone");
 		
 		//TODO add all block objects here
