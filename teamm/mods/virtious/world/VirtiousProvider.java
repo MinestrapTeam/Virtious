@@ -54,5 +54,37 @@ public class VirtiousProvider extends WorldProvider {
 		return "Virtious";
 	}
 	
+	public Vec3 getFogColor(float par1, float par2)
+    {
+        float f2 = MathHelper.cos(par1 * (float)Math.PI * 2.0F) * 2.0F + 0.5F;
+
+        if (f2 < 0.2F)
+        {
+            f2 = 0.2F;
+        }
+
+        if (f2 > 1.0F)
+        {
+            f2 = 1.0F;
+        }
+        
+        float f3 = 0.7529412F;
+        float f4 = 0.84705883F;
+        float f5 = 1.0F;
+        f3 *= f2 * 0.94F + 0.06F;
+        f4 *= f2 * 0.94F + 0.06F;
+        f5 *= f2 * 0.91F + 0.09F;
+        //TODO Change these for sky colors
+        f3 = 0.9F * f2;
+        f4 = 0.75F * f2;
+        f5 = 0.9F * f2;
+        return this.worldObj.getWorldVec3Pool().getVecFromPool((double)f3, (double)f4, (double)f5);
+    }
+
+    @Override
+    public boolean doesXZShowFog(int par1, int par2)
+    {
+    	return false;
+    }
 	
 }
