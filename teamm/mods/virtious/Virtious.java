@@ -36,7 +36,7 @@ public class Virtious {
 	
 	public static Configuration config;
 	
-	public static CreativeTabs tabVirtious = new VirtiousCreativeTab(CreativeTabs.getNextID(), "Virtious Mod");
+	public static VirtiousCreativeTab tabVirtious = new VirtiousCreativeTab(CreativeTabs.getNextID(), "Virtious Mod");
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
