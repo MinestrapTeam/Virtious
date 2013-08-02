@@ -9,7 +9,7 @@ public class VirtiousCreativeTab extends CreativeTabs
 		super(par1, par2Str);
 	}
 	
-    public int getTabIndex()
+    public int getTabIconItemIndex()
     {
     	return VirtiousBlocks.deepStone.blockID;
     }
