@@ -4,7 +4,7 @@ public class Config {
 	public static int virtiousBiomeID = 25;
 
 	//Worldgen Blocks - under 256
-	public static int idDeedStone = 200;
+	public static int idDeepStone = 200;
 	public static int idVirtianstone = 201;
 	public static int idVirtianGrass = 202;
 	public static int idVirtianSoil = 203;
@@ -17,6 +17,11 @@ public class Config {
 	public static int idoreTak = 2003;
 	public static int idoreBrazeum = 2004;
 	public static int idoreAquieus = 2005;
+	public static int idorePluthorium = 2006;
+	public static int idoreIlluminous = 2007;
+	public static int idoreDeepTak = 2008;
+	public static int idoreDeepIron = 2009;
+	public static int idoreDeepIlluminous = 2010;
 
 	//Items
 	public static int idIngotBrazeum = 5000;

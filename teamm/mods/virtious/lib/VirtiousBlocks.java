@@ -27,14 +27,16 @@ public class VirtiousBlocks
 	public static Block oreTak;
 	public static Block oreBrazeum;
 	public static Block oreAquieus;
+	public static Block orePluthorium;
+	public static Block oreIlluminous;
 	
 	/**
 	 * Loads all block objects
 	 */
 	public VirtiousBlocks()
 	{
-		Property idDeedStone = Virtious.config.getTerrainBlock("worldgen", "idDeepStone", Config.idDeedStone, null);
-		int deepStoneID = idDeedStone.getInt();
+		Property idDeepStone = Virtious.config.getTerrainBlock("worldgen", "idDeepStone", Config.idDeepStone, null);
+		int deepStoneID = idDeepStone.getInt();
 		deepStone = new DeepStone(deepStoneID, Material.rock).setHardness(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("DeepStone");
 		registerBlock(deepStone, "Deep Stone");
 		
@@ -88,10 +90,21 @@ public class VirtiousBlocks
 		oreAquieus = new VirtiousBlock(oreAquieusId, Material.rock).setHardness(4.0F).setResistance(6.0F).setUnlocalizedName("AquieusOre").setLightValue(0.4F);
 		registerBlock(oreAquieus, "Aquieus Ore");
 		
+		Property idorePluthorium = Virtious.config.getBlock("Pluthorium Ore Id", Config.idorePluthorium);
+		int orePluthoriumId = idorePluthorium.getInt();
+		orePluthorium = new VirtiousBlock(orePluthoriumId, Material.rock).setHardness(4.0F).setResistance(6.0F).setUnlocalizedName("PluthoriumOre");
+		registerBlock(orePluthorium, "Pluthorium Ore");
+		
+		Property idoreIlluminous = Virtious.config.getBlock("Illuminous Ore Id", Config.idoreIlluminous);
+		int oreIlluminousId = idoreIlluminous.getInt();
+		oreIlluminous = new VirtiousBlock(oreIlluminousId, Material.rock).setHardness(4.0F).setLightValue(0.8F).setUnlocalizedName("IlluminousOre");
+		registerBlock(oreIlluminous, "Illuminous Ore");
+		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(deepStone, "pickaxe", 2);
 		MinecraftForge.setBlockHarvestLevel(deepStoneMossy, "pickaxe", 2);
+		MinecraftForge.setBlockHarvestLevel(orePluthorium, "pickaxe", 2);
 		
 		//TODO add all block objects here
 	}

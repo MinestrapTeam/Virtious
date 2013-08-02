@@ -24,7 +24,11 @@ public class VirtiousBlock extends Block
 	
 	public int idDropped(int par1, Random par2Random, int par3)
 	{
-		return blockID == VirtiousBlocks.oreTak.blockID ? VirtiousItems.tak.itemID : blockID == VirtiousBlocks.virtianstone.blockID ? VirtiousBlocks.virtiancobblestone.blockID : blockID == VirtiousBlocks.oreAquieus.blockID ? VirtiousItems.shardAquieus.itemID : this.blockID;
+		return blockID == VirtiousBlocks.oreTak.blockID ? VirtiousItems.tak.itemID : 
+			blockID == VirtiousBlocks.virtianstone.blockID ? VirtiousBlocks.virtiancobblestone.blockID :
+			blockID == VirtiousBlocks.oreAquieus.blockID ? VirtiousItems.shardAquieus.itemID :
+			blockID == VirtiousBlocks.orePluthorium.blockID ? VirtiousItems.gemPluthorium.itemID : 
+			this.blockID;
 	}
 	
 	/**
