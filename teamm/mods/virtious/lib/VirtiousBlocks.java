@@ -8,24 +8,28 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.Property;
 import teamm.mods.virtious.Config;
 import teamm.mods.virtious.Virtious;
+import teamm.mods.virtious.block.BlockVirtianGrass;
 import teamm.mods.virtious.block.DeepStone;
 import teamm.mods.virtious.block.PortalBlock;
+import teamm.mods.virtious.block.VirtiousBlock;
 
 public class VirtiousBlocks 
 {
 	public static Block deepStone;
-	
-	
 	public static Block portalBlock;
+	public static Block virtianstone;
+	public static Block virtianGrass;
+	public static Block virtianSoil;
+	public static Block deepStoneMossy;
 	
 	/**
 	 * Loads all block objects
 	 */
 	public VirtiousBlocks()
 	{
-		Property idDeedStone = Virtious.config.getBlock("idStone", Config.idDeedStone);
+		Property idDeedStone = Virtious.config.getBlock("idDeepStone", Config.idDeedStone);
 		int deepStoneID = idDeedStone.getInt();
-		deepStone = new DeepStone(deepStoneID, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("DeepStone");
+		deepStone = new DeepStone(deepStoneID, Material.rock).setHardness(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("DeepStone");
 		registerBlock(deepStone, "Deep Stone");
 		
 		Property idPortalBlock = Virtious.config.getBlock("idPortalBlock", Config.idPortal);
@@ -33,6 +37,25 @@ public class VirtiousBlocks
 		portalBlock = new PortalBlock(portalBlockID).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("vPortal");
 		registerBlock(portalBlock, "Portal");
 		
+		Property idVirtianstone = Virtious.config.getBlock("Virtianstone Id", Config.idVirtianstone);
+		int virtianstoneID = idVirtianstone.getInt();
+		virtianstone = new VirtiousBlock(virtianstoneID, Material.rock).setHardness(1.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("Virtianstone");
+		registerBlock(virtianstone, "Virtianstone");
+		
+		Property idVirtianGrass = Virtious.config.getBlock("Virtian Grass ID", Config.idVirtianGrass);
+		int virtianGrassId = idVirtianGrass.getInt();
+		virtianGrass = new BlockVirtianGrass(virtianGrassId).setHardness(0.6F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("virtianGrass");
+		registerBlock(virtianGrass, "Virtian Grass");
+		
+		Property idVirtianSoil = Virtious.config.getBlock("Virtian Soil ID", Config.idVirtianSoil);
+		int virtianSoilId = idVirtianSoil.getInt();
+		virtianSoil = new VirtiousBlock(virtianSoilId, Material.ground).setHardness(0.6F).setUnlocalizedName("VirtianSoil").setStepSound(Block.soundGravelFootstep);
+		registerBlock(virtianSoil, "Virtian Soil");
+		
+		Property iddeepStoneMossy = Virtious.config.getBlock("Mossy Deep Stone ID", Config.iddeepStoneMossy);
+		int deepStoneMossyId = iddeepStoneMossy.getInt();
+		deepStoneMossy = new VirtiousBlock(deepStoneMossyId, Material.rock).setHardness(5.0F).setUnlocalizedName("MossyDeepStone");
+		registerBlock(deepStoneMossy, "Mossy Deep Stone");
 		
 		//TODO add all block objects here
 	}

@@ -11,7 +11,7 @@ public class VirtiousCreativeTab extends CreativeTabs
 	
     public int getTabIconItemIndex()
     {
-    	return VirtiousBlocks.deepStone.blockID;
+    	return VirtiousBlocks.virtianGrass.blockID;
     }
     
     public String getTranslatedTabLabel()

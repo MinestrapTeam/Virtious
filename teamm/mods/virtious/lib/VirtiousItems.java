@@ -12,7 +12,11 @@ public class VirtiousItems
 {
 	public static Item ingotBrazeum;
 	public static Item shardIgnus;
+<<<<<<< HEAD
 	public static Item teleportWand;
+=======
+	public static Item gemPluthorium;
+>>>>>>> 0e71d529ab0770fc99537fac54851b39d645ea11
 	
 	/**
 	 * Loads all item objects
@@ -34,6 +38,11 @@ public class VirtiousItems
 		int TeleporterWandID = idTeleporterWand.getInt();
 		teleportWand = new TeleporterItem(TeleporterWandID).setUnlocalizedName("TeleportWand");
 		LanguageRegistry.addName(teleportWand, "TeleportWand");
+		
+		Property idGemPluthorium = Virtious.config.getItem("Pluthorium Gem", Config.idGemPluthorium);
+		int gemPluthoriumId = idGemPluthorium.getInt();
+		gemPluthorium = new VirtiousItem(gemPluthoriumId).setUnlocalizedName("PluthoriumGem");
+		LanguageRegistry.addName(gemPluthorium, "Pluthorium Gem");
 		
 		//TODO load all item objects
 	}
