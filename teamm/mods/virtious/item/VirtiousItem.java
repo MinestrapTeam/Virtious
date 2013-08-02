@@ -12,7 +12,7 @@ public class VirtiousItem extends Item
 		this.setCreativeTab(Virtious.tabVirtious);
 	}
 	
-	public void registerIcon(IconRegister r)
+	public void registerIcons(IconRegister r)
 	{
 		itemIcon = r.registerIcon("virtious:" + this.getUnlocalizedName().substring(5));
 	}
