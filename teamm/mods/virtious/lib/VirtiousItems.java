@@ -5,7 +5,7 @@ public class VirtiousItems
 	/**
 	 * Loads all item objects
 	 */
-	public void loadAllItems()
+	public static void loadAllItems()
 	{
 		//TODO load all item objects
 	}

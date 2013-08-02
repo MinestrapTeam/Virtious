@@ -2,6 +2,8 @@ package teamm.mods.virtious;
 
 import java.io.File;
 
+import teamm.mods.virtious.lib.VirtiousBlocks;
+import teamm.mods.virtious.lib.VirtiousItems;
 import teamm.mods.virtious.world.VirtiousProvider;
 
 import net.minecraftforge.common.DimensionManager;
@@ -21,7 +23,8 @@ public class Virtious {
 	@Instance(Virtious.modId)
 	private static Virtious instance;
 	
-	public static Virtious getInstance(){
+	public static Virtious getInstance()
+	{
 		return instance;
 	}
 	
@@ -30,20 +33,28 @@ public class Virtious {
 	private static VirtiousConfig config;
 	
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event){
+	public void preInit(FMLPreInitializationEvent event)
+	{
 		config = new VirtiousConfig(new File(event.getModConfigurationDirectory(), "Virtious.cfg"));
 		
-		try{
+		try
+		{
 			config.load();
 			
 			Property idDim = Virtious.config.get("Special", "dimensionID", Config.DimensionID);
 			dimensionID = idDim.getInt();
 			
-		} catch(Exception e){
+		} catch(Exception e)
+		{
 			
-		} finally {
+		} 
+		finally 
+		{
 			config.save();
 		}
+		
+		VirtiousBlocks.loadAllBlocks();
+		VirtiousItems.loadAllItems();
 		
 		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
