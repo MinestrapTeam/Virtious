@@ -24,6 +24,7 @@ public class VirtiousBlocks
 	public static Block deepStoneMossy;
 	public static Block oreVIron;
 	public static Block oreTak;
+	public static Block oreBrazeum;
 	
 	/**
 	 * Loads all block objects
@@ -70,7 +71,15 @@ public class VirtiousBlocks
 		oreTak = new VirtiousBlock(oreTakId, Material.rock).setHardness(3.2F).setResistance(5.2F).setUnlocalizedName("TakOre");
 		registerBlock(oreTak,"Tak Ore");
 		
+		Property idoreBrazeum = Virtious.config.getBlock("Brazeum Ore Id", Config.idoreBrazeum);
+		int oreBrazeumId = idoreBrazeum.getInt();
+		oreBrazeum = new VirtiousBlock(oreBrazeumId, Material.rock).setHardness(3.0F).setResistance(5.0F).setUnlocalizedName("BrazeumOre");
+		registerBlock(oreBrazeum, "Brazeum Ore");
+		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
+		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);
+		MinecraftForge.setBlockHarvestLevel(deepStone, "pickaxe", 2);
+		MinecraftForge.setBlockHarvestLevel(deepStoneMossy, "pickaxe", 2);
 		
 		//TODO add all block objects here
 	}

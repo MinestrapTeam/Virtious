@@ -13,6 +13,7 @@ public class Config {
 	public static int idPortal = 2000;
 	public static int idoreVIron = 2001;
 	public static int idoreTak = 2002;
+	public static int idoreBrazeum = 2003;
 
 	//Items
 	public static int idIngotBrazeum = 5000;
