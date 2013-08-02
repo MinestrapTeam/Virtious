@@ -14,8 +14,7 @@ import teamm.mods.virtious.block.DeepStone;
 import teamm.mods.virtious.block.PortalBlock;
 import teamm.mods.virtious.block.VirtiousBlock;
 
-public class VirtiousBlocks 
-{
+public class VirtiousBlocks {
 	public static Block deepStone;
 	public static Block portalBlock;
 	public static Block virtianstone;
@@ -29,7 +28,10 @@ public class VirtiousBlocks
 	public static Block oreAquieus;
 	public static Block orePluthorium;
 	public static Block oreIlluminous;
-	
+	public static Block oreDeepTak;
+	public static Block oreDeepIron;
+	public static Block oreDeepIlluminous;
+
 	/**
 	 * Loads all block objects
 	 */
@@ -100,17 +102,34 @@ public class VirtiousBlocks
 		oreIlluminous = new VirtiousBlock(oreIlluminousId, Material.rock).setHardness(4.0F).setLightValue(0.8F).setUnlocalizedName("IlluminousOre");
 		registerBlock(oreIlluminous, "Illuminous Ore");
 		
+		Property idoreDeepTak = Virtious.config.getBlock("Deep Tak Ore Id", Config.idoreDeepTak);
+		int oreDeepTakId = idoreDeepTak.getInt();
+		oreDeepTak = new VirtiousBlock(oreDeepTakId, Material.rock).setHardness(5.0F).setResistance(0.8F).setUnlocalizedName("DeepTakOre");
+		registerBlock(oreDeepTak, "Deep Tak Ore");
+		
+		Property idoreDeepIron = Virtious.config.getBlock("Deep Iron Ore Id", Config.idoreDeepIron);
+		int oreDeepIronId = idoreDeepIron.getInt();
+		oreDeepIron = new VirtiousBlock(oreDeepIronId, Material.rock).setHardness(5.5F).setResistance(8.5F).setUnlocalizedName("DeepIronOre");
+		registerBlock(oreDeepIron, "Deep Iron Ore");
+		
+		Property idoreDeepIlluminous = Virtious.config.getBlock("Deep Illuminous Ore Id", Config.idoreDeepIlluminous);
+		int oreDeepIlluminousId = idoreDeepIlluminous.getInt();
+		oreDeepIlluminous = new VirtiousBlock(oreDeepIlluminousId, Material.rock).setHardness(5.0F).setResistance(8.0F).setLightValue(0.8F).setUnlocalizedName("DeepIlluminousOre");
+		registerBlock(oreDeepIlluminous,"Deep Illuminous Ore");
+		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(deepStone, "pickaxe", 2);
 		MinecraftForge.setBlockHarvestLevel(deepStoneMossy, "pickaxe", 2);
-		MinecraftForge.setBlockHarvestLevel(orePluthorium, "pickaxe", 2);
+		MinecraftForge.setBlockHarvestLevel(orePluthorium, "pickaxe", 3);
+		MinecraftForge.setBlockHarvestLevel(oreDeepIlluminous, "pickaxe", 2);
+		MinecraftForge.setBlockHarvestLevel(oreDeepIron, "pickaxe", 2);
+		MinecraftForge.setBlockHarvestLevel(oreDeepTak, "pickaxe", 2);
 		
 		//TODO add all block objects here
 	}
-	
-	public void registerBlock(Block block, String name)
-	{
+
+	public void registerBlock(Block block, String name) {
 		GameRegistry.registerBlock(block, name);
 		LanguageRegistry.addName(block, name);
 	}

@@ -28,6 +28,7 @@ public class VirtiousBlock extends Block
 			blockID == VirtiousBlocks.virtianstone.blockID ? VirtiousBlocks.virtiancobblestone.blockID :
 			blockID == VirtiousBlocks.oreAquieus.blockID ? VirtiousItems.shardAquieus.itemID :
 			blockID == VirtiousBlocks.orePluthorium.blockID ? VirtiousItems.gemPluthorium.itemID : 
+			blockID == VirtiousBlocks.oreDeepTak.blockID ? VirtiousItems.tak.itemID :
 			this.blockID;
 	}
 	
