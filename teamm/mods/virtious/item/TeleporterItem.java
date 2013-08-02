@@ -28,8 +28,8 @@ public class TeleporterItem extends VirtiousItem{
 			EntityStickyBomb bomb = new EntityStickyBomb(world, i, j, k, player);
 			world.spawnEntityInWorld(bomb);
 //     		PacketDispatcher.sendPacketToAllAround(bomb.posX, bomb.posY, bomb.posZ, 64, bomb.dimension, new StickyBombPacket(bomb).getPacket());
-     		PacketDispatcher.sendPacketToAllInDimension(new StickyBombPacket(bomb).getPacket(), bomb.dimension);
-			System.out.println("Spawned & Packet sent - stickyBomb");
+//     		PacketDispatcher.sendPacketToAllInDimension(new StickyBombPacket(bomb).getPacket(), bomb.dimension);
+//			System.out.println("Spawned & Packet sent - stickyBomb");
 		}  
 
 //		VirtiousGenAmberTree gen = new VirtiousGenAmberTree();

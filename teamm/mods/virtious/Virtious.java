@@ -3,6 +3,7 @@ package teamm.mods.virtious;
 import java.io.File;
 import java.util.logging.Level;
 
+import teamm.mods.virtious.entity.item.EntityStickyBomb;
 import teamm.mods.virtious.lib.VirtiousBlocks;
 import teamm.mods.virtious.lib.VirtiousCreativeTab;
 import teamm.mods.virtious.lib.VirtiousItems;
@@ -32,6 +33,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(name = Virtious.modName, modid = Virtious.modId, useMetadata = false, version = "B1.0")
@@ -107,7 +109,9 @@ public class Virtious {
 		
 		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
-		proxy.registerRenderThings();
 		
+		EntityRegistry.registerModEntity(EntityStickyBomb.class, "StickyBomb", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
+		
+		proxy.registerRenderThings();
 	}
 }

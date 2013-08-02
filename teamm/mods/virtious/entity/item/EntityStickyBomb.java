@@ -14,8 +14,9 @@ import net.minecraft.network.packet.Packet22Collect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 
-public class EntityStickyBomb extends Entity implements EntityOwnable{
+public class EntityStickyBomb extends Entity/* implements EntityOwnable*/{
 
 	private String Owner;
 
@@ -31,7 +32,7 @@ public class EntityStickyBomb extends Entity implements EntityOwnable{
 	public EntityStickyBomb(World world, double i, double j, double k)
 	{
 	    super(world);
-	    this.height = .75F;
+	    this.height = 1F;
 
 	    this.setSize(0.5F, 0.5F);
 	    this.yOffset = this.height / 2.0F;
@@ -42,8 +43,8 @@ public class EntityStickyBomb extends Entity implements EntityOwnable{
 	{
 	    super(world);
 	    this.setSize(0.5F, 0.5F);
-	    this.height = .75F;
-	    this.yOffset = this.height / 2.0F;
+	    this.height = 1F;
+//	    this.yOffset = this.height / 2.0F;
 	    this.setPosition(i, j, k);
 //	    this.setOwner(owner.getEntityName());
 	 }
@@ -128,48 +129,16 @@ public class EntityStickyBomb extends Entity implements EntityOwnable{
             return false;
         }
     }
-	/**
-     * (abstract) Protected helper method to write subclass entity data to NBT.
-     */
-    public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
-    {
-
-        if (this.getOwnerName() == null)
-        {
-            par1NBTTagCompound.setString("Owner", "");
-        }
-        else
-        {
-            par1NBTTagCompound.setString("Owner", this.getOwnerName());
-        }
-
-    }
-
-    /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     */
-    public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
-    {
-        String s = par1NBTTagCompound.getString("Owner");
-
-        if (s.length() > 0)
-        {
-//            this.setOwner(s);
-        }
-    }
-    
-//    public void setOwner(String par1Str)
-//    {
-//        this.dataWatcher.updateObject(17, par1Str);
-//    }
     
     /**
      * Called by a player entity when they collide with an entity
      */
-    public void onCollideWithPlayer(EntityPlayer par1EntityPlayer)
+    public void onCollideWithPlayer(EntityPlayer player)
     {
         if (!this.worldObj.isRemote)
         {
+        	player.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 1.0F, true);
+        	this.setDead();
         }
     }
     
@@ -181,15 +150,32 @@ public class EntityStickyBomb extends Entity implements EntityOwnable{
         return false;
     }
 
-	public String getOwnerName()
-    {
-        return this.dataWatcher.getWatchableObjectString(17);
-    }
-	@Override
-	public Entity getOwner() {
-		return this.worldObj.getPlayerEntityByName(this.getOwnerName());
-	}
+//	public String getOwnerName()
+//    {
+//        return this.dataWatcher.getWatchableObjectString(17);
+//    }
+//	@Override
+//	public Entity getOwner() {
+//		return this.worldObj.getPlayerEntityByName(this.getOwnerName());
+//	}
 	@Override
 	protected void entityInit() {
+//		if(!worldObj.isRemote){
+//			System.out.println("Sticky Bomb init");
+//	        EntityTracker entitytracker = ((WorldServer)this.worldObj).getEntityTracker();
+//	        entitytracker.addEntityToTracker(this, 165, 20, true);
+//		}
+	}
+
+	@Override
+	protected void readEntityFromNBT(NBTTagCompound nbttagcompound) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void writeEntityToNBT(NBTTagCompound nbttagcompound) {
+		// TODO Auto-generated method stub
+		
 	}
 }
