@@ -28,6 +28,7 @@ public class Config {
 	public static int idShardAquieus = 5001;
 	public static int idGemPluthorium = 5002;
 	public static int idTak = 5003;
+	public static int idGemIlluminous = 5004;
 	
 	public static int idTeleporterWand = 5500;
 	

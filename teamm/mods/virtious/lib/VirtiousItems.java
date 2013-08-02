@@ -15,6 +15,7 @@ public class VirtiousItems
 	public static Item teleportWand;
 	public static Item gemPluthorium;
 	public static Item tak;
+	public static Item gemIlluminous;
 	
 	/**
 	 * Loads all item objects
@@ -45,6 +46,11 @@ public class VirtiousItems
 		int takId = idTak.getInt();
 		tak =new VirtiousItem(takId).setUnlocalizedName("Tak");
 		LanguageRegistry.addName(tak, "Tak");
+		
+		Property idgemIlluminous = Virtious.config.getItem("Illuminous Gem Id", Config.idGemIlluminous);
+		int gemIlluminousId = idgemIlluminous.getInt();
+		gemIlluminous = new VirtiousItem(gemIlluminousId).setUnlocalizedName("IlluminousGem");
+		LanguageRegistry.addName(gemIlluminous, "Illuminous Gem");
 		
 		//TODO load all item objects
 	}
