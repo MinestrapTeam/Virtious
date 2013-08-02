@@ -14,6 +14,7 @@ public class VirtiousItems
 	public static Item shardAquieus;
 	public static Item teleportWand;
 	public static Item gemPluthorium;
+	public static Item tak;
 	
 	/**
 	 * Loads all item objects
@@ -39,6 +40,11 @@ public class VirtiousItems
 		int gemPluthoriumId = idGemPluthorium.getInt();
 		gemPluthorium = new VirtiousItem(gemPluthoriumId).setUnlocalizedName("PluthoriumGem");
 		LanguageRegistry.addName(gemPluthorium, "Pluthorium Gem");
+		
+		Property idTak = Virtious.config.getItem("Tak ID", Config.idTak);
+		int takId = idTak.getInt();
+		tak =new VirtiousItem(takId).setUnlocalizedName("Tak");
+		LanguageRegistry.addName(tak, "Tak");
 		
 		//TODO load all item objects
 	}
