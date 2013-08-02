@@ -31,6 +31,7 @@ public class VirtiousBlocks {
 	public static Block oreDeepTak;
 	public static Block oreDeepIron;
 	public static Block oreDeepIlluminous;
+	public static Block blockTak;
 
 	/**
 	 * Loads all block objects
@@ -116,6 +117,11 @@ public class VirtiousBlocks {
 		int oreDeepIlluminousId = idoreDeepIlluminous.getInt();
 		oreDeepIlluminous = new VirtiousBlock(oreDeepIlluminousId, Material.rock).setHardness(5.0F).setResistance(8.0F).setLightValue(0.8F).setUnlocalizedName("DeepIlluminousOre");
 		registerBlock(oreDeepIlluminous,"Deep Illuminous Ore");
+		
+		Property idblockTak = Virtious.config.getBlock("Tak Block Id", Config.idblockTak);
+		int blockTakId = idblockTak.getInt();
+		blockTak = new VirtiousBlock(blockTakId, Material.rock).setHardness(5.0F).setUnlocalizedName("TakBlock");
+		registerBlock(blockTak, "Tak Block");
 		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);

@@ -17,6 +17,10 @@ public class VirtiousRecipes
 				{
 			"SSS", "S S", "SSS", Character.valueOf('S'), VirtiousBlocks.virtiancobblestone
 				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.blockTak), new Object[]
+				{
+			"TTT", "TTT", "TTT", Character.valueOf('T'), VirtiousItems.tak
+				});
 		
 		//TODO Load all recipes here
 	}

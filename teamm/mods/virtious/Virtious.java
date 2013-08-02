@@ -8,6 +8,7 @@ import teamm.mods.virtious.lib.VirtiousBlocks;
 import teamm.mods.virtious.lib.VirtiousCreativeTab;
 import teamm.mods.virtious.lib.VirtiousItems;
 import teamm.mods.virtious.lib.VirtiousRecipes;
+import teamm.mods.virtious.misc.VirtiousFuelHandler;
 import teamm.mods.virtious.network.PacketHandler;
 import teamm.mods.virtious.proxy.CommonProxy;
 import teamm.mods.virtious.world.VirtiousProvider;
@@ -106,6 +107,8 @@ public class Virtious {
 	public void init(FMLInitializationEvent evt)
 	{
 		virtiousBiome = new BiomeGenVirtious(Virtious.virtiousBiomeID);
+		
+		GameRegistry.registerFuelHandler(new VirtiousFuelHandler());
 		
 		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
