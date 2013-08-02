@@ -13,6 +13,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.Teleporter;
 import net.minecraft.world.World;
 
 public class PortalBlock extends VirtiousBlock
@@ -34,21 +35,24 @@ public class PortalBlock extends VirtiousBlock
     /**
      * Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity
      */
-    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity entity)
+    public void onEntityCollidedWithBlock(World world, int par2, int par3, int par4, Entity entity)
     {
-		if(entity instanceof EntityPlayerMP){
-			EntityPlayerMP player = (EntityPlayerMP) entity;
-
-	        if (player.ridingEntity == null && player.riddenByEntity == null)
-	        {
-	        	if(player.dimension == Virtious.dimensionID)
-	        	{
-        			player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 1);
-	        	}
-	        	else
-	        	{
-        			player.mcServer.getConfigurationManager().transferPlayerToDimension(player, Virtious.dimensionID);
-	        	}
+		if (entity.ridingEntity == null && entity.riddenByEntity == null)
+		{
+			if(entity instanceof EntityPlayerMP)
+			{
+				EntityPlayerMP player = (EntityPlayerMP) entity;
+	        
+				if(!world.isRemote){
+//		        	if(player.dimension == Virtious.dimensionID)
+//		        	{
+//	        			player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0);
+//		        	}
+//		        	else
+//		        	{
+	        			player.mcServer.getConfigurationManager().transferPlayerToDimension(player, Virtious.dimensionID);
+//		        	}
+				}
         	}    
 		}
     }

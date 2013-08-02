@@ -18,6 +18,7 @@ import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(name = Virtious.modName, modid = Virtious.modId, useMetadata = false, version = "1.0")
@@ -68,9 +69,11 @@ public class Virtious {
 		{
 			config.save();
 		}
-		
-		
-		
+	}
+	
+	@EventHandler
+	public void Init(FMLInitializationEvent event)
+	{
 		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
 
