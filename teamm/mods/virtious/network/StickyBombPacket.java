@@ -15,6 +15,8 @@ public class StickyBombPacket extends VirtiousPacket{
 	public int posX;
 	public int posZ;
 	public int posY;
+	
+	public int dimID;
 
 	public StickyBombPacket(){}
 
@@ -22,9 +24,10 @@ public class StickyBombPacket extends VirtiousPacket{
 		this.isChunkDataPacket = true;
 		
 		this.entityId = entity.entityId;
-        this.posX = MathHelper.floor_double(entity.posX * 32.0D);
-        this.posY = MathHelper.floor_double(entity.posY * 32.0D);
-        this.posZ = MathHelper.floor_double(entity.posZ * 32.0D);
+        this.posX = MathHelper.floor_double(entity.posX);
+        this.posY = MathHelper.floor_double(entity.posY);
+        this.posZ = MathHelper.floor_double(entity.posZ);
+        this.dimID = entity.dimension;
 	}
 	
 	@Override
@@ -38,6 +41,7 @@ public class StickyBombPacket extends VirtiousPacket{
 		data.writeInt(this.posX);
 		data.writeInt(this.posY);
 		data.writeInt(this.posZ);
+		data.writeInt(this.dimID);
 	}
 
 	@Override
@@ -46,6 +50,7 @@ public class StickyBombPacket extends VirtiousPacket{
         this.posX = data.readInt();
         this.posY = data.readInt();
         this.posZ = data.readInt();
+        this.dimID = data.readInt();
 	}
 
 }

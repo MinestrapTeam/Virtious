@@ -21,11 +21,13 @@ public class PacketHandler implements IPacketHandler{
 			EntityStickyBomb entity = new EntityStickyBomb(FMLClientHandler.instance().getClient().theWorld, (double)packet.posX, (double)packet.posY, (double)packet.posZ);
 	        entity.serverPosX = packet.posX;
 	        entity.serverPosY = packet.posY;
-	        entity.serverPosZ = packet.posZ;
+	        entity.serverPosZ = packet.posZ;//add owner
 	        entity.rotationYaw = 0.0F;
 	        entity.rotationPitch = 0.0F;
 	        entity.entityId = packet.entityId;
 	        FMLClientHandler.instance().getClient().theWorld.addEntityToWorld(packet.entityId, entity);
+			System.out.println("packet recived bomb");
+
 		}
 	}
 	
@@ -35,11 +37,10 @@ public class PacketHandler implements IPacketHandler{
 		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
 		try
 		{
-			int packetID = data.readInt();
-			
+			int packetID = data.read();
 			switch (packetID) {
 
-				case PacketIds.STICKY_BOMB:				System.out.println("packet recived bomb");
+				case PacketIds.STICKY_BOMB:				
 
 					StickyBombPacket packet2 = new StickyBombPacket();
 					packet2.readData(data);
