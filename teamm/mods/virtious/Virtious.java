@@ -9,8 +9,11 @@ import teamm.mods.virtious.lib.VirtiousItems;
 import teamm.mods.virtious.lib.VirtiousRecipes;
 import teamm.mods.virtious.proxy.CommonProxy;
 import teamm.mods.virtious.world.VirtiousProvider;
+import teamm.mods.virtious.world.biome.BiomeGenVirtious;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.Property;
@@ -26,6 +29,7 @@ import cpw.mods.fml.common.SidedProxy;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(name = Virtious.modName, modid = Virtious.modId, useMetadata = false, version = "1.0")
 //@NetworkMod(...)
@@ -42,7 +46,11 @@ public class Virtious {
 	}
 	
 	public static int dimensionID;
+	public static int virtiousBiomeID;
 	
+	/* Biomes */
+	public static BiomeGenBase virtiousBiome = null;
+
 	public static Configuration config;
 	
 	public static VirtiousCreativeTab tabVirtious = new VirtiousCreativeTab(CreativeTabs.getNextID(), "Virtious Mod");
@@ -62,6 +70,9 @@ public class Virtious {
 			//Other config
 			Property idDim = Virtious.config.get("Special", "dimensionID", DimensionManager.getNextFreeDimId());
 			dimensionID = idDim.getInt();
+
+			Property idvirtiousBiome = Virtious.config.get("Special", "virtiousBiomeID", Config.virtiousBiomeID);
+			virtiousBiomeID = idvirtiousBiome.getInt();
 			
 			//ItemStack config
 			new VirtiousBlocks();
@@ -83,7 +94,10 @@ public class Virtious {
 	
 	@EventHandler
 	public void init(FMLInitializationEvent evt)
-	{DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
+	{
+		virtiousBiome = new BiomeGenVirtious(Virtious.virtiousBiomeID);
+		
+		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
 		proxy.registerRenderThings();
 	}

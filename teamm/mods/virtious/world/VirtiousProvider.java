@@ -28,13 +28,12 @@ import net.minecraftforge.common.DimensionManager;
 public class VirtiousProvider extends WorldProvider {
 
 	public VirtiousProvider(){
-		this.worldChunkMgr = new VirtiousChunkManager(BiomeGenBase.beach, 0, 0);
+		this.worldChunkMgr = new VirtiousChunkManager(Virtious.virtiousBiome, 1F, 0);
 		this.dimensionId = Virtious.dimensionID;
 	}
 	
 	@Override
 	public void registerWorldChunkManager(){
-//		this.worldChunkMgr = new VirtiousChunkManager(this.worldObj);
 		this.dimensionId = Virtious.dimensionID;
 		this.hasNoSky = false;
 	}

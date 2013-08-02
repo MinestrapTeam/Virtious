@@ -1,7 +1,8 @@
 package teamm.mods.virtious;
 
 public class Config {
-	
+	public static int virtiousBiomeID = 25;
+
 	//Worldgen Blocks - under 256
 	public static int idDeedStone = 200;
 	public static int idVirtianstone = 201;

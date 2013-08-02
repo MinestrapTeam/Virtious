@@ -22,8 +22,8 @@ public class VirtiousBlock extends Block
 		this.blockIcon = r.registerIcon("virtious:" + this.getUnlocalizedName().substring(5));
 	}
 	
-    public int idDropped(int par1, Random par2Random, int par3)
-    {
-    	return blockID == VirtiousBlocks.oreTak.blockID ? VirtiousItems.tak.itemID : this.blockID;
-    }
+	public int idDropped(int par1, Random par2Random, int par3)
+	{
+		return blockID == VirtiousBlocks.oreTak.blockID ? VirtiousItems.tak.itemID : this.blockID;
+	}
 }
