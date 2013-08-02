@@ -5,6 +5,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
 import teamm.mods.virtious.Config;
 import teamm.mods.virtious.Virtious;
@@ -67,6 +68,9 @@ public class VirtiousBlocks
 		Property idoreTak = Virtious.config.getBlock("Tak Ore Id", Config.idoreTak);
 		int oreTakId = idoreTak.getInt();
 		oreTak = new VirtiousBlock(oreTakId, Material.rock).setHardness(3.2F).setResistance(5.2F).setUnlocalizedName("TakOre");
+		registerBlock(oreTak,"Tak Ore");
+		
+		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		
 		//TODO add all block objects here
 	}
