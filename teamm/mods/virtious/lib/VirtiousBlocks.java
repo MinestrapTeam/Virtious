@@ -20,6 +20,7 @@ public class VirtiousBlocks
 	public static Block virtianstone;
 	public static Block virtianGrass;
 	public static Block virtianSoil;
+	public static Block deepStoneMossy;
 	
 	/**
 	 * Loads all block objects
@@ -50,6 +51,11 @@ public class VirtiousBlocks
 		int virtianSoilId = idVirtianSoil.getInt();
 		virtianSoil = new VirtiousBlock(virtianSoilId, Material.ground).setHardness(0.6F).setUnlocalizedName("VirtianSoil").setStepSound(Block.soundGravelFootstep);
 		registerBlock(virtianSoil, "Virtian Soil");
+		
+		Property iddeepStoneMossy = Virtious.config.getBlock("Mossy Deep Stone ID", Config.iddeepStoneMossy);
+		int deepStoneMossyId = iddeepStoneMossy.getInt();
+		deepStoneMossy = new VirtiousBlock(deepStoneMossyId, Material.rock).setHardness(5.0F).setUnlocalizedName("MossyDeepStone");
+		registerBlock(deepStoneMossy, "Mossy Deep Stone");
 		
 		//TODO add all block objects here
 	}
