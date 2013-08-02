@@ -46,12 +46,12 @@ public class Virtious {
 			dimensionID = idDim.getInt();
 			
 			//ItemStack config
-			VirtiousBlocks.loadAllBlocks();
-			VirtiousItems.loadAllItems();
+			new VirtiousBlocks();
+			new VirtiousItems();
 		
 		} catch(Exception e)
 		{
-			
+			System.out.println(e.getMessage());
 		} 
 		finally 
 		{
