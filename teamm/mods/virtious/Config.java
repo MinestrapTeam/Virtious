@@ -4,6 +4,8 @@ public class Config {
 	
 	//Worldgen Blocks - under 256
 	public static int idDeedStone = 200;
+	public static int idVirtianstone = 201;
+	public static int idVirtianGrass = 202;
 	
 	//Blocks
 	public static int idPortal = 2000;
