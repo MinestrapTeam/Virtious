@@ -25,7 +25,7 @@ public class TeleporterItem extends VirtiousItem{
 	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int i, int j, int k, int par7, float par8, float par9, float par10)
 	{
 		if(!world.isRemote){
-			EntityStickyBomb bomb = new EntityStickyBomb(world, i, j, k, player);
+			EntityStickyBomb bomb = new EntityStickyBomb(world, i, j+2, k, player);
 			world.spawnEntityInWorld(bomb);
 //     		PacketDispatcher.sendPacketToAllAround(bomb.posX, bomb.posY, bomb.posZ, 64, bomb.dimension, new StickyBombPacket(bomb).getPacket());
 //     		PacketDispatcher.sendPacketToAllInDimension(new StickyBombPacket(bomb).getPacket(), bomb.dimension);

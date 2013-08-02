@@ -8,6 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityOwnable;
 import net.minecraft.entity.EntityTracker;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet22Collect;
@@ -15,10 +16,14 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.item.ItemExpireEvent;
 
 public class EntityStickyBomb extends Entity/* implements EntityOwnable*/{
 
 	private String Owner;
+	public boolean fuse = false;
+	public int countdown = (int)(20 * 1.5);
 
 	public EntityStickyBomb(World world) {
 		super(world);
@@ -59,20 +64,21 @@ public class EntityStickyBomb extends Entity/* implements EntityOwnable*/{
         this.prevPosX = this.posX;
         this.prevPosY = this.posY;
         this.prevPosZ = this.posZ;
-        this.motionY -= 0.04D;
+        this.motionY -= 0.03999999910593033D;
+        this.noClip = this.pushOutOfBlocks(this.posX, (this.boundingBox.minY + this.boundingBox.maxY) / 2.0D, this.posZ);
+        this.moveEntity(this.motionX, this.motionY, this.motionZ);
+        boolean flag = (int)this.prevPosX != (int)this.posX || (int)this.prevPosY != (int)this.posY || (int)this.prevPosZ != (int)this.posZ;
 
-        if (this.worldObj.getBlockMaterial(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)) == Material.lava)
+        if (flag || this.ticksExisted % 25 == 0)
         {
-            this.motionY = 0.20000000298023224D;
-            this.motionX = (double)((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F);
-            this.motionZ = (double)((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F);
+            if (this.worldObj.getBlockMaterial(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)) == Material.lava)
+            {
+                this.motionY = 0.20000000298023224D;
+                this.motionX = (double)((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F);
+                this.motionZ = (double)((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F);
+            }
         }
 
-        this.pushOutOfBlocks(this.posX, (this.boundingBox.minY + this.boundingBox.maxY) / 2.0D, this.posZ);
-        double d0 = 8.0D;
-
-
-        this.moveEntity(this.motionX, this.motionY, this.motionZ);
         float f = 0.98F;
 
         if (this.onGround)
@@ -92,13 +98,19 @@ public class EntityStickyBomb extends Entity/* implements EntityOwnable*/{
 
         if (this.onGround)
         {
-            this.motionY *= -0.8999999761581421D;
+            this.motionY *= -0.5D;
         }
 
-//        if (this.xpOrbAge >= 6000)
-//        {
-//            this.setDead();
-//        }
+        if(this.fuse)
+        {
+//            this.worldObj.spawnParticle("smoke", this.posX, this.posY, this.posZ, 0.0D, 1.0D, 0.0D);
+
+        	if(countdown-- < 1)
+        	{
+        		this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 1.0F, true);
+            	this.setDead();
+        	}
+        }
     }
     
     /**
@@ -107,7 +119,8 @@ public class EntityStickyBomb extends Entity/* implements EntityOwnable*/{
      */
     protected void dealFireDamage(int par1)
     {
-        this.attackEntityFrom(DamageSource.inFire, (float)par1);
+    	this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 1.0F, true);
+    	this.setDead();
     }
 
     /**
@@ -115,19 +128,12 @@ public class EntityStickyBomb extends Entity/* implements EntityOwnable*/{
      */
     public boolean attackEntityFrom(DamageSource par1DamageSource, float par2)
     {
-        if (this.isEntityInvulnerable())
-        {
-            return false;
-        }
-        else
-        {
-            this.setBeenAttacked();
-            
-            //blow up
-            this.setDead();
+        this.setBeenAttacked();
+        
+        this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 1.0F, true);
+    	this.setDead();
 
-            return false;
-        }
+        return false;
     }
     
     /**
@@ -135,11 +141,8 @@ public class EntityStickyBomb extends Entity/* implements EntityOwnable*/{
      */
     public void onCollideWithPlayer(EntityPlayer player)
     {
-        if (!this.worldObj.isRemote)
-        {
-        	player.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 1.0F, true);
-        	this.setDead();
-        }
+    	if(!player.capabilities.isCreativeMode)
+    		this.fuse = true;
     }
     
     /**
@@ -147,7 +150,7 @@ public class EntityStickyBomb extends Entity/* implements EntityOwnable*/{
      */
     public boolean canAttackWithItem()
     {
-        return false;
+        return true;
     }
 
 //	public String getOwnerName()
@@ -160,22 +163,18 @@ public class EntityStickyBomb extends Entity/* implements EntityOwnable*/{
 //	}
 	@Override
 	protected void entityInit() {
-//		if(!worldObj.isRemote){
-//			System.out.println("Sticky Bomb init");
-//	        EntityTracker entitytracker = ((WorldServer)this.worldObj).getEntityTracker();
-//	        entitytracker.addEntityToTracker(this, 165, 20, true);
-//		}
 	}
 
 	@Override
 	protected void readEntityFromNBT(NBTTagCompound nbttagcompound) {
-		// TODO Auto-generated method stub
-		
+		this.countdown = nbttagcompound.getShort("Countdown");
+		this.fuse = nbttagcompound.getBoolean("fuse");
 	}
 
 	@Override
 	protected void writeEntityToNBT(NBTTagCompound nbttagcompound) {
-		// TODO Auto-generated method stub
-		
+		nbttagcompound.setShort("Countdown", (short)this.countdown);
+		nbttagcompound.setBoolean("fuse", this.fuse);
+
 	}
 }
