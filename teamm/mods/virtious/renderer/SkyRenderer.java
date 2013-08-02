@@ -10,8 +10,9 @@ public class SkyRenderer extends IRenderHandler {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void render(float partialTicks, WorldClient world, Minecraft mc) {
-
+	public void render(float partialTicks, WorldClient world, Minecraft mc) 
+	{
+		//TODO Add sky render code
 	}
 
 }
