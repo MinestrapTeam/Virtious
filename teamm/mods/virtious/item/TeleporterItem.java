@@ -34,7 +34,7 @@ public class TeleporterItem extends VirtiousItem{
 
 //		VirtiousGenAmberTree gen = new VirtiousGenAmberTree();
 //		gen.generate(world, new Random(), i, j, k);
-		return true;
+		return false;
 		
 	}
 
@@ -44,8 +44,14 @@ public class TeleporterItem extends VirtiousItem{
 		if(player.isSneaking() && (player instanceof EntityPlayerMP)){
 			EntityPlayerMP playermp = (EntityPlayerMP) player;
 			
-			playermp.mcServer.getConfigurationManager().transferPlayerToDimension(playermp, Virtious.dimensionID,
-					new VirtiousTeleporter(playermp.mcServer.worldServerForDimension(Virtious.dimensionID)));
+			if(player.dimension == Virtious.dimensionID)
+			{
+				playermp.mcServer.getConfigurationManager().transferPlayerToDimension(playermp, 0,
+						new VirtiousTeleporter(playermp.mcServer.worldServerForDimension(0)));
+			} else {
+				playermp.mcServer.getConfigurationManager().transferPlayerToDimension(playermp, Virtious.dimensionID,
+						new VirtiousTeleporter(playermp.mcServer.worldServerForDimension(Virtious.dimensionID)));
+			}
 		}
 		
 		return item;
