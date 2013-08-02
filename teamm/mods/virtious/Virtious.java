@@ -65,6 +65,8 @@ public class Virtious {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		GameRegistry.registerWorldGenerator(new VirtiousOreGenerator());
+
 		config = new Configuration(new File(event.getModConfigurationDirectory(), "Virtious.cfg"));
 		
 		try
@@ -93,6 +95,8 @@ public class Virtious {
 		{
 			config.save();
 		}
+		
+
 	}
 	
 	
@@ -101,7 +105,6 @@ public class Virtious {
 	{
 		virtiousBiome = new BiomeGenVirtious(Virtious.virtiousBiomeID);
 		
-		GameRegistry.registerWorldGenerator(new VirtiousOreGenerator());
 		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
 		proxy.registerRenderThings();

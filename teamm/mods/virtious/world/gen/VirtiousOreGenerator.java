@@ -18,7 +18,7 @@ public class VirtiousOreGenerator implements IWorldGenerator
 	{
 		if(chunkGenerator instanceof VirtiousChunkProvider)
 		{
-			generateVirtious(random, chunkX << 4, chunkZ << 4, world);
+			generateVirtious(random, chunkX * 16, chunkZ * 16, world);
 		}
 	} 
 	
@@ -27,7 +27,7 @@ public class VirtiousOreGenerator implements IWorldGenerator
 		//Tak Ore
 		for(int l = 0; l < 17; l ++)
 		{
-			new VirtiousGenMinable(VirtiousBlocks.oreTak.blockID, 9).generate(world, random, blockX + random.nextInt(16), random.nextInt(128), blockZ + random.nextInt(16));;
+			new VirtiousGenMinable(VirtiousBlocks.oreTak.blockID, 9).generate(world, random, blockX + random.nextInt(16), random.nextInt(64), blockZ + random.nextInt(16));
 		}
 	}
 	
