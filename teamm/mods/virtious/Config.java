@@ -9,6 +9,6 @@ public class Config {
 	public static int idPortal = 2000;
 
 	//Items
-	public static int idIngotBrazeum = 6000;
+	public static int idIngotBrazeum = 5000;
 	
 }

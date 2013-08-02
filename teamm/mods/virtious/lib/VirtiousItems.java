@@ -15,10 +15,10 @@ public class VirtiousItems
 	 */
 	public VirtiousItems()
 	{
-		Property idIngotBrazeum = Virtious.config.getItem("Brazeum Ingots ID", Config.idIngotBrazeum);
+		Property idIngotBrazeum = Virtious.config.getItem("Brazeum Ingot ID", Config.idIngotBrazeum);
 		int ingotBrazeumId = idIngotBrazeum.getInt();
 		ingotBrazeum = new VirtiousItem(ingotBrazeumId).setUnlocalizedName("ingotBrazeum");
-		LanguageRegistry.addName(idIngotBrazeum, "Brazeum Ingot");
+		LanguageRegistry.addName(ingotBrazeum, "Brazeum Ingot");
 		
 		//TODO load all item objects
 	}

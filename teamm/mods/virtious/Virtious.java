@@ -1,6 +1,7 @@
 package teamm.mods.virtious;
 
 import java.io.File;
+import java.util.logging.Level;
 
 import teamm.mods.virtious.lib.VirtiousBlocks;
 import teamm.mods.virtious.lib.VirtiousCreativeTab;
@@ -13,6 +14,7 @@ import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.Property;
 
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -59,6 +61,7 @@ public class Virtious {
 		
 		} catch(Exception e)
 		{
+			System.err.println("Virtious: Could not load id's.");
 			System.out.println(e.getMessage());
 		} 
 		finally 
