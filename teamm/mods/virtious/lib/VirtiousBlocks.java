@@ -125,7 +125,6 @@ public class VirtiousBlocks {
 		blockTak = new VirtiousBlock(blockTakId, Material.rock).setHardness(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("TakBlock");
 		registerBlock(blockTak, "Tak Block");
 		
-
 		Property idNightwhisker = Virtious.config.getBlock("Nightwhisker Block Id", Config.idblockNightwhisker);
 		blockNightwhisker = new NightwhiskerBlock(idNightwhisker.getInt()).setHardness(0.0F).setResistance(0.0F).setUnlocalizedName("Nightwhisker");
 		registerBlock(blockNightwhisker, "Nightwhisker");

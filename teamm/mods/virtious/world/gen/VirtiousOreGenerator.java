@@ -5,9 +5,12 @@ import java.util.Random;
 import teamm.mods.virtious.Virtious;
 import teamm.mods.virtious.lib.VirtiousBlocks;
 import teamm.mods.virtious.world.VirtiousChunkProvider;
+import teamm.mods.virtious.world.biome.BiomeGenVirtious;
 
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.feature.WorldGenFlowers;
 import cpw.mods.fml.common.IWorldGenerator;
 
 public class VirtiousOreGenerator implements IWorldGenerator
@@ -83,6 +86,18 @@ public class VirtiousOreGenerator implements IWorldGenerator
 		{
 			new VirtiousGenDeepstone(VirtiousBlocks.deepStoneMossy.blockID, 8).generate(world, random, blockX + random.nextInt(16), random.nextInt(40), blockZ + random.nextInt(16));
 		}
+		
+		//TODO Fix
+		
+		BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(blockX, blockZ);
+		if(biome instanceof BiomeGenVirtious)
+		{
+			for(int y = 0; y < 9; y++)
+			{
+				new WorldGenFlowers(VirtiousBlocks.blockNightwhisker.blockID).generate(world, random, blockX + random.nextInt(16), random.nextInt(128), blockZ + random.nextInt(16));
+			}	
+		}
+	
 	}
 	
 
