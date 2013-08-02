@@ -19,10 +19,11 @@ import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
-<<<<<<< HEAD
-=======
+
 import cpw.mods.fml.common.SidedProxy;
->>>>>>> 0e71d529ab0770fc99537fac54851b39d645ea11
+
+import cpw.mods.fml.common.SidedProxy;
+
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
@@ -76,24 +77,14 @@ public class Virtious {
 		finally 
 		{
 			config.save();
-<<<<<<< HEAD
 		}
 	}
 	
-	@EventHandler
-	public void Init(FMLInitializationEvent event)
-	{
-=======
-		}	
-		
->>>>>>> 0e71d529ab0770fc99537fac54851b39d645ea11
-		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
-		DimensionManager.registerDimension(dimensionID, dimensionID);
-	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent evt)
-	{
+	{DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
+		DimensionManager.registerDimension(dimensionID, dimensionID);
 		proxy.registerRenderThings();
 	}
 }

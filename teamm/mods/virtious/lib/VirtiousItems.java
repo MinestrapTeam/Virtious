@@ -12,11 +12,8 @@ public class VirtiousItems
 {
 	public static Item ingotBrazeum;
 	public static Item shardIgnus;
-<<<<<<< HEAD
 	public static Item teleportWand;
-=======
 	public static Item gemPluthorium;
->>>>>>> 0e71d529ab0770fc99537fac54851b39d645ea11
 	
 	/**
 	 * Loads all item objects
