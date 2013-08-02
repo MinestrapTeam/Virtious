@@ -99,7 +99,7 @@ public class VirtiousBlocks {
 		
 		Property idoreIlluminous = Virtious.config.getBlock("Illuminous Ore Id", Config.idoreIlluminous);
 		int oreIlluminousId = idoreIlluminous.getInt();
-		oreIlluminous = new VirtiousBlock(oreIlluminousId, Material.rock).setHardness(4.0F).setLightValue(0.8F).setUnlocalizedName("IlluminousOre");
+		oreIlluminous = new VirtiousBlock(oreIlluminousId, Material.rock).setHardness(3.0F).setLightValue(0.8F).setUnlocalizedName("IlluminousOre");
 		registerBlock(oreIlluminous, "Illuminous Ore");
 		
 		Property idoreDeepTak = Virtious.config.getBlock("Deep Tak Ore Id", Config.idoreDeepTak);

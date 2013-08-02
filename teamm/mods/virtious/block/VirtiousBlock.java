@@ -29,6 +29,8 @@ public class VirtiousBlock extends Block
 			blockID == VirtiousBlocks.oreAquieus.blockID ? VirtiousItems.shardAquieus.itemID :
 			blockID == VirtiousBlocks.orePluthorium.blockID ? VirtiousItems.gemPluthorium.itemID : 
 			blockID == VirtiousBlocks.oreDeepTak.blockID ? VirtiousItems.tak.itemID :
+			blockID == VirtiousBlocks.oreIlluminous.blockID ? VirtiousItems.gemIlluminous.itemID:
+			blockID == VirtiousBlocks.oreDeepIlluminous.blockID ? VirtiousItems.gemIlluminous.itemID :
 			this.blockID;
 	}
 	
@@ -37,6 +39,6 @@ public class VirtiousBlock extends Block
      */
     public int quantityDropped(Random par1Random)
     {
-        return blockID == VirtiousBlocks.oreAquieus.blockID ? 2 + par1Random.nextInt(3) : 1;
+        return blockID == VirtiousBlocks.oreAquieus.blockID ? 2 + par1Random.nextInt(3) : blockID == VirtiousBlocks.oreIlluminous.blockID ? 2 + par1Random.nextInt(3) : blockID == VirtiousBlocks.oreDeepIlluminous.blockID ? 2 + par1Random.nextInt(3) : 1;
     }
 }
