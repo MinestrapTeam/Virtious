@@ -7,7 +7,7 @@ public class BiomeDecoratorVirtious extends BiomeDecorator {
 
 	public BiomeDecoratorVirtious(BiomeGenBase biomeGenBase) {
 		super(biomeGenBase);
-		//this.customplant = new customplant(id);
+//		this.customplant = new customplant(id);
 	}
 	
 	/**
