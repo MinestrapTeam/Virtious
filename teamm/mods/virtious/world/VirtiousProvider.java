@@ -3,6 +3,7 @@ package teamm.mods.virtious.world;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import teamm.mods.virtious.Virtious;
+import teamm.mods.virtious.renderer.SkyRenderer;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -36,6 +37,10 @@ public class VirtiousProvider extends WorldProvider {
 	public void registerWorldChunkManager(){
 		this.dimensionId = Virtious.dimensionID;
 		this.hasNoSky = false;
+		if(worldObj.isRemote)
+		{
+			this.setSkyRenderer(new SkyRenderer());
+		}
 	}
 	
 	@Override
