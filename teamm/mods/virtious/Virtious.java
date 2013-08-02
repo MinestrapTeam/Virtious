@@ -30,7 +30,7 @@ public class Virtious {
 	
 	public static int dimensionID;
 	
-	private static VirtiousConfig config;
+	public static VirtiousConfig config;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -41,9 +41,14 @@ public class Virtious {
 		{
 			config.load();
 			
+			//Other config
 			Property idDim = Virtious.config.get("Special", "dimensionID", Config.DimensionID);
 			dimensionID = idDim.getInt();
 			
+			//ItemStack config
+			VirtiousBlocks.loadAllBlocks();
+			VirtiousItems.loadAllItems();
+		
 		} catch(Exception e)
 		{
 			
@@ -53,8 +58,7 @@ public class Virtious {
 			config.save();
 		}
 		
-		VirtiousBlocks.loadAllBlocks();
-		VirtiousItems.loadAllItems();
+		
 		
 		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
