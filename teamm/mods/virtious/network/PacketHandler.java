@@ -3,7 +3,8 @@ package teamm.mods.virtious.network;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 
-import net.minecraft.entity.item.EntityStickyBomb;
+import teamm.mods.entity.item.EntityStickyBomb;
+
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
@@ -29,7 +30,6 @@ public class PacketHandler implements IPacketHandler{
 	
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player) {
-		System.out.println("packet recived bomb");
 
 		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
 		try
@@ -37,7 +37,9 @@ public class PacketHandler implements IPacketHandler{
 			int packetID = data.readInt();
 			
 			switch (packetID) {
-				case PacketIds.STICKY_BOMB:
+
+				case PacketIds.STICKY_BOMB:				System.out.println("packet recived bomb");
+
 					StickyBombPacket packet2 = new StickyBombPacket();
 					packet2.readData(data);
 					handleStickyBomb(packet2);

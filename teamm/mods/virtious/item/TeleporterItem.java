@@ -4,12 +4,12 @@ import java.util.Random;
 
 import cpw.mods.fml.common.network.PacketDispatcher;
 
+import teamm.mods.entity.item.EntityStickyBomb;
 import teamm.mods.virtious.Virtious;
 import teamm.mods.virtious.network.StickyBombPacket;
 import teamm.mods.virtious.world.VirtiousTeleporter;
 import teamm.mods.virtious.world.gen.VirtiousGenAmberTree;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.item.EntityStickyBomb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;

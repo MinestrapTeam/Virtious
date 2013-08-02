@@ -8,7 +8,6 @@ import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityStickyBomb;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
@@ -17,6 +16,7 @@ import net.minecraftforge.client.model.obj.WavefrontObject;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import teamm.mods.entity.item.EntityStickyBomb;
 import teamm.mods.virtious.Virtious;
 
 @SideOnly(Side.CLIENT)

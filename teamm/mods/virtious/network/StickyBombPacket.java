@@ -4,7 +4,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import net.minecraft.entity.item.EntityStickyBomb;
+import teamm.mods.entity.item.EntityStickyBomb;
+
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.util.MathHelper;
 
