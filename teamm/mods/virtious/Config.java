@@ -14,7 +14,7 @@ public class Config {
 
 	//Items
 	public static int idIngotBrazeum = 5000;
-	public static int idIgnusShard = 5001;
+	public static int idShardAquieus = 5001;
 	public static int idGemPluthorium = 5002;
 
 	

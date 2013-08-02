@@ -11,7 +11,7 @@ import net.minecraftforge.common.Property;
 public class VirtiousItems 
 {
 	public static Item ingotBrazeum;
-	public static Item shardIgnus;
+	public static Item shardAquieus;
 	public static Item teleportWand;
 	public static Item gemPluthorium;
 	
@@ -25,11 +25,10 @@ public class VirtiousItems
 		ingotBrazeum = new VirtiousItem(ingotBrazeumId).setUnlocalizedName("BrazeumIngot");
 		LanguageRegistry.addName(ingotBrazeum, "Brazeum Ingot");
 
-		Property idShardIgnus = Virtious.config.getItem("Virtious Shard ID", Config.idIgnusShard);
-		int shardIgnusId = idShardIgnus.getInt();
-		shardIgnus = new VirtiousItem(shardIgnusId).setUnlocalizedName("IgnusShard");
-		LanguageRegistry.addName(shardIgnus, "Ignus Shard");
-
+		Property idShardAquieus = Virtious.config.getItem("Virtious Shard ID", Config.idShardAquieus);
+		int shardAquieusId = idShardAquieus.getInt();
+		shardAquieus = new VirtiousItem(shardAquieusId).setUnlocalizedName("AquieusShard");
+		LanguageRegistry.addName(shardAquieus, "Aquieus Shard");
 		
 		Property idTeleporterWand = Virtious.config.getItem("idTeleporterWand", Config.idTeleporterWand);
 		int TeleporterWandID = idTeleporterWand.getInt();
