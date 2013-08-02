@@ -7,6 +7,7 @@ import teamm.mods.virtious.lib.VirtiousBlocks;
 import teamm.mods.virtious.lib.VirtiousCreativeTab;
 import teamm.mods.virtious.lib.VirtiousItems;
 import teamm.mods.virtious.lib.VirtiousRecipes;
+import teamm.mods.virtious.proxy.CommonProxy;
 import teamm.mods.virtious.world.VirtiousProvider;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,6 +19,8 @@ import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(name = Virtious.modName, modid = Virtious.modId, useMetadata = false, version = "1.0")
@@ -39,6 +42,9 @@ public class Virtious {
 	public static Configuration config;
 	
 	public static VirtiousCreativeTab tabVirtious = new VirtiousCreativeTab(CreativeTabs.getNextID(), "Virtious Mod");
+	
+	@SidedProxy(clientSide = "teamm.mods.virtious.proxy.ClientProxy", serverSide = "teamm.mods.virtious.proxy.CommonProxy")
+	CommonProxy proxy;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -67,12 +73,15 @@ public class Virtious {
 		finally 
 		{
 			config.save();
-		}
-		
-		
+		}	
 		
 		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
-
+	}
+	
+	@EventHandler
+	public void init(FMLInitializationEvent evt)
+	{
+		proxy.registerRenderThings();
 	}
 }
