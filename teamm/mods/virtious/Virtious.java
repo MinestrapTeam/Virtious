@@ -7,6 +7,7 @@ import teamm.mods.virtious.lib.VirtiousBlocks;
 import teamm.mods.virtious.lib.VirtiousCreativeTab;
 import teamm.mods.virtious.lib.VirtiousItems;
 import teamm.mods.virtious.lib.VirtiousRecipes;
+import teamm.mods.virtious.network.PacketHandler;
 import teamm.mods.virtious.proxy.CommonProxy;
 import teamm.mods.virtious.world.VirtiousProvider;
 import teamm.mods.virtious.world.biome.BiomeGenVirtious;
@@ -30,13 +31,15 @@ import cpw.mods.fml.common.SidedProxy;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(name = Virtious.modName, modid = Virtious.modId, useMetadata = false, version = "1.0")
-//@NetworkMod(...)
+@NetworkMod(channels = {Virtious.CHANNEL_NAME}, packetHandler = PacketHandler.class, clientSideRequired = true, serverSideRequired = true)
 public class Virtious {
 	public static final String modId = "virtious";
 	public static final String modName = "Virtious mod";
+	public static final String CHANNEL_NAME = "virtious";
 	
 	@Instance(Virtious.modId)
 	private static Virtious instance;

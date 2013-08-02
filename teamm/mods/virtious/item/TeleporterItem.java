@@ -2,7 +2,10 @@ package teamm.mods.virtious.item;
 
 import java.util.Random;
 
+import cpw.mods.fml.common.network.PacketDispatcher;
+
 import teamm.mods.virtious.Virtious;
+import teamm.mods.virtious.network.StickyBombPacket;
 import teamm.mods.virtious.world.VirtiousTeleporter;
 import teamm.mods.virtious.world.gen.VirtiousGenAmberTree;
 import net.minecraft.entity.item.EntityItem;
@@ -21,8 +24,13 @@ public class TeleporterItem extends VirtiousItem{
 	@Override
 	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int i, int j, int k, int par7, float par8, float par9, float par10)
 	{
-		world.spawnEntityInWorld(new EntityStickyBomb(world, i, j, k));
-		
+		if(!world.isRemote){
+			EntityStickyBomb bomb = new EntityStickyBomb(world, i, j, k);
+			world.spawnEntityInWorld(bomb);
+     		PacketDispatcher.sendPacketToAllAround(bomb.posX, bomb.posY, bomb.posZ, 64, bomb.dimension, new StickyBombPacket(bomb).getPacket());
+			System.out.println("Spawned & Packet sent - stickyBomb");
+		}  
+
 //		VirtiousGenAmberTree gen = new VirtiousGenAmberTree();
 //		gen.generate(world, new Random(), i, j, k);
 		return true;
