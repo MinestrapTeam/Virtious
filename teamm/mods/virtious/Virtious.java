@@ -3,10 +3,12 @@ package teamm.mods.virtious;
 import java.io.File;
 
 import teamm.mods.virtious.lib.VirtiousBlocks;
+import teamm.mods.virtious.lib.VirtiousCreativeTab;
 import teamm.mods.virtious.lib.VirtiousItems;
 import teamm.mods.virtious.lib.VirtiousRecipes;
 import teamm.mods.virtious.world.VirtiousProvider;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.Property;
 
@@ -32,6 +34,8 @@ public class Virtious {
 	public static int dimensionID;
 	
 	public static VirtiousConfig config;
+	
+	public static CreativeTabs tabVirtious = new VirtiousCreativeTab(CreativeTabs.getNextID(), "Virtious Mod");
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)

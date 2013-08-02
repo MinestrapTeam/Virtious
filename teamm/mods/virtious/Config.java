@@ -10,5 +10,6 @@ public class Config {
 	//Blocks
 	
 	//Items
+	public static int idIngotBrazeum = 6000;
 	
 }
