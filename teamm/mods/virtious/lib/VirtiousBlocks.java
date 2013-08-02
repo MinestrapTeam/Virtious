@@ -11,6 +11,7 @@ import teamm.mods.virtious.Config;
 import teamm.mods.virtious.Virtious;
 import teamm.mods.virtious.block.BlockVirtianGrass;
 import teamm.mods.virtious.block.DeepStone;
+import teamm.mods.virtious.block.NightwhiskerBlock;
 import teamm.mods.virtious.block.PortalBlock;
 import teamm.mods.virtious.block.VirtiousBlock;
 
@@ -32,6 +33,7 @@ public class VirtiousBlocks {
 	public static Block oreDeepIron;
 	public static Block oreDeepIlluminous;
 	public static Block blockTak;
+	public static Block blockNightwhisker;
 
 	/**
 	 * Loads all block objects
@@ -70,58 +72,63 @@ public class VirtiousBlocks {
 		
 		Property iddeepStoneMossy = Virtious.config.getTerrainBlock("worldgen", "Mossy Deep Stone ID", Config.iddeepStoneMossy, null);
 		int deepStoneMossyId = iddeepStoneMossy.getInt();
-		deepStoneMossy = new VirtiousBlock(deepStoneMossyId, Material.rock).setHardness(5.0F).setUnlocalizedName("MossyDeepStone");
+		deepStoneMossy = new VirtiousBlock(deepStoneMossyId, Material.rock).setStepSound(Block.soundStoneFootstep).setHardness(5.0F).setUnlocalizedName("MossyDeepStone");
 		registerBlock(deepStoneMossy, "Mossy Deep Stone");
 		
 		Property idoreVIron = Virtious.config.getBlock("Virtian Iron Ore ID", Config.idoreVIron);
 		int oreVIronId = idoreVIron.getInt();
-		oreVIron = new VirtiousBlock(oreVIronId, Material.rock).setHardness(3.0F).setResistance(5.0F).setUnlocalizedName("VirtianIronOre");
+		oreVIron = new VirtiousBlock(oreVIronId, Material.rock).setStepSound(Block.soundStoneFootstep).setHardness(3.0F).setResistance(5.0F).setUnlocalizedName("VirtianIronOre");
 		registerBlock(oreVIron, "Virtian Iron Ore");
 		
 		Property idoreTak = Virtious.config.getBlock("Tak Ore Id", Config.idoreTak);
 		int oreTakId = idoreTak.getInt();
-		oreTak = new VirtiousBlock(oreTakId, Material.rock).setHardness(3.2F).setResistance(5.2F).setUnlocalizedName("TakOre");
+		oreTak = new VirtiousBlock(oreTakId, Material.rock).setStepSound(Block.soundStoneFootstep).setHardness(3.2F).setResistance(5.2F).setUnlocalizedName("TakOre");
 		registerBlock(oreTak,"Tak Ore");
 		
 		Property idoreBrazeum = Virtious.config.getBlock("Brazeum Ore Id", Config.idoreBrazeum);
 		int oreBrazeumId = idoreBrazeum.getInt();
-		oreBrazeum = new VirtiousBlock(oreBrazeumId, Material.rock).setHardness(3.0F).setResistance(5.0F).setUnlocalizedName("BrazeumOre");
+		oreBrazeum = new VirtiousBlock(oreBrazeumId, Material.rock).setStepSound(Block.soundStoneFootstep).setHardness(3.0F).setResistance(5.0F).setUnlocalizedName("BrazeumOre");
 		registerBlock(oreBrazeum, "Brazeum Ore");
 		
 		Property idoreAquieus = Virtious.config.getBlock("Auieus Ore Id", Config.idoreAquieus);
 		int oreAquieusId = idoreAquieus.getInt();
-		oreAquieus = new VirtiousBlock(oreAquieusId, Material.rock).setHardness(4.0F).setResistance(6.0F).setUnlocalizedName("AquieusOre").setLightValue(0.4F);
+		oreAquieus = new VirtiousBlock(oreAquieusId, Material.rock).setStepSound(Block.soundStoneFootstep).setHardness(4.0F).setResistance(6.0F).setUnlocalizedName("AquieusOre").setLightValue(0.4F);
 		registerBlock(oreAquieus, "Aquieus Ore");
 		
 		Property idorePluthorium = Virtious.config.getBlock("Pluthorium Ore Id", Config.idorePluthorium);
 		int orePluthoriumId = idorePluthorium.getInt();
-		orePluthorium = new VirtiousBlock(orePluthoriumId, Material.rock).setHardness(4.0F).setResistance(6.0F).setUnlocalizedName("PluthoriumOre");
+		orePluthorium = new VirtiousBlock(orePluthoriumId, Material.rock).setStepSound(Block.soundStoneFootstep).setHardness(4.0F).setResistance(6.0F).setUnlocalizedName("PluthoriumOre");
 		registerBlock(orePluthorium, "Pluthorium Ore");
 		
 		Property idoreIlluminous = Virtious.config.getBlock("Illuminous Ore Id", Config.idoreIlluminous);
 		int oreIlluminousId = idoreIlluminous.getInt();
-		oreIlluminous = new VirtiousBlock(oreIlluminousId, Material.rock).setHardness(3.0F).setLightValue(0.8F).setUnlocalizedName("IlluminousOre");
+		oreIlluminous = new VirtiousBlock(oreIlluminousId, Material.rock).setStepSound(Block.soundStoneFootstep).setHardness(3.0F).setLightValue(0.8F).setUnlocalizedName("IlluminousOre");
 		registerBlock(oreIlluminous, "Illuminous Ore");
 		
 		Property idoreDeepTak = Virtious.config.getBlock("Deep Tak Ore Id", Config.idoreDeepTak);
 		int oreDeepTakId = idoreDeepTak.getInt();
-		oreDeepTak = new VirtiousBlock(oreDeepTakId, Material.rock).setHardness(5.0F).setResistance(0.8F).setUnlocalizedName("DeepTakOre");
+		oreDeepTak = new VirtiousBlock(oreDeepTakId, Material.rock).setStepSound(Block.soundStoneFootstep).setHardness(5.0F).setResistance(0.8F).setUnlocalizedName("DeepTakOre");
 		registerBlock(oreDeepTak, "Deep Tak Ore");
 		
 		Property idoreDeepIron = Virtious.config.getBlock("Deep Iron Ore Id", Config.idoreDeepIron);
 		int oreDeepIronId = idoreDeepIron.getInt();
-		oreDeepIron = new VirtiousBlock(oreDeepIronId, Material.rock).setHardness(5.5F).setResistance(8.5F).setUnlocalizedName("DeepIronOre");
+		oreDeepIron = new VirtiousBlock(oreDeepIronId, Material.rock).setStepSound(Block.soundStoneFootstep).setHardness(5.5F).setResistance(8.5F).setUnlocalizedName("DeepIronOre");
 		registerBlock(oreDeepIron, "Deep Iron Ore");
 		
 		Property idoreDeepIlluminous = Virtious.config.getBlock("Deep Illuminous Ore Id", Config.idoreDeepIlluminous);
 		int oreDeepIlluminousId = idoreDeepIlluminous.getInt();
-		oreDeepIlluminous = new VirtiousBlock(oreDeepIlluminousId, Material.rock).setHardness(5.0F).setResistance(8.0F).setLightValue(0.8F).setUnlocalizedName("DeepIlluminousOre");
+		oreDeepIlluminous = new VirtiousBlock(oreDeepIlluminousId, Material.rock).setStepSound(Block.soundStoneFootstep).setHardness(5.0F).setResistance(8.0F).setLightValue(0.8F).setUnlocalizedName("DeepIlluminousOre");
 		registerBlock(oreDeepIlluminous,"Deep Illuminous Ore");
 		
 		Property idblockTak = Virtious.config.getBlock("Tak Block Id", Config.idblockTak);
 		int blockTakId = idblockTak.getInt();
-		blockTak = new VirtiousBlock(blockTakId, Material.rock).setHardness(5.0F).setUnlocalizedName("TakBlock");
+		blockTak = new VirtiousBlock(blockTakId, Material.rock).setHardness(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("TakBlock");
 		registerBlock(blockTak, "Tak Block");
+		
+
+		Property idNightwhisker = Virtious.config.getBlock("Nightwhisker Block Id", Config.idblockNightwhisker);
+		blockNightwhisker = new NightwhiskerBlock(idNightwhisker.getInt()).setHardness(0.0F).setResistance(0.0F).setUnlocalizedName("Nightwhisker");
+		registerBlock(blockNightwhisker, "Nightwhisker");
 		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);
