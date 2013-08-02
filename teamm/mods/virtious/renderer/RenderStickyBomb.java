@@ -16,8 +16,8 @@ import net.minecraftforge.client.model.obj.WavefrontObject;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import teamm.mods.entity.item.EntityStickyBomb;
 import teamm.mods.virtious.Virtious;
+import teamm.mods.virtious.entity.item.EntityStickyBomb;
 
 @SideOnly(Side.CLIENT)
 public class RenderStickyBomb extends Render
@@ -34,7 +34,7 @@ public class RenderStickyBomb extends Render
     }
 
     /**
-     * Renders the XP Orb.
+     * Render
      */
     public void render(EntityStickyBomb bombEntity, double i, double j, double k)
     {

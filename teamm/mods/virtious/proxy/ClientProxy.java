@@ -1,6 +1,6 @@
 package teamm.mods.virtious.proxy;
 
-import teamm.mods.entity.item.EntityStickyBomb;
+import teamm.mods.virtious.entity.item.EntityStickyBomb;
 import teamm.mods.virtious.renderer.RenderStickyBomb;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
