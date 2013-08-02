@@ -34,12 +34,12 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(name = Virtious.modName, modid = Virtious.modId, useMetadata = false, version = "1.0")
+@Mod(name = Virtious.modName, modid = Virtious.modId, useMetadata = false, version = "B1.0")
 @NetworkMod(channels = {Virtious.CHANNEL_NAME}, packetHandler = PacketHandler.class, clientSideRequired = true, serverSideRequired = true)
 public class Virtious {
 	public static final String modId = "virtious";
 	public static final String modName = "Virtious mod";
-	public static final String CHANNEL_NAME = "virtious";
+	public static final String CHANNEL_NAME = "virtious_chan";
 	
 	@Instance(Virtious.modId)
 	private static Virtious instance;
