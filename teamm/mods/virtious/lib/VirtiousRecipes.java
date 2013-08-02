@@ -10,6 +10,8 @@ public class VirtiousRecipes
 	{
 		GameRegistry.addSmelting(VirtiousBlocks.oreVIron.blockID, new ItemStack(Item.ingotIron), 0.7F);
 		GameRegistry.addSmelting(VirtiousBlocks.oreBrazeum.blockID, new ItemStack(VirtiousItems.ingotBrazeum), 0.7F);
+		GameRegistry.addSmelting(VirtiousBlocks.virtiancobblestone.blockID, new ItemStack(VirtiousBlocks.virtianstone), 0.5F);
+		
 		//TODO Load all recipes here
 	}
 }

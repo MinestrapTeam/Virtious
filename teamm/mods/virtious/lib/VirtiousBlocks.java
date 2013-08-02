@@ -26,6 +26,7 @@ public class VirtiousBlocks
 	public static Block oreVIron;
 	public static Block oreTak;
 	public static Block oreBrazeum;
+	public static Block oreAquieus;
 	
 	/**
 	 * Loads all block objects
@@ -49,7 +50,7 @@ public class VirtiousBlocks
 		
 		Property idVirtiancobblestone = Virtious.config.getBlock("Virtian Cobblestone Id", Config.idvirtiancobblestone);
 		int virtiancobblestoneId = idVirtiancobblestone.getInt();
-		virtiancobblestone = new VirtiousBlock(virtiancobblestoneId, Material.rock).setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("VirtianCobblestone");
+		virtiancobblestone = new VirtiousBlock(virtiancobblestoneId, Material.rock).setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("CobbledVirtianstone");
 		registerBlock(virtiancobblestone, "Virtian Cobblestone");
 		
 		Property idVirtianGrass = Virtious.config.getTerrainBlock("worldgen", "Virtian Grass ID", Config.idVirtianGrass, null);
@@ -67,7 +68,6 @@ public class VirtiousBlocks
 		deepStoneMossy = new VirtiousBlock(deepStoneMossyId, Material.rock).setHardness(5.0F).setUnlocalizedName("MossyDeepStone");
 		registerBlock(deepStoneMossy, "Mossy Deep Stone");
 		
-		
 		Property idoreVIron = Virtious.config.getBlock("Virtian Iron Ore ID", Config.idoreVIron);
 		int oreVIronId = idoreVIron.getInt();
 		oreVIron = new VirtiousBlock(oreVIronId, Material.rock).setHardness(3.0F).setResistance(5.0F).setUnlocalizedName("VirtianIronOre");
@@ -82,6 +82,11 @@ public class VirtiousBlocks
 		int oreBrazeumId = idoreBrazeum.getInt();
 		oreBrazeum = new VirtiousBlock(oreBrazeumId, Material.rock).setHardness(3.0F).setResistance(5.0F).setUnlocalizedName("BrazeumOre");
 		registerBlock(oreBrazeum, "Brazeum Ore");
+		
+		Property idoreAquieus = Virtious.config.getBlock("Auieus Ore Id", Config.idoreAquieus);
+		int oreAquieusId = idoreAquieus.getInt();
+		oreAquieus = new VirtiousBlock(oreAquieusId, Material.rock).setHardness(4.0F).setResistance(6.0F).setUnlocalizedName("AquieusOre").setLightValue(0.4F);
+		registerBlock(oreAquieus, "Aquieus Ore");
 		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);

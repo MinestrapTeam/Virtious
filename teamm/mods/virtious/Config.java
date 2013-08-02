@@ -16,6 +16,7 @@ public class Config {
 	public static int idoreVIron = 2002;
 	public static int idoreTak = 2003;
 	public static int idoreBrazeum = 2004;
+	public static int idoreAquieus = 2005;
 
 	//Items
 	public static int idIngotBrazeum = 5000;
