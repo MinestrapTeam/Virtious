@@ -1,6 +1,7 @@
 package teamm.mods.virtious.lib;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -21,8 +22,14 @@ public class VirtiousBlocks
 		Property idDeedStone = Virtious.config.getBlock("idStone", Config.idDeedStone);
 		int deepStoneID = idDeedStone.getInt();
 		deepStone = new DeepStone(deepStoneID, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("deepStone").setCreativeTab(CreativeTabs.tabBlock);
-		GameRegistry.registerBlock(deepStone, "Deep Stone");
+		registerBlock(deepStone, "Deep Stone");
 		
 		//TODO add all block objects here
+	}
+	
+	public void registerBlock(Block block, String name)
+	{
+		GameRegistry.registerBlock(block, name);
+		LanguageRegistry.addName(block, name);
 	}
 }
