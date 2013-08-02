@@ -12,6 +12,7 @@ public class Config {
 	//Blocks
 	public static int idPortal = 2000;
 	public static int idoreVIron = 2001;
+	public static int idoreTak = 2002;
 
 	//Items
 	public static int idIngotBrazeum = 5000;
