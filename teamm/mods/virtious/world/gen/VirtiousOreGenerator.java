@@ -4,6 +4,7 @@ import java.util.Random;
 
 import teamm.mods.virtious.Virtious;
 import teamm.mods.virtious.lib.VirtiousBlocks;
+import teamm.mods.virtious.world.VirtiousChunkProvider;
 
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -15,9 +16,9 @@ public class VirtiousOreGenerator implements IWorldGenerator
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) 
 	{
-		if(world.provider.dimensionId == Virtious.dimensionID)
+		if(chunkGenerator instanceof VirtiousChunkProvider)
 		{
-			generateVirtious(random, chunkX *16, chunkZ * 16, world);
+			generateVirtious(random, chunkX << 4, chunkZ << 4, world);
 		}
 	} 
 	
