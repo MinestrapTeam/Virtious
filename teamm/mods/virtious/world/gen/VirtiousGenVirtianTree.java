@@ -41,7 +41,7 @@ public class VirtiousGenVirtianTree extends WorldGenerator
 			for(int j = 1; j <= treeHeight; j++)
 			{
 				if(!world.isAirBlock(x, y+j, z))
-				return false;
+					return false;
 			}
 		}
 		else

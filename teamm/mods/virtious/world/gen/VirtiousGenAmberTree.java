@@ -24,37 +24,38 @@ public class VirtiousGenAmberTree extends WorldGenerator
 	@Override
 	public boolean generate(World world, Random random, int i, int j, int k) 
 	{
-		//TODO Fix odd sapling growth
-		//FIXME ^^
-		int height = random.nextInt(4) + 5;
-		int leavesStart = random.nextInt(2) + 4;
+		int leavesHeight = random.nextInt(3) + 5;
+		int trunk = random.nextInt(3) + 2;
+				
+		int treeHeight = trunk + leavesHeight;
 		
-		int minTreeHeight = 8;
-		
-		int treeHeight = leavesStart + minTreeHeight;
-		
-		if(fromSapling)
+		if(this.fromSapling)
 		{
-			for(int j1 = 1; j1 <= treeHeight; j1++)
-			{
-				if(!world.isAirBlock(i, j+j1, k))
-				return false;
+			for(int h = 1; h < treeHeight; h++){
+				if(!world.isAirBlock(i, j + h, k))
+					return false;
 			}
 		}
 		
-		for(int y = 1; y < height; y++)
+		
+		for(int y = 0; y < treeHeight; y++)
 		{
 			world.setBlock(i, j + y, k, logId);
-
-			if(y > leavesStart)
+				
+			int center = trunk + leavesHeight / 2 - 1;
+			int radius = random.nextInt(3) + 2;
+			int radius2 = radius * radius;
+			if(y > trunk)
 			{
-				for(int x = -2; x <3; x++)
+				world.setBlock(i, j + y, k, VirtiousBlocks.logVirtian.blockID);//FIXME
+
+				for(int x = -radius; x <= radius; x++)
 				{
-					for(int z = -2; z <     3; z++)
-					{			
-						if(random.nextInt(2) == 1 && x != 0 && y != 0){//FIXME add check for override/ can leaves replace block
-							world.setBlock(i + x, j + y, k + z, leavesId);
-						}
+					for(int z = -radius; z <= radius; z++)
+					{
+//						if(x + z % 2 == 0 ) //DO NOT REMOVE
+						if((x % 2 == 0 || z % 2 == 0) && x*x + (center - y) * (center - y) + z*z <= radius2)
+							addLeaves(world, i + x, j + y, k + z);
 					}
 				}
 			}
@@ -63,4 +64,15 @@ public class VirtiousGenAmberTree extends WorldGenerator
 		return true;
 	}
 
+	private boolean addLeaves(World world, int x, int y, int z)
+	{
+		int id = world.getBlockId(x, y, z);
+	    Block block = Block.blocksList[id];
+		if(block == null || block.canBeReplacedByLeaves(world, x, y, z))
+		{
+			world.setBlock(x, y, z, leavesId);
+			return true;
+		}
+		return false;
+	}
 }

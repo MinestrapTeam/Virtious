@@ -113,23 +113,15 @@ public class EntityStickyBomb extends Entity/* implements EntityOwnable*/{
         }
     }
     
-    /**
-     * Will deal the specified amount of damage to the entity if the entity isn't immune to fire damage. Args:
-     * amountDamage
-     */
-    protected void dealFireDamage(int par1)
-    {
-    	this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 1.0F, true);
-    	this.setDead();
-    }
 
     /**
      * Called when the entity is attacked.
      */
-    public boolean attackEntityFrom(DamageSource par1DamageSource, float par2)
+    public boolean attackEntityFrom(DamageSource damageSource, float strength)
     {
         this.setBeenAttacked();
-        if(!this.isDead){
+        if(!this.isDead && !this.fuse){
+//        		if(damageSource == DamageSource.)
 	        this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 1.0F, true);
 	    	this.setDead();
         }
