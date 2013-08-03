@@ -46,6 +46,8 @@ public class VirtiousBlocks {
 	public static Block logVirtian;
 	public static Block leavesVirtian;
 	public static Block saplingVirtian;
+	public static Block plankAmber;
+	public static Block plankVirtian;
 
 	/**
 	 * Loads all block objects
@@ -164,6 +166,14 @@ public class VirtiousBlocks {
 		Property idsaplingVirtian = Virtious.config.getBlock("Virtian Sapling ID", Config.idsaplingVirtian);
 		saplingVirtian = new BlockSaplingVirtian(idsaplingVirtian.getInt()).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("VirtianwoodSapling");
 		registerBlock(saplingVirtian, "Virtian Sapling");
+		
+		Property idplanksAmber = Virtious.config.getBlock("Amber Wood Planks Id", Config.idplankAmber);
+		plankAmber = new VirtiousBlock(idplanksAmber.getInt(), Material.wood).setHardness(2.0F).setResistance(5.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("AmberWoodPlanks");
+		registerBlock(plankAmber, "Amber Wood Planks");
+		
+		Property idplanksVirtian = Virtious.config.getBlock("Virtian Wood Planks Id", Config.idplankVirtian);
+		plankVirtian = new VirtiousBlock(idplanksVirtian.getInt(), Material.wood).setHardness(2.0F).setResistance(5.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("VirtianWoodPlanks");
+		registerBlock(plankVirtian, "Virtian Wood Planks");
 		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);

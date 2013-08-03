@@ -13,7 +13,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.Event.Result;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
 
-public class VirtiousHoe extends Item
+public class VirtiousHoe extends VirtiousItem
 {
     protected EnumVirtiousToolMaterial theToolMaterial;
 

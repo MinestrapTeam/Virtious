@@ -16,7 +16,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class VirtiousSword extends Item
+public class VirtiousSword extends VirtiousItem
 {
     private float weaponDamage;
     private final EnumVirtiousToolMaterial toolMaterial;

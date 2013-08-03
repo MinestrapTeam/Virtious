@@ -52,7 +52,7 @@ public class VirtiousOreGenerator implements IWorldGenerator
 		}
 		
 		//Pluthorium
-		for(int l = 0; l < 3; l ++)
+		for(int l = 0; l < 2; l ++)
 		{
 			new VirtiousGenDeepstone(VirtiousBlocks.orePluthorium.blockID, 6).generate(world, random, blockX + random.nextInt(16), random.nextInt(16), blockZ + random.nextInt(16));
 		}

@@ -30,6 +30,23 @@ public class Config {
 	public static int idlogVirtian = 2016;
 	public static int idleavesVirtian = 2017;
 	public static int idsaplingVirtian = 2018;
+	public static int idplankAmber = 2019;
+	public static int idplankVirtian = 2020;
+	public static int idamberwoodPickaxe = 2021;
+	public static int idamberwoodAxe = 2022;
+	public static int idamberwoodShovel = 2023;
+	public static int idamberwoodHoe = 2024;
+	public static int idamberwoodSword = 2025;
+	public static int idvirtianwoodPickaxe = 2026;
+	public static int idvirtianwoodAxe = 2027;
+	public static int idvirtianwoodShovel = 2028;
+	public static int idvirtianwoodHoe = 2029;
+	public static int idvirtianwoodSword = 2030;
+	public static int idvirtianstonePickaxe = 2031;
+	public static int idvirtianstoneAxe = 2032;
+	public static int idvirtianstoneShovel = 2033;
+	public static int idvirtianstoneHoe = 2034;
+	public static int idvirtianstoneSword = 2035;
 
 	//Items
 	public static int idIngotBrazeum = 5000;
