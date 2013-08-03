@@ -51,6 +51,10 @@ public class VirtiousBlocks {
 	public static Block plankVirtian;
 	public static Block canyonstone;
 	public static Block virtiousAcid;
+	public static Block blockBrazeum;
+	public static Block blockAquieus;
+	public static Block blockPluthorium;
+	public static Block virtianstoneBricks;
 
 	/**
 	 * Loads all block objects
@@ -143,7 +147,7 @@ public class VirtiousBlocks {
 		registerBlock(blockTak, "Tak Block");
 		
 		Property idNightwhisker = Virtious.config.getBlock("Nightwhisker Block Id", Config.idblockNightwhisker);
-		blockNightwhisker = new NightwhiskerBlock(idNightwhisker.getInt()).setHardness(0.0F).setResistance(0.0F).setUnlocalizedName("Nightwhisker");
+		blockNightwhisker = new NightwhiskerBlock(idNightwhisker.getInt()).setHardness(0.0F).setResistance(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("Nightwhisker");
 		registerBlock(blockNightwhisker, "Nightwhisker");
 		
 		Property idlogAmber = Virtious.config.getBlock("Amber Log Id", Config.idlogAmber);
@@ -178,13 +182,29 @@ public class VirtiousBlocks {
 		plankVirtian = new VirtiousBlock(idplanksVirtian.getInt(), Material.wood).setHardness(2.0F).setResistance(5.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("VirtianWoodPlanks");
 		registerBlock(plankVirtian, "Virtian Wood Planks");
 		
-		Property idcanyonstone = Virtious.config.getBlock("Canyonstone", Config.idcanyonstone);
+		Property idcanyonstone = Virtious.config.getTerrainBlock("worldgen", "Canyonstone", Config.idcanyonstone, null);
 		canyonstone = new VirtiousBlock(idcanyonstone.getInt(), Material.rock).setHardness(2.0F).setResistance(0.3F).setUnlocalizedName("Canyonstone");
 		registerBlock(canyonstone, "Canyonstone");
 		
 		Property idvirtiousAcid = Virtious.config.getTerrainBlock("worldgen", "Virtious Acid Id", Config.idvirtiousAcid, null);
 		virtiousAcid = new VirtiousAcid(idvirtiousAcid.getInt()).setHardness(100.0F).setLightOpacity(3).setUnlocalizedName("virtiousAcid");
-		registerBlock(virtiousAcid, "Virtious Acid");
+		registerBlock(virtiousAcid, "Virtious Acid");	
+		
+		Property idblockBrazeum = Virtious.config.getBlock("Brazeum Block Id", Config.idblockBrazeum);
+		blockBrazeum = new VirtiousBlock(idblockBrazeum.getInt(), Material.iron).setHardness(3.0F).setUnlocalizedName("BrazeumBlock");
+		registerBlock(blockBrazeum, "Brazeum Block");
+		
+		Property idblockAquieus = Virtious.config.getBlock("Aquieus Block Id", Config.idblockAquieus);
+		blockAquieus = new VirtiousBlock(idblockAquieus.getInt(), Material.iron).setHardness(3.0F).setUnlocalizedName("AquieusBlock");
+		registerBlock(blockAquieus, "Aquieus Block");
+		
+		Property idblockPluthorium = Virtious.config.getBlock("Pluthorium Block Id", Config.idblockPluthorium);
+		blockPluthorium = new VirtiousBlock(idblockPluthorium.getInt(), Material.iron).setHardness(3.0F).setUnlocalizedName("PluthoriumBlock");
+		registerBlock(blockPluthorium, "Pluthorium Block");
+		
+		Property idvirtianstoneBricks = Virtious.config.getBlock("Virtianstone Bricks Id", Config.idblockvirtianstoneBricks);
+		virtianstoneBricks = new VirtiousBlock(idvirtianstoneBricks.getInt(), Material.rock).setHardness(3.0F).setUnlocalizedName("VirtianstoneBricks");
+		registerBlock(virtianstoneBricks, "Virtianstone Bricks");
 		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);

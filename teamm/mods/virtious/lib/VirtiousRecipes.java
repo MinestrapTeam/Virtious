@@ -177,6 +177,22 @@ public class VirtiousRecipes
 				{
 			"W", "W", "S", Character.valueOf('W'), VirtiousItems.gemPluthorium, Character.valueOf('S'), Item.stick
 				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.virtianstoneBricks), new Object[]
+				{
+			"SS", "SS", Character.valueOf('S'), VirtiousBlocks.virtianstone
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.blockBrazeum), new Object[]
+				{
+			"SSS", "SSS", "SSS", Character.valueOf('S'), VirtiousItems.ingotBrazeum
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.blockAquieus), new Object[]
+				{
+			"SSS", "SSS", "SSS", Character.valueOf('S'), VirtiousItems.shardAquieus
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.blockPluthorium), new Object[]
+				{
+			"SSS", "SSS", "SSS", Character.valueOf('S'), VirtiousItems.gemPluthorium
+				});
 		
 		//TODO Load all recipes here
 	}

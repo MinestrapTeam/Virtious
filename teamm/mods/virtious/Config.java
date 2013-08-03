@@ -11,6 +11,7 @@ public class Config {
 	public static int idVirtianSoil = 203;
 	public static int iddeepStoneMossy = 204;
 	public static int idvirtiousAcid = 205;
+	public static int idcanyonstone = 206;
 	
 	//Blocks
 	public static int idvirtiancobblestone = 2000;
@@ -34,7 +35,10 @@ public class Config {
 	public static int idsaplingVirtian = 2018;
 	public static int idplankAmber = 2019;
 	public static int idplankVirtian = 2020;
-	public static int idcanyonstone = 2021;
+	public static int idblockBrazeum = 2021;
+	public static int idblockAquieus = 2022;
+	public static int idblockPluthorium = 2023;
+	public static int idblockvirtianstoneBricks = 2024;
 
 	//Items
 	public static int idIngotBrazeum = 5000;
