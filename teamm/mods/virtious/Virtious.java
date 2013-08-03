@@ -14,6 +14,7 @@ import teamm.mods.virtious.misc.VirtiousFuelHandler;
 import teamm.mods.virtious.network.PacketHandler;
 import teamm.mods.virtious.proxy.CommonProxy;
 import teamm.mods.virtious.world.VirtiousProvider;
+import teamm.mods.virtious.world.biome.BiomeGenCanyon;
 import teamm.mods.virtious.world.biome.BiomeGenVirtious;
 import teamm.mods.virtious.world.gen.VirtiousOreGenerator;
 
@@ -57,9 +58,11 @@ public class Virtious {
 	
 	public static int dimensionID;
 	public static int virtiousBiomeID;
+	public static int canyonBiomeID;
 	
 	/* Biomes */
 	public static BiomeGenBase virtiousBiome = null;
+	public static BiomeGenBase canyonBiome = null;
 
 	public static Configuration config;
 	
@@ -73,7 +76,6 @@ public class Virtious {
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		GameRegistry.registerWorldGenerator(new VirtiousOreGenerator());
-
 		config = new Configuration(new File(event.getModConfigurationDirectory(), "Virtious.cfg"));
 		
 		try
@@ -86,6 +88,9 @@ public class Virtious {
 
 			Property idvirtiousBiome = Virtious.config.get("Special", "virtiousBiomeID", Config.virtiousBiomeID);
 			virtiousBiomeID = idvirtiousBiome.getInt();
+			
+			Property idcanyonBiome = Virtious.config.get("Special", "Canyon Biome Id", Config.canyoneBiomeID);
+			canyonBiomeID = idcanyonBiome.getInt();
 			
 			//ItemStack config
 			new VirtiousBlocks();
@@ -103,7 +108,6 @@ public class Virtious {
 			config.save();
 		}
 		
-
 	}
 	
 	
@@ -111,6 +115,7 @@ public class Virtious {
 	public void init(FMLInitializationEvent evt)
 	{
 		virtiousBiome = new BiomeGenVirtious(Virtious.virtiousBiomeID);
+		canyonBiome = new BiomeGenCanyon(Virtious.canyonBiomeID);
 		
 		MinecraftForge.EVENT_BUS.register(new VirtiousBonemealEvent());
 		

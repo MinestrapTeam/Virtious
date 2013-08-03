@@ -11,7 +11,7 @@ public class VirtiousCreativeTabItems extends CreativeTabs
 	
     public int getTabIconItemIndex()
     {
-    	return VirtiousItems.shardAquieus.itemID;
+    	return VirtiousItems.gemPluthorium.itemID;
     }
     
     public String getTranslatedTabLabel()
