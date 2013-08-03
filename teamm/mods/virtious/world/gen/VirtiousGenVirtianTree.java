@@ -39,10 +39,10 @@ public class VirtiousGenVirtianTree extends WorldGenerator
 		if(this.fromSapling)
 		{
 			for(int h = 1; h <= treeHeight; h++){
-			    Block block = Block.blocksList[world.getBlockId(i, j + h, k)];
+			    Block block = Block.blocksList[world.getBlockId(x, y + h, z)];
 				if(block != null)
 				{
-					if(!block.canBeReplacedByLeaves(world, i, j + h, k))
+					if(!block.canBeReplacedByLeaves(world, x, y + h, z))
 						return false;
 				}
 			}
