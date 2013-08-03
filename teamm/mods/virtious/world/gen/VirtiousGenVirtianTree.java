@@ -36,12 +36,15 @@ public class VirtiousGenVirtianTree extends WorldGenerator
 		if(!((VirtiousFlower)VirtiousBlocks.saplingVirtian).canThisPlantGrowOnThisBlockID(world.getBlockId(x, y-1, z)))
 			return false;
 		
-		if(fromSapling)
+		if(this.fromSapling)
 		{
-			for(int j = 1; j <= treeHeight; j++)
-			{
-				if(!world.isAirBlock(x, y+j, z))
-					return false;
+			for(int h = 1; h <= treeHeight; h++){
+			    Block block = Block.blocksList[world.getBlockId(i, j + h, k)];
+				if(block != null)
+				{
+					if(!block.canBeReplacedByLeaves(world, i, j + h, k))
+						return false;
+				}
 			}
 		}
 		else
