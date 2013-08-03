@@ -34,6 +34,7 @@ public class Config {
 	public static int idplankAmber = 2019;
 	public static int idplankVirtian = 2020;
 	public static int idcanyonstone = 2021;
+	public static int idvirtiousAcid = 2022;
 
 	//Items
 	public static int idIngotBrazeum = 5000;

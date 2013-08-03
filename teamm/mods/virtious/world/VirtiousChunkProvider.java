@@ -560,7 +560,7 @@ public class VirtiousChunkProvider extends ChunkProviderGenerate
             k1 = k + this.rand.nextInt(16) + 8;
             l1 = this.rand.nextInt(128);
             i2 = l + this.rand.nextInt(16) + 8;
-            (new WorldGenLakes(Block.waterStill.blockID)).generate(this.worldObj, this.rand, k1, l1, i2);
+            (new WorldGenLakes(VirtiousBlocks.virtiousAcid.blockID)).generate(this.worldObj, this.rand, k1, l1, i2);
         }
 
         if (TerrainGen.populate(par1IChunkProvider, worldObj, rand, par2, par3, flag, LAVA) &&

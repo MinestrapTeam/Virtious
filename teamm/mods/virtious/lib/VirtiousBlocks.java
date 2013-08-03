@@ -19,6 +19,7 @@ import teamm.mods.virtious.block.BlockVirtianGrass;
 import teamm.mods.virtious.block.DeepStone;
 import teamm.mods.virtious.block.NightwhiskerBlock;
 import teamm.mods.virtious.block.PortalBlock;
+import teamm.mods.virtious.block.VirtiousAcid;
 import teamm.mods.virtious.block.VirtiousBlock;
 
 public class VirtiousBlocks {
@@ -49,6 +50,7 @@ public class VirtiousBlocks {
 	public static Block plankAmber;
 	public static Block plankVirtian;
 	public static Block canyonstone;
+	public static Block virtiousAcid;
 
 	/**
 	 * Loads all block objects
@@ -179,6 +181,10 @@ public class VirtiousBlocks {
 		Property idcanyonstone = Virtious.config.getBlock("Canyonstone", Config.idcanyonstone);
 		canyonstone = new VirtiousBlock(idcanyonstone.getInt(), Material.rock).setHardness(2.0F).setResistance(0.3F).setUnlocalizedName("Canyonstone");
 		registerBlock(canyonstone, "Canyonstone");
+		
+		Property idvirtiousAcid = Virtious.config.getBlock("Virtious Acid Id", Config.idvirtiousAcid);
+		virtiousAcid = new VirtiousAcid(idvirtiousAcid.getInt()).setHardness(100.0F).setLightOpacity(3).setUnlocalizedName("virtiousAcid");
+		registerBlock(virtiousAcid, "Virtious Acid");
 		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);

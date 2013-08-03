@@ -5,6 +5,7 @@ import java.util.logging.Level;
 
 import teamm.mods.virtious.entity.item.EntityStickyBomb;
 import teamm.mods.virtious.event.VirtiousBonemealEvent;
+import teamm.mods.virtious.fluids.VirtiousFluids;
 import teamm.mods.virtious.lib.VirtiousBlocks;
 import teamm.mods.virtious.lib.VirtiousCreativeTabBlocks;
 import teamm.mods.virtious.lib.VirtiousCreativeTabItems;
@@ -25,6 +26,7 @@ import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
+import net.minecraftforge.fluids.Fluid;
 
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
@@ -47,6 +49,8 @@ public class Virtious {
 	public static final String modId = "virtious";
 	public static final String modName = "Virtious mod";
 	public static final String CHANNEL_NAME = "virtious_chan";
+	
+	public static Fluid virtiousFluid;
 	
 	@Instance(Virtious.modId)
 	private static Virtious instance;
@@ -76,6 +80,9 @@ public class Virtious {
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		GameRegistry.registerWorldGenerator(new VirtiousOreGenerator());
+		
+		virtiousFluid = new VirtiousFluids("Virtian Acid");
+		
 		config = new Configuration(new File(event.getModConfigurationDirectory(), "Virtious.cfg"));
 		
 		try
