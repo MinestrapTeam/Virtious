@@ -21,8 +21,8 @@ public class VirtiousAcid extends BlockFluidClassic
 	{
 		this.iconArray = new Icon[]
 				{
-					r.registerIcon("virtious:VirtiousAcidStill"),
-					r.registerIcon("virtious:VirtiousAcidFlowing")
+					r.registerIcon("virtious:VirtiousAcidFlowing"),
+					r.registerIcon("virtious:VirtiousAcidStill")
 				};
 	}
 	

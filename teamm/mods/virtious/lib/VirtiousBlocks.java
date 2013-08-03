@@ -182,7 +182,7 @@ public class VirtiousBlocks {
 		canyonstone = new VirtiousBlock(idcanyonstone.getInt(), Material.rock).setHardness(2.0F).setResistance(0.3F).setUnlocalizedName("Canyonstone");
 		registerBlock(canyonstone, "Canyonstone");
 		
-		Property idvirtiousAcid = Virtious.config.getBlock("Virtious Acid Id", Config.idvirtiousAcid);
+		Property idvirtiousAcid = Virtious.config.getTerrainBlock("worldgen", "Virtious Acid Id", Config.idvirtiousAcid, null);
 		virtiousAcid = new VirtiousAcid(idvirtiousAcid.getInt()).setHardness(100.0F).setLightOpacity(3).setUnlocalizedName("virtiousAcid");
 		registerBlock(virtiousAcid, "Virtious Acid");
 		
