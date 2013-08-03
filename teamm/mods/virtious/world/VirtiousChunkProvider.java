@@ -202,7 +202,7 @@ public class VirtiousChunkProvider extends ChunkProviderGenerate
                                 }
                                 else if (k1 * 8 + l1 < seeLevel)
                                 {
-                                    par3ArrayOfByte[j2 += short1] = (byte)Block.waterStill.blockID;
+                                    par3ArrayOfByte[j2 += short1] = (byte)VirtiousBlocks.virtiousAcid.blockID;
                                 }
                                 else
                                 {
@@ -287,7 +287,7 @@ public class VirtiousChunkProvider extends ChunkProviderGenerate
                                     }
                                     else
                                     {
-                                        b1 = (byte)Block.waterStill.blockID;
+                                        b1 = (byte)VirtiousBlocks.virtiousAcid.blockID;
                                     }
                                 }
 
