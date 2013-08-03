@@ -2,8 +2,8 @@ package teamm.mods.virtious.world.gen;
 
 import java.util.Random;
 
+import teamm.mods.virtious.block.VirtiousFlower;
 import teamm.mods.virtious.lib.VirtiousBlocks;
-
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -24,6 +24,9 @@ public class VirtiousGenAmberTree extends WorldGenerator
 	@Override
 	public boolean generate(World world, Random random, int i, int j, int k) 
 	{
+		if(!((VirtiousFlower)VirtiousBlocks.saplingVirtian).canThisPlantGrowOnThisBlockID(world.getBlockId(i, j - 1, k)))
+			return false;
+		
 		int leavesHeight = (random.nextInt(2) + 3) * 2;
 		int trunk = random.nextInt(2) + 2;
 				
@@ -50,7 +53,7 @@ public class VirtiousGenAmberTree extends WorldGenerator
 			int radius2 = radius * radius;
 			if(y >= trunk)
 			{
-				world.setBlock(i, j + y, k, logId);//FIXME
+				world.setBlock(i, j + y, k, logId);
 
 				for(int x = -radius; x <= radius; x++)
 				{
