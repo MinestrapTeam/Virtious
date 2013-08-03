@@ -24,43 +24,45 @@ public class VirtiousGenAmberTree extends WorldGenerator
 	@Override
 	public boolean generate(World world, Random random, int i, int j, int k) 
 	{
-		int leavesHeight = random.nextInt(3) + 5;
-		int trunk = random.nextInt(3) + 2;
+		int leavesHeight = (random.nextInt(2) + 3) * 2;
+		int trunk = random.nextInt(2) + 2;
 				
 		int treeHeight = trunk + leavesHeight;
 		
 		if(this.fromSapling)
 		{
 			for(int h = 1; h < treeHeight; h++){
-				if(!world.isAirBlock(i, j + h, k))
+			    Block block = Block.blocksList[world.getBlockId(i, j + h, k)];
+				if(!block.canBeReplacedByLeaves(world, i, j + h, k))
 					return false;
 			}
 		}
 		
-		
+		int cycleCount = random.nextInt();
+
 		for(int y = 0; y < treeHeight; y++)
 		{
 			world.setBlock(i, j + y, k, logId);
 				
-			int center = trunk + leavesHeight / 2 - 1;
-			int radius = random.nextInt(3) + 2;
+			int radius = Math.round(leavesHeight / 2);
+			int center = trunk + radius;
+
 			int radius2 = radius * radius;
-			if(y > trunk)
+			if(y >= trunk)
 			{
-				world.setBlock(i, j + y, k, VirtiousBlocks.logVirtian.blockID);//FIXME
+				world.setBlock(i, j + y, k, logId);//FIXME
 
 				for(int x = -radius; x <= radius; x++)
 				{
 					for(int z = -radius; z <= radius; z++)
 					{
-//						if(x + z % 2 == 0 ) //DO NOT REMOVE
-						if((x % 2 == 0 || z % 2 == 0) && x*x + (center - y) * (center - y) + z*z <= radius2)
+						if(/*(x % 2 == 0 || z % 2 == 0) &&*/ cycleCount++ % 2 == 0 && x*x + (center - y) * (center - y) + z*z <= radius2)
 							addLeaves(world, i + x, j + y, k + z);
 					}
 				}
 			}
 		}
-		
+		world.setBlock(i, j + treeHeight , k, leavesId);
 		return true;
 	}
 
