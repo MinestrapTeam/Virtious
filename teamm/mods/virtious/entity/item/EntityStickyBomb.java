@@ -117,17 +117,18 @@ public class EntityStickyBomb extends Entity/* implements EntityOwnable*/{
     /**
      * Called when the entity is attacked.
      */
-    public boolean attackEntityFrom(DamageSource damageSource, float strength)
-    {
-        this.setBeenAttacked();
-        if(!this.isDead && !this.fuse){
-//        		if(damageSource == DamageSource.)
-	        this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 1.0F, true);
-	    	this.setDead();
-        }
+//    public boolean attackEntityFrom(DamageSource damageSource, float strength)
+//    {
+//        this.setBeenAttacked();
+//        if(!this.isDead && !this.fuse){
+//    		if(damageSource != DamageSource.onFire){
+//		        this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 1.0F, true);
+//		    	this.setDead();
+//    		}
+//        }
 
-        return false;
-    }
+//        return false;
+//    }
     
     /**
      * Called by a player entity when they collide with an entity
