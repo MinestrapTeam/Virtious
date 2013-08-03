@@ -11,6 +11,7 @@ import teamm.mods.virtious.Config;
 import teamm.mods.virtious.Virtious;
 import teamm.mods.virtious.block.BlockLeavesAmber;
 import teamm.mods.virtious.block.BlockLogAmber;
+import teamm.mods.virtious.block.BlockSaplingAmber;
 import teamm.mods.virtious.block.BlockVirtianGrass;
 import teamm.mods.virtious.block.DeepStone;
 import teamm.mods.virtious.block.NightwhiskerBlock;
@@ -139,11 +140,13 @@ public class VirtiousBlocks {
 		registerBlock(logAmber, "Amber Log");
 		
 		Property idleavesAmber = Virtious.config.getBlock("Amber Leaves Id", Config.idleavesAmber);
-		leavesAmber = new BlockLeavesAmber(idleavesAmber.getInt(), Material.leaves).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("leaves").setLightValue(0.5F);
+		leavesAmber = new BlockLeavesAmber(idleavesAmber.getInt(), Material.leaves).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("leavesAmber").setLightValue(0.5F);
 		registerBlock(leavesAmber, "Amber Leaves");
 		
-		//TODO add sapling
-		
+		Property idsaplingAmber = Virtious.config.getBlock("Amber Sapling Id", Config.idsaplingAmber);
+		saplingAmber = new BlockSaplingAmber(idsaplingAmber.getInt()).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("saplingAmber");
+		registerBlock(saplingAmber, "Amber Sapling");
+				
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(deepStone, "pickaxe", 2);

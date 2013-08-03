@@ -5,6 +5,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
 
+import teamm.mods.virtious.Virtious;
 import teamm.mods.virtious.lib.VirtiousBlocks;
 import teamm.mods.virtious.world.gen.VirtiousGenAmberTree;
 
@@ -25,7 +26,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
-public class BlockSaplingAmber extends BlockFlower
+public class BlockSaplingAmber extends VirtiousFlower
 {
 //    public static final String[] WOOD_TYPES = new String[] {"oak", "spruce", "birch", "jungle"};
 //    private static final String[] field_94370_b = new String[] {"sapling", "sapling_spruce", "sapling_birch", "sapling_jungle"};
@@ -37,6 +38,7 @@ public class BlockSaplingAmber extends BlockFlower
         super(par1);
         float f = 0.4F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
+        this.setCreativeTab(Virtious.tabVirtious);
     }
     
     @Override
