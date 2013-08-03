@@ -129,9 +129,10 @@ public class EntityStickyBomb extends Entity/* implements EntityOwnable*/{
     public boolean attackEntityFrom(DamageSource par1DamageSource, float par2)
     {
         this.setBeenAttacked();
-        
-        this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 1.0F, true);
-    	this.setDead();
+        if(!this.isDead){
+	        this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 1.0F, true);
+	    	this.setDead();
+        }
 
         return false;
     }

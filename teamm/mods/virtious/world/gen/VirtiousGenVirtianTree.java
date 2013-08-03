@@ -63,6 +63,11 @@ public class VirtiousGenVirtianTree extends WorldGenerator
 		int h2 = treeHeight - random.nextInt(2);
 		int h3 = treeHeight - random.nextInt(2);
 		int h4 = treeHeight - random.nextInt(2);
+
+		int rand1 = random.nextInt(2);
+		int rand2 = random.nextInt(2);
+		int rand3 = random.nextInt(2);
+		int rand4 = random.nextInt(2);
 		
 		for(int i = 0; i < treeHeight + cap; i++)
 		{
@@ -88,6 +93,31 @@ public class VirtiousGenVirtianTree extends WorldGenerator
 				addLeaves(world, x - 1, y+i, z + 1);
 			if(i > trunk && i < h4)
 				addLeaves(world, x + 1, y+i, z - 1);
+
+			///
+//			if(i + h1 > trunk && i < h1 * 2)
+//		    	addLeaves(world, x + 2, y+i, z + 2);
+//			if(i + h2> trunk && i < h2 * 2)
+//				addLeaves(world, x - 2, y+i, z - 2);
+//			if(i + h3> trunk && i < h3 * 2)
+//				addLeaves(world, x - 2, y+i, z + 2);
+//			if(i + h4> trunk && i < h4 * 2)
+//				addLeaves(world, x + 2, y+i, z - 2);
+			////
+			
+			
+			if(i >= trunk + rand3 && i < treeHeight - rand1 * 2)
+		    	addLeaves(world, x + 2, y+i, z);
+			if(i >= trunk + rand2 && i < treeHeight - rand2 * 2)
+				addLeaves(world, x - 2, y+i, z);
+			if(i >= trunk + rand4 && i < treeHeight - rand3 * 2)
+				addLeaves(world, x, y+i, z + 2);
+			if(i >= trunk + rand1 && i < treeHeight - rand4 * 2)
+				addLeaves(world, x, y+i, z - 2);
+			
+			
+			
+			
 			
 			if(i >= treeHeight)
 			{
