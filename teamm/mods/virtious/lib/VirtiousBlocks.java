@@ -10,8 +10,11 @@ import net.minecraftforge.common.Property;
 import teamm.mods.virtious.Config;
 import teamm.mods.virtious.Virtious;
 import teamm.mods.virtious.block.BlockLeavesAmber;
+import teamm.mods.virtious.block.BlockLeavesVirtian;
 import teamm.mods.virtious.block.BlockLogAmber;
+import teamm.mods.virtious.block.BlockLogVirtian;
 import teamm.mods.virtious.block.BlockSaplingAmber;
+import teamm.mods.virtious.block.BlockSaplingVirtian;
 import teamm.mods.virtious.block.BlockVirtianGrass;
 import teamm.mods.virtious.block.DeepStone;
 import teamm.mods.virtious.block.NightwhiskerBlock;
@@ -40,6 +43,9 @@ public class VirtiousBlocks {
 	public static Block logAmber;
 	public static Block leavesAmber;
 	public static Block saplingAmber;
+	public static Block logVirtian;
+	public static Block leavesVirtian;
+	public static Block saplingVirtian;
 
 	/**
 	 * Loads all block objects
@@ -144,9 +150,21 @@ public class VirtiousBlocks {
 		registerBlock(leavesAmber, "Amber Leaves");
 		
 		Property idsaplingAmber = Virtious.config.getBlock("Amber Sapling Id", Config.idsaplingAmber);
-		saplingAmber = new BlockSaplingAmber(idsaplingAmber.getInt()).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("saplingAmber");
+		saplingAmber = new BlockSaplingAmber(idsaplingAmber.getInt()).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("AmberWoodSapling");
 		registerBlock(saplingAmber, "Amber Sapling");
 				
+		Property idlogVirtian = Virtious.config.getBlock("Virtianwood Log Id", Config.idlogVirtian);
+		logVirtian = new BlockLogVirtian(idlogVirtian.getInt(), Material.wood).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("logVirtian");
+		registerBlock(logVirtian, "Virtian Log");
+		
+		Property idleavesVirtian = Virtious.config.getBlock("Virtian Leaves Id", Config.idleavesVirtian);
+		leavesVirtian = new BlockLeavesVirtian(idleavesVirtian.getInt(), Material.leaves).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("leavesVirtian");
+		registerBlock(leavesVirtian,"Virtian Leaves");
+		
+		Property idsaplingVirtian = Virtious.config.getBlock("Virtian Sapling ID", Config.idsaplingVirtian);
+		saplingVirtian = new BlockSaplingVirtian(idsaplingVirtian.getInt()).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("VirtianwoodSapling");
+		registerBlock(saplingVirtian, "Virtian Sapling");
+		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(deepStone, "pickaxe", 2);

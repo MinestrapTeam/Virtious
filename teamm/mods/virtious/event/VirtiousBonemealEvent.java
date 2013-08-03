@@ -3,6 +3,7 @@ package teamm.mods.virtious.event;
 import java.util.Random;
 
 import teamm.mods.virtious.block.BlockSaplingAmber;
+import teamm.mods.virtious.block.BlockSaplingVirtian;
 import teamm.mods.virtious.lib.VirtiousBlocks;
 
 import net.minecraftforge.event.Event.Result;
@@ -19,6 +20,15 @@ public class VirtiousBonemealEvent
 			if (!event.world.isRemote) 
 			{
 				((BlockSaplingAmber)VirtiousBlocks.saplingAmber).markOrGrowMarked(event.world, event.X, event.Y, event.Z, new Random());			
+				event.setResult(Result.ALLOW);
+			}            
+		}
+		
+		if (event.ID == VirtiousBlocks.saplingVirtian.blockID) 
+		{
+			if (!event.world.isRemote) 
+			{
+				((BlockSaplingVirtian)VirtiousBlocks.saplingVirtian).markOrGrowMarked(event.world, event.X, event.Y, event.Z, new Random());			
 				event.setResult(Result.ALLOW);
 			}            
 		}

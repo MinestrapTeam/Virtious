@@ -89,8 +89,19 @@ public class VirtiousOreGenerator implements IWorldGenerator
 		
 		//TODO Fix
 		
-		/*
+
+		VirtiousGenVirtianTree vtree = new VirtiousGenVirtianTree(VirtiousBlocks.leavesVirtian.blockID, VirtiousBlocks.logVirtian.blockID, false);
 		BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(blockX, blockZ);
+		
+		for(int x = 0; x < 1; x++)
+		{
+			int Xcoord = blockX + random.nextInt(16); 
+			int Zcoord = blockZ + random.nextInt(16); 
+			int i = world.getHeightValue(Xcoord, Zcoord); 
+			vtree.generate(world, random, Xcoord, i, Zcoord); 
+		}
+		
+		/*
 		if(biome instanceof BiomeGenVirtious)
 		{
 			for(int y = 0; y < 9; y++)

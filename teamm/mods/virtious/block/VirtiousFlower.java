@@ -44,7 +44,7 @@ public class VirtiousFlower extends VirtiousBlock implements IPlantable
      * Gets passed in the blockID of the block below and supposed to return true if its allowed to grow on the type of
      * blockID passed in. Args: blockID
      */
-    protected boolean canThisPlantGrowOnThisBlockID(int id)
+    public boolean canThisPlantGrowOnThisBlockID(int id)
     {
         return id == VirtiousBlocks.virtianSoil.blockID || id == VirtiousBlocks.virtianGrass.blockID;
     }

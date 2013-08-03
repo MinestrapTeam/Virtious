@@ -24,17 +24,34 @@ public class VirtiousGenAmberTree extends WorldGenerator
 	@Override
 	public boolean generate(World world, Random random, int i, int j, int k) 
 	{
-		//TODO FIX ALL OF THIS!!!
+		//TODO Fix odd sapling growth
+		//FIXME ^^
 		int height = random.nextInt(4) + 5;
 		int leavesStart = random.nextInt(2) + 4;
 		
-		for(int y = 1; y < height; y++){
+		int minTreeHeight = 8;
+		
+		int treeHeight = leavesStart + minTreeHeight;
+		
+		if(fromSapling)
+		{
+			for(int j1 = 1; j1 <= treeHeight; j1++)
+			{
+				if(!world.isAirBlock(i, j+j1, k))
+				return false;
+			}
+		}
+		
+		for(int y = 1; y < height; y++)
+		{
 			world.setBlock(i, j + y, k, logId);
 
-			if(y > leavesStart){
-				for(int x = -2; x <3; x++){
-					for(int z = -2; z <     3; z++){
-						
+			if(y > leavesStart)
+			{
+				for(int x = -2; x <3; x++)
+				{
+					for(int z = -2; z <     3; z++)
+					{			
 						if(random.nextInt(2) == 1 && x != 0 && y != 0){//FIXME add check for override/ can leaves replace block
 							world.setBlock(i + x, j + y, k + z, leavesId);
 						}
@@ -43,7 +60,7 @@ public class VirtiousGenAmberTree extends WorldGenerator
 			}
 		}
 		
-		return false;
+		return true;
 	}
 
 }

@@ -27,6 +27,9 @@ public class Config {
 	public static int idlogAmber = 2013;
 	public static int idleavesAmber = 2014;
 	public static int idsaplingAmber = 2015;
+	public static int idlogVirtian = 2016;
+	public static int idleavesVirtian = 2017;
+	public static int idsaplingVirtian = 2018;
 
 	//Items
 	public static int idIngotBrazeum = 5000;
