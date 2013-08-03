@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.logging.Level;
 
 import teamm.mods.virtious.entity.item.EntityStickyBomb;
+import teamm.mods.virtious.event.VirtiousBonemealEvent;
 import teamm.mods.virtious.lib.VirtiousBlocks;
 import teamm.mods.virtious.lib.VirtiousCreativeTab;
 import teamm.mods.virtious.lib.VirtiousItems;
@@ -20,6 +21,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
 
 import cpw.mods.fml.common.FMLLog;
@@ -107,6 +109,8 @@ public class Virtious {
 	public void init(FMLInitializationEvent evt)
 	{
 		virtiousBiome = new BiomeGenVirtious(Virtious.virtiousBiomeID);
+		
+		MinecraftForge.EVENT_BUS.register(new VirtiousBonemealEvent());
 		
 		GameRegistry.registerFuelHandler(new VirtiousFuelHandler());
 		

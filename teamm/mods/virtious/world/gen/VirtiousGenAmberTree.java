@@ -24,7 +24,7 @@ public class VirtiousGenAmberTree extends WorldGenerator
 	@Override
 	public boolean generate(World world, Random random, int i, int j, int k) 
 	{
-		
+		//TODO FIX ALL OF THIS!!!
 		int height = random.nextInt(4) + 5;
 		int leavesStart = random.nextInt(2) + 4;
 		

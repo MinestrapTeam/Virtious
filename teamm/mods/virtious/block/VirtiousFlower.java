@@ -44,9 +44,9 @@ public class VirtiousFlower extends VirtiousBlock implements IPlantable
      * Gets passed in the blockID of the block below and supposed to return true if its allowed to grow on the type of
      * blockID passed in. Args: blockID
      */
-    protected boolean canThisPlantGrowOnThisBlockID(int par1)
+    protected boolean canThisPlantGrowOnThisBlockID(int id)
     {
-        return par1 == VirtiousBlocks.virtianGrass.blockID || par1 == VirtiousBlocks.virtianSoil.blockID || par1 == Block.tilledField.blockID;
+        return id == VirtiousBlocks.virtianSoil.blockID || id == VirtiousBlocks.virtianGrass.blockID;
     }
 
     /**
@@ -81,9 +81,7 @@ public class VirtiousFlower extends VirtiousBlock implements IPlantable
      */
     public boolean canBlockStay(World par1World, int par2, int par3, int par4)
     {
-        Block soil = blocksList[par1World.getBlockId(par2, par3 - 1, par4)];
-        return (par1World.getFullBlockLightValue(par2, par3, par4) >= 8 || par1World.canBlockSeeTheSky(par2, par3, par4)) && 
-                (soil != null && soil.canSustainPlant(par1World, par2, par3 - 1, par4, ForgeDirection.UP, this));
+    	return canThisPlantGrowOnThisBlockID(par1World.getBlockId(par2, par3 - 1, par4));
     }
 
     /**
