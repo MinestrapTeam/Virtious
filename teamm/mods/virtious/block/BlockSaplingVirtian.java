@@ -39,7 +39,7 @@ public class BlockSaplingVirtian extends VirtiousFlower
         super(par1);
         float f = 0.4F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
-        this.setCreativeTab(Virtious.tabVirtious);
+        this.setCreativeTab(Virtious.tabVirtiousBlocks);
     }
     
     @Override

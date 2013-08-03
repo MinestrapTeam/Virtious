@@ -23,7 +23,7 @@ public class VirtiousHoe extends VirtiousItem
         this.theToolMaterial = par2EnumVirtiousToolMaterial;
         this.maxStackSize = 1;
         this.setMaxDamage(par2EnumVirtiousToolMaterial.getMaxUses());
-        this.setCreativeTab(Virtious.tabVirtious);
+        this.setCreativeTab(Virtious.tabVirtiousItems);
     }
 
     /**

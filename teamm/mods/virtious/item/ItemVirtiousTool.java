@@ -35,7 +35,7 @@ public class ItemVirtiousTool extends VirtiousItem
         this.setMaxDamage(par3EnumVirtiousToolMaterial.getMaxUses());
         this.efficiencyOnProperMaterial = par3EnumVirtiousToolMaterial.getEfficiencyOnProperMaterial();
         this.damageVsEntity = par2 + par3EnumVirtiousToolMaterial.getDamageVsEntity();
-        this.setCreativeTab(Virtious.tabVirtious);
+        this.setCreativeTab(Virtious.tabVirtiousItems);
     }
 
     /**

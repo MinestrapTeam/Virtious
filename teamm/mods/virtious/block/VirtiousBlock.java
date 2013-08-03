@@ -14,7 +14,7 @@ public class VirtiousBlock extends Block
 	public VirtiousBlock(int id, Material mat) 
 	{
 		super(id, mat);
-		this.setCreativeTab(Virtious.tabVirtious);
+		this.setCreativeTab(Virtious.tabVirtiousBlocks);
 	}
 	
 	public void registerIcons(IconRegister r)

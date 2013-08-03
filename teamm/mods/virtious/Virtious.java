@@ -6,7 +6,8 @@ import java.util.logging.Level;
 import teamm.mods.virtious.entity.item.EntityStickyBomb;
 import teamm.mods.virtious.event.VirtiousBonemealEvent;
 import teamm.mods.virtious.lib.VirtiousBlocks;
-import teamm.mods.virtious.lib.VirtiousCreativeTab;
+import teamm.mods.virtious.lib.VirtiousCreativeTabBlocks;
+import teamm.mods.virtious.lib.VirtiousCreativeTabItems;
 import teamm.mods.virtious.lib.VirtiousItems;
 import teamm.mods.virtious.lib.VirtiousRecipes;
 import teamm.mods.virtious.misc.VirtiousFuelHandler;
@@ -62,8 +63,9 @@ public class Virtious {
 
 	public static Configuration config;
 	
-	public static VirtiousCreativeTab tabVirtious = new VirtiousCreativeTab(CreativeTabs.getNextID(), "Virtious Mod");
-	
+	public static VirtiousCreativeTabBlocks tabVirtiousBlocks = new VirtiousCreativeTabBlocks(CreativeTabs.getNextID(), "Virtious Mod - Blocks");
+	public static VirtiousCreativeTabItems tabVirtiousItems = new VirtiousCreativeTabItems(CreativeTabs.getNextID(), "Virtious Mod - Items");
+
 	@SidedProxy(clientSide = "teamm.mods.virtious.proxy.ClientProxy", serverSide = "teamm.mods.virtious.proxy.CommonProxy")
 	public static CommonProxy proxy;
 	

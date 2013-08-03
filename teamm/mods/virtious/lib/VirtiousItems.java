@@ -37,6 +37,26 @@ public class VirtiousItems
 	public static Item virtianstoneShovel;
 	public static Item virtianstoneHoe;
 	public static Item virtianstoneSword;
+	public static Item deepstonePickaxe;
+	public static Item deepstoneAxe;
+	public static Item deepstoneShovel;
+	public static Item deepstoneHoe;
+	public static Item deepstoneSword;
+	public static Item brazeumPickaxe;
+	public static Item brazeumAxe;
+	public static Item brazeumShovel;
+	public static Item brazeumHoe;
+	public static Item brazeumSword;
+	public static Item aquieusPickaxe;
+	public static Item aquieusAxe;
+	public static Item aquieusShovel;
+	public static Item aquieusHoe;
+	public static Item aquieusSword;
+	public static Item pluthoriumPickaxe;
+	public static Item pluthoriumAxe;
+	public static Item pluthoriumShovel;
+	public static Item pluthoriumHoe;
+	public static Item pluthoriumSword;
 	
 	/**
 	 * Loads all item objects
@@ -133,7 +153,87 @@ public class VirtiousItems
 		virtianstoneSword = new VirtiousSword(idvirtianstoneSword.getInt(), EnumVirtiousToolMaterial.VIRTIANSTONE).setUnlocalizedName("VirtianStoneSword");
 		LanguageRegistry.addName(virtianstoneSword, "Virtian Stone Sword");
 
+		Property iddeepstonePickaxe = Virtious.config.getItem("Deep Stone Pickaxe", Config.iddeepstonePickaxe);
+		deepstonePickaxe = new VirtiousPickaxe(iddeepstonePickaxe.getInt(), EnumVirtiousToolMaterial.DEEPSTONE).setUnlocalizedName("DeepstonePickaxe");
+		LanguageRegistry.addName(deepstonePickaxe, "Deep Stone Pickaxe");
 		
+		Property iddeepstoneAxe = Virtious.config.getItem("Deep Stone Axe", Config.iddeepstoneAxe);
+		deepstoneAxe = new VirtiousAxe(iddeepstoneAxe.getInt(), EnumVirtiousToolMaterial.DEEPSTONE).setUnlocalizedName("DeepstoneAxe");
+		LanguageRegistry.addName(deepstoneAxe, "Deep Stone Axe");
+		
+		Property iddeepstoneShovel = Virtious.config.getItem("Deep Stone Shovel", Config.iddeepstoneShovel);
+		deepstoneShovel = new VirtiousShovel(iddeepstoneShovel.getInt(), EnumVirtiousToolMaterial.DEEPSTONE).setUnlocalizedName("deepstoneShovel");
+		LanguageRegistry.addName(deepstoneShovel, "Deep Stone Shovel");
+		
+		Property iddeepstoneHoe = Virtious.config.getItem("Deep Stone Hoe", Config.iddeepstoneHoe);
+		deepstoneHoe = new VirtiousHoe(iddeepstoneHoe.getInt(), EnumVirtiousToolMaterial.DEEPSTONE).setUnlocalizedName("DeepstoneHoe");
+		LanguageRegistry.addName(deepstoneHoe, "Deep Stone Hoe");
+		
+		Property iddeepstoneSword = Virtious.config.getItem("Deep Stone Sword", Config.iddeepstoneSword);
+		deepstoneSword = new VirtiousSword(iddeepstoneSword.getInt(), EnumVirtiousToolMaterial.DEEPSTONE).setUnlocalizedName("DeepstoneSword");
+		LanguageRegistry.addName(deepstoneSword, "Deep Stone Sword");
+		
+		Property idbrazeumPickaxe = Virtious.config.getItem("Brazeum Pickaxe", Config.idbrazeumPickaxe);
+		brazeumPickaxe = new VirtiousPickaxe(idbrazeumPickaxe.getInt(), EnumVirtiousToolMaterial.BRAZEUM).setUnlocalizedName("BrazeumPickaxe");
+		LanguageRegistry.addName(brazeumPickaxe, "Brazeum Pickaxe");
+		
+		Property idbrazeumAxe = Virtious.config.getItem("Brazeum Axe", Config.idbrazeumAxe);
+		brazeumAxe = new VirtiousAxe(idbrazeumAxe.getInt(), EnumVirtiousToolMaterial.BRAZEUM).setUnlocalizedName("BrazeumAxe");
+		LanguageRegistry.addName(deepstoneAxe, "Deep Stone Axe");
+		
+		Property idbrazeumShovel = Virtious.config.getItem("Brazeum Shovel", Config.idbrazeumShovel);
+		brazeumShovel = new VirtiousShovel(idbrazeumShovel.getInt(), EnumVirtiousToolMaterial.BRAZEUM).setUnlocalizedName("BrazeumShovel");
+		LanguageRegistry.addName(brazeumShovel, "Brazeum Shovel");
+		
+		Property idbrazeumHoe = Virtious.config.getItem("Brazeum Hoe", Config.idbrazeumHoe);
+		brazeumHoe = new VirtiousHoe(idbrazeumHoe.getInt(), EnumVirtiousToolMaterial.BRAZEUM).setUnlocalizedName("BrazeumHoe");
+		LanguageRegistry.addName(brazeumHoe, "Brazeum Hoe");
+		
+		Property idbrazeumSword = Virtious.config.getItem("Brazeum Sword", Config.idbrazeumSword);
+		brazeumSword = new VirtiousSword(idbrazeumSword.getInt(), EnumVirtiousToolMaterial.BRAZEUM).setUnlocalizedName("BrazeumSword");
+		LanguageRegistry.addName(brazeumSword, "Brazeum Sword");
+		
+		Property idaquieusPickaxe = Virtious.config.getItem("Aquieus Pickaxe", Config.idaquieusPickaxe);
+		aquieusPickaxe = new VirtiousPickaxe(idaquieusPickaxe.getInt(), EnumVirtiousToolMaterial.AQUIEUS).setUnlocalizedName("AquieusPickaxe");
+		LanguageRegistry.addName(aquieusPickaxe, "Aquieus Pickaxe");
+		
+		Property idaquieusAxe = Virtious.config.getItem("Aquieus Axe", Config.idaquieusAxe);
+		aquieusAxe = new VirtiousAxe(idaquieusAxe.getInt(), EnumVirtiousToolMaterial.AQUIEUS).setUnlocalizedName("AquieusAxe");
+		LanguageRegistry.addName(aquieusAxe, "Aquieus Axe");
+		
+		Property idaquieusShovel = Virtious.config.getItem("Aquieus Shovel", Config.idaquieusShovel);
+		aquieusShovel = new VirtiousShovel(idaquieusShovel.getInt(), EnumVirtiousToolMaterial.AQUIEUS).setUnlocalizedName("AquieusShovel");
+		LanguageRegistry.addName(aquieusShovel, "Aquieus Shovel");
+		
+		Property idaquieusHoe = Virtious.config.getItem("Aquieus Hoe", Config.idaquieusHoe);
+		aquieusHoe = new VirtiousHoe(idaquieusHoe.getInt(), EnumVirtiousToolMaterial.AQUIEUS).setUnlocalizedName("AquieusHoe");
+		LanguageRegistry.addName(aquieusHoe, "Aquieus Hoe");
+		
+		Property idaquieusSword = Virtious.config.getItem("Aquieus Sword", Config.idaquieusSword);
+		aquieusSword = new VirtiousSword(idaquieusSword.getInt(), EnumVirtiousToolMaterial.AQUIEUS).setUnlocalizedName("AquieusSword");
+		LanguageRegistry.addName(aquieusSword, "Aquieus Sword");
+		
+		Property idpluthoriumPickaxe = Virtious.config.getItem("Pluthorium Pickaxe", Config.idpluthoriumPickaxe);
+		pluthoriumPickaxe = new VirtiousPickaxe(idpluthoriumPickaxe.getInt(), EnumVirtiousToolMaterial.PLUTHORIUM).setUnlocalizedName("PluthoriumPickaxe");
+		LanguageRegistry.addName(pluthoriumPickaxe, "Pluthorium Pickaxe");
+		
+		Property idpluthoriumAxe = Virtious.config.getItem("Pluthorium Axe", Config.idpluthoriumAxe);
+		pluthoriumAxe = new VirtiousAxe(idpluthoriumAxe.getInt(), EnumVirtiousToolMaterial.PLUTHORIUM).setUnlocalizedName("PluthoriumAxe");
+		LanguageRegistry.addName(pluthoriumAxe, "Pluthorium Axe");
+		
+		Property idpluthoriumShovel = Virtious.config.getItem("Pluthorium Shovel", Config.idpluthoriumShovel);
+		pluthoriumShovel = new VirtiousShovel(idpluthoriumShovel.getInt(), EnumVirtiousToolMaterial.PLUTHORIUM).setUnlocalizedName("PluthoriumShovel");
+		LanguageRegistry.addName(pluthoriumShovel, "Pluthorium Shovel");
+		
+		Property idpluthoriumHoe = Virtious.config.getItem("Pluthorium Hoe", Config.idpluthoriumHoe);
+		pluthoriumHoe = new VirtiousHoe(idpluthoriumHoe.getInt(), EnumVirtiousToolMaterial.PLUTHORIUM).setUnlocalizedName("PluthoriumHoe");
+		LanguageRegistry.addName(pluthoriumHoe, "Pluthorium Hoe");
+		
+		Property idpluthoriumSword = Virtious.config.getItem("Pluthorium Sword", Config.idpluthoriumSword);
+		pluthoriumSword = new VirtiousSword(idpluthoriumSword.getInt(), EnumVirtiousToolMaterial.AQUIEUS).setUnlocalizedName("PluthoriumSword");
+		LanguageRegistry.addName(pluthoriumSword, "Pluthorium Sword");
+		
+
 		//TODO load all item objects
 	}
 }

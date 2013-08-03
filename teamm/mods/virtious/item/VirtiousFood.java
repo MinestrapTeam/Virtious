@@ -9,7 +9,7 @@ public class VirtiousFood extends ItemFood
 	public VirtiousFood(int id, int healamt, int sat)
 	{
 		super(id, healamt, sat, false);
-		this.setCreativeTab(Virtious.tabVirtious);
+		this.setCreativeTab(Virtious.tabVirtiousBlocks);
 	}
 	
 	public void registerIcons(IconRegister r)

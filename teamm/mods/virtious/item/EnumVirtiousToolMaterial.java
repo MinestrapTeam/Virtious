@@ -10,6 +10,7 @@ public enum EnumVirtiousToolMaterial
     VIRTIANWOOD(0, 90, 2.0F, 0.0F, 15),
     AMBERWOOD(0, 40, 2.5F, 0.5F, 15),
     VIRTIANSTONE(1, 115, 4.5F, 1.5F, 9),
+    DEEPSTONE(1, 180, 4.6F, 2.0F, 16),
     BRAZEUM(2, 750, 7.0F, 2.0F, 14),
     AQUIEUS(3, 1200, 7.4F, 2.5F, 20),
     PLUTHORIUM(4, 2341, 12.0F, 4.5F, 7);

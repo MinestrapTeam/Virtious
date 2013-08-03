@@ -28,7 +28,7 @@ public class VirtiousSword extends VirtiousItem
         this.maxStackSize = 1;
         this.setMaxDamage(par2EnumVirtiousToolMaterial.getMaxUses());
         this.weaponDamage = 4.0F + par2EnumVirtiousToolMaterial.getDamageVsEntity();
-        this.setCreativeTab(Virtious.tabVirtious);
+        this.setCreativeTab(Virtious.tabVirtiousItems);
     }
 
     public float func_82803_g()

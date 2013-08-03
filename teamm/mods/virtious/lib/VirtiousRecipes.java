@@ -97,6 +97,86 @@ public class VirtiousRecipes
 				{
 			"W", "W", "S", Character.valueOf('W'), VirtiousBlocks.virtiancobblestone, Character.valueOf('S'), Item.stick
 				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.deepstonePickaxe, 1), new Object[]
+				{
+			"WWW", " S ", " S ", Character.valueOf('W'), VirtiousBlocks.deepStone, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.deepstoneAxe, 1), new Object[]
+				{
+			"WW ", "WS ", " S ", Character.valueOf('W'), VirtiousBlocks.deepStone, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.deepstoneHoe, 1), new Object[]
+				{
+			"WW ", " S ", " S ", Character.valueOf('W'), VirtiousBlocks.deepStone, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.deepstoneShovel, 1), new Object[]
+				{
+			"W", "S", "S", Character.valueOf('W'), VirtiousBlocks.deepStone, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.deepstoneSword, 1), new Object[]
+				{
+			"W", "W", "S", Character.valueOf('W'), VirtiousBlocks.deepStone, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.brazeumPickaxe, 1), new Object[]
+				{
+			"WWW", " S ", " S ", Character.valueOf('W'), VirtiousItems.ingotBrazeum, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.brazeumAxe, 1), new Object[]
+				{
+			"WW ", "WS ", " S ", Character.valueOf('W'), VirtiousItems.ingotBrazeum, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.brazeumHoe, 1), new Object[]
+				{
+			"WW ", " S ", " S ", Character.valueOf('W'), VirtiousItems.ingotBrazeum, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.brazeumShovel, 1), new Object[]
+				{
+			"W", "S", "S", Character.valueOf('W'), VirtiousItems.ingotBrazeum, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.brazeumSword, 1), new Object[]
+				{
+			"W", "W", "S", Character.valueOf('W'), VirtiousItems.ingotBrazeum, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.aquieusPickaxe, 1), new Object[]
+				{
+			"WWW", " S ", " S ", Character.valueOf('W'), VirtiousItems.shardAquieus, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.aquieusAxe, 1), new Object[]
+				{
+			"WW ", "WS ", " S ", Character.valueOf('W'), VirtiousItems.shardAquieus, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.aquieusHoe, 1), new Object[]
+				{
+			"WW ", " S ", " S ", Character.valueOf('W'), VirtiousItems.shardAquieus, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.aquieusShovel, 1), new Object[]
+				{
+			"W", "S", "S", Character.valueOf('W'), VirtiousItems.shardAquieus, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.aquieusSword, 1), new Object[]
+				{
+			"W", "W", "S", Character.valueOf('W'), VirtiousItems.shardAquieus, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.pluthoriumPickaxe, 1), new Object[]
+				{
+			"WWW", " S ", " S ", Character.valueOf('W'), VirtiousItems.gemPluthorium, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.pluthoriumAxe, 1), new Object[]
+				{
+			"WW ", "WS ", " S ", Character.valueOf('W'), VirtiousItems.gemPluthorium, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.pluthoriumHoe, 1), new Object[]
+				{
+			"WW ", " S ", " S ", Character.valueOf('W'), VirtiousItems.gemPluthorium, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.pluthoriumShovel, 1), new Object[]
+				{
+			"W", "S", "S", Character.valueOf('W'), VirtiousItems.gemPluthorium, Character.valueOf('S'), Item.stick
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.pluthoriumSword, 1), new Object[]
+				{
+			"W", "W", "S", Character.valueOf('W'), VirtiousItems.gemPluthorium, Character.valueOf('S'), Item.stick
+				});
 		
 		//TODO Load all recipes here
 	}

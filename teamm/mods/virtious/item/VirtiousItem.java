@@ -9,7 +9,7 @@ public class VirtiousItem extends Item
 	public VirtiousItem(int id)
 	{
 		super(id);
-		this.setCreativeTab(Virtious.tabVirtious);
+		this.setCreativeTab(Virtious.tabVirtiousItems);
 	}
 	
 	public void registerIcons(IconRegister r)

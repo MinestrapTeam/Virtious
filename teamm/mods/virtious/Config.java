@@ -47,6 +47,26 @@ public class Config {
 	public static int idvirtianstoneShovel = 2033;
 	public static int idvirtianstoneHoe = 2034;
 	public static int idvirtianstoneSword = 2035;
+	public static int iddeepstonePickaxe = 2036;
+	public static int iddeepstoneAxe = 2037;
+	public static int iddeepstoneShovel = 2038;
+	public static int iddeepstoneHoe = 2039;
+	public static int iddeepstoneSword = 2040;
+	public static int idbrazeumPickaxe = 2041;
+	public static int idbrazeumAxe = 2042;
+	public static int idbrazeumShovel = 2044;
+	public static int idbrazeumHoe = 2045;
+	public static int idbrazeumSword = 2045;
+	public static int idaquieusPickaxe = 2046;
+	public static int idaquieusAxe = 2047;
+	public static int idaquieusShovel = 2048;
+	public static int idaquieusHoe = 2049;
+	public static int idaquieusSword = 2050;
+	public static int idpluthoriumPickaxe = 2051;
+	public static int idpluthoriumAxe = 2052;
+	public static int idpluthoriumShovel = 2053;
+	public static int idpluthoriumHoe = 2054;
+	public static int idpluthoriumSword = 2055;
 
 	//Items
 	public static int idIngotBrazeum = 5000;
