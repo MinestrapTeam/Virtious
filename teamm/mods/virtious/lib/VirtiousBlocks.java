@@ -9,6 +9,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
 import teamm.mods.virtious.Config;
 import teamm.mods.virtious.Virtious;
+import teamm.mods.virtious.block.BlockLeavesAmber;
+import teamm.mods.virtious.block.BlockLogAmber;
 import teamm.mods.virtious.block.BlockVirtianGrass;
 import teamm.mods.virtious.block.DeepStone;
 import teamm.mods.virtious.block.NightwhiskerBlock;
@@ -34,6 +36,9 @@ public class VirtiousBlocks {
 	public static Block oreDeepIlluminous;
 	public static Block blockTak;
 	public static Block blockNightwhisker;
+	public static Block logAmber;
+	public static Block leavesAmber;
+	public static Block saplingAmber;
 
 	/**
 	 * Loads all block objects
@@ -128,6 +133,16 @@ public class VirtiousBlocks {
 		Property idNightwhisker = Virtious.config.getBlock("Nightwhisker Block Id", Config.idblockNightwhisker);
 		blockNightwhisker = new NightwhiskerBlock(idNightwhisker.getInt()).setHardness(0.0F).setResistance(0.0F).setUnlocalizedName("Nightwhisker");
 		registerBlock(blockNightwhisker, "Nightwhisker");
+		
+		Property idlogAmber = Virtious.config.getBlock("Amber Log Id", Config.idlogAmber);
+		logAmber = new BlockLogAmber(idlogAmber.getInt(), Material.wood).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("logAmber");
+		registerBlock(logAmber, "Amber Log");
+		
+		Property idleavesAmber = Virtious.config.getBlock("Amber Leaves Id", Config.idleavesAmber);
+		leavesAmber = new BlockLeavesAmber(idleavesAmber.getInt(), Material.leaves).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("leaves").setLightValue(0.5F);
+		registerBlock(leavesAmber, "Amber Leaves");
+		
+		//TODO add sapling
 		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);

@@ -89,6 +89,7 @@ public class VirtiousOreGenerator implements IWorldGenerator
 		
 		//TODO Fix
 		
+		/*
 		BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(blockX, blockZ);
 		if(biome instanceof BiomeGenVirtious)
 		{
@@ -97,6 +98,7 @@ public class VirtiousOreGenerator implements IWorldGenerator
 				new WorldGenFlowers(VirtiousBlocks.blockNightwhisker.blockID).generate(world, random, blockX + random.nextInt(16), random.nextInt(128), blockZ + random.nextInt(16));
 			}	
 		}
+		*/
 	
 	}
 	

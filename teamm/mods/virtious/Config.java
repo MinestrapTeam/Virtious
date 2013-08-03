@@ -24,6 +24,9 @@ public class Config {
 	public static int idoreDeepIlluminous = 2010;
 	public static int idblockTak = 2011;
 	public static int idblockNightwhisker = 2012;
+	public static int idlogAmber = 2013;
+	public static int idleavesAmber = 2014;
+	public static int idsaplingAmber = 2015;
 
 	//Items
 	public static int idIngotBrazeum = 5000;
