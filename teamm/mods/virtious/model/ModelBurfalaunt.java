@@ -151,10 +151,10 @@ public class ModelBurfalaunt extends ModelBase {
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
 	{
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		BackLeftLeg.rotateAngleX = MathHelper.cos(f * 0.3332F) * 1.4F * f1;
-		BackRightLeg.rotateAngleX = MathHelper.cos(f * 0.3332F + 3.141593F) * 1.4F * f1;
-		FrontLeftLeg.rotateAngleX = MathHelper.cos(f * 0.3332F) * 1.4F * f1;
-		FrontRightLeg.rotateAngleX = MathHelper.cos(f * 0.3332F + 3.141593F) * 1.4F * f1;
+		BackLeftLeg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
+		BackRightLeg.rotateAngleX = MathHelper.cos(f * 0.6662F + 3.141593F) * f1;
+		FrontLeftLeg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
+		FrontRightLeg.rotateAngleX = MathHelper.cos(f * 0.6662F + 3.141593F) * f1;
 	}
 
 }

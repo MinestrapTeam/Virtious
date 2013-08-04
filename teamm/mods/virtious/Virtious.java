@@ -46,6 +46,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(name = Virtious.modName, modid = Virtious.modId, useMetadata = false, version = "B1.0")
 @NetworkMod(channels = {Virtious.CHANNEL_NAME}, packetHandler = PacketHandler.class, clientSideRequired = true, serverSideRequired = true)
@@ -141,7 +142,8 @@ public class Virtious {
 		EntityRegistry.registerModEntity(EntityStickyBomb.class, "StickyBomb", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityVirtiousFishHook.class, "VirtiousFishingHook", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
 		
-		ModLoader.registerEntityID(EntityBurfalaunt.class, "EntityBurfalaunt", EntityRegistry.findGlobalUniqueEntityId(), 0x646464, 0x3A3A3A);
+		EntityRegistry.registerGlobalEntityID(EntityBurfalaunt.class, "Burfalaunt", EntityRegistry.findGlobalUniqueEntityId(), 0x110802, 0x3f1e06);
+		LanguageRegistry.instance().addStringLocalization("entity.Burfalaunt.name", "en_US", "Burfalaunt");
 		
 		proxy.registerRenderThings();
 	}
