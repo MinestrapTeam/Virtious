@@ -1,9 +1,10 @@
-package teamm.mods.virtious;
+package teamm.mods.virtious; 
 
 import java.io.File;
 import java.util.logging.Level;
 
 import teamm.mods.virtious.entity.item.EntityStickyBomb;
+import teamm.mods.virtious.entity.item.EntityVirtiousFishHook;
 import teamm.mods.virtious.event.VirtiousBonemealEvent;
 import teamm.mods.virtious.fluids.VirtiousFluids;
 import teamm.mods.virtious.lib.VirtiousBlocks;
@@ -51,6 +52,7 @@ public class Virtious {
 	public static final String CHANNEL_NAME = "virtious_chan";
 	
 	public static Fluid virtiousFluid;
+	public static EntityVirtiousFishHook fishEntity;
 	
 	@Instance(Virtious.modId)
 	private static Virtious instance;
@@ -132,6 +134,7 @@ public class Virtious {
 		DimensionManager.registerDimension(dimensionID, dimensionID);
 		
 		EntityRegistry.registerModEntity(EntityStickyBomb.class, "StickyBomb", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
+		EntityRegistry.registerModEntity(EntityVirtiousFishHook.class, "VirtiousFishingHook", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
 		
 		proxy.registerRenderThings();
 	}

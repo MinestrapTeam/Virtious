@@ -41,6 +41,8 @@ public class Config {
 	public static int idblockvirtianstoneBricks = 2024;
 	public static int idblockIlluminous = 2025;
 	public static int idflowerVeer = 2026;
+	public static int iddeepstoneBricks = 2027;
+	public static int idcanyonstoneBricks = 2028;
 
 	//Items
 	public static int idIngotBrazeum = 5000;

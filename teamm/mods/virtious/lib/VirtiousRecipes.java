@@ -197,6 +197,14 @@ public class VirtiousRecipes
 				{
 			"SS", "SS", Character.valueOf('S'), VirtiousItems.gemIlluminous
 				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.deepstoneBricks, 4), new Object[]
+				{
+			"SS", "SS", Character.valueOf('S'), VirtiousBlocks.deepStone
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.canyonstoneBricks, 4), new Object[]
+				{
+			"SS", "SS", Character.valueOf('S'), VirtiousBlocks.canyonstone
+				});
 		//TODO Load all recipes here
 	}
 }

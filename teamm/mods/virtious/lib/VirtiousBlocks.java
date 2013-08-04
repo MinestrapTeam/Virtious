@@ -46,7 +46,9 @@ public class VirtiousBlocks {
 	public static Block virtianstoneBricks;
 	public static Block blockIlluminous;
 	public static Block flowerVeer;
-
+	public static Block deepstoneBricks;
+	public static Block canyonstoneBricks;
+	
 	/**
 	 * Loads all block objects
 	 */
@@ -204,6 +206,14 @@ public class VirtiousBlocks {
 		Property idflowerVeer = Virtious.config.getBlock("Veer Flower Id", Config.idflowerVeer);
 		flowerVeer = new VirtiousFlower(idflowerVeer.getInt()).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setLightValue(0.4F).setUnlocalizedName("VeerFlower");
 		registerBlock(flowerVeer, "Veer Flower");
+		
+		Property iddeepstoneBricks = Virtious.config.getBlock("Deepstone Bricks Id", Config.iddeepstoneBricks);
+		deepstoneBricks = new VirtiousBlock(iddeepstoneBricks.getInt(),Material.rock).setHardness(5.0F).setUnlocalizedName("DeepstoneBricks");
+		registerBlock(deepstoneBricks, "Deepstone Bricks");
+		
+		Property idcanyonstoneBricks = Virtious.config.getBlock("Canyonstone Bricks Id", Config.idcanyonstoneBricks);
+		canyonstoneBricks = new VirtiousBlock(idcanyonstoneBricks.getInt(), Material.rock).setHardness(3.0F).setUnlocalizedName("CanyonstoneBricks");
+		registerBlock(canyonstoneBricks, "Canyonstone Bricks");
 		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);

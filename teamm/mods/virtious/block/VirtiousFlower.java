@@ -151,6 +151,6 @@ public class VirtiousFlower extends VirtiousBlock implements IPlantable
      */
     public int getRenderBlockPass()
     {
-        return 0;
+        return 1;
     }
 }
