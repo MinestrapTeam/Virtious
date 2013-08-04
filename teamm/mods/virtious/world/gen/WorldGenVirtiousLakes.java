@@ -1,6 +1,8 @@
 package teamm.mods.virtious.world.gen;
 
 import java.util.Random;
+
+import teamm.mods.virtious.lib.VirtiousBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.EnumSkyBlock;
@@ -131,11 +133,11 @@ public class WorldGenVirtiousLakes extends WorldGenerator
 
 //                            if (biomegenbase.topBlock == Block.mycelium.blockID)
 //                            {
-//                                world.setBlock(i + i1, j + i2 - 1, k + j2, Block.mycelium.blockID, 0, 2);
+                                world.setBlock(i + i1, j + i2 - 1, k + j2, VirtiousBlocks.virtianGrass.blockID, 0, 2);
 //                            }
 //                            else
 //                            {
-                            world.setBlock(i + i1, j + i2 - 1, k + j2, biomegenbase.topBlock, 0, 2);
+//                            world.setBlock(i + i1, j + i2 - 1, k + j2, biomegenbase.topBlock, 0, 2);
 //                            }
                         }
                     }
