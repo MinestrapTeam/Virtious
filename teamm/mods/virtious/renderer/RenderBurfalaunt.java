@@ -11,20 +11,20 @@ import net.minecraft.util.ResourceLocation;
 @SideOnly(Side.CLIENT)
 public class RenderBurfalaunt extends RenderLiving
 {
-    private static final ResourceLocation field_110833_a = new ResourceLocation("virtious:textures/models/Burfalaunt.png");
+    private static final ResourceLocation TEXTURE_BURFALAUNT = new ResourceLocation("virtious:textures/models/Burfalaunt.png");
 
-    public RenderBurfalaunt(ModelBase par1ModelBase, float par2)
+    public RenderBurfalaunt(ModelBase modelBase, float size)
     {
-        super(par1ModelBase, par2);
+        super(modelBase, size);
     }
 
-    protected ResourceLocation func_110832_a(EntityBurfalaunt par1EntityCow)
+    protected ResourceLocation func_110832_a(EntityBurfalaunt entityBurfalaunt)
     {
-        return field_110833_a;
+        return TEXTURE_BURFALAUNT;
     }
 
-    protected ResourceLocation func_110775_a(Entity par1Entity)
+    protected ResourceLocation func_110775_a(Entity entity)
     {
-        return this.func_110832_a((EntityBurfalaunt)par1Entity);
+        return this.func_110832_a((EntityBurfalaunt)entity);
     }
 }
