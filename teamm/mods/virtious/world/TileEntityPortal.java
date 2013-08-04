@@ -1,6 +1,7 @@
 package teamm.mods.virtious.world;
 
 import teamm.mods.virtious.lib.VirtiousBlocks;
+import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityPortal extends TileEntity{
@@ -27,7 +28,7 @@ public class TileEntityPortal extends TileEntity{
 		{
 			for(int z = -1; z <= 1; z++)
 			{
-				if(this.worldObj.getBlockId(this.xCoord + x, this.yCoord - 1, this.zCoord + z) != VirtiousBlocks.blockIlluminous.blockID)
+				if(this.worldObj.getBlockId(this.xCoord + x, this.yCoord - 1, this.zCoord + z) != Block.blockIron.blockID)//FIXME
 					return false;
 			}
 		}

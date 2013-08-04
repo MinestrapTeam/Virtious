@@ -20,8 +20,8 @@ public class BiomeGenCanyon extends BiomeGenBase
 	public BiomeGenCanyon(int par1) {
 		super(par1);
 		
-		this.maxHeight = 1F;
 		this.minHeight = 0.1F;
+        this.maxHeight = 0.3F;
         
         this.spawnableMonsterList.clear();
         this.spawnableCreatureList.clear();

@@ -59,23 +59,6 @@ public class VirtiousTeleporter extends Teleporter
             int i = MathHelper.floor_double(entity.posX);
             int j = MathHelper.floor_double(entity.posY) - 1;
             int k = MathHelper.floor_double(entity.posZ);
-            byte b0 = 1;
-            byte b1 = 0;
-
-            for (int l = -2; l <= 2; ++l)
-            {
-                for (int i1 = -2; i1 <= 2; ++i1)
-                {
-                    for (int j1 = -1; j1 < 3; ++j1)
-                    {
-                        int k1 = i + i1 * b0 + l * b1;
-                        int l1 = j + j1;
-                        int i2 = k + i1 * b1 - l * b0;
-                        boolean flag = j1 < 0;
-                        this.worldServerInstance.setBlock(k1, l1, i2, flag ? Block.obsidian.blockID : 0);
-                    }
-                }
-            }
 
             entity.setLocationAndAngles((double)i, (double)j, (double)k, entity.rotationYaw, 0.0F);
             entity.motionX = entity.motionY = entity.motionZ = 0.0D;
@@ -196,7 +179,7 @@ public class VirtiousTeleporter extends Teleporter
 					{
 						for(int z2 = z - 1; z2 <= z + 1; z2++)
 						{
-							worldServerInstance.setBlock(x2, y, z2, VirtiousBlocks.blockIlluminous.blockID, 0, 2);///FIXME
+							worldServerInstance.setBlock(x2, y, z2, Block.blockIron.blockID, 0, 2);///FIXME
 						}
 
 					}

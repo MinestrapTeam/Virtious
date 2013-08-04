@@ -27,16 +27,13 @@ import net.minecraftforge.client.IRenderHandler;
 import net.minecraftforge.common.DimensionManager;
 
 public class VirtiousProvider extends WorldProvider {
-
-	public VirtiousProvider(){
-		this.worldChunkMgr = new VirtiousChunkManager();
-		this.dimensionId = Virtious.dimensionID;
-	}
 	
 	@Override
 	public void registerWorldChunkManager(){
+		this.worldChunkMgr = new VirtiousChunkManager(this.worldObj);
 		this.dimensionId = Virtious.dimensionID;
 		this.hasNoSky = false;
+		
 		if(worldObj.isRemote)
 		{
 			this.setSkyRenderer(new SkyRenderer());

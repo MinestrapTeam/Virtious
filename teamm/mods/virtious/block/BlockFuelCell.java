@@ -36,7 +36,7 @@ public class BlockFuelCell extends VirtiousBlock{
 	    		{
 	    			for(int z = -1; z <= 1; z++)
 	    			{
-	    				if(world.getBlockId(i + x, j + 1, k + z) != VirtiousBlocks.blockIlluminous.blockID)//FIXME: titanium
+	    				if(world.getBlockId(i + x, j + 1, k + z) != Block.blockIron.blockID)//FIXME: titanium
 	    					return false;
 	    			}
 				}

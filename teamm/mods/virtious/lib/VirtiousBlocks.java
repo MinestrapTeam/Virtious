@@ -62,7 +62,7 @@ public class VirtiousBlocks {
 		
 		Property idPortalBlock = Virtious.config.getBlock("idPortalBlock", Config.idPortal);
 		int portalBlockID = idPortalBlock.getInt();
-		portalBlock = new PortalBlock(portalBlockID).setHardness(1.0F).setStepSound(Block.soundStoneFootstep);
+		portalBlock = new PortalBlock(portalBlockID).setHardness(5.0F).setStepSound(Block.soundStoneFootstep);
 		registerBlock(portalBlock, "Portal");
 		
 		Property idVirtianstone = Virtious.config.getTerrainBlock("worldgen", "Virtianstone Id", Config.idVirtianstone, null);

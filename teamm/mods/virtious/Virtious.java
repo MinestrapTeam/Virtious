@@ -129,8 +129,6 @@ public class Virtious {
 	@EventHandler
 	public void init(FMLInitializationEvent evt)
 	{
-		virtiousBiome = new BiomeGenVirtious(Virtious.virtiousBiomeID);
-		canyonBiome = new BiomeGenCanyon(Virtious.canyonBiomeID);
 		
 		MinecraftForge.EVENT_BUS.register(new VirtiousBonemealEvent());
 		
@@ -138,6 +136,9 @@ public class Virtious {
 				
 		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
+		
+		virtiousBiome = new BiomeGenVirtious(Virtious.virtiousBiomeID);
+		canyonBiome = new BiomeGenCanyon(Virtious.canyonBiomeID);
 		
 		EntityRegistry.registerModEntity(EntityStickyBomb.class, "StickyBomb", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityVirtiousFishHook.class, "VirtiousFishingHook", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
