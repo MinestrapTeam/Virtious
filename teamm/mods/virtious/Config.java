@@ -44,7 +44,12 @@ public class Config {
 	public static int iddeepstoneBricks = 2027;
 	public static int idcanyonstoneBricks = 2028;
 	public static int idFuelCell = 2029;
+	public static int idTorchBlue = 2030;
+	public static int idTorchGreen = 2031;
+	public static int idMushroomBlue = 2032;
+	public static int idMushroomGreen = 2033;
 
+	
 	//Items
 	public static int idIngotBrazeum = 5000;
 	public static int idShardAquieus = 5001;

@@ -3,6 +3,7 @@ package teamm.mods.virtious.lib;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFlowerPot;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
@@ -10,6 +11,7 @@ import net.minecraftforge.common.Property;
 import teamm.mods.virtious.Config;
 import teamm.mods.virtious.Virtious;
 import teamm.mods.virtious.block.*;
+import teamm.mods.virtious.world.VirtiousTeleporter;
 
 public class VirtiousBlocks {
 	public static Block deepStone;
@@ -49,6 +51,10 @@ public class VirtiousBlocks {
 	public static Block deepstoneBricks;
 	public static Block canyonstoneBricks;
 	public static Block fuelCell;
+	public static Block torchBlue;
+	public static Block torchGreen;
+	public static Block mushroomBlue;
+	public static Block mushroomGreen;
 	
 	/**
 	 * Loads all block objects
@@ -215,11 +221,28 @@ public class VirtiousBlocks {
 		Property idcanyonstoneBricks = Virtious.config.getBlock("Canyonstone Bricks Id", Config.idcanyonstoneBricks);
 		canyonstoneBricks = new VirtiousBlock(idcanyonstoneBricks.getInt(), Material.rock).setHardness(3.0F).setUnlocalizedName("CanyonstoneBricks");
 		registerBlock(canyonstoneBricks, "Canyonstone Bricks");
-		
 
 		Property idFuelCell = Virtious.config.getBlock("Fuel Cell Id", Config.idFuelCell);
 		fuelCell = new BlockFuelCell(idFuelCell.getInt(), Material.rock).setHardness(3.0F).setUnlocalizedName("FuelBlockSide");
 		registerBlock(fuelCell, "Fuel Cell");
+
+		Property idTorchBlue = Virtious.config.getBlock("Torch Blue Id", Config.idTorchBlue);
+		torchBlue = new VirtiousTorchBlock(idTorchBlue.getInt()).setHardness(0.0F).setLightValue(0.85F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("BlueMushroomTorch");
+		registerBlock(torchBlue, "Blue Mushroom Torch");
+		
+		Property idTorchGreen = Virtious.config.getBlock("Torch Green Id", Config.idTorchGreen);
+		torchGreen = new VirtiousTorchBlock(idTorchGreen.getInt()).setHardness(0.0F).setLightValue(0.8F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("GreenMushroomTorch");
+		registerBlock(torchGreen, "Green Mushroom Torch");
+
+		Property idMushroomBlue = Virtious.config.getBlock("Mushroom Blue Id", Config.idMushroomBlue);
+		mushroomBlue = new VirtiousFlower(idMushroomBlue.getInt()).setHardness(0.0F).setLightValue(0.75F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("GlowingMushroomBlue");
+		registerBlock(mushroomBlue, "Blue Mushroom");
+		
+		Property idMushroomGreen = Virtious.config.getBlock("Mushroom Green Id", Config.idMushroomGreen);
+		mushroomGreen = new VirtiousFlower(idMushroomGreen.getInt()).setHardness(0.0F).setLightValue(0.7F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("GlowingMushroomGreen");
+		registerBlock(mushroomGreen, "Green Mushroom");
+		
+
 		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);

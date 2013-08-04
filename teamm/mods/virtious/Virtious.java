@@ -71,8 +71,8 @@ public class Virtious {
 	public static int canyonBiomeID;
 	
 	/* Biomes */
-	public static BiomeGenBase virtiousBiome = null;
-	public static BiomeGenBase canyonBiome = null;
+	public static BiomeGenBase biomeWhiskerfields = null;
+	public static BiomeGenBase biomeCanyon = null;
 
 	public static Configuration config;
 	
@@ -137,8 +137,8 @@ public class Virtious {
 		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
 		
-		virtiousBiome = new BiomeGenVirtious(Virtious.virtiousBiomeID);
-		canyonBiome = new BiomeGenCanyon(Virtious.canyonBiomeID);
+		biomeWhiskerfields = new BiomeGenVirtious(Virtious.virtiousBiomeID);
+		biomeCanyon = new BiomeGenCanyon(Virtious.canyonBiomeID);
 		
 		EntityRegistry.registerModEntity(EntityStickyBomb.class, "StickyBomb", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityVirtiousFishHook.class, "VirtiousFishingHook", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);

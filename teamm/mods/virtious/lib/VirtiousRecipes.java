@@ -3,6 +3,7 @@ package teamm.mods.virtious.lib;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class VirtiousRecipes 
@@ -29,14 +30,14 @@ public class VirtiousRecipes
 				{
 			VirtiousBlocks.logVirtian
 				});
-		GameRegistry.addRecipe(new ItemStack(Item.stick, 4), new Object[]
-				{
-			"T", "T", Character.valueOf('T'), VirtiousBlocks.plankAmber
-				});
-		GameRegistry.addRecipe(new ItemStack(Item.stick, 4), new Object[]
-				{
-			"T", "T", Character.valueOf('T'), VirtiousBlocks.plankVirtian
-				});
+//		GameRegistry.addRecipe(new ItemStack(Item.stick, 4), new Object[]
+//				{
+//			"T", "T", Character.valueOf('T'), VirtiousBlocks.plankAmber
+//				});
+//		GameRegistry.addRecipe(new ItemStack(Item.stick, 4), new Object[]
+//				{
+//			"T", "T", Character.valueOf('T'), VirtiousBlocks.plankVirtian
+//				});
 		GameRegistry.addRecipe(new ItemStack(VirtiousItems.amberwoodPickaxe, 1), new Object[]
 				{
 			"WWW", " S ", " S ", Character.valueOf('W'), VirtiousBlocks.plankAmber, Character.valueOf('S'), Item.stick
@@ -205,6 +206,26 @@ public class VirtiousRecipes
 				{
 			"SS", "SS", Character.valueOf('S'), VirtiousBlocks.canyonstone
 				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.torchBlue, 6), new Object[]
+				{
+			"M", "T", Character.valueOf('T'), VirtiousItems.tak, Character.valueOf('M'), VirtiousBlocks.mushroomBlue
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.torchGreen, 6), new Object[]
+				{
+			"M", "T", Character.valueOf('T'), VirtiousItems.tak, Character.valueOf('M'), VirtiousBlocks.mushroomGreen
+				});
+		
+		OreDictionary.registerOre("plankWood", VirtiousBlocks.plankAmber);
+		OreDictionary.registerOre("plankWood", VirtiousBlocks.plankVirtian);
+		OreDictionary.registerOre("treeSapling", VirtiousBlocks.saplingAmber);
+		OreDictionary.registerOre("treeSapling", VirtiousBlocks.saplingVirtian);
+		OreDictionary.registerOre("treeLeaves", VirtiousBlocks.leavesAmber);
+		OreDictionary.registerOre("treeLeaves", VirtiousBlocks.leavesVirtian);
+		OreDictionary.registerOre("logWood", VirtiousBlocks.logAmber);
+		OreDictionary.registerOre("logWood", VirtiousBlocks.logVirtian);
+		
+		
+		
 		//TODO Load all recipes here
 	}
 }
