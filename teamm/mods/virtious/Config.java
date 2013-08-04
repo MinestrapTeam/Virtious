@@ -4,6 +4,7 @@ public class Config {
 	public static int virtiousBiomeID = 25;
 	public static int canyoneBiomeID = 26;
 	public static int whiskerfieldBiomeID = 27;
+	public static int gravelBeachBiomeID = 28;
 
 	//Worldgen Blocks - under 256
 	public static int idDeepStone = 200;
@@ -49,6 +50,7 @@ public class Config {
 	public static int idTorchGreen = 2031;
 	public static int idMushroomBlue = 2032;
 	public static int idMushroomGreen = 2033;
+	public static int idFineGravel = 2034;
 
 	
 	//Items

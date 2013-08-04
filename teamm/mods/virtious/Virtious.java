@@ -68,14 +68,17 @@ public class Virtious {
 	}
 	
 	public static int dimensionID;
+	
 	public static int virtiousBiomeID;
 	public static int canyonBiomeID;
 	public static int whiskerfieldBiomeID;
-	
+	public static int GravelBeachBiomeID;
+
 	/* Biomes */
 	public static BiomeGenBase virtiousBiome = null;
 	public static BiomeGenBase biomeCanyon = null;
 	public static BiomeGenBase biomeWhiskerfield = null;
+	public static BiomeGenBase biomeGravelBeach = null;
 
 	public static Configuration config;
 	
@@ -104,11 +107,14 @@ public class Virtious {
 			Property idDim = Virtious.config.get("Special", "dimensionID", DimensionManager.getNextFreeDimId());
 			dimensionID = idDim.getInt();
 
-			Property idvirtiousBiome = Virtious.config.get("Special", "virtiousBiomeID", Config.virtiousBiomeID);
-			virtiousBiomeID = idvirtiousBiome.getInt();
-			
-			Property idcanyonBiome = Virtious.config.get("Special", "Canyon Biome Id", Config.canyoneBiomeID);
-			canyonBiomeID = idcanyonBiome.getInt();
+			Property idVirtiousBiome = Virtious.config.get("Special", "virtiousBiomeID", Config.virtiousBiomeID);
+			virtiousBiomeID = idVirtiousBiome.getInt();
+
+			Property idCanyonBiome = Virtious.config.get("Special", "Canyon Biome Id", Config.canyoneBiomeID);
+			canyonBiomeID = idCanyonBiome.getInt();
+
+			Property idGravelBeachBiome = Virtious.config.get("Special", "Gravel Beach Biome Id", Config.gravelBeachBiomeID);
+			GravelBeachBiomeID = idGravelBeachBiome.getInt();
 			
 			Property idwhiskerfieldBiome = Virtious.config.get("Special", "Whiskerfield Biome Id", Config.whiskerfieldBiomeID);
 			whiskerfieldBiomeID = idwhiskerfieldBiome.getInt();
@@ -146,6 +152,7 @@ public class Virtious {
 		virtiousBiome = new BiomeGenVirtious(Virtious.virtiousBiomeID);
 		biomeCanyon = new BiomeGenCanyon(Virtious.canyonBiomeID);
 		biomeWhiskerfield = new BiomeGenWhiskerfield(Virtious.whiskerfieldBiomeID);
+		biomeGravelBeach = new BiomeGenCanyon(Virtious.canyonBiomeID);
 		
 		EntityRegistry.registerModEntity(EntityStickyBomb.class, "StickyBomb", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityVirtiousFishHook.class, "VirtiousFishingHook", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
