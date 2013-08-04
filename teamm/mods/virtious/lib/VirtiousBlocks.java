@@ -55,6 +55,7 @@ public class VirtiousBlocks {
 	public static Block blockAquieus;
 	public static Block blockPluthorium;
 	public static Block virtianstoneBricks;
+	public static Block blockIlluminous;
 
 	/**
 	 * Loads all block objects
@@ -206,6 +207,10 @@ public class VirtiousBlocks {
 		virtianstoneBricks = new VirtiousBlock(idvirtianstoneBricks.getInt(), Material.rock).setHardness(3.0F).setUnlocalizedName("VirtianstoneBricks");
 		registerBlock(virtianstoneBricks, "Virtianstone Bricks");
 		
+		Property idblockIlluminous = Virtious.config.getBlock("Illuminous Block Id", Config.idblockIlluminous);
+		blockIlluminous = new VirtiousBlock(idblockIlluminous.getInt(), Material.rock).setHardness(3.0F).setLightValue(1.0F).setUnlocalizedName("IlluminousBlock");
+		registerBlock(blockIlluminous, "Illuminous Block");
+		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(deepStone, "pickaxe", 2);
@@ -218,7 +223,8 @@ public class VirtiousBlocks {
 		//TODO add all block objects here
 	}
 
-	public void registerBlock(Block block, String name) {
+	public void registerBlock(Block block, String name) 
+	{
 		GameRegistry.registerBlock(block, name);
 		LanguageRegistry.addName(block, name);
 	}

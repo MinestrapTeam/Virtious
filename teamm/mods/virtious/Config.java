@@ -39,6 +39,7 @@ public class Config {
 	public static int idblockAquieus = 2022;
 	public static int idblockPluthorium = 2023;
 	public static int idblockvirtianstoneBricks = 2024;
+	public static int idblockIlluminous = 2025;
 
 	//Items
 	public static int idIngotBrazeum = 5000;

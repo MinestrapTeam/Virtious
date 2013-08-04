@@ -192,8 +192,11 @@ public class VirtiousRecipes
 		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.blockPluthorium), new Object[]
 				{
 			"SSS", "SSS", "SSS", Character.valueOf('S'), VirtiousItems.gemPluthorium
+				});	
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.blockIlluminous), new Object[]
+				{
+			"SS", "SS", Character.valueOf('S'), VirtiousItems.gemIlluminous
 				});
-		
 		//TODO Load all recipes here
 	}
 }
