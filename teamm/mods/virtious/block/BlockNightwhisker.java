@@ -16,13 +16,13 @@ import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.IShearable;
 
-public class NightwhiskerBlock extends VirtiousBlock  implements IPlantable, IShearable{
+public class BlockNightwhisker extends VirtiousBlock  implements IPlantable, IShearable{
 
-    public NightwhiskerBlock(int id)
+    public BlockNightwhisker(int id)
     {
         super(id, Material.vine);
         this.setTickRandomly(true);
-        float f = 0.2F;
+        float f = 0.4F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
     }
 

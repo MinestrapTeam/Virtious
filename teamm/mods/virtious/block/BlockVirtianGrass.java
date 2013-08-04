@@ -31,7 +31,7 @@ public class BlockVirtianGrass extends VirtiousBlock
             {
                 par1World.setBlock(par2, par3, par4, VirtiousBlocks.virtianSoil.blockID);
             }
-            else if (par1World.getBlockLightValue(par2, par3 + 1, par4) >= 9)
+            else if (par1World.getBlockLightValue(par2, par3 + 1, par4) <= 9)
             {
                 for (int l = 0; l < 4; ++l)
                 {

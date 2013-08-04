@@ -1,7 +1,9 @@
 package teamm.mods.virtious.block;
 
+import teamm.mods.virtious.lib.VirtiousBlocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,17 +26,34 @@ public class BlockFuelCell extends VirtiousBlock{
 	
 	@Override
     public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer player, int par6, float par7, float par8, float par9){
-    	if(player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem() == new ItemStack(Item.flintAndSteel))//FIXME
+    	if(player.getCurrentEquippedItem() != null)
     	{
-    		
+    		if(player.getCurrentEquippedItem().isItemEqual(new ItemStack(Item.arrow, 1)))//FIXME
+        	{player.addChatMessage("active");
+				if(world.getBlockId(i, j + 2, k) == VirtiousBlocks.portalBlock.blockID || (Block.blocksList[world.getBlockId(i, j + 2, k)] != null && !Block.blocksList[world.getBlockId(i, j + 2, k)].canBeReplacedByLeaves(world, i, j + 2, k)))
+					return false;
+				for(int x = -1; x <= 1; x++)
+	    		{
+	    			for(int z = -1; z <= 1; z++)
+	    			{
+	    				if(world.getBlockId(i + x, j + 1, k + z) != VirtiousBlocks.blockIlluminous.blockID)//FIXME: titanium
+	    					return false;
+	    			}
+				}
+				if(!player.capabilities.isCreativeMode)
+					player.getCurrentEquippedItem().stackSize--;
+	    		world.setBlock(i, j + 2, k, VirtiousBlocks.portalBlock.blockID);
+	    		world.setBlockToAir(i, j, k);
+	    	}
     	}
     	return false;
     }
 	@Override
     public void registerIcons(IconRegister r)
 	{
+		super.registerIcons(r);
 		this.top = r.registerIcon("virtious:FuelBlockTop");
-		this.bottom = r.registerIcon("FuelBlockBottom");
+		this.bottom = r.registerIcon("virtious:FuelBlockBottom");
 	}
 	
 	@SideOnly(Side.CLIENT)

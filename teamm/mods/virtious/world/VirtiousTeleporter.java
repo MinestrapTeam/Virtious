@@ -4,162 +4,236 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+
+import teamm.mods.virtious.lib.VirtiousBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.LongHashMap;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.ChunkCoordIntPair;
-import net.minecraft.world.PortalPosition;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 
 public class VirtiousTeleporter extends Teleporter
 {
-	private final WorldServer worldServer;
-    private final Random random;
-//    public static ArrayList<ElysianPortalPosition> portals = new ArrayList<ElysianPortalPosition>();
+	
 
-	public VirtiousTeleporter(WorldServer worldServer)
+	private final WorldServer worldServerInstance;
+
+    /** A private Random() function in Teleporter */
+    private final Random random;
+
+    /** Stores successful portal placement locations for rapid lookup. */
+    private final LongHashMap destinationCoordinateCache = new LongHashMap();
+    
+    public VirtiousTeleporter(WorldServer worldServer)
 	{
 		super(worldServer);
-		this.worldServer = worldServer;
+		this.worldServerInstance = worldServer;
 		this.random = new Random(worldServer.getSeed());
 	}
+    /**
+     * A list of valid keys for the destinationCoordainteCache. These are based on the X & Z of the players initial
+     * location.
+     */
+    private final List destinationCoordinateKeys = new ArrayList();
 
-	@Override
-	public void placeInPortal(Entity entity, double par2, double par4, double par6, float par8)
-	{
-		worldServer.updateEntities();
-		if(!this.placeInExistingPortal(entity, par2, par4, par6, par8))
-		{
-			this.makePortal(entity);
-		}
-	}
+   
 
-	@Override
-	public boolean placeInExistingPortal(Entity entity, double par2, double par4, double par6, float par8)
-	{
-//		int x = MathHelper.floor_double(entity.posX);
-//		int z = MathHelper.floor_double(entity.posZ);
-//		int i;
-//		for(i=0; i<portals.size(); i++)
-//		{
-//			if((portals.get(i).dim == entity.dimension) && (Math.abs(portals.get(i).posX-x) < DefaultProps.maxportaldistance) && (Math.abs(portals.get(i).posZ-z) < DefaultProps.maxportaldistance))
-//			{
-//				entity.motionX = entity.motionY = entity.motionZ = 0.0D;
-//				int dx = random.nextInt(2);
-//				if(dx == 0) dx = -1;
-//				int dz = random.nextInt(2);
-//				if(dz == 0) dz = -1;
-//				entity.setPosition(portals.get(i).posX+0.5D+dx, portals.get(i).posY, portals.get(i).posZ+0.5D+dz);
-//				return true;
-//			}
-//		}
-		return false;
-	}
+    /**
+     * Place an entity in a nearby portal, creating one if necessary.
+     */
+    public void placeInPortal(Entity entity, double x, double y, double z, float par8)
+    {
+        if (this.worldServerInstance.provider.dimensionId != 1)
+        {
+            if (!this.placeInExistingPortal(entity, x, y, z, par8))
+            {
+                this.makePortal(entity);
+                this.placeInExistingPortal(entity, x, y, z, par8);
+            }
+        }
+        else
+        {
+            int i = MathHelper.floor_double(entity.posX);
+            int j = MathHelper.floor_double(entity.posY) - 1;
+            int k = MathHelper.floor_double(entity.posZ);
+            byte b0 = 1;
+            byte b1 = 0;
 
-	@Override
-	public boolean makePortal(Entity entity)
-	{
-		int x, y, z;
+            for (int l = -2; l <= 2; ++l)
+            {
+                for (int i1 = -2; i1 <= 2; ++i1)
+                {
+                    for (int j1 = -1; j1 < 3; ++j1)
+                    {
+                        int k1 = i + i1 * b0 + l * b1;
+                        int l1 = j + j1;
+                        int i2 = k + i1 * b1 - l * b0;
+                        boolean flag = j1 < 0;
+                        this.worldServerInstance.setBlock(k1, l1, i2, flag ? Block.obsidian.blockID : 0);
+                    }
+                }
+            }
 
-//		boolean canBuild = false;
-//
-//		while(true){
-			x = MathHelper.floor_double(entity.posX) + random.nextInt(100) - 100/2;
-			z = MathHelper.floor_double(entity.posZ) + random.nextInt(100) - 100/2;
-			y = worldServer.getTopSolidOrLiquidBlock(x, z)-1;
-//
-//			//check if can build
-//			int waterBellow = 0;
-//			for(int a=-2; a <= 2; a++)
-//			{
-//				for(int b=-2; b <= 2; b++)
-//				{
-//					int id = worldServer.getBlockId(x+a, y, z+b);
-//					if(id == 0 || id == Block.waterStill.blockID || id == Block.waterMoving.blockID || /*id == Elysium.waterStill.blockID || id == Elysium.waterMoving.blockID ||*/ id == Block.blockNetherQuartz.blockID)
-//						waterBellow++;
-//
-//				}
-//			}
-//
-//			if(waterBellow > 25/2)//More then the half is water bellow
-//				continue;
-//			else
-//				canBuild = true;
-//			//check end
-//
-//			if(y<63-7)
-//				y=63-7;
-//
-//			//get lowest air block underneath
-//			int lowest = -1;
-//			for (int i = -2; i <= 2; i++) {
-//				for (int j = -2; j <= 2; j++) {
-//					if(lowest == -1 || worldServer.getTopSolidOrLiquidBlock(x+i, z+j) < lowest)
-//						lowest = worldServer.getTopSolidOrLiquidBlock(x+i, z+j);
-//				}
-//			}
-//			for (int j = y; j >= lowest; j--) {
-//				for (int i = -2; i <= 2; i++) {
-//					for (int k = -2; k <= 2; k++) {
-//						int block = worldServer.getBlockId(x+i, j, z+k);
-//						if(block == 0 || Block.blocksList[block].canBeReplacedByLeaves(worldServer, x+i, j, z+k)){
-//							//worldServer.setBlock(x+i, j, z+k, worldServer.getBiomeGenForCoords(x+i, z+k).fillerBlock); Causes crash!
-//							if(worldServer.provider.dimensionId == Elysium.DimensionID)
-//								worldServer.setBlock(x+i, j, z+k, Elysium.blockDirt.blockID);
-//							else
-//								worldServer.setBlock(x+i, j, z+k, Block.dirt.blockID);
-//						}
-//					}
-//				}
-//			}
-//
-//			worldServer.setBlock(x, y+9, z, Elysium.blockPortalCore.blockID);
-//			worldServer.setBlockMetadataWithNotify(x, y+9, z, 1, 0);
-//
-//			for(int i=-1; i <= 1; i++)
-//			{
-//				for(int j=-1; j <= 1; j++)
-//				{
-//					worldServer.setBlock(x+i, y+8, z+j, Block.blockNetherQuartz.blockID);
-//					worldServer.setBlockMetadataWithNotify(x+i, y+8, z+j, 1, 0);
-//
-//					worldServer.setBlock(x+i, y+6, z+j, Block.blockNetherQuartz.blockID);
-//					worldServer.setBlockMetadataWithNotify(x+i, y+6, z+j, 2, 0);
-//					worldServer.setBlock(x+i, y+5, z+j, Block.blockNetherQuartz.blockID);
-//					worldServer.setBlockMetadataWithNotify(x+i, y+5, z+j, 2, 0);
-//
-//					worldServer.setBlock(x+i, y+4, z+j, Block.blockGold.blockID);
-//
-//					worldServer.setBlock(x+i, y+3, z+j, Block.blockNetherQuartz.blockID);
-//					worldServer.setBlockMetadataWithNotify(x+i, y+3, z+j, 2, 0);
-//					worldServer.setBlock(x+i, y+2, z+j, Block.blockNetherQuartz.blockID);
-//					worldServer.setBlockMetadataWithNotify(x+i, y+2, z+j, 2, 0);
-//				}
-//			}
-//			for(int i=-2; i <= 2; i++)
-//			{
-//				for(int j=-2; j <= 2; j++)
-//				{
-//					worldServer.setBlock(x+i, y+7, z+j, Block.blockNetherQuartz.blockID);
-//					worldServer.setBlock(x+i, y+1, z+j, Block.blockNetherQuartz.blockID);
-//				}
-//			}
-//
-//
-//
-//			if(canBuild)
-//				break;
-//		}
-		entity.motionX = entity.motionY = entity.motionZ = 0.0D;
-		int dx = random.nextInt(2);
-		if(dx == 0) dx = -1;
-		int dz = random.nextInt(2);
-		if(dz == 0) dz = -1;
-		entity.setPosition(x+0.5D+dx, y+9, z+0.5D+dz);
+            entity.setLocationAndAngles((double)i, (double)j, (double)k, entity.rotationYaw, 0.0F);
+            entity.motionX = entity.motionY = entity.motionZ = 0.0D;
+        }
+    }
 
-		return true;
-	}
+    /**
+     * Place an entity in a nearby portal which already exists.
+     */
+    public boolean placeInExistingPortal(Entity entity, double par2, double par4, double par6, float par8)
+    {
+        short radius = 128;//for check
+        double d3 = -1.0D;
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        int entityx = MathHelper.floor_double(entity.posX);
+        int entityZ = MathHelper.floor_double(entity.posZ);
+        long chunkIntPair = ChunkCoordIntPair.chunkXZ2Int(entityx, entityZ);
+        boolean flag = true;
+        double zSpawn;
+        int x;
+
+        if (this.destinationCoordinateCache.containsItem(chunkIntPair))
+        {
+        	VirtiousPortalPosition VirtiousPortalPosition = (VirtiousPortalPosition)this.destinationCoordinateCache.getValueByKey(chunkIntPair);
+            d3 = 0.0D;
+            i = VirtiousPortalPosition.posX;
+            j = VirtiousPortalPosition.posY;
+            k = VirtiousPortalPosition.posZ;
+            VirtiousPortalPosition.lastUpdateTime = this.worldServerInstance.getTotalWorldTime();
+            flag = false;
+        }
+        else
+        {
+            for (x = entityx - radius; x <= entityx + radius; ++x)
+            {
+                double d5 = (double)x + 0.5D - entity.posX;
+
+                for (int z = entityZ - radius; z <= entityZ + radius; ++z)
+                {
+                    double d6 = (double)z + 0.5D - entity.posZ;
+
+                    for (int y = this.worldServerInstance.getActualHeight() - 1; y >= 0; --y)
+                    {
+                        if (this.worldServerInstance.getBlockId(x, y, z) == VirtiousBlocks.portalBlock.blockID)
+                        {
+
+                            zSpawn = (double)y + 0.5D - entity.posY;
+                            double d7 = d5 * d5 + zSpawn * zSpawn + d6 * d6;
+
+                            if (d3 < 0.0D || d7 < d3)
+                            {
+                                d3 = d7;
+                                i = x;
+                                j = y;
+                                k = z;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if (d3 >= 0.0D)
+        {
+            if (flag)
+            {
+                this.destinationCoordinateCache.add(chunkIntPair, new VirtiousPortalPosition(this, i, j, k, this.worldServerInstance.getTotalWorldTime()));
+                this.destinationCoordinateKeys.add(Long.valueOf(chunkIntPair));
+            }
+
+            double xSpawn = (double)i + 0.5D;
+            double ySpawn = (double)j + 0.5D;
+            zSpawn = (double)k + 0.5D;
+            entity.motionX = entity.motionY = entity.motionZ = 0.0D;
+            entity.setLocationAndAngles(xSpawn + 1, ySpawn + 1, zSpawn, entity.rotationYaw, entity.rotationPitch);
+        	System.out.println("existing portal");
+
+            return true;
+        }
+        else
+        {
+        	System.out.println("no existing portal");
+            return false;
+        }
+    }
+
+    public boolean makePortal(Entity entity)
+    {
+        byte checkRadius = 32;
+        int i = MathHelper.floor_double(entity.posX);
+        int j = MathHelper.floor_double(entity.posY);////unused?
+        int k = MathHelper.floor_double(entity.posZ);
+        
+        int x, y, z;
+        
+        label274:
+        while(true)
+        {
+        	int rand1 = random.nextInt(checkRadius * 2);
+        	int rand2 = random.nextInt(checkRadius * 2);
+        	
+	        	x = i + rand1 - checkRadius;
+    			z = k + rand2 - checkRadius;
+	        	y = worldServerInstance.getActualHeight() - 1;
+	        	while(y > 0 && worldServerInstance.isAirBlock(x, y-1, z))
+	        	{
+	        		y--;
+	        	}
+	        	
+				if(this.worldServerInstance.getBlockId(x, y - 1, z) == VirtiousBlocks.virtianGrass.blockID ||
+						this.worldServerInstance.getBlockId(x, y - 1, z) == VirtiousBlocks.virtianSoil.blockID ||
+						this.worldServerInstance.getBlockId(x, y - 1, z) == Block.grass.blockID ||
+						(this.worldServerInstance.getBiomeGenForCoords(x, z) != null && 
+						this.worldServerInstance.getBiomeGenForCoords(x, z).topBlock == this.worldServerInstance.getBlockId(x, y - 1, z))){
+					for(int x2 = x - 1; x2 <= x + 1; x2++)
+					{
+						for(int z2 = z - 1; z2 <= z + 1; z2++)
+						{
+							worldServerInstance.setBlock(x2, y, z2, VirtiousBlocks.blockIlluminous.blockID, 0, 2);///FIXME
+						}
+
+					}
+					
+					worldServerInstance.setBlock(x, y+1, z, VirtiousBlocks.portalBlock.blockID, 0, 2);
+					System.out.println("X: " + x + " Y: " + (y + 1) + " Z: " + z);
+					break;
+				} else {
+        			continue label274;
+    			}
+        }
+                                   
+        return true;
+    }
+
+    /**
+     * called periodically to remove out-of-date portal locations from the cache list. Argument par1 is a
+     * WorldServer.getTotalWorldTime() value.
+     */
+    public void removeStalePortalLocations(long par1)
+    {
+        if (par1 % 100L == 0L)
+        {
+            Iterator iterator = this.destinationCoordinateKeys.iterator();
+            long j = par1 - 600L;
+
+            while (iterator.hasNext())
+            {
+                Long olong = (Long)iterator.next();
+                VirtiousPortalPosition VirtiousPortalPosition = (VirtiousPortalPosition)this.destinationCoordinateCache.getValueByKey(olong.longValue());
+
+                if (VirtiousPortalPosition == null || VirtiousPortalPosition.lastUpdateTime < j)
+                {
+                    iterator.remove();
+                    this.destinationCoordinateCache.remove(olong.longValue());
+                }
+            }
+        }
+    }
 }
