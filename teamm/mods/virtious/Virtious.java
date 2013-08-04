@@ -3,6 +3,7 @@ package teamm.mods.virtious;
 import java.io.File;
 import java.util.logging.Level;
 
+import teamm.mods.virtious.entity.EntityBurfalaunt;
 import teamm.mods.virtious.entity.item.EntityStickyBomb;
 import teamm.mods.virtious.entity.item.EntityVirtiousFishHook;
 import teamm.mods.virtious.event.VirtiousBonemealEvent;
@@ -21,6 +22,7 @@ import teamm.mods.virtious.world.biome.BiomeGenVirtious;
 import teamm.mods.virtious.world.gen.VirtiousOreGenerator;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.src.ModLoader;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.Configuration;
@@ -135,6 +137,8 @@ public class Virtious {
 		
 		EntityRegistry.registerModEntity(EntityStickyBomb.class, "StickyBomb", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityVirtiousFishHook.class, "VirtiousFishingHook", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
+		
+		ModLoader.registerEntityID(EntityBurfalaunt.class, "EntityBurfalaunt", EntityRegistry.findGlobalUniqueEntityId(), 0x646464, 0x3A3A3A);
 		
 		proxy.registerRenderThings();
 	}
