@@ -237,11 +237,11 @@ public class VirtiousBlocks {
 		registerBlock(torchGreen, "Green Mushroom Torch");
 
 		Property idMushroomBlue = Virtious.config.getBlock("Mushroom Blue Id", Config.idMushroomBlue);
-		mushroomBlue = new VirtiousFlower(idMushroomBlue.getInt()).setHardness(0.0F).setLightValue(0.75F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("GlowingMushroomBlue");
+		mushroomBlue = new VirtiousFlower(idMushroomBlue.getInt()).setHardness(0.0F).setLightValue(0.75F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("GlowingMushroomBlue");
 		registerBlock(mushroomBlue, "Blue Mushroom");
 
 		Property idMushroomGreen = Virtious.config.getBlock("Mushroom Green Id", Config.idMushroomGreen);
-		mushroomGreen = new VirtiousFlower(idMushroomGreen.getInt()).setHardness(0.0F).setLightValue(0.7F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("GlowingMushroomGreen");
+		mushroomGreen = new VirtiousFlower(idMushroomGreen.getInt()).setHardness(0.0F).setLightValue(0.7F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("GlowingMushroomGreen");
 		registerBlock(mushroomGreen, "Green Mushroom");
 
 		Property idFineGravel = Virtious.config.getBlock("Fine Gravel Id", Config.idFineGravel);

@@ -17,6 +17,7 @@ import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Direction;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.World;
@@ -84,6 +85,71 @@ public class PortalBlock extends Block
 				EntityPlayerMP playermp = (EntityPlayerMP) entity;
 				TileEntityPortal tile = (TileEntityPortal) world.getBlockTileEntity(i, j, k);
 					System.out.println("timeuntilportal: " + playermp.timeUntilPortal);
+				if(playermp.timeUntilPortal == 0)
+				{
+					if(entity.dimension == Virtious.dimensionID)
+					{
+						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "The Overworld");
+					}
+					
+					else
+					{
+						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "Viritous");
+					}
+				}
+				
+				if(playermp.timeUntilPortal == 11)
+				{
+					if(entity.dimension == Virtious.dimensionID)
+					{
+						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "The Overworld");
+					}
+					
+					else
+					{
+						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "Viritous");
+					}
+				}
+				
+				if(playermp.timeUntilPortal == 22)
+				{
+					if(entity.dimension == Virtious.dimensionID)
+					{
+						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "The Overworld");
+					}
+					
+					else
+					{
+						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "Viritous");
+					}
+				}
+				
+				if(playermp.timeUntilPortal == 33)
+				{
+					if(entity.dimension == Virtious.dimensionID)
+					{
+						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "The Overworld");
+					}
+					
+					else
+					{
+						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "Viritous");
+					}
+				}
+				
+				if(playermp.timeUntilPortal == 44)
+				{
+					if(entity.dimension == Virtious.dimensionID)
+					{
+						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "The Overworld");
+					}
+					
+					else
+					{
+						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "Viritous");
+					}
+				}
+			
 				if(playermp.timeUntilPortal >= 45)
 				{
 					if(entity.dimension == Virtious.dimensionID)
