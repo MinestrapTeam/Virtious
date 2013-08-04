@@ -48,6 +48,7 @@ public class VirtiousBlocks {
 	public static Block flowerVeer;
 	public static Block deepstoneBricks;
 	public static Block canyonstoneBricks;
+	public static Block fuelCell;
 	
 	/**
 	 * Loads all block objects
@@ -144,7 +145,7 @@ public class VirtiousBlocks {
 		registerBlock(blockNightwhisker, "Nightwhisker");
 		
 		Property idlogAmber = Virtious.config.getBlock("Amber Log Id", Config.idlogAmber);
-		logAmber = new BlockLogAmber(idlogAmber.getInt(), Material.wood).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("logAmber");
+		logAmber = new BlockLogAmber(idlogAmber.getInt()).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("logAmber");
 		registerBlock(logAmber, "Amber Log");
 		
 		Property idleavesAmber = Virtious.config.getBlock("Amber Leaves Id", Config.idleavesAmber);
@@ -210,10 +211,15 @@ public class VirtiousBlocks {
 		Property iddeepstoneBricks = Virtious.config.getBlock("Deepstone Bricks Id", Config.iddeepstoneBricks);
 		deepstoneBricks = new VirtiousBlock(iddeepstoneBricks.getInt(),Material.rock).setHardness(5.0F).setUnlocalizedName("DeepstoneBricks");
 		registerBlock(deepstoneBricks, "Deepstone Bricks");
-		
+
 		Property idcanyonstoneBricks = Virtious.config.getBlock("Canyonstone Bricks Id", Config.idcanyonstoneBricks);
 		canyonstoneBricks = new VirtiousBlock(idcanyonstoneBricks.getInt(), Material.rock).setHardness(3.0F).setUnlocalizedName("CanyonstoneBricks");
 		registerBlock(canyonstoneBricks, "Canyonstone Bricks");
+		
+
+		Property idFuelCell = Virtious.config.getBlock("Fuel Cell Id", Config.idFuelCell);
+		fuelCell = new BlockFuelCell(idFuelCell.getInt(), Material.rock).setHardness(3.0F).setUnlocalizedName("FuelBlockSide");
+		registerBlock(fuelCell, "Fuel Cell");
 		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);

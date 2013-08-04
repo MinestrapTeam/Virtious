@@ -43,6 +43,7 @@ public class Config {
 	public static int idflowerVeer = 2026;
 	public static int iddeepstoneBricks = 2027;
 	public static int idcanyonstoneBricks = 2028;
+	public static int idFuelCell = 2029;
 
 	//Items
 	public static int idIngotBrazeum = 5000;

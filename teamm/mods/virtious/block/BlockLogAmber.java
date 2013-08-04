@@ -3,22 +3,23 @@ package teamm.mods.virtious.block;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLog;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 public class BlockLogAmber extends VirtiousBlock
-{
+{	
 	@SideOnly(Side.CLIENT)
 	private Icon iconTop;
 	
 	@SideOnly(Side.CLIENT)
 	private Icon iconSide;
 	
-	public BlockLogAmber(int id, Material mat)
+	public BlockLogAmber(int id)
 	{
-		super(id, mat);
+		super(id, Material.wood);
 	}
 	
 	@Override
@@ -28,22 +29,22 @@ public class BlockLogAmber extends VirtiousBlock
 	 */
 	public void breakBlock(World world, int x, int y, int z, int par5, int meta)
 	{
-		byte b0 = 4;
-		int j1 = b0 + 1;
+		byte distance = 2;
+		int j1 = distance + 1;
 
 		if (world.checkChunksExist(x - j1, y - j1, z - j1, x + j1, y + j1, z + j1))
 		{
-			for (int k1 = -b0; k1 <= b0; ++k1)
+			for (int i = -distance; i <= distance; ++i)
 			{
-				for (int l1 = -b0; l1 <= b0; ++l1)
+				for (int j = -distance; j <= distance; ++j)
 				{
-					for (int i2 = -b0; i2 <= b0; ++i2)
+					for (int k = -distance; k <= distance; ++k)
 					{
-						int j2 = world.getBlockId(x + k1, y + l1, z + i2);
+						int id = world.getBlockId(x + i, y + j, z + k);
 
-						if (Block.blocksList[j2] != null)
+						if (Block.blocksList[id] != null)
 						{
-							Block.blocksList[j2].beginLeavesDecay(world, x + k1, y + l1, z + i2);
+							Block.blocksList[id].beginLeavesDecay(world, x + i, y + j, z + k);
 						}
 					}
 				}

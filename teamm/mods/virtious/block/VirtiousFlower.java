@@ -121,16 +121,6 @@ public class VirtiousFlower extends VirtiousBlock implements IPlantable
     @Override
     public EnumPlantType getPlantType(World world, int x, int y, int z)
     {
-        if (blockID == crops.blockID        ) return Crop;
-        if (blockID == deadBush.blockID     ) return Desert;
-        if (blockID == waterlily.blockID    ) return Water;
-        if (blockID == mushroomRed.blockID  ) return Cave;
-        if (blockID == mushroomBrown.blockID) return Cave;
-        if (blockID == netherStalk.blockID  ) return Nether;
-        if (blockID == sapling.blockID      ) return Plains;
-        if (blockID == melonStem.blockID    ) return Crop;
-        if (blockID == pumpkinStem.blockID  ) return Crop;
-        if (blockID == tallGrass.blockID    ) return Plains;
         return Plains;
     }
 
@@ -144,13 +134,5 @@ public class VirtiousFlower extends VirtiousBlock implements IPlantable
     public int getPlantMetadata(World world, int x, int y, int z)
     {
         return world.getBlockMetadata(x, y, z);
-    }
-    
-    /**
-     * Returns which pass should this block be rendered on. 0 for solids and 1 for alpha
-     */
-    public int getRenderBlockPass()
-    {
-        return 1;
     }
 }
