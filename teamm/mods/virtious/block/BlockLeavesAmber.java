@@ -17,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IShearable;
 
 public class BlockLeavesAmber extends VirtiousBlock implements IShearable
@@ -35,6 +36,11 @@ public class BlockLeavesAmber extends VirtiousBlock implements IShearable
         this.setTickRandomly(true);
 	}
 	
+    public boolean isFlammable(IBlockAccess world, int x, int y, int z, int metadata, ForgeDirection face)
+    {
+    	return true;
+    }
+
 	@Override
 	/**
      * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
@@ -55,7 +61,7 @@ public class BlockLeavesAmber extends VirtiousBlock implements IShearable
         if (!world.isRemote)
         {
             int meta = world.getBlockMetadata(i, j, k);
-            int distance = 2;
+            int distance = 3;
             
             for(int x = -distance; x <= distance; x++)
             {
