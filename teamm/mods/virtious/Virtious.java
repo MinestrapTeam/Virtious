@@ -16,6 +16,7 @@ import teamm.mods.virtious.lib.VirtiousRecipes;
 import teamm.mods.virtious.misc.VirtiousFuelHandler;
 import teamm.mods.virtious.network.PacketHandler;
 import teamm.mods.virtious.proxy.CommonProxy;
+import teamm.mods.virtious.world.TileEntityPortal;
 import teamm.mods.virtious.world.VirtiousProvider;
 import teamm.mods.virtious.world.biome.BiomeGenCanyon;
 import teamm.mods.virtious.world.biome.BiomeGenVirtious;
@@ -131,6 +132,8 @@ public class Virtious {
 		MinecraftForge.EVENT_BUS.register(new VirtiousBonemealEvent());
 		
 		GameRegistry.registerFuelHandler(new VirtiousFuelHandler());
+		
+		GameRegistry.registerTileEntity(TileEntityPortal.class, "VirtiousPortalTile");
 		
 		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
