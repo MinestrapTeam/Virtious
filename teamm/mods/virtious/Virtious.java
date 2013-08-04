@@ -20,6 +20,7 @@ import teamm.mods.virtious.world.TileEntityPortal;
 import teamm.mods.virtious.world.VirtiousProvider;
 import teamm.mods.virtious.world.biome.BiomeGenCanyon;
 import teamm.mods.virtious.world.biome.BiomeGenVirtious;
+import teamm.mods.virtious.world.biome.BiomeGenWhiskerfield;
 import teamm.mods.virtious.world.gen.VirtiousOreGenerator;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -69,10 +70,12 @@ public class Virtious {
 	public static int dimensionID;
 	public static int virtiousBiomeID;
 	public static int canyonBiomeID;
+	public static int whiskerfieldBiomeID;
 	
 	/* Biomes */
-	public static BiomeGenBase biomeWhiskerfields = null;
+	public static BiomeGenBase virtiousBiome = null;
 	public static BiomeGenBase biomeCanyon = null;
+	public static BiomeGenBase biomeWhiskerfield = null;
 
 	public static Configuration config;
 	
@@ -107,6 +110,9 @@ public class Virtious {
 			Property idcanyonBiome = Virtious.config.get("Special", "Canyon Biome Id", Config.canyoneBiomeID);
 			canyonBiomeID = idcanyonBiome.getInt();
 			
+			Property idwhiskerfieldBiome = Virtious.config.get("Special", "Whiskerfield Biome Id", Config.whiskerfieldBiomeID);
+			whiskerfieldBiomeID = idwhiskerfieldBiome.getInt();
+			
 			//ItemStack config
 			new VirtiousBlocks();
 			new VirtiousItems();
@@ -137,8 +143,9 @@ public class Virtious {
 		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
 		
-		biomeWhiskerfields = new BiomeGenVirtious(Virtious.virtiousBiomeID);
+		virtiousBiome = new BiomeGenVirtious(Virtious.virtiousBiomeID);
 		biomeCanyon = new BiomeGenCanyon(Virtious.canyonBiomeID);
+		biomeWhiskerfield = new BiomeGenWhiskerfield(Virtious.whiskerfieldBiomeID);
 		
 		EntityRegistry.registerModEntity(EntityStickyBomb.class, "StickyBomb", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityVirtiousFishHook.class, "VirtiousFishingHook", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);

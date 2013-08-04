@@ -94,38 +94,30 @@ public class VirtiousOreGenerator implements IWorldGenerator
 		VirtiousGenAmberTree treeAmber = new VirtiousGenAmberTree(VirtiousBlocks.leavesAmber.blockID, VirtiousBlocks.logAmber.blockID, false);
 		BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(blockX, blockZ);
 		
-		if(random.nextInt(2) == 1)
-		{
-			for(int x = 0; x < 1; x++)
-			{
-				int Xcoord = blockX + random.nextInt(16); 
-				int Zcoord = blockZ + random.nextInt(16); 
-				int i = world.getHeightValue(Xcoord, Zcoord); 
-				
-				treeAmber.generate(world, random, Xcoord, i, Zcoord);
-			}
-		} else {
-			for(int x = 0; x < 3; x++)
-			{
-				int Xcoord = blockX + random.nextInt(16); 
-				int Zcoord = blockZ + random.nextInt(16); 
-				int i = world.getHeightValue(Xcoord, Zcoord); 
-				
-				treeVirtian.generate(world, random, Xcoord, i, Zcoord);
-
-			}
-
-		}
-		
-		/*
 		if(biome instanceof BiomeGenVirtious)
 		{
-			for(int y = 0; y < 9; y++)
+			if(random.nextInt(2) == 1)
 			{
-				new WorldGenFlowers(VirtiousBlocks.blockNightwhisker.blockID).generate(world, random, blockX + random.nextInt(16), random.nextInt(128), blockZ + random.nextInt(16));
-			}	
+				for(int x = 0; x < 1; x++)
+				{
+					int Xcoord = blockX + random.nextInt(16); 
+					int Zcoord = blockZ + random.nextInt(16); 
+					int i = world.getHeightValue(Xcoord, Zcoord); 
+				
+					treeAmber.generate(world, random, Xcoord, i, Zcoord);
+				}
+			} else {
+				for(int x = 0; x < 3; x++)
+				{
+					int Xcoord = blockX + random.nextInt(16); 
+					int Zcoord = blockZ + random.nextInt(16); 
+					int i = world.getHeightValue(Xcoord, Zcoord); 
+				
+					treeVirtian.generate(world, random, Xcoord, i, Zcoord);
+				}
+
+			}
 		}
-		*/
 	
 	}
 	

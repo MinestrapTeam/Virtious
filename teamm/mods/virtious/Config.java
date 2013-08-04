@@ -3,6 +3,7 @@ package teamm.mods.virtious;
 public class Config {
 	public static int virtiousBiomeID = 25;
 	public static int canyoneBiomeID = 26;
+	public static int whiskerfieldBiomeID = 27;
 
 	//Worldgen Blocks - under 256
 	public static int idDeepStone = 200;
