@@ -28,7 +28,7 @@ public class BiomeGenCanyon extends BiomeGenBase
         this.spawnableCaveCreatureList.clear();
         
 		this.topBlock = (byte) VirtiousBlocks.canyonstone.blockID;
-		this.fillerBlock = (byte) VirtiousBlocks.virtianSoil.blockID;
+		this.fillerBlock = (byte) VirtiousBlocks.canyonstone.blockID;
         
         this.setBiomeName("Canyon Biome");
         

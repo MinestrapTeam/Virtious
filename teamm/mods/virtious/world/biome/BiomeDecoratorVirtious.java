@@ -2,6 +2,7 @@ package teamm.mods.virtious.world.biome;
 
 import static net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS;
 import static net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.FLOWERS;
+import static net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.SHROOM;
 import teamm.mods.virtious.lib.VirtiousBlocks;
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -28,6 +29,7 @@ public class BiomeDecoratorVirtious extends BiomeDecorator
 		int k;
 		boolean doGen = TerrainGen.decorate(currentWorld, randomGenerator, chunk_X, chunk_Z, GRASS);
 		boolean doFlowerGen = TerrainGen.decorate(currentWorld, randomGenerator, chunk_X, chunk_Z, FLOWERS);
+		boolean doShroomGen = TerrainGen.decorate(currentWorld, randomGenerator, chunk_X, chunk_Z, SHROOM);
 
 		for(int x = 0; doGen && x < this.grassPerChunk; ++x)
 		{
@@ -49,6 +51,28 @@ public class BiomeDecoratorVirtious extends BiomeDecorator
 			
 			WorldGenerator flowerVeer = new WorldGenFlowers(VirtiousBlocks.flowerVeer.blockID);
 			flowerVeer.generate(this.currentWorld, this.randomGenerator, i, j, k);
+		}
+		
+		for(int x = 0; doShroomGen && x < this.flowersPerChunk; ++x)
+		{
+			
+			i = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
+			j = this.randomGenerator.nextInt(128);
+			k = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
+			
+			WorldGenerator shrooms = new WorldGenFlowers(VirtiousBlocks.mushroomBlue.blockID);
+			shrooms.generate(this.currentWorld, this.randomGenerator, i, j, k);
+		}
+		
+		for(int x = 0; doShroomGen && x < this.flowersPerChunk; ++x)
+		{
+			
+			i = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
+			j = this.randomGenerator.nextInt(128);
+			k = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
+			
+			WorldGenerator shrooms = new WorldGenFlowers(VirtiousBlocks.mushroomGreen.blockID);
+			shrooms.generate(this.currentWorld, this.randomGenerator, i, j, k);
 		}
 	}
 }

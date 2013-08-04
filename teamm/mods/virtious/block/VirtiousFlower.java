@@ -135,4 +135,9 @@ public class VirtiousFlower extends VirtiousBlock implements IPlantable
     {
         return world.getBlockMetadata(x, y, z);
     }
+    
+    public int getRenderBlockPass()
+    {
+        return 1;
+    }
 }
