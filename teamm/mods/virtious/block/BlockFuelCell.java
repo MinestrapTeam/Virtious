@@ -29,7 +29,7 @@ public class BlockFuelCell extends VirtiousBlock{
     	if(player.getCurrentEquippedItem() != null)
     	{
     		if(player.getCurrentEquippedItem().isItemEqual(new ItemStack(Item.arrow, 1)))//FIXME
-        	{player.addChatMessage("active");
+        	{
 				if(world.getBlockId(i, j + 2, k) == VirtiousBlocks.portalBlock.blockID || (Block.blocksList[world.getBlockId(i, j + 2, k)] != null && !Block.blocksList[world.getBlockId(i, j + 2, k)].canBeReplacedByLeaves(world, i, j + 2, k)))
 					return false;
 				for(int x = -1; x <= 1; x++)

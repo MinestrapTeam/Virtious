@@ -85,6 +85,8 @@ public class Virtious {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		GameRegistry.registerTileEntity(TileEntityPortal.class, "VirtiousPortalTile");
+
 		GameRegistry.registerWorldGenerator(new VirtiousOreGenerator());
 		
 		virtiousFluid = new VirtiousFluids("Virtian Acid");
@@ -133,9 +135,7 @@ public class Virtious {
 		MinecraftForge.EVENT_BUS.register(new VirtiousBonemealEvent());
 		
 		GameRegistry.registerFuelHandler(new VirtiousFuelHandler());
-		
-		GameRegistry.registerTileEntity(TileEntityPortal.class, "VirtiousPortalTile");
-		
+				
 		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
 		

@@ -29,7 +29,7 @@ import net.minecraftforge.common.DimensionManager;
 public class VirtiousProvider extends WorldProvider {
 
 	public VirtiousProvider(){
-		this.worldChunkMgr = new VirtiousChunkManager(Virtious.virtiousBiome, 1F, 0);
+		this.worldChunkMgr = new VirtiousChunkManager();
 		this.dimensionId = Virtious.dimensionID;
 	}
 	

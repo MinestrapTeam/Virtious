@@ -84,7 +84,7 @@ public class PortalBlock extends Block
 				EntityPlayerMP playermp = (EntityPlayerMP) entity;
 				TileEntityPortal tile = (TileEntityPortal) world.getBlockTileEntity(i, j, k);
 					System.out.println("timeuntilportal: " + playermp.timeUntilPortal);
-				if(playermp.timeUntilPortal >= 90)
+				if(playermp.timeUntilPortal >= 45)
 				{
 					if(entity.dimension == Virtious.dimensionID)
 					{

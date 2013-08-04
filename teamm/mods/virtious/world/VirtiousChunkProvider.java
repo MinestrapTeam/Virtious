@@ -69,16 +69,16 @@ public class VirtiousChunkProvider extends ChunkProviderGenerate
     /** Holds the overall noise array used in chunk generation */
     private double[] noiseArray;
     private double[] stoneNoise = new double[256];
-    private MapGenBase caveGenerator = new MapGenCaves();
+//    private MapGenBase caveGenerator = new MapGenCaves();
 
     /** Holds Stronghold Generator */
-    private MapGenStronghold strongholdGenerator = new MapGenStronghold();
+//    private MapGenStronghold strongholdGenerator = new MapGenStronghold();
 
     /** Holds Village Generator */
-    private MapGenVillage villageGenerator = new MapGenVillage();
+//    private MapGenVillage villageGenerator = new MapGenVillage();
 
     /** Holds Mineshaft Generator */
-    private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
+//    private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
     private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
 
     /** Holds ravine generator */
@@ -109,10 +109,10 @@ public class VirtiousChunkProvider extends ChunkProviderGenerate
     int[][] field_73219_j = new int[32][32];
 
     {
-        caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, CAVE);
-        strongholdGenerator = (MapGenStronghold) TerrainGen.getModdedMapGen(strongholdGenerator, STRONGHOLD);
-        villageGenerator = (MapGenVillage) TerrainGen.getModdedMapGen(villageGenerator, VILLAGE);
-        mineshaftGenerator = (MapGenMineshaft) TerrainGen.getModdedMapGen(mineshaftGenerator, MINESHAFT);
+//        caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, CAVE);
+//        strongholdGenerator = (MapGenStronghold) TerrainGen.getModdedMapGen(strongholdGenerator, STRONGHOLD);
+//        villageGenerator = (MapGenVillage) TerrainGen.getModdedMapGen(villageGenerator, VILLAGE);
+//        mineshaftGenerator = (MapGenMineshaft) TerrainGen.getModdedMapGen(mineshaftGenerator, MINESHAFT);
         scatteredFeatureGenerator = (MapGenScatteredFeature) TerrainGen.getModdedMapGen(scatteredFeatureGenerator, SCATTERED_FEATURE);
         ravineGenerator = TerrainGen.getModdedMapGen(ravineGenerator, RAVINE);
     }
@@ -339,14 +339,14 @@ public class VirtiousChunkProvider extends ChunkProviderGenerate
         this.generateTerrain(par1, par2, abyte);
         this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
         this.replaceBlocksForBiome(par1, par2, abyte, this.biomesForGeneration);
-        this.caveGenerator.generate(this, this.worldObj, par1, par2, abyte);
+//        this.caveGenerator.generate(this, this.worldObj, par1, par2, abyte);
         this.ravineGenerator.generate(this, this.worldObj, par1, par2, abyte);
 
         if (this.mapFeaturesEnabled)
         {
-            this.mineshaftGenerator.generate(this, this.worldObj, par1, par2, abyte);
-            this.villageGenerator.generate(this, this.worldObj, par1, par2, abyte);
-            this.strongholdGenerator.generate(this, this.worldObj, par1, par2, abyte);
+//            this.mineshaftGenerator.generate(this, this.worldObj, par1, par2, abyte);
+//            this.villageGenerator.generate(this, this.worldObj, par1, par2, abyte);
+//            this.strongholdGenerator.generate(this, this.worldObj, par1, par2, abyte);
             this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, abyte);
         }
 
@@ -544,9 +544,9 @@ public class VirtiousChunkProvider extends ChunkProviderGenerate
 
         if (this.mapFeaturesEnabled)
         {
-            this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
-            flag = this.villageGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
-            this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
+//            this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
+//            flag = this.villageGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
+//            this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
             this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
         }
 
@@ -663,7 +663,8 @@ public class VirtiousChunkProvider extends ChunkProviderGenerate
      */
     public ChunkPosition findClosestStructure(World par1World, String par2Str, int par3, int par4, int par5)
     {
-        return "Stronghold".equals(par2Str) && this.strongholdGenerator != null ? this.strongholdGenerator.getNearestInstance(par1World, par3, par4, par5) : null;
+    	return null;
+//        return "Stronghold".equals(par2Str) && this.strongholdGenerator != null ? this.strongholdGenerator.getNearestInstance(par1World, par3, par4, par5) : null;
     }
 
     public int getLoadedChunkCount()
@@ -675,9 +676,9 @@ public class VirtiousChunkProvider extends ChunkProviderGenerate
     {
         if (this.mapFeaturesEnabled)
         {
-            this.mineshaftGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
-            this.villageGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
-            this.strongholdGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
+//            this.mineshaftGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
+//            this.villageGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
+//            this.strongholdGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
             this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
         }
     }
