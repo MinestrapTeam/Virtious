@@ -2,6 +2,7 @@ package teamm.mods.virtious.world.biome;
 
 import java.util.Random;
 
+import teamm.mods.virtious.entity.EntityBurfalaunt;
 import teamm.mods.virtious.lib.VirtiousBlocks;
 
 import cpw.mods.fml.relauncher.Side;
@@ -19,11 +20,12 @@ public class BiomeGenVirtious extends BiomeGenBase {
 	public BiomeGenVirtious(int par1) {
 		super(par1);
 		
-		this.maxHeight = 1F;
+		this.maxHeight = .5F;
 		this.minHeight = 0.1F;
         
         this.spawnableMonsterList.clear();
         this.spawnableCreatureList.clear();
+        this.spawnableCreatureList.add(new SpawnListEntry(EntityBurfalaunt.class,  12, 4, 4));
         this.spawnableWaterCreatureList.clear();
         this.spawnableCaveCreatureList.clear();
         
