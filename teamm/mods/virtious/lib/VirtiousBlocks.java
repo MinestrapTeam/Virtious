@@ -9,18 +9,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
 import teamm.mods.virtious.Config;
 import teamm.mods.virtious.Virtious;
-import teamm.mods.virtious.block.BlockLeavesAmber;
-import teamm.mods.virtious.block.BlockLeavesVirtian;
-import teamm.mods.virtious.block.BlockLogAmber;
-import teamm.mods.virtious.block.BlockLogVirtian;
-import teamm.mods.virtious.block.BlockSaplingAmber;
-import teamm.mods.virtious.block.BlockSaplingVirtian;
-import teamm.mods.virtious.block.BlockVirtianGrass;
-import teamm.mods.virtious.block.DeepStone;
-import teamm.mods.virtious.block.NightwhiskerBlock;
-import teamm.mods.virtious.block.PortalBlock;
-import teamm.mods.virtious.block.VirtiousAcid;
-import teamm.mods.virtious.block.VirtiousBlock;
+import teamm.mods.virtious.block.*;
 
 public class VirtiousBlocks {
 	public static Block deepStone;
@@ -56,6 +45,7 @@ public class VirtiousBlocks {
 	public static Block blockPluthorium;
 	public static Block virtianstoneBricks;
 	public static Block blockIlluminous;
+	public static Block flowerVeer;
 
 	/**
 	 * Loads all block objects
@@ -148,7 +138,7 @@ public class VirtiousBlocks {
 		registerBlock(blockTak, "Tak Block");
 		
 		Property idNightwhisker = Virtious.config.getBlock("Nightwhisker Block Id", Config.idblockNightwhisker);
-		blockNightwhisker = new NightwhiskerBlock(idNightwhisker.getInt()).setHardness(0.0F).setResistance(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("Nightwhisker");
+		blockNightwhisker = new NightwhiskerBlock(idNightwhisker.getInt()).setLightValue(0.2F).setHardness(0.0F).setResistance(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("Nightwhisker");
 		registerBlock(blockNightwhisker, "Nightwhisker");
 		
 		Property idlogAmber = Virtious.config.getBlock("Amber Log Id", Config.idlogAmber);
@@ -210,6 +200,10 @@ public class VirtiousBlocks {
 		Property idblockIlluminous = Virtious.config.getBlock("Illuminous Block Id", Config.idblockIlluminous);
 		blockIlluminous = new VirtiousBlock(idblockIlluminous.getInt(), Material.rock).setHardness(3.0F).setLightValue(1.0F).setUnlocalizedName("IlluminousBlock");
 		registerBlock(blockIlluminous, "Illuminous Block");
+		
+		Property idflowerVeer = Virtious.config.getBlock("Veer Flower Id", Config.idflowerVeer);
+		flowerVeer = new VirtiousFlower(idflowerVeer.getInt()).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setLightValue(0.4F).setUnlocalizedName("VeerFlower");
+		registerBlock(flowerVeer, "Veer Flower");
 		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);

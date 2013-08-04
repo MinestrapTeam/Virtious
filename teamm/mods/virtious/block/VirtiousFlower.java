@@ -27,7 +27,7 @@ public class VirtiousFlower extends VirtiousBlock implements IPlantable
         this.setCreativeTab(Virtious.tabVirtiousBlocks);
     }
 
-    protected VirtiousFlower(int par1)
+    public VirtiousFlower(int par1)
     {
         this(par1, Material.plants);
     }
@@ -144,5 +144,13 @@ public class VirtiousFlower extends VirtiousBlock implements IPlantable
     public int getPlantMetadata(World world, int x, int y, int z)
     {
         return world.getBlockMetadata(x, y, z);
+    }
+    
+    /**
+     * Returns which pass should this block be rendered on. 0 for solids and 1 for alpha
+     */
+    public int getRenderBlockPass()
+    {
+        return 0;
     }
 }
