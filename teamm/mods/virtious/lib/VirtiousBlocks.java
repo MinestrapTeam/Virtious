@@ -211,7 +211,7 @@ public class VirtiousBlocks {
 		registerBlock(blockIlluminous, "Illuminous Block");
 		
 		Property idflowerVeer = Virtious.config.getBlock("Veer Flower Id", Config.idflowerVeer);
-		flowerVeer = new VirtiousFlower(idflowerVeer.getInt()).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setLightValue(0.4F).setUnlocalizedName("VeerFlower");
+		flowerVeer = new VeerFlower(idflowerVeer.getInt()).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setLightValue(0.4F).setUnlocalizedName("VeerFlower");
 		registerBlock(flowerVeer, "Veer Flower");
 		
 		Property iddeepstoneBricks = Virtious.config.getBlock("Deepstone Bricks Id", Config.iddeepstoneBricks);

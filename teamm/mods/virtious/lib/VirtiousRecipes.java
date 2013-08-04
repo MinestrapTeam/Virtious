@@ -3,6 +3,9 @@ package teamm.mods.virtious.lib;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.RecipesIngots;
+import net.minecraft.item.crafting.RecipesTools;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -14,6 +17,8 @@ public class VirtiousRecipes
 		GameRegistry.addSmelting(VirtiousBlocks.oreBrazeum.blockID, new ItemStack(VirtiousItems.ingotBrazeum), 0.7F);
 		GameRegistry.addSmelting(VirtiousBlocks.virtiancobblestone.blockID, new ItemStack(VirtiousBlocks.virtianstone), 0.5F);
 		GameRegistry.addSmelting(VirtiousBlocks.oreDeepIron.blockID, new ItemStack(Item.ingotIron), 0.8F);
+		
+
 		GameRegistry.addRecipe(new ItemStack(Block.furnaceIdle), new Object[]
 				{
 			"SSS", "S S", "SSS", Character.valueOf('S'), VirtiousBlocks.virtiancobblestone
@@ -30,14 +35,23 @@ public class VirtiousRecipes
 				{
 			VirtiousBlocks.logVirtian
 				});
-//		GameRegistry.addRecipe(new ItemStack(Item.stick, 4), new Object[]
-//				{
-//			"T", "T", Character.valueOf('T'), VirtiousBlocks.plankAmber
-//				});
-//		GameRegistry.addRecipe(new ItemStack(Item.stick, 4), new Object[]
-//				{
-//			"T", "T", Character.valueOf('T'), VirtiousBlocks.plankVirtian
-//				});
+		GameRegistry.addRecipe(new ItemStack(Item.stick, 4), new Object[]
+				{
+			"T", "T", Character.valueOf('T'), VirtiousBlocks.plankAmber
+				});
+		GameRegistry.addRecipe(new ItemStack(Item.stick, 4), new Object[]
+				{
+			"T", "T", Character.valueOf('T'), VirtiousBlocks.plankAmber
+				});
+		GameRegistry.addRecipe(new ItemStack(Block.workbench, 1), new Object[]
+				{
+			"WW", "WW", Character.valueOf('W'), VirtiousBlocks.plankVirtian
+				});
+		GameRegistry.addRecipe(new ItemStack(Block.workbench, 1), new Object[]
+				{
+			"WW", "WW", Character.valueOf('W'), VirtiousBlocks.plankAmber
+				});
+		
 		GameRegistry.addRecipe(new ItemStack(VirtiousItems.amberwoodPickaxe, 1), new Object[]
 				{
 			"WWW", " S ", " S ", Character.valueOf('W'), VirtiousBlocks.plankAmber, Character.valueOf('S'), Item.stick
@@ -215,8 +229,8 @@ public class VirtiousRecipes
 			"M", "T", Character.valueOf('T'), VirtiousItems.tak, Character.valueOf('M'), VirtiousBlocks.mushroomGreen
 				});
 		
-		OreDictionary.registerOre("plankWood", VirtiousBlocks.plankAmber);
-		OreDictionary.registerOre("plankWood", VirtiousBlocks.plankVirtian);
+//		OreDictionary.registerOre("plankWood", VirtiousBlocks.plankAmber);
+//		OreDictionary.registerOre("plankWood", VirtiousBlocks.plankVirtian);
 		OreDictionary.registerOre("treeSapling", VirtiousBlocks.saplingAmber);
 		OreDictionary.registerOre("treeSapling", VirtiousBlocks.saplingVirtian);
 		OreDictionary.registerOre("treeLeaves", VirtiousBlocks.leavesAmber);
@@ -224,8 +238,8 @@ public class VirtiousRecipes
 		OreDictionary.registerOre("logWood", VirtiousBlocks.logAmber);
 		OreDictionary.registerOre("logWood", VirtiousBlocks.logVirtian);
 		
-		
-		
+		OreDictionary.registerOre("oreIron", VirtiousBlocks.oreDeepIron);
+		OreDictionary.registerOre("oreIron", VirtiousBlocks.oreVIron);
 		//TODO Load all recipes here
 	}
 }
