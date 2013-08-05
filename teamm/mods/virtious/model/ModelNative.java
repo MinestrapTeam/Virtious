@@ -164,10 +164,10 @@ public class ModelNative extends ModelBase {
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		
-		LegLeftTop.rotateAngleX = MathHelper.cos(f * 0.3332F) * 1.2F * f1;
-		LegRightTop.rotateAngleX = MathHelper.cos(f * 0.3332F + 3.141593F) * f1;
-		LegLeftBottom.rotateAngleX = LegLeftTop.rotateAngleX + MathHelper.cos(f * 0.3332F) * 1.2F * f1;
-		LegRightBottom.rotateAngleX = LegRightTop.rotateAngleX + MathHelper.cos(f * 0.3332F + 3.141593F) * f1;
+//		LegLeftTop.rotateAngleX = -0.2792527F + MathHelper.cos(f * 0.3332F) * 1.2F * f1;
+//		LegRightTop.rotateAngleX = -0.2792527F + MathHelper.cos(f * 0.3332F + 3.141593F) * f1;
+//		LegLeftBottom.rotateAngleX = 0.2792527F + LegLeftTop.rotateAngleX;
+//		LegRightBottom.rotateAngleX = 0.2792527F + LegRightTop.rotateAngleX;
 		
 //		TailBase.rotateAngleY = MathHelper.cos(f * 0.6662F) * 1.2F * f1;
 //		TailCenter.rotateAngleY = MathHelper.cos(f * 0.6662F) * 1.2F * f1 + TailBase.rotateAngleY;

@@ -8,6 +8,8 @@ import teamm.mods.virtious.item.ItemCytoidDoor;
 import teamm.mods.virtious.item.ItemStickyBomb;
 import teamm.mods.virtious.item.TeleporterItem;
 import teamm.mods.virtious.item.VirtiousAxe;
+import teamm.mods.virtious.item.VirtiousBucketItem;
+import teamm.mods.virtious.item.VirtiousFood;
 import teamm.mods.virtious.item.VirtiousHoe;
 import teamm.mods.virtious.item.VirtiousItem;
 import teamm.mods.virtious.item.VirtiousPickaxe;
@@ -15,6 +17,7 @@ import teamm.mods.virtious.item.VirtiousShovel;
 import teamm.mods.virtious.item.VirtiousSword;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.Property;
+import net.minecraftforge.fluids.ItemFluidContainer;
 
 public class VirtiousItems 
 {
@@ -61,6 +64,12 @@ public class VirtiousItems
 	public static Item pluthoriumSword;
 	public static Item cytoidDoor;
 	public static Item itemStickyBomb;
+	public static Item bucketAcid;
+	public static Item cookedBurhanch;
+	public static Item rawBurhanch;
+	public static Item dyeVeer;
+	public static Item seedVeer;
+	public static Item foodVois;
 	
 	/**
 	 * Loads all item objects
@@ -240,10 +249,35 @@ public class VirtiousItems
 		Property idCytoidDoor = Virtious.config.getItem("Cytoid Door Item Id", Config.idCytoidDoorItem);
 		cytoidDoor = new ItemCytoidDoor(idCytoidDoor.getInt()).setUnlocalizedName("ItemCytoidDoor");
 		LanguageRegistry.addName(cytoidDoor, "Cytoid Door");
-		
+
 		Property idStickyBomb = Virtious.config.getItem("Sticky Bomb Item Id", Config.idStickyBomb);
 		itemStickyBomb = new ItemStickyBomb(idStickyBomb.getInt());
 		LanguageRegistry.addName(itemStickyBomb, "Sticky Bomb");
+		
+		Property idAcidBucket = Virtious.config.getItem("Acid Bucket Item Id", Config.idAcidBucket);
+		bucketAcid = new VirtiousBucketItem(idAcidBucket.getInt(), VirtiousBlocks.virtiousAcid.blockID).setUnlocalizedName("BucketofAcid");
+		LanguageRegistry.addName(bucketAcid, "Acid Bucket");
+
+		Property idCookedBurhanch = Virtious.config.getItem("Cooked Burhanch Item Id", Config.idCookedBurhanch);
+		cookedBurhanch = new VirtiousFood(idCookedBurhanch.getInt(), 4, 0.4F).setUnlocalizedName("CookedBurhanch");
+		LanguageRegistry.addName(cookedBurhanch, "Cooked Burhanch");
+
+		Property idRawBurhanch = Virtious.config.getItem("Raw Burhanch Item Id", Config.idRawBurhanch);
+		rawBurhanch = new VirtiousFood(idRawBurhanch.getInt(), 9, 0.8F).setUnlocalizedName("RawBurhaunch");
+		LanguageRegistry.addName(rawBurhanch, "Raw Burhanch");
+		
+		Property idDyeVeer = Virtious.config.getItem("Dye Veer Item Id", Config.idDyeVeer);
+		dyeVeer = new VirtiousFood(idDyeVeer.getInt(), (int) 1.5, 0.3F).setUnlocalizedName("Veer");
+		LanguageRegistry.addName(dyeVeer, "Veer");
+		
+		Property idVeerSeed = Virtious.config.getItem("Veer Seeds Item Id", Config.idVeerSeed);
+		seedVeer = new VirtiousItem(idVeerSeed.getInt()).setUnlocalizedName("VeerSeeds");
+		LanguageRegistry.addName(seedVeer, "Veer Seeds");
+		
+		Property idVois = Virtious.config.getItem("Vois Item Id", Config.idVois);
+		foodVois = new VirtiousFood(idVois.getInt(), 5, 2.5F).setUnlocalizedName("Vois");
+		LanguageRegistry.addName(foodVois, "Vois");
+		
 		
 		//TODO load all item objects
 	}

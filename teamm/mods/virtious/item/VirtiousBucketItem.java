@@ -2,13 +2,14 @@ package teamm.mods.virtious.item;
 
 import teamm.mods.virtious.Virtious;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.item.ItemFood;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBucket;
 
-public class VirtiousFood extends ItemFood
-{
-	public VirtiousFood(int id, int healamt, float sat)
-	{
-		super(id, healamt, sat, false);
+public class VirtiousBucketItem extends ItemBucket{
+
+	public VirtiousBucketItem(int id, int blockID) {
+		super(id, blockID);
+		this.setContainerItem(Item.bucketEmpty);
 		this.setCreativeTab(Virtious.tabVirtiousItems);
 	}
 	
@@ -16,4 +17,5 @@ public class VirtiousFood extends ItemFood
 	{
 		itemIcon = r.registerIcon("virtious:" + this.getUnlocalizedName().substring(5));
 	}
+	
 }

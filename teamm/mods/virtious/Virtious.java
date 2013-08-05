@@ -7,7 +7,7 @@ import teamm.mods.virtious.entity.EntityBurfalaunt;
 import teamm.mods.virtious.entity.EntityNative;
 import teamm.mods.virtious.entity.item.EntityStickyBomb;
 import teamm.mods.virtious.entity.item.EntityVirtiousFishHook;
-import teamm.mods.virtious.event.VirtiousBonemealEvent;
+import teamm.mods.virtious.event.VirtiousEventHandler;
 import teamm.mods.virtious.fluids.VirtiousFluids;
 import teamm.mods.virtious.lib.VirtiousBlocks;
 import teamm.mods.virtious.lib.VirtiousCreativeTabBlocks;
@@ -30,6 +30,7 @@ import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSlab;
+import net.minecraft.item.ItemStack;
 import net.minecraft.src.ModLoader;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
@@ -38,6 +39,10 @@ import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidContainerRegistry;
+import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.liquids.LiquidEvent.LiquidMotionEvent;
 
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
@@ -154,11 +159,22 @@ public class Virtious {
 	public void init(FMLInitializationEvent evt)
 	{	
 		GameRegistry.registerWorldGenerator(new VirtiousStructureGenerator());
+//		FluidContainerRegistry.registerFluidContainer(
+//				new FluidContainerData(
+//					FluidRegistry.getFluidStack(Virtious.virtiousFluid.getName(), FluidContainerRegistry.BUCKET_VOLUME),
+//					new ItemStack(VirtiousItems.bucketAcid),
+//					new ItemStack(Item.bucketEmpty)
+//				)
+//			);
 		
-		MinecraftForge.EVENT_BUS.register(new VirtiousBonemealEvent());
+		FluidContainerRegistry.registerFluidContainer(virtiousFluid, new ItemStack(VirtiousItems.bucketAcid), new ItemStack(Item.bucketEmpty));
+		
+		MinecraftForge.EVENT_BUS.register(new VirtiousEventHandler());
 		
 		GameRegistry.registerFuelHandler(new VirtiousFuelHandler());
 				
+		
+		
 		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
 		

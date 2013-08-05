@@ -1,5 +1,6 @@
 package teamm.mods.virtious.lib;
 
+import teamm.mods.virtious.item.VirtiousItem;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -229,6 +230,11 @@ public class VirtiousRecipes
 			"M", "T", "S", Character.valueOf('T'), VirtiousItems.tak, Character.valueOf('M'), VirtiousBlocks.mushroomGreen, Character.valueOf('S'), Item.stick
 				});
 		
+		GameRegistry.addShapelessRecipe(new ItemStack(VirtiousItems.foodVois, 1),
+				new ItemStack(VirtiousItems.cookedBurhanch, 1), new ItemStack(VirtiousItems.dyeVeer, 1));//FIXME
+		GameRegistry.addShapelessRecipe(new ItemStack(VirtiousItems.foodVois, 1),
+				new ItemStack(VirtiousItems.rawBurhanch, 1), new ItemStack(VirtiousItems.dyeVeer, 1));
+		
 //		OreDictionary.registerOre("plankWood", VirtiousBlocks.plankAmber);
 //		OreDictionary.registerOre("plankWood", VirtiousBlocks.plankVirtian);
 		OreDictionary.registerOre("treeSapling", VirtiousBlocks.saplingAmber);
@@ -240,6 +246,8 @@ public class VirtiousRecipes
 		
 		OreDictionary.registerOre("oreIron", VirtiousBlocks.oreDeepIron);
 		OreDictionary.registerOre("oreIron", VirtiousBlocks.oreVIron);
+		
+		OreDictionary.registerOre("dyePink", VirtiousItems.dyeVeer);
 		//TODO Load all recipes here
 	}
 }

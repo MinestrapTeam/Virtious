@@ -1596,6 +1596,18 @@ public class VirtiousGenTemple extends WorldGenerator
 					}
 				}
 			}
+			
+
+		}
+		for (int x = 2 - 10; x <= 18 + 10; x++) {
+			for (int z = 2 - 10; z <= 16 + 10; z++) {
+				for (int y = -11; y < 0; y--) {
+					world.setBlock( i + x, j + y, k + z, (int) world.getBiomeGenForCoords(i + x, k + z).fillerBlock & 0xFF);
+					if (!world.isAirBlock(i + x, j + y - 1, k + z)) {
+						break;
+					}
+				}
+			}
 		}
 		return true;
 	}

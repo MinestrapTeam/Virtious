@@ -191,11 +191,11 @@ public class EntityBurfalaunt extends EntityAnimal
         {
             if (this.isBurning())
             {
-                this.dropItem(Item.beefCooked.itemID, 1);
+                this.dropItem(VirtiousItems.cookedBurhanch.itemID, 1);
             }
             else
             {
-                this.dropItem(Item.beefRaw.itemID, 1);
+                this.dropItem(VirtiousItems.rawBurhanch.itemID, 1);
             }
         }
     }

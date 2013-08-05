@@ -64,6 +64,9 @@ public class Config {
 	public static int idCytoidWall = 2044;
 
 	//Items
+	public static int idTeleporterWand = 5500;
+
+	
 	public static int idIngotBrazeum = 5000;
 	public static int idShardAquieus = 5001;
 	public static int idGemPluthorium = 5002;
@@ -106,6 +109,11 @@ public class Config {
 	public static int idpluthoriumSword = 5039;
 	public static int idCytoidDoorItem = 5040;
 	public static int idStickyBomb = 5041;
-
-	public static int idTeleporterWand = 5500;
+	public static int idAcidBucket = 5042;
+	public static int idCookedBurhanch = 5043;
+	public static int idRawBurhanch = 5044;
+	public static int idDyeVeer = 5045;
+	public static int idVeerSeed = 5046;
+	public static int idVois = 5047;
+	
 }
