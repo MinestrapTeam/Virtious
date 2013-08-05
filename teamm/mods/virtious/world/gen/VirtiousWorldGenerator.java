@@ -13,7 +13,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
 import cpw.mods.fml.common.IWorldGenerator;
 
-public class VirtiousOreGenerator implements IWorldGenerator
+public class VirtiousWorldGenerator implements IWorldGenerator
 {
 
 	@Override
@@ -87,6 +87,9 @@ public class VirtiousOreGenerator implements IWorldGenerator
 			new VirtiousGenDeepstone(VirtiousBlocks.deepStoneMossy.blockID, 8).generate(world, random, blockX + random.nextInt(16), random.nextInt(40), blockZ + random.nextInt(16));
 		}
 		
+		//new VirtiousGenTemple().generate(world, random, blockX + random.nextInt(16), random.nextInt(80), blockZ + random.nextInt(16));
+
+		
 		//TODO Fix
 		
 
@@ -120,6 +123,8 @@ public class VirtiousOreGenerator implements IWorldGenerator
 		}
 	
 	}
+	
+	
 	
 
 }

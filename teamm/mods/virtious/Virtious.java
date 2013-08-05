@@ -22,7 +22,7 @@ import teamm.mods.virtious.world.biome.BiomeGenCanyon;
 import teamm.mods.virtious.world.biome.BiomeGenVirtious;
 import teamm.mods.virtious.world.biome.BiomeGenVirtiousOcean;
 import teamm.mods.virtious.world.biome.BiomeGenWhiskerfield;
-import teamm.mods.virtious.world.gen.VirtiousOreGenerator;
+import teamm.mods.virtious.world.gen.VirtiousWorldGenerator;
 
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.creativetab.CreativeTabs;
@@ -100,7 +100,7 @@ public class Virtious {
 	{
 		GameRegistry.registerTileEntity(TileEntityPortal.class, "VirtiousPortalTile");
 
-		GameRegistry.registerWorldGenerator(new VirtiousOreGenerator());
+		GameRegistry.registerWorldGenerator(new VirtiousWorldGenerator());
 		
 		virtiousFluid = new VirtiousFluids("Virtian Acid");
 		
