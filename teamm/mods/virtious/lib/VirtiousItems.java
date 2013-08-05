@@ -93,7 +93,7 @@ public class VirtiousItems
 		
 		Property idTeleporterWand = Virtious.config.getItem("idTeleporterWand", Config.idTeleporterWand);
 		int TeleporterWandID = idTeleporterWand.getInt();
-		teleportWand = new TeleporterItem(TeleporterWandID).setUnlocalizedName("TeleportWand").setCreativeTab(null);
+		teleportWand = new TeleporterItem(TeleporterWandID).setUnlocalizedName("TeleportWand")/*.setCreativeTab(null)*/;
 		LanguageRegistry.addName(teleportWand, "Teleport Wand");
 		
 		Property idGemPluthorium = Virtious.config.getItem("Pluthorium Gem", Config.idGemPluthorium);

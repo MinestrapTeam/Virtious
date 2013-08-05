@@ -50,10 +50,10 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 
 	public boolean generate(World world, Random rand, int i, int j, int k) {
 		//check that each corner is one of the valid spawn blocks
-		if(!LocationIsValidSpawn(world, i, j, k) || !LocationIsValidSpawn(world, i + 26, j, k) || !LocationIsValidSpawn(world, i + 26, j, k + 27) || !LocationIsValidSpawn(world, i, j, k + 27))
-		{
-			return false;
-		}
+//		if(!LocationIsValidSpawn(world, i, j, k) || !LocationIsValidSpawn(world, i + 26, j, k) || !LocationIsValidSpawn(world, i + 26, j, k + 27) || !LocationIsValidSpawn(world, i, j, k + 27))
+//		{
+//			return false;
+//		}
 		
 		int center = getTopSolidBlock(world, i, k);
 		int corner1 = getTopSolidBlock(world, i + 20, k);
@@ -4114,7 +4114,7 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 		world.setBlock(i + 13, j + 1, k + 23, 0);
 		world.setBlock(i + 13, j + 1, k + 24, VirtiousBlocks.cytoidWallDark.blockID);
 		world.setBlock(i + 13, j + 1, k + 25, 0);
-		world.setBlock(i + 13, j + 1, k + 26, -104);
+//		world.setBlock(i + 13, j + 1, k + 26, -104);
 		world.setBlock(i + 13, j + 1, k + 27, Block.redstoneLampActive.blockID);
 		world.setBlock(i + 13, j + 2, k + 0, VirtiousBlocks.cytoidWallDark.blockID);
 		world.setBlock(i + 13, j + 2, k + 1, 0);
@@ -4413,7 +4413,7 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 		world.setBlock(i + 14, j + 1, k + 23, 0);
 		world.setBlock(i + 14, j + 1, k + 24, VirtiousBlocks.cytoidWallDark.blockID);
 		world.setBlock(i + 14, j + 1, k + 25, 0);
-		world.setBlock(i + 14, j + 1, k + 26, -104);
+//		world.setBlock(i + 14, j + 1, k + 26, -104);
 		world.setBlock(i + 14, j + 1, k + 27, Block.redstoneLampActive.blockID);
 		world.setBlock(i + 14, j + 2, k + 0, VirtiousBlocks.cytoidWallDark.blockID);
 		world.setBlock(i + 14, j + 2, k + 1, 0);
