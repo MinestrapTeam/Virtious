@@ -54,6 +54,9 @@ public class Config {
 	public static int idFineGravel = 2034;
 	public static int idCytoidControlPanelOff = 2035;
 	public static int idCytoidControlPanelOn = 2036;
+	public static int idCytoidDoor = 2037;
+	public static int idCytoidFloor = 2038;
+	public static int idCytoidFloorDouble = 2039;
 	
 	//Items
 	public static int idIngotBrazeum = 5000;
@@ -96,6 +99,7 @@ public class Config {
 	public static int idpluthoriumShovel = 5037;
 	public static int idpluthoriumHoe = 5038;
 	public static int idpluthoriumSword = 5039;
+	public static int idCytoidDoorItem = 5040;
 	
 	public static int idTeleporterWand = 5500;
 }

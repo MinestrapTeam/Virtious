@@ -4,6 +4,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import teamm.mods.virtious.Config;
 import teamm.mods.virtious.Virtious;
 import teamm.mods.virtious.item.EnumVirtiousToolMaterial;
+import teamm.mods.virtious.item.ItemCytoidDoor;
 import teamm.mods.virtious.item.TeleporterItem;
 import teamm.mods.virtious.item.VirtiousAxe;
 import teamm.mods.virtious.item.VirtiousHoe;
@@ -57,6 +58,7 @@ public class VirtiousItems
 	public static Item pluthoriumShovel;
 	public static Item pluthoriumHoe;
 	public static Item pluthoriumSword;
+	public static Item cytoidDoor;
 	
 	/**
 	 * Loads all item objects
@@ -233,7 +235,10 @@ public class VirtiousItems
 		pluthoriumSword = new VirtiousSword(idpluthoriumSword.getInt(), EnumVirtiousToolMaterial.AQUIEUS).setUnlocalizedName("PluthoriumSword");
 		LanguageRegistry.addName(pluthoriumSword, "Pluthorium Sword");
 		
-
+		Property idCytoidDoor = Virtious.config.getItem("Cytoid Door Item Id", Config.idCytoidDoorItem);
+		cytoidDoor = new ItemCytoidDoor(idCytoidDoor.getInt()).setUnlocalizedName("ItemCytoidDoor");
+		LanguageRegistry.addName(cytoidDoor, "Cytoid Door");
+		
 		//TODO load all item objects
 	}
 }

@@ -5,6 +5,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlowerPot;
+import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
@@ -59,6 +60,9 @@ public class VirtiousBlocks {
 	public static Block fineGravel;
 	public static Block cytoidControlOff;
 	public static Block cytoidControlOn;
+	public static Block cytoidDoor;
+	public static BlockHalfSlab cytoidFloorDouble;
+	public static BlockHalfSlab cytoidFloor;
 	
 	/**
 	 * Loads all block objects
@@ -257,6 +261,20 @@ public class VirtiousBlocks {
 		Property idCytoidControlOn = Virtious.config.getBlock("Cytoid Control Panel On", Config.idCytoidControlPanelOn);
 		cytoidControlOn = new BlockCytoidControlPanelOn(idCytoidControlOn.getInt()).setHardness(3.0F).setUnlocalizedName("cytoidControlOn");
 		registerBlock(cytoidControlOn, "Cytoid Control Panel On");
+		
+		Property idCytoidDoor = Virtious.config.getBlock("Cytoid Door Id", Config.idCytoidDoor);
+		cytoidDoor = new BlockCytoidDoor(idCytoidDoor.getInt(), Material.iron).setHardness(5.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("doorCytoid");
+		registerBlock(cytoidDoor, "Cytoid Door");
+		
+		Property idCytoidFloor = Virtious.config.getBlock("Cytoid Floor Id", Config.idCytoidFloor);
+		cytoidFloor = (BlockHalfSlab)new BlockCytoidFloor(idCytoidFloor.getInt(), false).setCreativeTab(Virtious.tabVirtiousBlocks).setUnlocalizedName("cytoidFloor").setHardness(3.0F);
+		registerBlock(cytoidFloor, "Cytoid Floor");
+		
+		Property idCytoidFloorDouble = Virtious.config.getBlock("Cytoid Floor Double Id", Config.idCytoidFloorDouble);
+		cytoidFloorDouble = (BlockHalfSlab)new BlockCytoidFloor(idCytoidFloorDouble.getInt(), true).setUnlocalizedName("cytoidFloorDouble").setHardness(3.0F);
+		registerBlock(cytoidFloorDouble, "Cytoid Floor Double");
+		
+		LanguageRegistry.instance().addStringLocalization("tile.cytoidFloor.cytoidfloor.name", "Cytoid Floor");
 		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);
