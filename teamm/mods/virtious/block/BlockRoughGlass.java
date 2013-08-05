@@ -8,7 +8,8 @@ import teamm.mods.virtious.Virtious;
 import net.minecraft.block.BlockGlass;
 import net.minecraft.block.material.Material;
 
-public class BlockRoughGlass extends VirtiousBlock{
+public class BlockRoughGlass extends VirtiousBlock
+{
 
 	public BlockRoughGlass(int par1, Material mat) {
 		super(par1, mat);
@@ -26,7 +27,7 @@ public class BlockRoughGlass extends VirtiousBlock{
      */
     public int getRenderBlockPass()
     {
-        return 0;
+        return 1;
     }
 
     /**
