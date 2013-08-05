@@ -42,7 +42,7 @@ public class VirtiousRecipes
 				});
 		GameRegistry.addRecipe(new ItemStack(Item.stick, 4), new Object[]
 				{
-			"T", "T", Character.valueOf('T'), VirtiousBlocks.plankAmber
+			"T", "T", Character.valueOf('T'), VirtiousBlocks.plankVirtian
 				});
 		GameRegistry.addRecipe(new ItemStack(Block.workbench, 1), new Object[]
 				{
@@ -221,6 +221,37 @@ public class VirtiousRecipes
 				{
 			"SS", "SS", Character.valueOf('S'), VirtiousBlocks.canyonstone
 				});
+//
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.virtianstone, 4), new Object[]
+				{
+			"S", Character.valueOf('S'), VirtiousBlocks.virtianstoneBricks
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.ingotBrazeum, 9), new Object[]
+				{
+			"S", Character.valueOf('S'), VirtiousBlocks.blockBrazeum
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.shardAquieus, 9), new Object[]
+				{
+			"S", Character.valueOf('S'), VirtiousBlocks.blockAquieus
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.gemPluthorium, 9), new Object[]
+				{
+			"S", Character.valueOf('S'), VirtiousBlocks.blockPluthorium
+				});	
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.gemIlluminous, 4), new Object[]
+				{
+			"S", Character.valueOf('S'), VirtiousBlocks.blockIlluminous
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.deepStone, 1), new Object[]
+				{
+			"S", Character.valueOf('S'), VirtiousBlocks.deepstoneBricks
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.canyonstone, 1), new Object[]
+				{
+			"S", Character.valueOf('S'), VirtiousBlocks.canyonstoneBricks
+				});
+//
+		
 		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.torchBlue, 8), new Object[]
 				{
 			 "M", "T", "S", Character.valueOf('T'), VirtiousItems.tak, Character.valueOf('M'), VirtiousBlocks.mushroomBlue, Character.valueOf('S'), Item.stick
