@@ -16,6 +16,7 @@ import teamm.mods.virtious.lib.VirtiousCreativeTabBlocks;
 import teamm.mods.virtious.lib.VirtiousCreativeTabItems;
 import teamm.mods.virtious.lib.VirtiousItems;
 import teamm.mods.virtious.lib.VirtiousRecipes;
+import teamm.mods.virtious.lib.VirtiousSound;
 import teamm.mods.virtious.misc.VirtiousFuelHandler;
 import teamm.mods.virtious.network.PacketHandler;
 import teamm.mods.virtious.proxy.CommonProxy;
@@ -172,10 +173,9 @@ public class Virtious {
 		FluidContainerRegistry.registerFluidContainer(virtiousFluid, new ItemStack(VirtiousItems.bucketAcid), new ItemStack(Item.bucketEmpty));
 		
 		MinecraftForge.EVENT_BUS.register(new VirtiousEventHandler());
+		MinecraftForge.EVENT_BUS.register(new VirtiousSound());
 		
-		GameRegistry.registerFuelHandler(new VirtiousFuelHandler());
-				
-		
+		GameRegistry.registerFuelHandler(new VirtiousFuelHandler());						
 		
 		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);

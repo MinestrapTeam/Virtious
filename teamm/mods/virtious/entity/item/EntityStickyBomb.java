@@ -107,7 +107,7 @@ public class EntityStickyBomb extends Entity/* implements EntityOwnable*/{
 
         	if(countdown-- < 1)
         	{
-        		this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 1.0F, true);
+        		this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 4.0F, true);
             	this.setDead();
         	}
         }

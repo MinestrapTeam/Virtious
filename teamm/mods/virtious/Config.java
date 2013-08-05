@@ -65,7 +65,6 @@ public class Config {
 
 	//Items
 	public static int idTeleporterWand = 5500;
-
 	
 	public static int idIngotBrazeum = 5000;
 	public static int idShardAquieus = 5001;

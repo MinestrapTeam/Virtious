@@ -1,5 +1,6 @@
 package teamm.mods.virtious.item;
 
+import java.util.List;
 import java.util.Random;
 
 import cpw.mods.fml.common.network.PacketDispatcher;
@@ -24,6 +25,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
 public class TeleporterItem extends VirtiousItem{
@@ -64,4 +66,9 @@ public class TeleporterItem extends VirtiousItem{
 		
 		return item;
 	}
+	
+    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
+    {
+    	par3List.add(EnumChatFormatting.BLUE + "Too lazy to make a portal? Shift, then right click to insta-warp.");
+    }
 }

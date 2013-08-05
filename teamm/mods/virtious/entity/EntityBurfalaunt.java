@@ -128,7 +128,7 @@ public class EntityBurfalaunt extends EntityAnimal
      */
     protected String getLivingSound()
     {
-        return "mob.cow.say";
+        return "virtious:burfalaunt_living";
     }
 
     /**
@@ -136,7 +136,7 @@ public class EntityBurfalaunt extends EntityAnimal
      */
     protected String getHurtSound()
     {
-        return "mob.cow.hurt";
+        return "virtious:burfalaunt_hurt";
     }
 
     /**
@@ -144,7 +144,7 @@ public class EntityBurfalaunt extends EntityAnimal
      */
     protected String getDeathSound()
     {
-        return "mob.cow.hurt";
+        return "virtious:burfalaunt_death";
     }
 
     /**
