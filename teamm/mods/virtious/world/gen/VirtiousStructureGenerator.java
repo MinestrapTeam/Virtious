@@ -27,12 +27,12 @@ public class VirtiousStructureGenerator implements IWorldGenerator {
 		int z = blockZ + random.nextInt(16);
 		if(!(world.getBiomeGenForCoords(x, z) instanceof BiomeGenVirtiousOcean))
 		{
-			if(random.nextInt(70) == 1)
-			{
-				//new VirtiousGenTempleGood().generate(world, random, x, world.getFirstUncoveredBlock(x, z), z);
-			}
+//			if(random.nextInt(200) == 1)
+//			{
+//				new VirtiousGenTempleGood().generate(world, random, x, world.getFirstUncoveredBlock(x, z), z);
+//			}
 			
-			if(random.nextInt(70) == 1)
+			if(random.nextInt(200) == 1)
 			{
 				new VirtiousGenCytoidCommandCenter().generate(world, random, x, world.getFirstUncoveredBlock(x, z), z);
 			}

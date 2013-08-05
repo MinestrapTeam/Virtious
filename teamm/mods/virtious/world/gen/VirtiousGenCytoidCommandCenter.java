@@ -5,6 +5,7 @@ import teamm.mods.virtious.block.VirtiousFlower;
 import teamm.mods.virtious.lib.VirtiousBlocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -74,7 +75,8 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 				}
 			}
 		}
-
+		TileEntityMobSpawner tileentitymobspawner;
+		
 		world.setBlock(i + 0, j + 0, k + 0, 0);
 		world.setBlock(i + 0, j + 0, k + 1, 0);
 		world.setBlock(i + 0, j + 0, k + 2, 0);
@@ -1187,7 +1189,13 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 		world.setBlock(i + 3, j + 6, k + 17, 0);
 		world.setBlock(i + 3, j + 6, k + 18, 0);
 		world.setBlock(i + 3, j + 6, k + 19, 0);
-		world.setBlock(i + 3, j + 6, k + 20, Block.mobSpawner.blockID);
+		world.setBlock(i + 3, j + 6, k + 20, Block.mobSpawner.blockID, 0, 2);
+		 tileentitymobspawner = (TileEntityMobSpawner)world.getBlockTileEntity(i + 3, j + 6, k + 20);
+
+	        if (tileentitymobspawner != null)
+	        {
+	            tileentitymobspawner.getSpawnerLogic().setMobID("NativeSkeleton");
+	        }
 		world.setBlock(i + 3, j + 6, k + 21, 0);
 		world.setBlock(i + 3, j + 6, k + 22, Block.stoneBrick.blockID);
 		world.setBlock(i + 3, j + 6, k + 23, 0);
@@ -2342,6 +2350,13 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 		world.setBlock(i + 7, j + 3, k + 18, 0);
 		world.setBlock(i + 7, j + 3, k + 19, 0);
 		world.setBlock(i + 7, j + 3, k + 20, Block.mobSpawner.blockID);
+		TileEntityMobSpawner tileentitymobspawner = (TileEntityMobSpawner)world.getBlockTileEntity(i + 7, j + 3, k + 20);
+
+        if (tileentitymobspawner != null)
+        {
+            tileentitymobspawner.getSpawnerLogic().setMobID("NativeSkeleton");
+        }
+		
 		world.setBlock(i + 7, j + 3, k + 21, 0);
 		world.setBlock(i + 7, j + 3, k + 22, Block.stoneBrick.blockID);
 		world.setBlock(i + 7, j + 3, k + 23, Block.stone.blockID);
@@ -2697,6 +2712,12 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 		world.setBlock(i + 8, j + 5, k + 11, VirtiousBlocks.cytoidLightstrip.blockID);
 		world.setBlock(i + 8, j + 5, k + 12, 0);
 		world.setBlock(i + 8, j + 5, k + 13, Block.mobSpawner.blockID);
+		 tileentitymobspawner = (TileEntityMobSpawner)world.getBlockTileEntity(i + 8, j + 5, k + 13);
+
+	        if (tileentitymobspawner != null)
+	        {
+	            tileentitymobspawner.getSpawnerLogic().setMobID("NativeSkeleton");
+	        }
 		world.setBlock(i + 8, j + 5, k + 14, 0);
 		world.setBlock(i + 8, j + 5, k + 15, 0);
 		world.setBlock(i + 8, j + 5, k + 16, 0);
@@ -3297,6 +3318,12 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 		world.setBlock(i + 10, j + 5, k + 6, 0);
 		world.setBlock(i + 10, j + 5, k + 7, 0);
 		world.setBlock(i + 10, j + 5, k + 8, Block.mobSpawner.blockID);
+		TileEntityMobSpawner tileentitymobspawner = (TileEntityMobSpawner)world.getBlockTileEntity(i + 10, j + 5, k + 8);
+
+        if (tileentitymobspawner != null)
+        {
+            tileentitymobspawner.getSpawnerLogic().setMobID("NativeSkeleton");
+        }
 		world.setBlock(i + 10, j + 5, k + 9, 0);
 		world.setBlock(i + 10, j + 5, k + 10, VirtiousBlocks.cytoidLightstrip.blockID);
 		world.setBlock(i + 10, j + 5, k + 11, 0);
@@ -5406,6 +5433,13 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 		world.setBlock(i + 17, j + 5, k + 6, 0);
 		world.setBlock(i + 17, j + 5, k + 7, 0);
 		world.setBlock(i + 17, j + 5, k + 8, Block.mobSpawner.blockID);
+		TileEntityMobSpawner tileentitymobspawner = (TileEntityMobSpawner)world.getBlockTileEntity(i + 17, j + 5, k + 8);
+
+        if (tileentitymobspawner != null)
+        {
+            tileentitymobspawner.getSpawnerLogic().setMobID("NativeSkeleton");
+        }
+		
 		world.setBlock(i + 17, j + 5, k + 9, 0);
 		world.setBlock(i + 17, j + 5, k + 10, VirtiousBlocks.cytoidLightstrip.blockID);
 		world.setBlock(i + 17, j + 5, k + 11, 0);
@@ -6880,6 +6914,12 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 		world.setBlock(i + 22, j + 3, k + 15, 0);
 		world.setBlock(i + 22, j + 3, k + 16, 0);
 		world.setBlock(i + 22, j + 3, k + 17, Block.mobSpawner.blockID);
+		TileEntityMobSpawner tileentitymobspawner = (TileEntityMobSpawner)world.getBlockTileEntity(i + 22, j + 3, k + 17);
+
+        if (tileentitymobspawner != null)
+        {
+            tileentitymobspawner.getSpawnerLogic().setMobID("NativeSkeleton");
+        }
 		world.setBlock(i + 22, j + 3, k + 18, 0);
 		world.setBlock(i + 22, j + 3, k + 19, 0);
 		world.setBlock(i + 22, j + 3, k + 20, 0);
@@ -8369,10 +8409,15 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 		world.setBlock(i + 10, j + 1, k + 20, Block.redstoneWire.blockID, 0, 2);
 		world.setBlock(i + 10, j + 2, k + 16, Block.redstoneWire.blockID, 0, 2);
 		world.setBlock(i + 10, j + 2, k + 19, Block.redstoneWire.blockID, 0, 2);
-		world.setBlock(i + 10, j + 3, k + 17, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
-		world.setBlock(i + 10, j + 3, k + 18, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
-		world.setBlock(i + 10, j + 4, k + 17, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
-		world.setBlock(i + 10, j + 4, k + 18, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
+		placeDoorBlock(world, i + 10, j + 3, k + 17, 2);
+		placeDoorBlock(world, i + 10, j + 3, k + 18, 2);
+//		placeDoorBlock(world, i + 11, j + 3, k + 17, 2);
+//		placeDoorBlock(world, i + 11, j + 3, k + 18, 3);
+
+//		world.setBlock(i + 10, j + 3, k + 17, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
+//		world.setBlock(i + 10, j + 3, k + 18, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
+//		world.setBlock(i + 10, j + 4, k + 17, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
+//		world.setBlock(i + 10, j + 4, k + 18, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
 		world.setBlock(i + 11, j + 1, k + 13, Block.redstoneWire.blockID, 0, 2);
 		world.setBlock(i + 11, j + 1, k + 22, Block.redstoneWire.blockID, 0, 2);
 		world.setBlock(i + 11, j + 2, k + 14, Block.redstoneWire.blockID, 0, 2);
@@ -8385,19 +8430,24 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 		world.setBlock(i + 12, j + 5, k + 22, Block.redstoneWire.blockID, 0, 2);
 		world.setBlock(i + 13, j + 1, k + 13, Block.redstoneWire.blockID, 0, 2);
 		world.setBlock(i + 13, j + 1, k + 22, Block.redstoneWire.blockID, 0, 2);
-		world.setBlock(i + 13, j + 3, k + 14, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
-		world.setBlock(i + 13, j + 3, k + 21, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
-		world.setBlock(i + 13, j + 4, k + 14, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
-		world.setBlock(i + 13, j + 4, k + 21, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
+		placeDoorBlock(world, i + 13, j + 3, k + 14, 3);
+		placeDoorBlock(world,i + 13, j + 3, k + 21, 3);
+//		world.setBlock(i + 13, j + 3, k + 14, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
+//		world.setBlock(i + 13, j + 3, k + 21, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
+//		world.setBlock(i + 13, j + 4, k + 14, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
+//		world.setBlock(i + 13, j + 4, k + 21, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
 		world.setBlock(i + 13, j + 6, k + 22, Block.redstoneWire.blockID, 0, 2);
 		world.setBlock(i + 13, j + 9, k + 16, Block.redstoneWire.blockID, 0, 2);
 		world.setBlock(i + 13, j + 9, k + 19, Block.redstoneWire.blockID, 0, 2);
 		world.setBlock(i + 14, j + 1, k + 13, Block.redstoneWire.blockID, 0, 2);
 		world.setBlock(i + 14, j + 1, k + 22, Block.redstoneWire.blockID, 0, 2);
-		world.setBlock(i + 14, j + 3, k + 14, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
-		world.setBlock(i + 14, j + 3, k + 21, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
-		world.setBlock(i + 14, j + 4, k + 14, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
-		world.setBlock(i + 14, j + 4, k + 21, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
+
+		placeDoorBlock(world, i + 14, j + 3, k + 14, 3);
+		placeDoorBlock(world, i + 14, j + 3, k + 21, 3);
+//		world.setBlock(i + 14, j + 3, k + 14, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
+//		world.setBlock(i + 14, j + 3, k + 21, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
+//		world.setBlock(i + 14, j + 4, k + 14, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
+//		world.setBlock(i + 14, j + 4, k + 21, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
 		world.setBlock(i + 14, j + 7, k + 22, Block.redstoneWire.blockID, 0, 2);
 		world.setBlock(i + 14, j + 8, k + 21, Block.redstoneWire.blockID, 0, 2);
 		world.setBlock(i + 14, j + 9, k + 16, Block.redstoneWire.blockID, 0, 2);
@@ -8420,11 +8470,16 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 		world.setBlock(i + 17, j + 2, k + 19, Block.redstoneWire.blockID, 0, 2);
 		world.setBlock(i + 17, j + 2, k + 20, Block.redstoneWire.blockID, 0, 2);
 		world.setBlock(i + 17, j + 2, k + 22, Block.redstoneWire.blockID, 0, 2);
-		world.setBlock(i + 17, j + 3, k + 17, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
-		world.setBlock(i + 17, j + 3, k + 18, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
+		
+
+		placeDoorBlock(world, i + 17, j + 3, k + 17, 0);
+		placeDoorBlock(world, i + 17, j + 3, k + 18, 0);
+		
+//		world.setBlock(i + 17, j + 3, k + 17, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
+//		world.setBlock(i + 17, j + 3, k + 18, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
 		world.setBlock(i + 17, j + 3, k + 23, Block.redstoneWire.blockID, 0, 2);
-		world.setBlock(i + 17, j + 4, k + 17, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
-		world.setBlock(i + 17, j + 4, k + 18, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
+//		world.setBlock(i + 17, j + 4, k + 17, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
+//		world.setBlock(i + 17, j + 4, k + 18, VirtiousBlocks.cytoidDoor.blockID, 0, 2);
 		world.setBlock(i + 17, j + 4, k + 21, Block.redstoneWire.blockID, 0, 2);
 		world.setBlock(i + 18, j + 1, k + 15, Block.redstoneWire.blockID, 0, 2);
 		world.setBlock(i + 18, j + 2, k + 13, Block.redstoneWire.blockID, 0, 2);
@@ -8461,4 +8516,52 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 
 		return true;
 	}
+	
+	public static void placeDoorBlock(World par0World, int par1, int par2, int par3, int par4)
+    {
+		Block block = VirtiousBlocks.cytoidDoor;
+        byte b0 = 0;
+        byte b1 = 0;
+
+        if (par4 == 0)
+        {
+            b1 = 1;
+        }
+
+        if (par4 == 1)
+        {
+            b0 = -1;
+        }
+
+        if (par4 == 2)
+        {
+            b1 = -1;
+        }
+
+        if (par4 == 3)
+        {
+            b0 = 1;
+        }
+
+        int i1 = (par0World.isBlockNormalCube(par1 - b0, par2, par3 - b1) ? 1 : 0) + (par0World.isBlockNormalCube(par1 - b0, par2 + 1, par3 - b1) ? 1 : 0);
+        int j1 = (par0World.isBlockNormalCube(par1 + b0, par2, par3 + b1) ? 1 : 0) + (par0World.isBlockNormalCube(par1 + b0, par2 + 1, par3 + b1) ? 1 : 0);
+        boolean flag = par0World.getBlockId(par1 - b0, par2, par3 - b1) == block.blockID || par0World.getBlockId(par1 - b0, par2 + 1, par3 - b1) == block.blockID;
+        boolean flag1 = par0World.getBlockId(par1 + b0, par2, par3 + b1) == block.blockID || par0World.getBlockId(par1 + b0, par2 + 1, par3 + b1) == block.blockID;
+        boolean flag2 = false;
+
+        if (flag && !flag1)
+        {
+            flag2 = true;
+        }
+        else if (j1 > i1)
+        {
+            flag2 = true;
+        }
+
+        par0World.setBlock(par1, par2, par3, block.blockID, par4, 2);
+        par0World.setBlock(par1, par2 + 1, par3, block.blockID, 8 | (flag2 ? 1 : 0), 2);
+        par0World.notifyBlocksOfNeighborChange(par1, par2, par3, block.blockID);
+        par0World.notifyBlocksOfNeighborChange(par1, par2 + 1, par3, block.blockID);
+    }
+	
 }
