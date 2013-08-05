@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.logging.Level;
 
 import teamm.mods.virtious.entity.EntityBurfalaunt;
+import teamm.mods.virtious.entity.EntityLaser;
 import teamm.mods.virtious.entity.EntityNative;
 import teamm.mods.virtious.entity.EntityNativeSkeleton;
 import teamm.mods.virtious.entity.item.EntityStickyBomb;
@@ -187,6 +188,7 @@ public class Virtious {
 		
 		EntityRegistry.registerModEntity(EntityStickyBomb.class, "StickyBomb", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityVirtiousFishHook.class, "VirtiousFishingHook", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
+		EntityRegistry.registerModEntity(EntityLaser.class, "entityLaser", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
 		
 		EntityRegistry.registerGlobalEntityID(EntityBurfalaunt.class, "Burfalaunt", EntityRegistry.findGlobalUniqueEntityId(), 0x110802, 0x3f1e06);
 		LanguageRegistry.instance().addStringLocalization("entity.Burfalaunt.name", "en_US", "Burfalaunt");

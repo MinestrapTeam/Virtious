@@ -115,5 +115,6 @@ public class Config {
 	public static int idDyeVeer = 5045;
 	public static int idVeerSeed = 5046;
 	public static int idVois = 5047;
+	public static int idLaserRifle = 5048;
 	
 }

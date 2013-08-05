@@ -5,6 +5,7 @@ import teamm.mods.virtious.Config;
 import teamm.mods.virtious.Virtious;
 import teamm.mods.virtious.item.EnumVirtiousToolMaterial;
 import teamm.mods.virtious.item.ItemCytoidDoor;
+import teamm.mods.virtious.item.ItemGun;
 import teamm.mods.virtious.item.ItemStickyBomb;
 import teamm.mods.virtious.item.TeleporterItem;
 import teamm.mods.virtious.item.VirtiousAxe;
@@ -70,6 +71,7 @@ public class VirtiousItems
 	public static Item dyeVeer;
 	public static Item seedVeer;
 	public static Item foodVois;
+	public static Item laserRifle;
 	
 	/**
 	 * Loads all item objects
@@ -247,7 +249,7 @@ public class VirtiousItems
 		LanguageRegistry.addName(pluthoriumSword, "Pluthorium Sword");
 
 		Property idCytoidDoor = Virtious.config.getItem("Cytoid Door Item Id", Config.idCytoidDoorItem);
-		cytoidDoor = new ItemCytoidDoor(idCytoidDoor.getInt()).setUnlocalizedName("CytoidDoorItem");
+		cytoidDoor = new ItemCytoidDoor(idCytoidDoor.getInt()).setUnlocalizedName("ItemCytoidDoor");
 		LanguageRegistry.addName(cytoidDoor, "Cytoid Door");
 
 		Property idStickyBomb = Virtious.config.getItem("Sticky Bomb Item Id", Config.idStickyBomb);
@@ -277,7 +279,11 @@ public class VirtiousItems
 		Property idVois = Virtious.config.getItem("Vois Item Id", Config.idVois);
 		foodVois = new VirtiousFood(idVois.getInt(), 5, 2.5F).setUnlocalizedName("Vois");
 		LanguageRegistry.addName(foodVois, "Vois");
-				
+		
+		Property idLaserRifle = Virtious.config.getItem("Laser Rifle Id", Config.idLaserRifle);
+		laserRifle = new ItemGun(idLaserRifle.getInt(), 10, 1, "").setUnlocalizedName("LaserRifle");
+		LanguageRegistry.addName(laserRifle, "Cytoid Laser Rifle");
+		
 		//TODO load all item objects
 	}
 }
