@@ -27,6 +27,7 @@ public class VirtiousStructureGenerator implements IWorldGenerator {
 		int z = blockZ + random.nextInt(16);
 		if(!(world.getBiomeGenForCoords(x, z) instanceof BiomeGenVirtiousOcean))
 		{
+			//TODO Fix for next release
 //			if(random.nextInt(200) == 1)
 //			{
 //				new VirtiousGenTempleGood().generate(world, random, x, world.getFirstUncoveredBlock(x, z), z);
