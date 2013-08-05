@@ -6,6 +6,7 @@ import teamm.mods.virtious.lib.VirtiousBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
@@ -748,6 +749,7 @@ public class VirtiousGenTempleGood extends WorldGenerator
 		world.setBlock(i + 8, j + 1, k + 14, Block.stoneBrick.blockID);
 		world.setBlock(i + 8, j + 1, k + 15, Block.stoneBrick.blockID);
 		world.setBlock(i + 8, j + 1, k + 17, Block.glowStone.blockID);
+		
 		world.setBlock(i + 8, j + 2, k + 1, Block.fenceIron.blockID);
 		world.setBlock(i + 8, j + 2, k + 2, Block.fenceIron.blockID);
 		world.setBlock(i + 8, j + 2, k + 3, Block.stoneBrick.blockID);

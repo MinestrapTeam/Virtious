@@ -68,6 +68,9 @@ public class Config {
 	public static int idCytoidWallDark2 = 2048;
 	public static int idCytoidWallDark3 = 2049;
 	public static int idCytoidWallDark4 = 2050;
+	public static int idRoughGlass = 2051;
+	public static int idReinforcedDeepstone = 2052;
+	public static int idReinforcedStone = 2053;
 
 	//Items
 	public static int idTeleporterWand = 5500;

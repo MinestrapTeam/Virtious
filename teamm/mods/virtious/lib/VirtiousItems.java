@@ -288,7 +288,7 @@ public class VirtiousItems
 		LanguageRegistry.addName(laserRifle, "Cytoid Laser Rifle");
 		
 		Property idBinnegan = Virtious.config.getItem("Binnegan Id", Config.idBinnegan);
-		fruitBinnegan = new ItemFood(idBinnegan.getInt(), 3, 2.5F, false).setUnlocalizedName("Binnegan");
+		fruitBinnegan = new VirtiousFood(idBinnegan.getInt(), 3, 2.5F).setUnlocalizedName("Binnegan");
 		LanguageRegistry.addName(fruitBinnegan, "Binnegan");
 		
 		//TODO load all item objects
