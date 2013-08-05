@@ -78,6 +78,8 @@ public class VirtiousBlocks {
 	public static Block roughGlass;
 	public static Block reinforcedDeepstone;
 	public static Block reinforcedStone;
+	public static Block cytoidWallUpper;
+	public static Block cytoidWallLower;
 	
 	/**
 	 * Loads all block objects
@@ -280,39 +282,39 @@ public class VirtiousBlocks {
 		registerBlock(cytoidControlOn, "Cytoid Control Panel On");
 		
 		Property idCytoidDoor = Virtious.config.getBlock("Cytoid Door Id", Config.idCytoidDoor);
-		cytoidDoor = new BlockCytoidDoor(idCytoidDoor.getInt(), Material.iron).setHardness(5.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("doorCytoid");
+		cytoidDoor = new BlockCytoidDoor(idCytoidDoor.getInt(), Material.iron).setHardness(5.0F).setStepSound(Block.soundMetalFootstep).setBlockUnbreakable().setUnlocalizedName("doorCytoid");
 		registerBlock(cytoidDoor, "Cytoid Door");
 		
 		Property idCytoidFloor = Virtious.config.getBlock("Cytoid Floor Id", Config.idCytoidFloor);
-		cytoidFloor = (BlockHalfSlab)new BlockCytoidFloor(idCytoidFloor.getInt(), false).setCreativeTab(Virtious.tabVirtiousBlocks).setUnlocalizedName("cytoidFloor").setHardness(3.0F);
+		cytoidFloor = (BlockHalfSlab)new BlockCytoidFloor(idCytoidFloor.getInt(), false).setCreativeTab(Virtious.tabVirtiousBlocks).setUnlocalizedName("cytoidFloor").setBlockUnbreakable();
 		registerBlock(cytoidFloor, "Cytoid Floor");
 		
 		Property idCytoidFloorDouble = Virtious.config.getBlock("Cytoid Floor Double Id", Config.idCytoidFloorDouble);
-		cytoidFloorDouble = (BlockHalfSlab)new BlockCytoidFloor(idCytoidFloorDouble.getInt(), true).setUnlocalizedName("cytoidFloorDouble").setHardness(3.0F);
+		cytoidFloorDouble = (BlockHalfSlab)new BlockCytoidFloor(idCytoidFloorDouble.getInt(), true).setUnlocalizedName("cytoidFloorDouble").setBlockUnbreakable();
 		registerBlock(cytoidFloorDouble, "Cytoid Floor Double");
 		
 		Property idCytoidGlass = Virtious.config.getBlock("Cytoid Glass Id", Config.idCytoidGlass);
-		cytoidGlass = new VirtiousGlass(idCytoidGlass.getInt()).setUnlocalizedName("CytoidGlass").setHardness(0.4F);
+		cytoidGlass = new VirtiousGlass(idCytoidGlass.getInt()).setUnlocalizedName("CytoidGlass").setBlockUnbreakable();
 		registerBlock(cytoidGlass, "Cytoid Glass");
 		
 		Property idCytoidLampIdle = Virtious.config.getBlock("Cytoid Lamp Idle Id", Config.idCytoidLampIdle);
-		cytoidLampIdle = new BlockCytoidLamp(idCytoidLampIdle.getInt(), false).setCreativeTab(Virtious.tabVirtiousBlocks).setHardness(1.0F).setUnlocalizedName("CytoidLampOff").setStepSound(Block.soundGlassFootstep);
+		cytoidLampIdle = new BlockCytoidLamp(idCytoidLampIdle.getInt(), false).setCreativeTab(Virtious.tabVirtiousBlocks).setBlockUnbreakable().setUnlocalizedName("CytoidLampOff").setStepSound(Block.soundGlassFootstep);
 		registerBlock(cytoidLampIdle, "Cytoid Lamp");
 		
 		Property idCytoidLampOn = Virtious.config.getBlock("Cytoid Lamp On", Config.idCytoidLampOn);
-		cytoidLampOn = new BlockCytoidLamp(idCytoidLampOn.getInt(), true).setHardness(1.0F).setUnlocalizedName("CytoidLampOn").setStepSound(Block.soundGlassFootstep);
+		cytoidLampOn = new BlockCytoidLamp(idCytoidLampOn.getInt(), true).setBlockUnbreakable().setUnlocalizedName("CytoidLampOn").setStepSound(Block.soundGlassFootstep);
 		registerBlock(cytoidLampOn, "Cytoid Lamp On");
 
 		Property idCytoidLightstrip = Virtious.config.getBlock("Cytoid Lightstrip Id", Config.idCytoidLightstrip);
-		cytoidLightstrip = new BlockCytoidLightstrip(idCytoidLightstrip.getInt()).setHardness(3.0F).setUnlocalizedName("cytoidLightstrip");
+		cytoidLightstrip = new BlockCytoidLightstrip(idCytoidLightstrip.getInt()).setUnlocalizedName("cytoidLightstrip").setBlockUnbreakable();
 		registerBlock(cytoidLightstrip, "Cytoid Lightstrip");
 		
 		Property idCytoidWall = Virtious.config.getBlock("Cytoid Wall Id", Config.idCytoidWall);
-		cytoidWall = new VirtiousBlock(idCytoidWall.getInt(), Material.rock).setHardness(3.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("CytoidWall");
+		cytoidWall = new VirtiousBlock(idCytoidWall.getInt(), Material.rock).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("CytoidWall").setBlockUnbreakable();
 		registerBlock(cytoidWall, "Cytoid Wall");
 
 		Property idTilledSoil = Virtious.config.getBlock("Tilled Soil Id", Config.idTilledSoil);
-		tilledSoil = new VirtiousTilledBlock(idTilledSoil.getInt()).setHardness(0.6F).setStepSound(Block.soundGravelFootstep).setUnlocalizedName("TilledVirtianSoil");
+		tilledSoil = new VirtiousTilledBlock(idTilledSoil.getInt()).setStepSound(Block.soundGravelFootstep).setUnlocalizedName("TilledVirtianSoil");
 		registerBlock(tilledSoil, "Tilled Soil");
 		
 		Property idVeerPlant = Virtious.config.getBlock("Veer Plant Id", Config.idVeerPlant);
@@ -320,11 +322,11 @@ public class VirtiousBlocks {
 		registerBlock(plantVeer, "Veer Plant");
 
 		Property idRoughGlass = Virtious.config.getBlock("Rough Glass Id", Config.idRoughGlass);
-		roughGlass = new BlockRoughGlass(idRoughGlass.getInt(), Material.glass).setHardness(0.3F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("RoughGlass");
+		roughGlass = new BlockRoughGlass(idRoughGlass.getInt(), Material.glass).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("RoughGlass");
 		registerBlock(roughGlass, "Rough Glass");
 		
 		Property idCytoidWallDark = Virtious.config.getBlock("Dark Cytoid Wall", Config.idCytoidWallDark);
-		cytoidWallDark = new VirtiousBlock(idCytoidWallDark.getInt(), Material.iron).setHardness(3.0F).setResistance(8.0F).setUnlocalizedName("CytoidWallDark1");
+		cytoidWallDark = new VirtiousBlock(idCytoidWallDark.getInt(), Material.iron).setHardness(3.0F).setResistance(8.0F).setUnlocalizedName("CytoidWallDark1").setBlockUnbreakable();
 		registerBlock(cytoidWallDark, "Dark Cytoid Wall");
 
 		Property idReinforcedDeepstone = Virtious.config.getBlock("Reinforced Deepstone Id", Config.idReinforcedDeepstone);
@@ -336,17 +338,25 @@ public class VirtiousBlocks {
 		registerBlock(reinforcedStone, "Reinforced Virtious Sone");
 		
 		Property idCytoidWallDark2 = Virtious.config.getBlock("Dark Cytoid Wall 2", Config.idCytoidWallDark2);
-		cytoidWallDark2 = new VirtiousBlock(idCytoidWallDark2.getInt(), Material.iron).setHardness(3.0F).setResistance(8.0F).setUnlocalizedName("CytoidWallDark2");
+		cytoidWallDark2 = new VirtiousBlock(idCytoidWallDark2.getInt(), Material.iron).setHardness(3.0F).setResistance(8.0F).setUnlocalizedName("CytoidWallDark2").setBlockUnbreakable();
 		registerBlock(cytoidWallDark2, "Dark Cytoid Wall 2");
 		
 		Property idCytoidWallDark3 = Virtious.config.getBlock("Dark Cytoid Wall 3", Config.idCytoidWallDark3);
-		cytoidWallDark3 = new VirtiousBlock(idCytoidWallDark3.getInt(), Material.iron).setHardness(3.0F).setResistance(8.0F).setUnlocalizedName("CytoidWallDark3");
+		cytoidWallDark3 = new VirtiousBlock(idCytoidWallDark3.getInt(), Material.iron).setHardness(3.0F).setResistance(8.0F).setUnlocalizedName("CytoidWallDark3").setBlockUnbreakable();
 		registerBlock(cytoidWallDark3, "Dark Cytoid Wall 3");
 		
 		Property idCytoidWallDark4 = Virtious.config.getBlock("Dark Cytoid Wall 4", Config.idCytoidWallDark4);
-		cytoidWallDark4 = new VirtiousBlock(idCytoidWallDark4.getInt(), Material.iron).setHardness(3.0F).setResistance(8.0F).setUnlocalizedName("CytoidWallDark4");
+		cytoidWallDark4 = new VirtiousBlock(idCytoidWallDark4.getInt(), Material.iron).setHardness(3.0F).setResistance(8.0F).setUnlocalizedName("CytoidWallDark4").setBlockUnbreakable();
 		registerBlock(cytoidWallDark4, "Dark Cytoid Wall 4");
 		
+		Property idCytoidWallUpper = Virtious.config.getBlock("Cytoid Wall Upper", Config.idCytoidWallUpper);
+		cytoidWallUpper = new BlockCytoidLongWall(idCytoidWallUpper.getInt(), "up").setUnlocalizedName("cytoidWallUpper").setBlockUnbreakable();
+		registerBlock(cytoidWallUpper, "Upper Cytoid Wall");
+		
+		Property idCytoidWallLower = Virtious.config.getBlock("Cytoid Wall Lower", Config.idCytoidWallLower);
+		cytoidWallLower = new BlockCytoidLongWall(idCytoidWallLower.getInt(), "down").setUnlocalizedName("cytoidWallLower").setBlockUnbreakable();
+		registerBlock(cytoidWallLower, "Lower Cytoid Wall");
+			
 		LanguageRegistry.instance().addStringLocalization("tile.cytoidFloor.cytoidfloor.name", "Cytoid Floor");
 		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);

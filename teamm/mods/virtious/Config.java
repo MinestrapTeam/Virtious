@@ -71,6 +71,8 @@ public class Config {
 	public static int idRoughGlass = 2051;
 	public static int idReinforcedDeepstone = 2052;
 	public static int idReinforcedStone = 2053;
+	public static int idCytoidWallUpper = 2054;
+	public static int idCytoidWallLower = 2055;
 
 	//Items
 	public static int idTeleporterWand = 5500;

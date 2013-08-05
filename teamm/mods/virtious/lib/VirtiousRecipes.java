@@ -275,6 +275,15 @@ public class VirtiousRecipes
 				{
 			"IRI", "GCG", "IDI", Character.valueOf('I'), Block.blockIron, Character.valueOf('R'), Item.redstone, Character.valueOf('G'), Block.glass, Character.valueOf('D'), Item.diamond, Character.valueOf('C'), Block.field_111034_cE
 				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.reinforcedDeepstone, 1), new Object[]
+				{
+			"BBB", "BTB", "BBB", Character.valueOf('B'), VirtiousItems.ingotBrazeum, Character.valueOf('T'), VirtiousBlocks.deepStone
+				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.reinforcedStone, 1), new Object[]
+				{
+			"BBB", "BTB", "BBB", Character.valueOf('B'), VirtiousItems.ingotBrazeum, Character.valueOf('T'), VirtiousBlocks.virtianstone
+				});
+		GameRegistry.addSmelting(VirtiousBlocks.fineGravel.blockID, new ItemStack(VirtiousBlocks.roughGlass), 0.7F);
 		
 //		OreDictionary.registerOre("plankWood", VirtiousBlocks.plankAmber);
 //		OreDictionary.registerOre("plankWood", VirtiousBlocks.plankVirtian);
