@@ -50,10 +50,10 @@ public class RuinedTempleIntersectTrap extends WorldGenerator
 
 	public boolean generate(World world, Random rand, int i, int j, int k) {
 		//check that each corner is one of the valid spawn blocks
-		if(!LocationIsValidSpawn(world, i, j, k) || !LocationIsValidSpawn(world, i + 4, j, k) || !LocationIsValidSpawn(world, i + 4, j, k + 4) || !LocationIsValidSpawn(world, i, j, k + 4))
-		{
-			return false;
-		}
+//		if(!LocationIsValidSpawn(world, i, j, k) || !LocationIsValidSpawn(world, i + 4, j, k) || !LocationIsValidSpawn(world, i + 4, j, k + 4) || !LocationIsValidSpawn(world, i, j, k + 4))
+//		{
+//			return false;
+//		}
 
 		world.setBlock(i + 0, j + 0, k + 0, Block.stone.blockID);
 		world.setBlock(i + 0, j + 0, k + 1, Block.stoneBrick.blockID);

@@ -22,6 +22,7 @@ import teamm.mods.virtious.world.biome.BiomeGenCanyon;
 import teamm.mods.virtious.world.biome.BiomeGenVirtious;
 import teamm.mods.virtious.world.biome.BiomeGenVirtiousOcean;
 import teamm.mods.virtious.world.biome.BiomeGenWhiskerfield;
+import teamm.mods.virtious.world.gen.VirtiousStructureGenerator;
 import teamm.mods.virtious.world.gen.VirtiousWorldGenerator;
 
 import net.minecraft.block.BlockHalfSlab;
@@ -151,6 +152,8 @@ public class Virtious {
 	@EventHandler
 	public void init(FMLInitializationEvent evt)
 	{	
+		GameRegistry.registerWorldGenerator(new VirtiousStructureGenerator());
+		
 		MinecraftForge.EVENT_BUS.register(new VirtiousBonemealEvent());
 		
 		GameRegistry.registerFuelHandler(new VirtiousFuelHandler());

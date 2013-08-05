@@ -6,6 +6,7 @@ import teamm.mods.virtious.Virtious;
 import teamm.mods.virtious.lib.VirtiousBlocks;
 import teamm.mods.virtious.world.VirtiousChunkProvider;
 import teamm.mods.virtious.world.biome.BiomeGenVirtious;
+import teamm.mods.virtious.world.biome.BiomeGenVirtiousOcean;
 
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -87,8 +88,6 @@ public class VirtiousWorldGenerator implements IWorldGenerator
 			new VirtiousGenDeepstone(VirtiousBlocks.deepStoneMossy.blockID, 8).generate(world, random, blockX + random.nextInt(16), random.nextInt(40), blockZ + random.nextInt(16));
 		}
 		
-		//new VirtiousGenTemple().generate(world, random, blockX + random.nextInt(16), random.nextInt(80), blockZ + random.nextInt(16));
-
 		
 		//TODO Fix
 		
@@ -97,34 +96,16 @@ public class VirtiousWorldGenerator implements IWorldGenerator
 		VirtiousGenAmberTree treeAmber = new VirtiousGenAmberTree(VirtiousBlocks.leavesAmber.blockID, VirtiousBlocks.logAmber.blockID, false);
 		BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(blockX, blockZ);
 		
-		if(biome instanceof BiomeGenVirtious)
-		{
-			if(random.nextInt(2) == 1)
-			{
-				for(int x = 0; x < 1; x++)
-				{
-					int Xcoord = blockX + random.nextInt(16); 
-					int Zcoord = blockZ + random.nextInt(16); 
-					int i = world.getHeightValue(Xcoord, Zcoord); 
-				
-					treeAmber.generate(world, random, Xcoord, i, Zcoord);
-				}
-			} else {
-				for(int x = 0; x < 3; x++)
-				{
-					int Xcoord = blockX + random.nextInt(16); 
-					int Zcoord = blockZ + random.nextInt(16); 
-					int i = world.getHeightValue(Xcoord, Zcoord); 
-				
-					treeVirtian.generate(world, random, Xcoord, i, Zcoord);
-				}
+		if (biome instanceof BiomeGenVirtious) {
 
-			}
+			int Xcoord = blockX + random.nextInt(16);
+			int Zcoord = blockZ + random.nextInt(16);
+			int i = world.getHeightValue(Xcoord, Zcoord);
+			if (random.nextInt(2) == 1)
+				treeVirtian.generate(world, random, Xcoord, i, Zcoord);
+			else
+				treeAmber.generate(world, random, Xcoord, i, Zcoord);
+
 		}
-	
 	}
-	
-	
-	
-
 }

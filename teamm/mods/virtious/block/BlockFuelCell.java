@@ -28,7 +28,7 @@ public class BlockFuelCell extends VirtiousBlock{
     public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer player, int par6, float par7, float par8, float par9){
     	if(player.getCurrentEquippedItem() != null)
     	{
-    		if(player.getCurrentEquippedItem().isItemEqual(new ItemStack(Item.arrow, 1)))//FIXME
+    		if(player.getCurrentEquippedItem().isItemEqual(new ItemStack(Item.blazePowder, 1)))//FIXME
         	{
 				if(world.getBlockId(i, j + 2, k) == VirtiousBlocks.portalBlock.blockID || (Block.blocksList[world.getBlockId(i, j + 2, k)] != null && !Block.blocksList[world.getBlockId(i, j + 2, k)].canBeReplacedByLeaves(world, i, j + 2, k)))
 					return false;

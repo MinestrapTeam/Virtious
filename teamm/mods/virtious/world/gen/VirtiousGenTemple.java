@@ -4,6 +4,7 @@ import java.util.Random;
 import teamm.mods.virtious.lib.VirtiousBlocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
@@ -14,7 +15,8 @@ public class VirtiousGenTemple extends WorldGenerator
 		};
 	}
 
-	public boolean LocationIsValidSpawn(World world, int i, int j, int k){
+	public boolean LocationIsValidSpawn(World world, int i, int j, int k)
+	{
 		int distanceToAir = 0;
 		int checkID = world.getBlockId(i, j, k);
 
@@ -31,18 +33,18 @@ public class VirtiousGenTemple extends WorldGenerator
 		int blockID = world.getBlockId(i, j, k);
 		int blockIDAbove = world.getBlockId(i, j+1, k);
 		int blockIDBelow = world.getBlockId(i, j-1, k);
-		for (int x : GetValidSpawnBlocks()){
+		for (int id : GetValidSpawnBlocks()){
 			if (blockIDAbove != 0){
 				return false;
 			}
-			if (blockID == x){
+			if (blockID == id){
 				return true;
 			}
-			else if (blockID == VirtiousBlocks.virtianGrass.blockID && blockIDBelow == x){
+			else if (blockID == VirtiousBlocks.virtianGrass.blockID && blockIDBelow == id){
 				return true;
 			}
 		}
-		return false;
+		return true;
 	}
 
 	public VirtiousGenTemple() { }
@@ -50,27 +52,42 @@ public class VirtiousGenTemple extends WorldGenerator
 	public boolean generate(World world, Random rand, int i, int j, int k) {
 		//check that each corner is one of the valid spawn blocks
 		
-		/*
-		if(!LocationIsValidSpawn(world, i, j, k) || !LocationIsValidSpawn(world, i + 20, j, k) || !LocationIsValidSpawn(world, i + 20, j, k + 18) || !LocationIsValidSpawn(world, i, j, k + 18))
+		
+		if(!LocationIsValidSpawn(world, i, j, k) || !LocationIsValidSpawn(world, i + 20, j, k) || !LocationIsValidSpawn(world, i + 20, j, k + 18)
+				|| !LocationIsValidSpawn(world, i, j, k + 18))
 		{
 			return false;
 		}
-		*/
-
-		while (world.isAirBlock(i, j, k) && j > 2)
-        {
-            --j;
-        }
-
-		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 8, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 9, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 10, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 11, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 12, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 13, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 14, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 15, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 16, Block.woodSingleSlab.blockID, 10);
+		
+		int center = getTopSolidBlock(world, i, k);
+		int corner1 = getTopSolidBlock(world, i + 20, k);
+		int corner2 = getTopSolidBlock(world, i + 20, k + 18);
+		int corner3 = getTopSolidBlock(world, i, k + 20);
+//		int corner4 = getTopSolidBlock(world, i, k);
+		
+		j =  (int) MathHelper.average(new long[]{center, corner1, corner2, corner3});
+		
+		for(int y = 0; y < 20; y++)
+		{
+			for(int x = (int) (-1 - y * 0.3); x <= 15 + y * 0.3F ; x++)
+			{
+				for(int z = (int) (0 - y * 0.3); z <= 15 + y * 0.3F ; z++)
+				{
+				
+					world.setBlockToAir(i + x, j + y, k + z);
+				}
+			}
+		}
+		
+		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 8, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 9, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 10, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 11, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 12, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 13, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 14, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 15, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 0, j + 11, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlockMetadataWithNotify(i + 1, j + 8, k + 9, Block.stairsStoneBrick.blockID, 0);
 		world.setBlockMetadataWithNotify(i + 1, j + 8, k + 10, Block.stairsStoneBrick.blockID, 0);
 		world.setBlockMetadataWithNotify(i + 1, j + 8, k + 11, Block.stairsStoneBrick.blockID, 0);
@@ -92,7 +109,7 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 1, j + 10, k + 13, Block.stoneBrick.blockID);
 		world.setBlock(i + 1, j + 10, k + 14, Block.stoneBrick.blockID);
 		world.setBlock(i + 1, j + 10, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 1, j + 11, k + 8, Block.woodSingleSlab.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 1, j + 11, k + 8, VirtiousBlocks.cytoidFloor.blockID, 0);
 		world.setBlock(i + 1, j + 11, k + 9, Block.stoneBrick.blockID);
 		world.setBlock(i + 1, j + 11, k + 10, Block.stoneBrick.blockID);
 		world.setBlock(i + 1, j + 11, k + 11, Block.stoneBrick.blockID);
@@ -100,14 +117,14 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 1, j + 11, k + 13, Block.stoneBrick.blockID);
 		world.setBlock(i + 1, j + 11, k + 14, Block.stoneBrick.blockID);
 		world.setBlock(i + 1, j + 11, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 1, j + 11, k + 16, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 1, j + 12, k + 9, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 1, j + 12, k + 10, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 1, j + 12, k + 11, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 1, j + 12, k + 12, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 1, j + 12, k + 13, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 1, j + 12, k + 14, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 1, j + 12, k + 15, Block.woodSingleSlab.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 1, j + 11, k + 16, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 1, j + 12, k + 9, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 1, j + 12, k + 10, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 1, j + 12, k + 11, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 1, j + 12, k + 12, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 1, j + 12, k + 13, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 1, j + 12, k + 14, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 1, j + 12, k + 15, VirtiousBlocks.cytoidFloor.blockID, 0);
 		world.setBlock(i + 2, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 2, j + 0, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 2, j + 0, k + 5, Block.stoneBrick.blockID);
@@ -187,17 +204,17 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 2, j + 9, k + 15, Block.stoneBrick.blockID);
 		world.setBlock(i + 2, j + 10, k + 9, Block.stoneBrick.blockID);
 		world.setBlock(i + 2, j + 10, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 2, j + 11, k + 8, Block.woodSingleSlab.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 2, j + 11, k + 8, VirtiousBlocks.cytoidFloor.blockID, 0);
 		world.setBlock(i + 2, j + 11, k + 9, Block.stoneBrick.blockID);
 		world.setBlock(i + 2, j + 11, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 2, j + 11, k + 16, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 2, j + 12, k + 9, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 2, j + 12, k + 10, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 2, j + 12, k + 11, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 2, j + 12, k + 12, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 2, j + 12, k + 13, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 2, j + 12, k + 14, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 2, j + 12, k + 15, Block.woodSingleSlab.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 2, j + 11, k + 16, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 2, j + 12, k + 9, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 2, j + 12, k + 10, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 2, j + 12, k + 11, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 2, j + 12, k + 12, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 2, j + 12, k + 13, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 2, j + 12, k + 14, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 2, j + 12, k + 15, VirtiousBlocks.cytoidFloor.blockID, 0);
 		world.setBlock(i + 3, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 3, j + 0, k + 14, Block.stoneBrick.blockID);
 		world.setBlock(i + 3, j + 1, k + 3, Block.stoneBrick.blockID);
@@ -239,17 +256,17 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 3, j + 9, k + 15, Block.stoneBrick.blockID);
 		world.setBlock(i + 3, j + 10, k + 9, Block.stoneBrick.blockID);
 		world.setBlock(i + 3, j + 10, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 3, j + 11, k + 8, Block.woodSingleSlab.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 3, j + 11, k + 8, VirtiousBlocks.cytoidFloor.blockID, 0);
 		world.setBlock(i + 3, j + 11, k + 9, Block.stoneBrick.blockID);
 		world.setBlock(i + 3, j + 11, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 3, j + 11, k + 16, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 3, j + 12, k + 9, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 3, j + 12, k + 10, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 3, j + 12, k + 14, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 3, j + 12, k + 15, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 3, j + 13, k + 11, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 3, j + 13, k + 12, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 3, j + 13, k + 13, Block.woodSingleSlab.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 3, j + 11, k + 16, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 3, j + 12, k + 9, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 3, j + 12, k + 10, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 3, j + 12, k + 14, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 3, j + 12, k + 15, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 3, j + 13, k + 11, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 3, j + 13, k + 12, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 3, j + 13, k + 13, VirtiousBlocks.cytoidFloor.blockID, 0);
 		world.setBlock(i + 4, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 4, j + 0, k + 14, Block.stoneBrick.blockID);
 		world.setBlock(i + 4, j + 1, k + 3, Block.stoneBrick.blockID);
@@ -307,19 +324,19 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 4, j + 10, k + 9, Block.glass.blockID);
 		world.setBlockMetadataWithNotify(i + 4, j + 10, k + 12, Block.blockNetherQuartz.blockID, 0);
 		world.setBlock(i + 4, j + 10, k + 15, Block.glass.blockID);
-		world.setBlockMetadataWithNotify(i + 4, j + 11, k + 8, Block.woodSingleSlab.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 4, j + 11, k + 8, VirtiousBlocks.cytoidFloor.blockID, 0);
 		world.setBlock(i + 4, j + 11, k + 9, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 4, j + 11, k + 12, Block.blockNetherQuartz.blockID, 0);
 		world.setBlock(i + 4, j + 11, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 4, j + 11, k + 16, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 4, j + 12, k + 9, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 4, j + 12, k + 10, Block.woodSingleSlab.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 4, j + 11, k + 16, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 4, j + 12, k + 9, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 4, j + 12, k + 10, VirtiousBlocks.cytoidFloor.blockID, 0);
 		world.setBlockMetadataWithNotify(i + 4, j + 12, k + 12, Block.blockNetherQuartz.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 4, j + 12, k + 14, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 4, j + 12, k + 15, Block.woodSingleSlab.blockID, 0);
-		world.setBlockMetadataWithNotify(i + 4, j + 13, k + 11, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 4, j + 12, k + 14, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 4, j + 12, k + 15, VirtiousBlocks.cytoidFloor.blockID, 0);
+		world.setBlockMetadataWithNotify(i + 4, j + 13, k + 11, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 4, j + 13, k + 12, Block.woodDoubleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 4, j + 13, k + 13, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 4, j + 13, k + 13, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlock(i + 5, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 5, j + 0, k + 14, Block.stoneBrick.blockID);
 		world.setBlock(i + 5, j + 1, k + 3, Block.stoneBrick.blockID);
@@ -370,17 +387,17 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 5, j + 9, k + 15, Block.stoneBrick.blockID);
 		world.setBlock(i + 5, j + 10, k + 9, Block.stoneBrick.blockID);
 		world.setBlock(i + 5, j + 10, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 5, j + 11, k + 8, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 5, j + 11, k + 8, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 5, j + 11, k + 9, Block.stoneBrick.blockID);
 		world.setBlock(i + 5, j + 11, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 5, j + 11, k + 16, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 5, j + 12, k + 9, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 5, j + 12, k + 10, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 5, j + 12, k + 14, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 5, j + 12, k + 15, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 5, j + 13, k + 11, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 5, j + 13, k + 12, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 5, j + 13, k + 13, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 5, j + 11, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 5, j + 12, k + 9, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 5, j + 12, k + 10, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 5, j + 12, k + 14, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 5, j + 12, k + 15, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 5, j + 13, k + 11, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 5, j + 13, k + 12, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 5, j + 13, k + 13, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlock(i + 6, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 6, j + 0, k + 14, Block.stoneBrick.blockID);
 		world.setBlock(i + 6, j + 1, k + 3, Block.stoneBrick.blockID);
@@ -490,7 +507,7 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 6, j + 11, k + 8, Block.stoneBrick.blockID);
 		world.setBlock(i + 6, j + 11, k + 9, Block.stoneBrick.blockID);
 		world.setBlock(i + 6, j + 11, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 6, j + 11, k + 16, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 6, j + 11, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 6, j + 12, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 6, j + 12, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 6, j + 12, k + 5, Block.stoneBrick.blockID);
@@ -498,13 +515,13 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 6, j + 12, k + 7, Block.stoneBrick.blockID);
 		world.setBlock(i + 6, j + 12, k + 8, Block.stoneBrick.blockID);
 		world.setBlock(i + 6, j + 12, k + 9, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 6, j + 12, k + 10, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 6, j + 12, k + 11, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 6, j + 12, k + 12, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 6, j + 12, k + 13, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 6, j + 12, k + 14, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 6, j + 12, k + 10, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 6, j + 12, k + 11, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 6, j + 12, k + 12, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 6, j + 12, k + 13, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 6, j + 12, k + 14, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlockMetadataWithNotify(i + 6, j + 12, k + 15, Block.woodDoubleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 6, j + 12, k + 16, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 6, j + 12, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 6, j + 13, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 6, j + 13, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 6, j + 13, k + 5, Block.stoneBrick.blockID);
@@ -547,13 +564,13 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 6, j + 18, k + 7, Block.stairsStoneBrick.blockID);
 		world.setBlock(i + 6, j + 18, k + 8, Block.stairsStoneBrick.blockID);
 		world.setBlock(i + 6, j + 18, k + 9, Block.stairsStoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 6, j + 27, k + 4, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 6, j + 27, k + 5, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 6, j + 27, k + 6, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 6, j + 27, k + 7, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 6, j + 27, k + 8, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 6, j + 27, k + 9, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 6, j + 27, k + 10, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 6, j + 27, k + 4, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 6, j + 27, k + 5, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 6, j + 27, k + 6, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 6, j + 27, k + 7, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 6, j + 27, k + 8, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 6, j + 27, k + 9, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 6, j + 27, k + 10, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 7, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 7, j + 0, k + 15, Block.stoneBrick.blockID);
 		world.setBlock(i + 7, j + 1, k + 3, Block.stoneBrick.blockID);
@@ -649,7 +666,7 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 7, j + 11, k + 13, Block.stoneBrick.blockID);
 		world.setBlock(i + 7, j + 11, k + 14, Block.stoneBrick.blockID);
 		world.setBlock(i + 7, j + 11, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 7, j + 11, k + 16, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 7, j + 11, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 7, j + 12, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 7, j + 12, k + 10, Block.stoneBrick.blockID);
 		world.setBlock(i + 7, j + 12, k + 11, Block.stoneBrick.blockID);
@@ -657,15 +674,15 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 7, j + 12, k + 13, Block.stoneBrick.blockID);
 		world.setBlock(i + 7, j + 12, k + 14, Block.stoneBrick.blockID);
 		world.setBlock(i + 7, j + 12, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 7, j + 12, k + 16, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 7, j + 12, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 7, j + 13, k + 3, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 7, j + 13, k + 7, Block.stoneSingleSlab.blockID, 11);
 		world.setBlock(i + 7, j + 13, k + 10, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 7, j + 13, k + 11, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 7, j + 13, k + 12, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 7, j + 13, k + 13, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 7, j + 13, k + 14, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 7, j + 13, k + 15, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 7, j + 13, k + 11, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 7, j + 13, k + 12, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 7, j + 13, k + 13, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 7, j + 13, k + 14, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 7, j + 13, k + 15, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlock(i + 7, j + 14, k + 3, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 7, j + 14, k + 4, Block.stairsStoneBrick.blockID, 7);
 		world.setBlockMetadataWithNotify(i + 7, j + 14, k + 5, Block.stoneSingleSlab.blockID, 11);
@@ -719,20 +736,20 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 7, j + 26, k + 7, Block.glass.blockID);
 		world.setBlock(i + 7, j + 26, k + 8, Block.stoneBrick.blockID);
 		world.setBlock(i + 7, j + 26, k + 9, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 7, j + 27, k + 3, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 7, j + 27, k + 4, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 7, j + 27, k + 3, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 7, j + 27, k + 4, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 7, j + 27, k + 5, Block.stoneBrick.blockID);
 		world.setBlock(i + 7, j + 27, k + 6, Block.stoneBrick.blockID);
 		world.setBlock(i + 7, j + 27, k + 7, Block.stoneBrick.blockID);
 		world.setBlock(i + 7, j + 27, k + 8, Block.stoneBrick.blockID);
 		world.setBlock(i + 7, j + 27, k + 9, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 7, j + 27, k + 10, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 7, j + 27, k + 11, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 7, j + 28, k + 5, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 7, j + 28, k + 6, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 7, j + 28, k + 7, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 7, j + 28, k + 8, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 7, j + 28, k + 9, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 7, j + 27, k + 10, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 7, j + 27, k + 11, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 7, j + 28, k + 5, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 7, j + 28, k + 6, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 7, j + 28, k + 7, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 7, j + 28, k + 8, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 7, j + 28, k + 9, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlock(i + 8, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 8, j + 0, k + 15, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 8, j + 0, k + 17, Block.blockNetherQuartz.blockID, 2);
@@ -843,7 +860,7 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlockMetadataWithNotify(i + 8, j + 12, k + 6, Block.blockNetherQuartz.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 8, j + 12, k + 10, Block.stairsStoneBrick.blockID, 5);
 		world.setBlock(i + 8, j + 12, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 8, j + 12, k + 16, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 8, j + 12, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 8, j + 13, k + 3, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 8, j + 13, k + 6, Block.blockNetherQuartz.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 8, j + 13, k + 7, Block.stoneSingleSlab.blockID, 3);
@@ -852,8 +869,8 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlockMetadataWithNotify(i + 8, j + 13, k + 12, Block.woodDoubleSlab.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 8, j + 13, k + 13, Block.woodDoubleSlab.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 8, j + 13, k + 14, Block.woodDoubleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 8, j + 13, k + 15, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 8, j + 13, k + 16, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 8, j + 13, k + 15, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 8, j + 13, k + 16, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlock(i + 8, j + 14, k + 3, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 8, j + 14, k + 4, Block.stairsStoneBrick.blockID, 7);
 		world.setBlockMetadataWithNotify(i + 8, j + 14, k + 6, Block.blockNetherQuartz.blockID, 2);
@@ -903,17 +920,17 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 8, j + 25, k + 10, Block.stoneBrick.blockID);
 		world.setBlock(i + 8, j + 26, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 8, j + 26, k + 10, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 8, j + 27, k + 3, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 8, j + 27, k + 3, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 8, j + 27, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 8, j + 27, k + 10, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 8, j + 27, k + 11, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 8, j + 28, k + 4, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 8, j + 28, k + 5, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 8, j + 28, k + 6, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 8, j + 28, k + 7, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 8, j + 28, k + 8, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 8, j + 28, k + 9, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 8, j + 28, k + 10, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 8, j + 27, k + 11, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 8, j + 28, k + 4, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 8, j + 28, k + 5, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 8, j + 28, k + 6, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 8, j + 28, k + 7, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 8, j + 28, k + 8, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 8, j + 28, k + 9, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 8, j + 28, k + 10, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlock(i + 9, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 9, j + 0, k + 15, Block.stoneBrick.blockID);
 		world.setBlock(i + 9, j + 0, k + 16, Block.stoneBrick.blockID);
@@ -994,9 +1011,9 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 9, j + 12, k + 15, Block.stoneBrick.blockID);
 		world.setBlock(i + 9, j + 13, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 9, j + 13, k + 10, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 9, j + 13, k + 11, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 9, j + 13, k + 12, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 9, j + 13, k + 13, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 9, j + 13, k + 11, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 9, j + 13, k + 12, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 9, j + 13, k + 13, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlockMetadataWithNotify(i + 9, j + 13, k + 14, Block.woodDoubleSlab.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 9, j + 13, k + 15, Block.woodDoubleSlab.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 9, j + 13, k + 16, Block.woodDoubleSlab.blockID, 2);
@@ -1004,9 +1021,9 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlockMetadataWithNotify(i + 9, j + 14, k + 4, Block.stairsStoneBrick.blockID, 7);
 		world.setBlockMetadataWithNotify(i + 9, j + 14, k + 9, Block.stairsStoneBrick.blockID, 6);
 		world.setBlock(i + 9, j + 14, k + 10, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 9, j + 14, k + 11, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 9, j + 14, k + 12, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 9, j + 14, k + 13, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 9, j + 14, k + 11, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 9, j + 14, k + 12, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 9, j + 14, k + 13, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 9, j + 15, k + 3, Block.stairsStoneBrick.blockID, 2);
 		world.setBlock(i + 9, j + 15, k + 4, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 9, j + 15, k + 5, Block.stoneSingleSlab.blockID, 11);
@@ -1044,17 +1061,17 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 9, j + 25, k + 10, Block.stoneBrick.blockID);
 		world.setBlock(i + 9, j + 26, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 9, j + 26, k + 10, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 9, j + 27, k + 3, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 9, j + 27, k + 3, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 9, j + 27, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 9, j + 27, k + 10, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 9, j + 27, k + 11, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 9, j + 28, k + 4, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 9, j + 28, k + 5, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 9, j + 28, k + 6, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 9, j + 28, k + 8, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 9, j + 28, k + 9, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 9, j + 28, k + 10, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 9, j + 29, k + 7, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 9, j + 27, k + 11, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 9, j + 28, k + 4, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 9, j + 28, k + 5, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 9, j + 28, k + 6, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 9, j + 28, k + 8, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 9, j + 28, k + 9, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 9, j + 28, k + 10, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 9, j + 29, k + 7, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlock(i + 10, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 10, j + 0, k + 15, Block.stoneBrick.blockID);
 		world.setBlock(i + 10, j + 0, k + 16, Block.stoneBrick.blockID);
@@ -1124,10 +1141,10 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 10, j + 13, k + 3, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 10, j + 13, k + 7, Block.blockNetherQuartz.blockID, 2);
 		world.setBlock(i + 10, j + 13, k + 10, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 10, j + 13, k + 13, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 10, j + 13, k + 13, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlockMetadataWithNotify(i + 10, j + 13, k + 14, Block.woodDoubleSlab.blockID, 2);
 		world.setBlock(i + 10, j + 13, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 10, j + 13, k + 16, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 10, j + 13, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 10, j + 14, k + 3, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 10, j + 14, k + 4, Block.stairsStoneBrick.blockID, 7);
 		world.setBlockMetadataWithNotify(i + 10, j + 14, k + 7, Block.blockNetherQuartz.blockID, 2);
@@ -1135,10 +1152,10 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 10, j + 14, k + 10, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 10, j + 14, k + 11, Block.woodDoubleSlab.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 10, j + 14, k + 12, Block.woodDoubleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 10, j + 14, k + 13, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 10, j + 14, k + 14, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 10, j + 14, k + 15, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 10, j + 14, k + 16, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 10, j + 14, k + 13, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 10, j + 14, k + 14, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 10, j + 14, k + 15, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 10, j + 14, k + 16, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 10, j + 15, k + 3, Block.stairsStoneBrick.blockID, 2);
 		world.setBlock(i + 10, j + 15, k + 4, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 10, j + 15, k + 7, Block.blockNetherQuartz.blockID, 2);
@@ -1186,18 +1203,18 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 10, j + 26, k + 4, Block.glass.blockID);
 		world.setBlock(i + 10, j + 26, k + 7, Block.glowStone.blockID);
 		world.setBlock(i + 10, j + 26, k + 10, Block.glass.blockID);
-		world.setBlockMetadataWithNotify(i + 10, j + 27, k + 3, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 10, j + 27, k + 3, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 10, j + 27, k + 4, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 10, j + 27, k + 7, Block.chest.blockID, 3);
 		world.setBlock(i + 10, j + 27, k + 10, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 10, j + 27, k + 11, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 10, j + 28, k + 4, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 10, j + 28, k + 5, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 10, j + 28, k + 9, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 10, j + 28, k + 10, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 10, j + 29, k + 6, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 10, j + 29, k + 7, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 10, j + 29, k + 8, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 10, j + 27, k + 11, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 10, j + 28, k + 4, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 10, j + 28, k + 5, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 10, j + 28, k + 9, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 10, j + 28, k + 10, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 10, j + 29, k + 6, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 10, j + 29, k + 7, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 10, j + 29, k + 8, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlock(i + 11, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 11, j + 0, k + 15, Block.stoneBrick.blockID);
 		world.setBlock(i + 11, j + 0, k + 16, Block.stoneBrick.blockID);
@@ -1278,9 +1295,9 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 11, j + 12, k + 15, Block.stoneBrick.blockID);
 		world.setBlock(i + 11, j + 13, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 11, j + 13, k + 10, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 11, j + 13, k + 11, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 11, j + 13, k + 12, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 11, j + 13, k + 13, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 11, j + 13, k + 11, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 11, j + 13, k + 12, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 11, j + 13, k + 13, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlockMetadataWithNotify(i + 11, j + 13, k + 14, Block.woodDoubleSlab.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 11, j + 13, k + 15, Block.woodDoubleSlab.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 11, j + 13, k + 16, Block.woodDoubleSlab.blockID, 2);
@@ -1288,9 +1305,9 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlockMetadataWithNotify(i + 11, j + 14, k + 4, Block.stairsStoneBrick.blockID, 7);
 		world.setBlockMetadataWithNotify(i + 11, j + 14, k + 9, Block.stairsStoneBrick.blockID, 6);
 		world.setBlock(i + 11, j + 14, k + 10, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 11, j + 14, k + 11, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 11, j + 14, k + 12, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 11, j + 14, k + 13, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 11, j + 14, k + 11, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 11, j + 14, k + 12, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 11, j + 14, k + 13, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 11, j + 15, k + 3, Block.stairsStoneBrick.blockID, 2);
 		world.setBlock(i + 11, j + 15, k + 4, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 11, j + 15, k + 5, Block.stoneSingleSlab.blockID, 11);
@@ -1327,17 +1344,17 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 11, j + 25, k + 10, Block.stoneBrick.blockID);
 		world.setBlock(i + 11, j + 26, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 11, j + 26, k + 10, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 11, j + 27, k + 3, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 11, j + 27, k + 3, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 11, j + 27, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 11, j + 27, k + 10, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 11, j + 27, k + 11, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 11, j + 28, k + 4, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 11, j + 28, k + 5, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 11, j + 28, k + 6, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 11, j + 28, k + 8, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 11, j + 28, k + 9, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 11, j + 28, k + 10, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 11, j + 29, k + 7, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 11, j + 27, k + 11, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 11, j + 28, k + 4, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 11, j + 28, k + 5, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 11, j + 28, k + 6, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 11, j + 28, k + 8, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 11, j + 28, k + 9, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 11, j + 28, k + 10, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 11, j + 29, k + 7, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlock(i + 12, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 12, j + 0, k + 15, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 12, j + 0, k + 17, Block.blockNetherQuartz.blockID, 2);
@@ -1448,7 +1465,7 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlockMetadataWithNotify(i + 12, j + 12, k + 6, Block.blockNetherQuartz.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 12, j + 12, k + 10, Block.stairsStoneBrick.blockID, 4);
 		world.setBlock(i + 12, j + 12, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 12, j + 12, k + 16, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 12, j + 12, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 12, j + 13, k + 3, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 12, j + 13, k + 6, Block.blockNetherQuartz.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 12, j + 13, k + 7, Block.stoneSingleSlab.blockID, 3);
@@ -1457,8 +1474,8 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlockMetadataWithNotify(i + 12, j + 13, k + 12, Block.woodDoubleSlab.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 12, j + 13, k + 13, Block.woodDoubleSlab.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 12, j + 13, k + 14, Block.woodDoubleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 12, j + 13, k + 15, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 12, j + 13, k + 16, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 12, j + 13, k + 15, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 12, j + 13, k + 16, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlock(i + 12, j + 14, k + 3, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 12, j + 14, k + 4, Block.stairsStoneBrick.blockID, 7);
 		world.setBlockMetadataWithNotify(i + 12, j + 14, k + 6, Block.blockNetherQuartz.blockID, 2);
@@ -1508,17 +1525,17 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 12, j + 25, k + 10, Block.stoneBrick.blockID);
 		world.setBlock(i + 12, j + 26, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 12, j + 26, k + 10, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 12, j + 27, k + 3, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 12, j + 27, k + 3, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 12, j + 27, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 12, j + 27, k + 10, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 12, j + 27, k + 11, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 12, j + 28, k + 4, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 12, j + 28, k + 5, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 12, j + 28, k + 6, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 12, j + 28, k + 7, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 12, j + 28, k + 8, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 12, j + 28, k + 9, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 12, j + 28, k + 10, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 12, j + 27, k + 11, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 12, j + 28, k + 4, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 12, j + 28, k + 5, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 12, j + 28, k + 6, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 12, j + 28, k + 7, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 12, j + 28, k + 8, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 12, j + 28, k + 9, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 12, j + 28, k + 10, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlock(i + 13, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 13, j + 0, k + 15, Block.stoneBrick.blockID);
 		world.setBlock(i + 13, j + 1, k + 3, Block.stoneBrick.blockID);
@@ -1564,7 +1581,33 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 13, j + 6, k + 11, Block.stoneBrick.blockID);
 
 		generate2(world, rand, i, j, k);
+		
+		for(int x = 2; x <= 18; x++)
+		{
+			for(int z = 2; z <= 16; z++)
+			{
+				for(int y = -1; y < 0; y--)
+				{
+					world.setBlock(i + x, j + y, k + z, (int) world.getBiomeGenForCoords(i + x, k + z).fillerBlock  & 0xFF);
+					if(!world.isAirBlock(i + x, j + y - 1, k + z))
+					{
+						break;
+					}
+				}
+			}
+		}
+		
 		return true;
+	}
+
+	private int getTopSolidBlock(World world, int i, int k) {
+		int j = world.getActualHeight() - 1;
+		
+		while (world.isAirBlock(i, j, k) && j > 2)
+		{
+			--j;
+		}
+		return j;
 	}
 
 	public boolean generate2(World world, Random rand, int i, int j, int k) {
@@ -1620,7 +1663,7 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 13, j + 11, k + 13, Block.stoneBrick.blockID);
 		world.setBlock(i + 13, j + 11, k + 14, Block.stoneBrick.blockID);
 		world.setBlock(i + 13, j + 11, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 13, j + 11, k + 16, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 13, j + 11, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 13, j + 12, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 13, j + 12, k + 10, Block.stoneBrick.blockID);
 		world.setBlock(i + 13, j + 12, k + 11, Block.stoneBrick.blockID);
@@ -1628,15 +1671,15 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 13, j + 12, k + 13, Block.stoneBrick.blockID);
 		world.setBlock(i + 13, j + 12, k + 14, Block.stoneBrick.blockID);
 		world.setBlock(i + 13, j + 12, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 13, j + 12, k + 16, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 13, j + 12, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 13, j + 13, k + 3, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 13, j + 13, k + 7, Block.stoneSingleSlab.blockID, 11);
 		world.setBlock(i + 13, j + 13, k + 10, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 13, j + 13, k + 11, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 13, j + 13, k + 12, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 13, j + 13, k + 13, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 13, j + 13, k + 14, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 13, j + 13, k + 15, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 13, j + 13, k + 11, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 13, j + 13, k + 12, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 13, j + 13, k + 13, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 13, j + 13, k + 14, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 13, j + 13, k + 15, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlock(i + 13, j + 14, k + 3, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 13, j + 14, k + 4, Block.stairsStoneBrick.blockID, 7);
 		world.setBlockMetadataWithNotify(i + 13, j + 14, k + 5, Block.stoneSingleSlab.blockID, 11);
@@ -1690,20 +1733,20 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 13, j + 26, k + 7, Block.glass.blockID);
 		world.setBlock(i + 13, j + 26, k + 8, Block.stoneBrick.blockID);
 		world.setBlock(i + 13, j + 26, k + 9, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 13, j + 27, k + 3, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 13, j + 27, k + 4, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 13, j + 27, k + 3, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 13, j + 27, k + 4, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 13, j + 27, k + 5, Block.stoneBrick.blockID);
 		world.setBlock(i + 13, j + 27, k + 6, Block.stoneBrick.blockID);
 		world.setBlock(i + 13, j + 27, k + 7, Block.stoneBrick.blockID);
 		world.setBlock(i + 13, j + 27, k + 8, Block.stoneBrick.blockID);
 		world.setBlock(i + 13, j + 27, k + 9, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 13, j + 27, k + 10, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 13, j + 27, k + 11, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 13, j + 28, k + 5, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 13, j + 28, k + 6, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 13, j + 28, k + 7, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 13, j + 28, k + 8, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 13, j + 28, k + 9, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 13, j + 27, k + 10, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 13, j + 27, k + 11, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 13, j + 28, k + 5, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 13, j + 28, k + 6, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 13, j + 28, k + 7, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 13, j + 28, k + 8, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 13, j + 28, k + 9, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlock(i + 14, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 14, j + 0, k + 14, Block.stoneBrick.blockID);
 		world.setBlock(i + 14, j + 1, k + 3, Block.stoneBrick.blockID);
@@ -1813,7 +1856,7 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 14, j + 11, k + 8, Block.stoneBrick.blockID);
 		world.setBlock(i + 14, j + 11, k + 9, Block.stoneBrick.blockID);
 		world.setBlock(i + 14, j + 11, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 14, j + 11, k + 16, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 14, j + 11, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 14, j + 12, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 14, j + 12, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 14, j + 12, k + 5, Block.stoneBrick.blockID);
@@ -1821,13 +1864,13 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 14, j + 12, k + 7, Block.stoneBrick.blockID);
 		world.setBlock(i + 14, j + 12, k + 8, Block.stoneBrick.blockID);
 		world.setBlock(i + 14, j + 12, k + 9, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 14, j + 12, k + 10, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 14, j + 12, k + 11, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 14, j + 12, k + 12, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 14, j + 12, k + 13, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 14, j + 12, k + 14, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 14, j + 12, k + 10, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 14, j + 12, k + 11, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 14, j + 12, k + 12, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 14, j + 12, k + 13, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 14, j + 12, k + 14, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlockMetadataWithNotify(i + 14, j + 12, k + 15, Block.woodDoubleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 14, j + 12, k + 16, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 14, j + 12, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 14, j + 13, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 14, j + 13, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 14, j + 13, k + 5, Block.stoneBrick.blockID);
@@ -1870,13 +1913,13 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlockMetadataWithNotify(i + 14, j + 18, k + 7, Block.stairsStoneBrick.blockID, 1);
 		world.setBlockMetadataWithNotify(i + 14, j + 18, k + 8, Block.stairsStoneBrick.blockID, 1);
 		world.setBlockMetadataWithNotify(i + 14, j + 18, k + 9, Block.stairsStoneBrick.blockID, 1);
-		world.setBlockMetadataWithNotify(i + 14, j + 27, k + 4, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 14, j + 27, k + 5, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 14, j + 27, k + 6, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 14, j + 27, k + 7, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 14, j + 27, k + 8, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 14, j + 27, k + 9, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 14, j + 27, k + 10, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 14, j + 27, k + 4, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 14, j + 27, k + 5, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 14, j + 27, k + 6, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 14, j + 27, k + 7, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 14, j + 27, k + 8, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 14, j + 27, k + 9, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 14, j + 27, k + 10, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 15, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 15, j + 0, k + 14, Block.stoneBrick.blockID);
 		world.setBlock(i + 15, j + 1, k + 3, Block.stoneBrick.blockID);
@@ -1927,17 +1970,17 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 15, j + 9, k + 15, Block.stoneBrick.blockID);
 		world.setBlock(i + 15, j + 10, k + 9, Block.stoneBrick.blockID);
 		world.setBlock(i + 15, j + 10, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 15, j + 11, k + 8, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 15, j + 11, k + 8, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 15, j + 11, k + 9, Block.stoneBrick.blockID);
 		world.setBlock(i + 15, j + 11, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 15, j + 11, k + 16, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 15, j + 12, k + 9, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 15, j + 12, k + 10, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 15, j + 12, k + 14, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 15, j + 12, k + 15, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 15, j + 13, k + 11, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 15, j + 13, k + 12, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 15, j + 13, k + 13, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 15, j + 11, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 15, j + 12, k + 9, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 15, j + 12, k + 10, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 15, j + 12, k + 14, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 15, j + 12, k + 15, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 15, j + 13, k + 11, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 15, j + 13, k + 12, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 15, j + 13, k + 13, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlock(i + 16, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 16, j + 0, k + 14, Block.stoneBrick.blockID);
 		world.setBlock(i + 16, j + 1, k + 3, Block.stoneBrick.blockID);
@@ -1995,19 +2038,19 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 16, j + 10, k + 9, Block.glass.blockID);
 		world.setBlockMetadataWithNotify(i + 16, j + 10, k + 12, Block.blockNetherQuartz.blockID, 2);
 		world.setBlock(i + 16, j + 10, k + 15, Block.glass.blockID);
-		world.setBlockMetadataWithNotify(i + 16, j + 11, k + 8, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 16, j + 11, k + 8, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 16, j + 11, k + 9, Block.stoneBrick.blockID);
 		world.setBlockMetadataWithNotify(i + 16, j + 11, k + 12, Block.blockNetherQuartz.blockID, 2);
 		world.setBlock(i + 16, j + 11, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 16, j + 11, k + 16, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 16, j + 12, k + 9, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 16, j + 12, k + 10, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 16, j + 11, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 16, j + 12, k + 9, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 16, j + 12, k + 10, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlockMetadataWithNotify(i + 16, j + 12, k + 12, Block.blockNetherQuartz.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 16, j + 12, k + 14, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 16, j + 12, k + 15, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 16, j + 13, k + 11, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 16, j + 12, k + 14, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 16, j + 12, k + 15, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 16, j + 13, k + 11, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 16, j + 13, k + 12, Block.woodDoubleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 16, j + 13, k + 13, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 16, j + 13, k + 13, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlock(i + 17, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 17, j + 0, k + 14, Block.stoneBrick.blockID);
 		world.setBlock(i + 17, j + 1, k + 3, Block.stoneBrick.blockID);
@@ -2049,17 +2092,17 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 17, j + 9, k + 15, Block.stoneBrick.blockID);
 		world.setBlock(i + 17, j + 10, k + 9, Block.stoneBrick.blockID);
 		world.setBlock(i + 17, j + 10, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 17, j + 11, k + 8, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 17, j + 11, k + 8, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 17, j + 11, k + 9, Block.stoneBrick.blockID);
 		world.setBlock(i + 17, j + 11, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 17, j + 11, k + 16, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 17, j + 12, k + 9, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 17, j + 12, k + 10, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 17, j + 12, k + 14, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 17, j + 12, k + 15, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 17, j + 13, k + 11, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 17, j + 13, k + 12, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 17, j + 13, k + 13, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 17, j + 11, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 17, j + 12, k + 9, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 17, j + 12, k + 10, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 17, j + 12, k + 14, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 17, j + 12, k + 15, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 17, j + 13, k + 11, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 17, j + 13, k + 12, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 17, j + 13, k + 13, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlock(i + 18, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 18, j + 0, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 18, j + 0, k + 5, Block.stoneBrick.blockID);
@@ -2139,17 +2182,17 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 18, j + 9, k + 15, Block.stoneBrick.blockID);
 		world.setBlock(i + 18, j + 10, k + 9, Block.stoneBrick.blockID);
 		world.setBlock(i + 18, j + 10, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 18, j + 11, k + 8, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 18, j + 11, k + 8, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 18, j + 11, k + 9, Block.stoneBrick.blockID);
 		world.setBlock(i + 18, j + 11, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 18, j + 11, k + 16, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 18, j + 12, k + 9, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 18, j + 12, k + 10, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 18, j + 12, k + 11, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 18, j + 12, k + 12, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 18, j + 12, k + 13, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 18, j + 12, k + 14, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 18, j + 12, k + 15, Block.woodSingleSlab.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 18, j + 11, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 18, j + 12, k + 9, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 18, j + 12, k + 10, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 18, j + 12, k + 11, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 18, j + 12, k + 12, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 18, j + 12, k + 13, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 18, j + 12, k + 14, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 18, j + 12, k + 15, VirtiousBlocks.cytoidFloor.blockID, 2);
 		world.setBlockMetadataWithNotify(i + 19, j + 8, k + 9, Block.stairsStoneBrick.blockID, 5);
 		world.setBlockMetadataWithNotify(i + 19, j + 8, k + 10, Block.stairsStoneBrick.blockID, 5);
 		world.setBlockMetadataWithNotify(i + 19, j + 8, k + 11, Block.stairsStoneBrick.blockID, 5);
@@ -2171,7 +2214,7 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 19, j + 10, k + 13, Block.stoneBrick.blockID);
 		world.setBlock(i + 19, j + 10, k + 14, Block.stoneBrick.blockID);
 		world.setBlock(i + 19, j + 10, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 19, j + 11, k + 8, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 19, j + 11, k + 8, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlock(i + 19, j + 11, k + 9, Block.stoneBrick.blockID);
 		world.setBlock(i + 19, j + 11, k + 10, Block.stoneBrick.blockID);
 		world.setBlock(i + 19, j + 11, k + 11, Block.stoneBrick.blockID);
@@ -2179,23 +2222,23 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 19, j + 11, k + 13, Block.stoneBrick.blockID);
 		world.setBlock(i + 19, j + 11, k + 14, Block.stoneBrick.blockID);
 		world.setBlock(i + 19, j + 11, k + 15, Block.stoneBrick.blockID);
-		world.setBlockMetadataWithNotify(i + 19, j + 11, k + 16, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 19, j + 12, k + 9, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 19, j + 12, k + 10, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 19, j + 12, k + 11, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 19, j + 12, k + 12, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 19, j + 12, k + 13, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 19, j + 12, k + 14, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 19, j + 12, k + 15, Block.woodSingleSlab.blockID, 2);
-		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 8, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 9, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 10, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 11, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 12, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 13, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 14, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 15, Block.woodSingleSlab.blockID, 10);
-		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 16, Block.woodSingleSlab.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 19, j + 11, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 19, j + 12, k + 9, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 19, j + 12, k + 10, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 19, j + 12, k + 11, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 19, j + 12, k + 12, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 19, j + 12, k + 13, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 19, j + 12, k + 14, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 19, j + 12, k + 15, VirtiousBlocks.cytoidFloor.blockID, 2);
+		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 8, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 9, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 10, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 11, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 12, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 13, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 14, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 15, VirtiousBlocks.cytoidFloor.blockID, 10);
+		world.setBlockMetadataWithNotify(i + 20, j + 11, k + 16, VirtiousBlocks.cytoidFloor.blockID, 10);
 		world.setBlockMetadataWithNotify(i + 3, j + 2, k + 4, Block.gravel.blockID,0);
 		world.setBlockMetadataWithNotify(i + 3, j + 2, k + 5, Block.gravel.blockID,0);
 		world.setBlockMetadataWithNotify(i + 3, j + 2, k + 6, Block.gravel.blockID,0);

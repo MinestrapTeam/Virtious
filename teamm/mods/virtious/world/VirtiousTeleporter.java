@@ -136,22 +136,19 @@ public class VirtiousTeleporter extends Teleporter
             zSpawn = (double)k + 0.5D;
             entity.motionX = entity.motionY = entity.motionZ = 0.0D;
             entity.setLocationAndAngles(xSpawn + 1, ySpawn + 1, zSpawn, entity.rotationYaw, entity.rotationPitch);
-        	System.out.println("existing portal");
 
             return true;
         }
         else
         {
-        	System.out.println("no existing portal");
             return false;
         }
     }
 
     public boolean makePortal(Entity entity)
     {
-        byte checkRadius = 32;
+        int checkRadius = 63;
         int i = MathHelper.floor_double(entity.posX);
-        int j = MathHelper.floor_double(entity.posY);////unused?
         int k = MathHelper.floor_double(entity.posZ);
         
         int x, y, z;

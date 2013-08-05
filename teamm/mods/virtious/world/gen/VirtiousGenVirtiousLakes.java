@@ -133,11 +133,11 @@ public class VirtiousGenVirtiousLakes extends WorldGenerator
 
 //                            if (biomegenbase.topBlock == Block.mycelium.blockID)
 //                            {
-                                world.setBlock(i + i1, j + i2 - 1, k + j2, VirtiousBlocks.virtianGrass.blockID, 0, 2);
+//                                world.setBlock(i + i1, j + i2 - 1, k + j2, VirtiousBlocks.virtianGrass.blockID, 0, 2);
 //                            }
 //                            else
 //                            {
-//                            world.setBlock(i + i1, j + i2 - 1, k + j2, biomegenbase.topBlock, 0, 2);
+                            world.setBlock(i + i1, j + i2 - 1, k + j2, (int) biomegenbase.topBlock & 0xFF, 0, 2);
 //                            }
                         }
                     }

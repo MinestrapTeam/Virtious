@@ -8,7 +8,18 @@ import teamm.mods.virtious.Virtious;
 import teamm.mods.virtious.entity.item.EntityStickyBomb;
 import teamm.mods.virtious.network.StickyBombPacket;
 import teamm.mods.virtious.world.VirtiousTeleporter;
+import teamm.mods.virtious.world.biome.BiomeGenVirtiousOcean;
 import teamm.mods.virtious.world.gen.VirtiousGenAmberTree;
+import teamm.mods.virtious.world.gen.component.RuinedTempleHall;
+import teamm.mods.virtious.world.gen.component.RuinedTempleHallBroken;
+import teamm.mods.virtious.world.gen.component.RuinedTempleHallCollapsed;
+import teamm.mods.virtious.world.gen.component.RuinedTempleHallCracked;
+import teamm.mods.virtious.world.gen.component.RuinedTempleIntersectChest;
+import teamm.mods.virtious.world.gen.component.RuinedTempleIntersectEmpty;
+import teamm.mods.virtious.world.gen.component.RuinedTempleIntersectTrap;
+import teamm.mods.virtious.world.gen.component.RuinedTempleMain;
+import teamm.mods.virtious.world.gen.component.RuinedTempleOreRoom;
+import teamm.mods.virtious.world.gen.component.RuinedTempleStairs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -29,13 +40,7 @@ public class TeleporterItem extends VirtiousItem{
 			
 			EntityStickyBomb bomb = new EntityStickyBomb(world, i, j+2, k, player);
 			world.spawnEntityInWorld(bomb);
-//     		PacketDispatcher.sendPacketToAllAround(bomb.posX, bomb.posY, bomb.posZ, 64, bomb.dimension, new StickyBombPacket(bomb).getPacket());
-//     		PacketDispatcher.sendPacketToAllInDimension(new StickyBombPacket(bomb).getPacket(), bomb.dimension);
-//			System.out.println("Spawned & Packet sent - stickyBomb");
-		}  
-
-//		VirtiousGenAmberTree gen = new VirtiousGenAmberTree();
-//		gen.generate(world, new Random(), i, j, k);
+		}
 		return false;
 		
 	}
@@ -55,6 +60,7 @@ public class TeleporterItem extends VirtiousItem{
 						new VirtiousTeleporter(playermp.mcServer.worldServerForDimension(Virtious.dimensionID)));
 			}
 		}
+		
 		
 		return item;
 	}
