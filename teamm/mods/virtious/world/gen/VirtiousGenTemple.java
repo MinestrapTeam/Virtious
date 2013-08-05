@@ -1,6 +1,7 @@
 package teamm.mods.virtious.world.gen;
 import java.util.Random;
 
+import teamm.mods.virtious.block.VirtiousFlower;
 import teamm.mods.virtious.lib.VirtiousBlocks;
 
 import net.minecraft.block.Block;
@@ -67,11 +68,11 @@ public class VirtiousGenTemple extends WorldGenerator
 		
 		j =  (int) MathHelper.average(new long[]{center, corner1, corner2, corner3});
 		
-		for(int y = 0; y < 20; y++)
+		for(int y = 0; y < 28; y++)
 		{
-			for(int x = (int) (-1 - y * 0.3); x <= 15 + y * 0.3F ; x++)
+			for(int x = (int) (2 - y * 0.3); x <= 18 + y * 0.3F ; x++)
 			{
-				for(int z = (int) (0 - y * 0.3); z <= 15 + y * 0.3F ; z++)
+				for(int z = (int) (2 - y * 0.3); z <= 17 + y * 0.5F ; z++)
 				{
 				
 					world.setBlockToAir(i + x, j + y, k + z);
@@ -1581,22 +1582,21 @@ public class VirtiousGenTemple extends WorldGenerator
 		world.setBlock(i + 13, j + 6, k + 11, Block.stoneBrick.blockID);
 
 		generate2(world, rand, i, j, k);
-		
-		for(int x = 2; x <= 18; x++)
+
+		for(int y = 0; y < 11; y++)
 		{
-			for(int z = 2; z <= 16; z++)
+			for(int x = 2 - y; x <= 18 + y; x++)
 			{
-				for(int y = -1; y < 0; y--)
+				for(int z = 3 - y; z <= 17 + y ; z++)
 				{
-					world.setBlock(i + x, j + y, k + z, (int) world.getBiomeGenForCoords(i + x, k + z).fillerBlock  & 0xFF);
-					if(!world.isAirBlock(i + x, j + y - 1, k + z))
+					if (world.isAirBlock(i + x, j - y, k + z) ||
+							(Block.blocksList[world.getBlockId(i + x, j - y, k + z)] != null && Block.blocksList[world.getBlockId(i + x, j - y, k + z)] instanceof VirtiousFlower))
 					{
-						break;
+						world.setBlock(i + x, j - y, k + z, (int) world.getBiomeGenForCoords(i + x, k + z).topBlock & 0xFF);
 					}
 				}
 			}
 		}
-		
 		return true;
 	}
 

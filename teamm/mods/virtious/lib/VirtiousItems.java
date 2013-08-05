@@ -5,6 +5,7 @@ import teamm.mods.virtious.Config;
 import teamm.mods.virtious.Virtious;
 import teamm.mods.virtious.item.EnumVirtiousToolMaterial;
 import teamm.mods.virtious.item.ItemCytoidDoor;
+import teamm.mods.virtious.item.ItemStickyBomb;
 import teamm.mods.virtious.item.TeleporterItem;
 import teamm.mods.virtious.item.VirtiousAxe;
 import teamm.mods.virtious.item.VirtiousHoe;
@@ -59,6 +60,7 @@ public class VirtiousItems
 	public static Item pluthoriumHoe;
 	public static Item pluthoriumSword;
 	public static Item cytoidDoor;
+	public static Item itemStickyBomb;
 	
 	/**
 	 * Loads all item objects
@@ -234,10 +236,14 @@ public class VirtiousItems
 		Property idpluthoriumSword = Virtious.config.getItem("Pluthorium Sword Id", Config.idpluthoriumSword);
 		pluthoriumSword = new VirtiousSword(idpluthoriumSword.getInt(), EnumVirtiousToolMaterial.AQUIEUS).setUnlocalizedName("PluthoriumSword");
 		LanguageRegistry.addName(pluthoriumSword, "Pluthorium Sword");
-		
+
 		Property idCytoidDoor = Virtious.config.getItem("Cytoid Door Item Id", Config.idCytoidDoorItem);
 		cytoidDoor = new ItemCytoidDoor(idCytoidDoor.getInt()).setUnlocalizedName("ItemCytoidDoor");
 		LanguageRegistry.addName(cytoidDoor, "Cytoid Door");
+		
+		Property idStickyBomb = Virtious.config.getItem("Sticky Bomb Item Id", Config.idStickyBomb);
+		itemStickyBomb = new ItemStickyBomb(idStickyBomb.getInt());
+		LanguageRegistry.addName(itemStickyBomb, "Sticky Bomb");
 		
 		//TODO load all item objects
 	}

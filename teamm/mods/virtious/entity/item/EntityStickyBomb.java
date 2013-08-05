@@ -117,18 +117,18 @@ public class EntityStickyBomb extends Entity/* implements EntityOwnable*/{
     /**
      * Called when the entity is attacked.
      */
-//    public boolean attackEntityFrom(DamageSource damageSource, float strength)
-//    {
-//        this.setBeenAttacked();
-//        if(!this.isDead && !this.fuse){
-//    		if(damageSource != DamageSource.onFire){
-//		        this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 1.0F, true);
-//		    	this.setDead();
-//    		}
-//        }
-
-//        return false;
-//    }
+//	public boolean attackEntityFrom(DamageSource damageSource, float strength) {
+//		this.setBeenAttacked();
+//		if (!this.isDead && !this.fuse) {
+//			if (damageSource != DamageSource.setExplosionSource(par0Explosion)) {
+//				this.worldObj.createExplosion(this, this.posX, this.posY,
+//						this.posZ, 1.0F, true);
+//				this.setDead();
+//			}
+//		}
+//
+//		return false;
+//	}
     
     /**
      * Called by a player entity when they collide with an entity
@@ -136,7 +136,10 @@ public class EntityStickyBomb extends Entity/* implements EntityOwnable*/{
     public void onCollideWithPlayer(EntityPlayer player)
     {
     	if(!player.capabilities.isCreativeMode)
+    	{
     		this.fuse = true;
+    		this.playSound("random.fuse", 1.0F, 0.5F);
+    	}
     }
     
     /**

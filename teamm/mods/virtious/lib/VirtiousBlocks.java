@@ -67,6 +67,7 @@ public class VirtiousBlocks {
 	public static Block cytoidLampIdle;
 	public static Block cytoidLampOn;
 	public static Block cytoidLightstrip;
+	public static Block cytoidWall;
 	
 	/**
 	 * Loads all block objects
@@ -158,8 +159,10 @@ public class VirtiousBlocks {
 		blockTak = new BlockTakOre(blockTakId, Material.rock).setHardness(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("TakBlock");
 		registerBlock(blockTak, "Tak Block");
 		
+		float f = 0.4F;
 		Property idNightwhisker = Virtious.config.getBlock("Nightwhisker Block Id", Config.idblockNightwhisker);
-		blockNightwhisker = new BlockNightwhisker(idNightwhisker.getInt()).setLightValue(0.2F).setHardness(0.0F).setResistance(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("Nightwhisker");
+		blockNightwhisker = new VirtiousFlower(idNightwhisker.getInt()).setLightValue(0.2F).setHardness(0.0F).setResistance(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("Nightwhisker");
+		blockNightwhisker.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
 		registerBlock(blockNightwhisker, "Nightwhisker");
 		
 		Property idlogAmber = Virtious.config.getBlock("Amber Log Id", Config.idlogAmber);
@@ -289,10 +292,14 @@ public class VirtiousBlocks {
 		Property idCytoidLampOn = Virtious.config.getBlock("Cytoid Lamp On", Config.idCytoidLampOn);
 		cytoidLampOn = new BlockCytoidLamp(idCytoidLampOn.getInt(), true).setHardness(1.0F).setUnlocalizedName("CytoidLampOn").setStepSound(Block.soundGlassFootstep);
 		registerBlock(cytoidLampOn, "Cytoid Lamp On");
-		
+
 		Property idCytoidLightstrip = Virtious.config.getBlock("Cytoid Lightstrip Id", Config.idCytoidLightstrip);
 		cytoidLightstrip = new BlockCytoidLightstrip(idCytoidLightstrip.getInt()).setHardness(3.0F).setUnlocalizedName("cytoidLightstrip");
 		registerBlock(cytoidLightstrip, "Cytoid Lightstrip");
+		
+		Property idCytoidWall = Virtious.config.getBlock("Cytoid Wall Id", Config.idCytoidWall);
+		cytoidWall = new VirtiousBlock(idCytoidWall.getInt(), Material.rock).setHardness(3.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("CytoidWall");
+		registerBlock(cytoidWall, "Cytoid Wall");
 		
 		LanguageRegistry.instance().addStringLocalization("tile.cytoidFloor.cytoidfloor.name", "Cytoid Floor");
 		

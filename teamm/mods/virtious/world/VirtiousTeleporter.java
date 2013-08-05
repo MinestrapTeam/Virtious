@@ -60,7 +60,7 @@ public class VirtiousTeleporter extends Teleporter
             int j = MathHelper.floor_double(entity.posY) - 1;
             int k = MathHelper.floor_double(entity.posZ);
 
-            entity.setLocationAndAngles((double)i, (double)j, (double)k, entity.rotationYaw, 0.0F);
+            entity.setLocationAndAngles((double)i, (double)j + 3, (double)k, entity.rotationYaw, 0.0F);
             entity.motionX = entity.motionY = entity.motionZ = 0.0D;
         }
     }

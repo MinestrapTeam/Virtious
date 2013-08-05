@@ -61,7 +61,8 @@ public class Config {
 	public static int idCytoidLampIdle = 2041;
 	public static int idCytoidLampOn = 2042;
 	public static int idCytoidLightstrip = 2043;
-	
+	public static int idCytoidWall = 2044;
+
 	//Items
 	public static int idIngotBrazeum = 5000;
 	public static int idShardAquieus = 5001;
@@ -104,6 +105,7 @@ public class Config {
 	public static int idpluthoriumHoe = 5038;
 	public static int idpluthoriumSword = 5039;
 	public static int idCytoidDoorItem = 5040;
-	
+	public static int idStickyBomb = 5041;
+
 	public static int idTeleporterWand = 5500;
 }
