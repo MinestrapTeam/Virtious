@@ -271,6 +271,10 @@ public class VirtiousRecipes
 				{
 			"BBB", "BTB", "BBB", Character.valueOf('B'), VirtiousItems.ingotBrazeum, Character.valueOf('T'), VirtiousBlocks.blockTak
 				});
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.fuelCell, 1), new Object[]
+				{
+			"IRI", "GCG", "IDI", Character.valueOf('I'), Block.blockIron, Character.valueOf('R'), Item.redstone, Character.valueOf('G'), Block.glass, Character.valueOf('D'), Item.diamond, Character.valueOf('C'), Block.field_111034_cE
+				});
 		
 //		OreDictionary.registerOre("plankWood", VirtiousBlocks.plankAmber);
 //		OreDictionary.registerOre("plankWood", VirtiousBlocks.plankVirtian);
