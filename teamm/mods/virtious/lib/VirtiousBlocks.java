@@ -57,6 +57,8 @@ public class VirtiousBlocks {
 	public static Block mushroomBlue;
 	public static Block mushroomGreen;
 	public static Block fineGravel;
+	public static Block cytoidControlOff;
+	public static Block cytoidControlOn;
 	
 	/**
 	 * Loads all block objects
@@ -248,7 +250,13 @@ public class VirtiousBlocks {
 		fineGravel = new FineGravel(idFineGravel.getInt()).setHardness(0.6F).setStepSound(Block.soundGravelFootstep).setUnlocalizedName("FineGravel");
 		registerBlock(fineGravel, "Fine Gravel");
 		
-
+		Property idCytoidControlOff = Virtious.config.getBlock("Cytoid Control Panel Off", Config.idCytoidControlPanelOff);
+		cytoidControlOff = new BlockCytoidControlPanelOff(idCytoidControlOff.getInt()).setCreativeTab(Virtious.tabVirtiousBlocks).setHardness(3.0F).setUnlocalizedName("cytoidControlOff");
+		registerBlock(cytoidControlOff, "Cytoid Control Panel");
+		
+		Property idCytoidControlOn = Virtious.config.getBlock("Cytoid Control Panel On", Config.idCytoidControlPanelOn);
+		cytoidControlOn = new BlockCytoidControlPanelOn(idCytoidControlOn.getInt()).setHardness(3.0F).setUnlocalizedName("cytoidControlOn");
+		registerBlock(cytoidControlOn, "Cytoid Control Panel On");
 		
 		MinecraftForge.setBlockHarvestLevel(oreTak, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreBrazeum, "pickaxe", 1);

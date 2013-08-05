@@ -52,7 +52,8 @@ public class Config {
 	public static int idMushroomBlue = 2032;
 	public static int idMushroomGreen = 2033;
 	public static int idFineGravel = 2034;
-
+	public static int idCytoidControlPanelOff = 2035;
+	public static int idCytoidControlPanelOn = 2036;
 	
 	//Items
 	public static int idIngotBrazeum = 5000;
