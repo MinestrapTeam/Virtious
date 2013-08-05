@@ -66,6 +66,7 @@ public class VirtiousBlocks {
 	public static Block cytoidGlass;
 	public static Block cytoidLampIdle;
 	public static Block cytoidLampOn;
+	public static Block cytoidLightstrip;
 	
 	/**
 	 * Loads all block objects
@@ -288,6 +289,10 @@ public class VirtiousBlocks {
 		Property idCytoidLampOn = Virtious.config.getBlock("Cytoid Lamp On", Config.idCytoidLampOn);
 		cytoidLampOn = new BlockCytoidLamp(idCytoidLampOn.getInt(), true).setHardness(1.0F).setUnlocalizedName("CytoidLampOn").setStepSound(Block.soundGlassFootstep);
 		registerBlock(cytoidLampOn, "Cytoid Lamp On");
+		
+		Property idCytoidLightstrip = Virtious.config.getBlock("Cytoid Lightstrip Id", Config.idCytoidLightstrip);
+		cytoidLightstrip = new BlockCytoidLightstrip(idCytoidLightstrip.getInt()).setHardness(3.0F).setUnlocalizedName("cytoidLightstrip");
+		registerBlock(cytoidLightstrip, "Cytoid Lightstrip");
 		
 		LanguageRegistry.instance().addStringLocalization("tile.cytoidFloor.cytoidfloor.name", "Cytoid Floor");
 		

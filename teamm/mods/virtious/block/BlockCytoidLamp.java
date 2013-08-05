@@ -10,7 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 
-public class BlockCytoidLamp extends VirtiousBlock
+public class BlockCytoidLamp extends Block
 {
     /** Whether this lamp block is the powered version. */
     private final boolean powered;
