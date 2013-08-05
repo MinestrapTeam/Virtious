@@ -5,6 +5,7 @@ public class Config {
 	public static int canyoneBiomeID = 26;
 	public static int whiskerfieldBiomeID = 27;
 	public static int gravelBeachBiomeID = 28;
+	public static int virtiousOceanID = 29;
 
 	//Worldgen Blocks - under 256
 	public static int idDeepStone = 200;

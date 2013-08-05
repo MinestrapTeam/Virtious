@@ -20,6 +20,7 @@ import teamm.mods.virtious.world.TileEntityPortal;
 import teamm.mods.virtious.world.VirtiousProvider;
 import teamm.mods.virtious.world.biome.BiomeGenCanyon;
 import teamm.mods.virtious.world.biome.BiomeGenVirtious;
+import teamm.mods.virtious.world.biome.BiomeGenVirtiousOcean;
 import teamm.mods.virtious.world.biome.BiomeGenWhiskerfield;
 import teamm.mods.virtious.world.gen.VirtiousOreGenerator;
 
@@ -73,12 +74,14 @@ public class Virtious {
 	public static int canyonBiomeID;
 	public static int whiskerfieldBiomeID;
 	public static int GravelBeachBiomeID;
+	public static int virtiousOceanID;
 
 	/* Biomes */
 	public static BiomeGenBase virtiousBiome = null;
 	public static BiomeGenBase biomeCanyon = null;
 	public static BiomeGenBase biomeWhiskerfield = null;
 	public static BiomeGenBase biomeGravelBeach = null;
+	public static BiomeGenBase virtiousOceanBiome = null;
 
 	public static Configuration config;
 	
@@ -119,6 +122,9 @@ public class Virtious {
 			Property idwhiskerfieldBiome = Virtious.config.get("Special", "Whiskerfield Biome Id", Config.whiskerfieldBiomeID);
 			whiskerfieldBiomeID = idwhiskerfieldBiome.getInt();
 			
+			Property idVirtiousOcean = Virtious.config.get("Specialk", "Virtious Ocean Biome Id", Config.virtiousOceanID);
+			virtiousOceanID = idVirtiousOcean.getInt();
+			
 			//ItemStack config
 			new VirtiousBlocks();
 			new VirtiousItems();
@@ -153,6 +159,7 @@ public class Virtious {
 		biomeCanyon = new BiomeGenCanyon(Virtious.canyonBiomeID);
 		biomeWhiskerfield = new BiomeGenWhiskerfield(Virtious.whiskerfieldBiomeID);
 		biomeGravelBeach = new BiomeGenCanyon(Virtious.canyonBiomeID);
+		virtiousOceanBiome = new BiomeGenVirtiousOcean(Virtious.virtiousOceanID);
 		
 		EntityRegistry.registerModEntity(EntityStickyBomb.class, "StickyBomb", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityVirtiousFishHook.class, "VirtiousFishingHook", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
