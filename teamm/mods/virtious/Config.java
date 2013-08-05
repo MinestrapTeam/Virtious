@@ -64,6 +64,10 @@ public class Config {
 	public static int idCytoidWall = 2044;
 	public static int idTilledSoil = 2045;
 	public static int idVeerPlant = 2046;
+	public static int idCytoidWallDark = 2047;
+	public static int idCytoidWallDark2 = 2048;
+	public static int idCytoidWallDark3 = 2049;
+	public static int idCytoidWallDark4 = 2050;
 
 	//Items
 	public static int idTeleporterWand = 5500;

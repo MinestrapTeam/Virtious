@@ -70,6 +70,10 @@ public class VirtiousBlocks {
 	public static Block cytoidWall;
 	public static Block tilledSoil;
 	public static Block plantVeer;
+	public static Block cytoidWallDark;
+	public static Block cytoidWallDark2;
+	public static Block cytoidWallDark3;
+	public static Block cytoidWallDark4;
 	
 	/**
 	 * Loads all block objects
@@ -311,7 +315,21 @@ public class VirtiousBlocks {
 		plantVeer = new VeerCrops(idVeerPlant.getInt()).setUnlocalizedName("VeerCrop");
 		registerBlock(plantVeer, "Veer Plant");
 		
+		Property idCytoidWallDark = Virtious.config.getBlock("Dark Cytoid Wall", Config.idCytoidWallDark);
+		cytoidWallDark = new VirtiousBlock(idCytoidWallDark.getInt(), Material.iron).setHardness(3.0F).setResistance(8.0F).setUnlocalizedName("CytoidWallDark1");
+		registerBlock(cytoidWallDark, "Dark Cytoid Wall");
 		
+		Property idCytoidWallDark2 = Virtious.config.getBlock("Dark Cytoid Wall 2", Config.idCytoidWallDark2);
+		cytoidWallDark2 = new VirtiousBlock(idCytoidWallDark2.getInt(), Material.iron).setHardness(3.0F).setResistance(8.0F).setUnlocalizedName("CytoidWallDark2");
+		registerBlock(cytoidWallDark2, "Dark Cytoid Wall 2");
+		
+		Property idCytoidWallDark3 = Virtious.config.getBlock("Dark Cytoid Wall 3", Config.idCytoidWallDark3);
+		cytoidWallDark3 = new VirtiousBlock(idCytoidWallDark3.getInt(), Material.iron).setHardness(3.0F).setResistance(8.0F).setUnlocalizedName("CytoidWallDark3");
+		registerBlock(cytoidWallDark3, "Dark Cytoid Wall 3");
+		
+		Property idCytoidWallDark4 = Virtious.config.getBlock("Dark Cytoid Wall 4", Config.idCytoidWallDark4);
+		cytoidWallDark4 = new VirtiousBlock(idCytoidWallDark4.getInt(), Material.iron).setHardness(3.0F).setResistance(8.0F).setUnlocalizedName("CytoidWallDark4");
+		registerBlock(cytoidWallDark4, "Dark Cytoid Wall 4");
 		
 		LanguageRegistry.instance().addStringLocalization("tile.cytoidFloor.cytoidfloor.name", "Cytoid Floor");
 		
