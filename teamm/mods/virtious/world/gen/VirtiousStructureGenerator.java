@@ -29,7 +29,12 @@ public class VirtiousStructureGenerator implements IWorldGenerator {
 		{
 			if(random.nextInt(70) == 1)
 			{
-				new VirtiousGenTempleGood().generate(world, random, x, world.getFirstUncoveredBlock(x, z), z);
+				//new VirtiousGenTempleGood().generate(world, random, x, world.getFirstUncoveredBlock(x, z), z);
+			}
+			
+			if(random.nextInt(70) == 1)
+			{
+				new VirtiousGenCytoidCommandCenter().generate(world, random, x, world.getFirstUncoveredBlock(x, z), z);
 			}
 		}
 		
