@@ -17,7 +17,45 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 		};
 	}
 
-	public boolean LocationIsValidSpawn(World world, int i, int j, int k){
+//	public boolean LocationIsValidSpawn(World world, int i, int j, int k){
+//		int distanceToAir = 0;
+//		int checkID = world.getBlockId(i, j, k);
+//
+//		while (checkID != 0){
+//			distanceToAir++;
+//			checkID = world.getBlockId(i, j + distanceToAir, k);
+//		}
+//
+//		if (distanceToAir > 3){
+//			return false;
+//		}
+//		j += distanceToAir - 1;
+//
+//		int blockID = world.getBlockId(i, j, k);
+//		int blockIDAbove = world.getBlockId(i, j+1, k);
+//		int blockIDBelow = world.getBlockId(i, j-1, k);
+//			
+//		if (blockIDAbove != 0){
+//			return false;
+//		}
+//		if(blockID == VirtiousBlocks.virtianstone.blockID || 
+//				blockID == VirtiousBlocks.virtianSoil.blockID ||
+//				blockID == VirtiousBlocks.virtianGrass.blockID ||
+//				blockID == VirtiousBlocks.canyonstone.blockID ||
+//				blockID == VirtiousBlocks.fineGravel.blockID||
+//				
+//				blockIDBelow == VirtiousBlocks.virtianstone.blockID
+//				|| blockIDBelow == VirtiousBlocks.virtianSoil.blockID
+//				|| blockIDBelow == VirtiousBlocks.virtianGrass.blockID
+//				|| blockIDBelow == VirtiousBlocks.canyonstone.blockID
+//				|| blockIDBelow == VirtiousBlocks.fineGravel.blockID
+//			)
+//			return true;
+//			
+//		return false;
+//	}
+	public boolean LocationIsValidSpawn(World world, int i, int j, int k)
+	{
 		int distanceToAir = 0;
 		int checkID = world.getBlockId(i, j, k);
 
@@ -34,27 +72,27 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 		int blockID = world.getBlockId(i, j, k);
 		int blockIDAbove = world.getBlockId(i, j+1, k);
 		int blockIDBelow = world.getBlockId(i, j-1, k);
-		for (int x : GetValidSpawnBlocks()){
+		for (int id : GetValidSpawnBlocks()){
 			if (blockIDAbove != 0){
 				return false;
 			}
-			if (blockID == x){
+			if (blockID == id){
 				return true;
-			}else if (blockID == VirtiousBlocks.virtianGrass.blockID && blockIDBelow == x){
+			}
+			else if (blockID == VirtiousBlocks.virtianGrass.blockID && blockIDBelow == id){
 				return true;
 			}
 		}
-		return false;
+		return true;
 	}
-
 	public VirtiousGenCytoidCommandCenter() { }
 
 	public boolean generate(World world, Random rand, int i, int j, int k) {
 		//check that each corner is one of the valid spawn blocks
-//		if(!LocationIsValidSpawn(world, i, j, k) || !LocationIsValidSpawn(world, i + 26, j, k) || !LocationIsValidSpawn(world, i + 26, j, k + 27) || !LocationIsValidSpawn(world, i, j, k + 27))
-//		{
-//			return false;
-//		}
+		if(!LocationIsValidSpawn(world, i, j, k) || !LocationIsValidSpawn(world, i + 26, j, k) || !LocationIsValidSpawn(world, i + 26, j, k + 27) || !LocationIsValidSpawn(world, i, j, k + 27))
+		{
+			return false;
+		}
 		
 		int center = getTopSolidBlock(world, i, k);
 		int corner1 = getTopSolidBlock(world, i + 20, k);
