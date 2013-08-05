@@ -88,7 +88,7 @@ public class VirtiousItems
 		
 		Property idTeleporterWand = Virtious.config.getItem("idTeleporterWand", Config.idTeleporterWand);
 		int TeleporterWandID = idTeleporterWand.getInt();
-		teleportWand = new TeleporterItem(TeleporterWandID).setUnlocalizedName("TeleportWand");
+		teleportWand = new TeleporterItem(TeleporterWandID).setUnlocalizedName("TeleportWand").setCreativeTab(null);
 		LanguageRegistry.addName(teleportWand, "TeleportWand");
 		
 		Property idGemPluthorium = Virtious.config.getItem("Pluthorium Gem", Config.idGemPluthorium);
@@ -247,7 +247,7 @@ public class VirtiousItems
 		LanguageRegistry.addName(pluthoriumSword, "Pluthorium Sword");
 
 		Property idCytoidDoor = Virtious.config.getItem("Cytoid Door Item Id", Config.idCytoidDoorItem);
-		cytoidDoor = new ItemCytoidDoor(idCytoidDoor.getInt()).setUnlocalizedName("ItemCytoidDoor");
+		cytoidDoor = new ItemCytoidDoor(idCytoidDoor.getInt()).setUnlocalizedName("CytoidDoorItem");
 		LanguageRegistry.addName(cytoidDoor, "Cytoid Door");
 
 		Property idStickyBomb = Virtious.config.getItem("Sticky Bomb Item Id", Config.idStickyBomb);
