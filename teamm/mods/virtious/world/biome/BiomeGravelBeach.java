@@ -13,7 +13,7 @@ public class BiomeGravelBeach extends BiomeGenBase{
         this.fillerBlock = (byte)VirtiousBlocks.canyonstone.blockID;
 
         this.setColor(16440917);
-        this.setBiomeName("Gravel Beach").setTemperatureRainfall(0.7F, 0.3F).setMinMaxHeight(0.0F, 0.1F);
+        this.setBiomeName("Gravel Beach").setTemperatureRainfall(0.7F, 0.3F).setMinMaxHeight(0.1F, 0.5F);
 	}
 
 }
