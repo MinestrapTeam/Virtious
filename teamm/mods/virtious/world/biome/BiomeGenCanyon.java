@@ -21,7 +21,7 @@ public class BiomeGenCanyon extends BiomeGenBase
 		super(par1);
 		
 		this.setMinMaxHeight(0.3F, 1.5F);
-        
+        this.setDisableRain().setTemperatureRainfall(2.0F, 0.0F);
         this.spawnableMonsterList.clear();
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();

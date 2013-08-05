@@ -6,6 +6,10 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityPortal extends TileEntity{
 
+	public TileEntityPortal(){
+		super();
+	}
+	
 	int tick = 0;
 	@Override
 	public void updateEntity()

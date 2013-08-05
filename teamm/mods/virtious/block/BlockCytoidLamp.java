@@ -10,19 +10,20 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 
-public class BlockCytoidLamp extends Block
+public class BlockCytoidLamp extends VirtiousBlock
 {
     /** Whether this lamp block is the powered version. */
     private final boolean powered;
 
-    public BlockCytoidLamp(int par1, boolean par2)
+    public BlockCytoidLamp(int par1, boolean on)
     {
         super(par1, Material.redstoneLight);
-        this.powered = par2;
+        this.powered = on;
 
-        if (par2)
+        if (on)
         {
             this.setLightValue(1.0F);
+            this.setCreativeTab(null);
         }
     }
 

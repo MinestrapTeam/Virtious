@@ -83,72 +83,83 @@ public class PortalBlock extends Block
         {
 	    	if(entity instanceof EntityPlayerMP){
 				EntityPlayerMP playermp = (EntityPlayerMP) entity;
-				TileEntityPortal tile = (TileEntityPortal) world.getBlockTileEntity(i, j, k);
-					System.out.println("timeuntilportal: " + playermp.timeUntilPortal);
+//				TileEntityPortal tile = (TileEntityPortal) world.getBlockTileEntity(i, j, k);
 				if(playermp.timeUntilPortal == 0)
 				{
-					if(entity.dimension == Virtious.dimensionID)
+					if(!world.isRemote)
 					{
-						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "The Overworld");
-					}
-					
-					else
-					{
-						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "Viritous");
+						if(entity.dimension == Virtious.dimensionID)
+						{
+							playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "The Overworld...");
+						}
+						
+						else
+						{
+							playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "Viritous...");
+						}
 					}
 				}
+//				
+//				if(playermp.timeUntilPortal == 11)
+//				{
+//					if(!world.isRemote)
+//					{
+//						if(entity.dimension == Virtious.dimensionID)
+//						{
+//							playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "The Overworld");
+//						}
+//						
+//						else
+//						{
+//							playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "Viritous");
+//						}
+//					}
+//				}
+//				
+//				if(playermp.timeUntilPortal == 22)
+//				{
+//					if(!world.isRemote)
+//					{
+//						if(entity.dimension == Virtious.dimensionID)
+//						{
+//							playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "The Overworld");
+//						}
+//						else
+//						{
+//							playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "Viritous");
+//						}
+//					}
+//				}
+//				
+//				if(playermp.timeUntilPortal == 33)
+//				{
+//					if(!world.isRemote)
+//					{
+//						if(entity.dimension == Virtious.dimensionID)
+//						{
+//							playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "The Overworld");
+//						}
+//						else
+//						{
+//							playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "Viritous");
+//						}
+//					}
+//				}
 				
-				if(playermp.timeUntilPortal == 11)
-				{
-					if(entity.dimension == Virtious.dimensionID)
-					{
-						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "The Overworld");
-					}
-					
-					else
-					{
-						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "Viritous");
-					}
-				}
-				
-				if(playermp.timeUntilPortal == 22)
-				{
-					if(entity.dimension == Virtious.dimensionID)
-					{
-						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "The Overworld");
-					}
-					
-					else
-					{
-						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "Viritous");
-					}
-				}
-				
-				if(playermp.timeUntilPortal == 33)
-				{
-					if(entity.dimension == Virtious.dimensionID)
-					{
-						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "The Overworld");
-					}
-					
-					else
-					{
-						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "Viritous");
-					}
-				}
-				
-				if(playermp.timeUntilPortal == 44)
-				{
-					if(entity.dimension == Virtious.dimensionID)
-					{
-						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "The Overworld");
-					}
-					
-					else
-					{
-						playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "Viritous");
-					}
-				}
+//				if(playermp.timeUntilPortal == 44)
+//				{
+//					if(!world.isRemote)
+//					{
+//						if(entity.dimension == Virtious.dimensionID)
+//						{
+//							playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "The Overworld...");
+//						}
+//						else
+//						{
+//							playermp.addChatMessage("Warping to " + EnumChatFormatting.GRAY + "Viritous...");
+//						}
+//					}
+//				}
 			
 				if(playermp.timeUntilPortal >= 45)
 				{

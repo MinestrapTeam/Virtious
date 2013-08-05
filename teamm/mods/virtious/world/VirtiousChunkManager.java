@@ -35,9 +35,12 @@ public class VirtiousChunkManager extends WorldChunkManager {
     public VirtiousChunkManager()
     {
     	this.allowedBiomes.clear();
+    	this.allowedBiomes.add(Virtious.biomeGravelBeach);
+    	this.allowedBiomes.add(Virtious.biomeGravelBeach);
     	this.allowedBiomes.add(Virtious.virtiousBiome);
     	this.allowedBiomes.add(Virtious.biomeCanyon);
     	this.allowedBiomes.add(Virtious.biomeWhiskerfield);
+    	this.allowedBiomes.add(Virtious.biomeGravelBeach);
     	this.allowedBiomes.add(Virtious.biomeGravelBeach);
     	this.allowedBiomes.add(Virtious.virtiousOceanBiome);
     	
