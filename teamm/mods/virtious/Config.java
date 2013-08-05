@@ -127,5 +127,6 @@ public class Config {
 	public static int idVois = 5047;
 	public static int idLaserRifle = 5048;
 	public static int idBinnegan = 5049;
-	
+	public static int idfishEbulus = 5050;
+	public static int idamberfishingpole=5051;
 }

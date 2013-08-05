@@ -302,7 +302,7 @@ public class VirtiousBlocks {
 		registerBlock(cytoidLampIdle, "Cytoid Lamp");
 		
 		Property idCytoidLampOn = Virtious.config.getBlock("Cytoid Lamp On", Config.idCytoidLampOn);
-		cytoidLampOn = new BlockCytoidLamp(idCytoidLampOn.getInt(), true).setBlockUnbreakable().setUnlocalizedName("CytoidLampOn").setStepSound(Block.soundGlassFootstep);
+		cytoidLampOn = new BlockCytoidLamp(idCytoidLampOn.getInt(), true).setLightValue(0.8F).setBlockUnbreakable().setUnlocalizedName("CytoidLampOn").setStepSound(Block.soundGlassFootstep);
 		registerBlock(cytoidLampOn, "Cytoid Lamp On");
 
 		Property idCytoidLightstrip = Virtious.config.getBlock("Cytoid Lightstrip Id", Config.idCytoidLightstrip);

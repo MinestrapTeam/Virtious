@@ -4,6 +4,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import teamm.mods.virtious.Config;
 import teamm.mods.virtious.Virtious;
 import teamm.mods.virtious.item.EnumVirtiousToolMaterial;
+import teamm.mods.virtious.item.ItemAmberFishingRod;
 import teamm.mods.virtious.item.ItemCytoidDoor;
 import teamm.mods.virtious.item.ItemGun;
 import teamm.mods.virtious.item.ItemStickyBomb;
@@ -75,6 +76,8 @@ public class VirtiousItems
 	public static Item foodVois;
 	public static Item laserRifle;
 	public static Item fruitBinnegan;
+	public static Item fishEbulus;
+	public static Item fishingPoleAmber;
 	
 	/**
 	 * Loads all item objects
@@ -280,7 +283,7 @@ public class VirtiousItems
 		LanguageRegistry.addName(seedVeer, "Veer Seeds");
 		
 		Property idVois = Virtious.config.getItem("Vois Item Id", Config.idVois);
-		foodVois = new VirtiousFood(idVois.getInt(), 5, 2.5F).setUnlocalizedName("Vois");
+		foodVois = new VirtiousFood(idVois.getInt(), 5, 0.25F).setUnlocalizedName("Vois");
 		LanguageRegistry.addName(foodVois, "Vois");
 		
 		Property idLaserRifle = Virtious.config.getItem("Laser Rifle Id", Config.idLaserRifle);
@@ -288,8 +291,16 @@ public class VirtiousItems
 		LanguageRegistry.addName(laserRifle, "Cytoid Laser Rifle");
 		
 		Property idBinnegan = Virtious.config.getItem("Binnegan Id", Config.idBinnegan);
-		fruitBinnegan = new VirtiousFood(idBinnegan.getInt(), 3, 2.5F).setUnlocalizedName("Binnegan");
+		fruitBinnegan = new VirtiousFood(idBinnegan.getInt(), 3, 0.25F).setUnlocalizedName("Binnegan");
 		LanguageRegistry.addName(fruitBinnegan, "Binnegan");
+		
+		Property idfishEbulus = Virtious.config.getItem("Ebulus Fish", Config.idfishEbulus);
+		//fishEbulus = new VirtiousFood(idfishEbulus.getInt(), 5, 0.5F).setUnlocalizedName("EvulousFish");
+		//LanguageRegistry.addName(fishEbulus, "Evulous Fish");
+		
+		Property idfishingpoleAmber = Virtious.config.getItem("Amber Fish Pole id", Config.idamberfishingpole);
+		//fishingPoleAmber = new ItemAmberFishingRod(idfishingpoleAmber.getInt()).setUnlocalizedName("fishingPoleAmber");
+		//LanguageRegistry.addName(fishingPoleAmber, "Amber Fishing Pole");
 		
 		//TODO load all item objects
 	}

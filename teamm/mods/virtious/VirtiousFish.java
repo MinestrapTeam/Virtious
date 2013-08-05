@@ -1,5 +1,6 @@
 package teamm.mods.virtious;
 
+import teamm.mods.virtious.lib.VirtiousItems;
 import net.minecraft.item.ItemStack;
 
 public class VirtiousFish 
@@ -9,7 +10,7 @@ public class VirtiousFish
 	static
 	{
 		lootSet = new VirtiousLootSet();
-		
+		addFish(new ItemStack(VirtiousItems.fishEbulus), 50);
 		//TODO Add fish
 	}
 	
