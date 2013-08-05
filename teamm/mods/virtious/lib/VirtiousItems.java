@@ -16,6 +16,7 @@ import teamm.mods.virtious.item.VirtiousItem;
 import teamm.mods.virtious.item.VirtiousPickaxe;
 import teamm.mods.virtious.item.VirtiousShovel;
 import teamm.mods.virtious.item.VirtiousSword;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.Property;
 import net.minecraftforge.fluids.ItemFluidContainer;
@@ -90,7 +91,7 @@ public class VirtiousItems
 		
 		Property idTeleporterWand = Virtious.config.getItem("idTeleporterWand", Config.idTeleporterWand);
 		int TeleporterWandID = idTeleporterWand.getInt();
-		teleportWand = new TeleporterItem(TeleporterWandID).setUnlocalizedName("TeleportWand").setCreativeTab(null);
+		teleportWand = new TeleporterItem(TeleporterWandID).setUnlocalizedName("TeleportWand")/*.setCreativeTab(null)*/;
 		LanguageRegistry.addName(teleportWand, "TeleportWand");
 		
 		Property idGemPluthorium = Virtious.config.getItem("Pluthorium Gem", Config.idGemPluthorium);
@@ -273,7 +274,7 @@ public class VirtiousItems
 		LanguageRegistry.addName(dyeVeer, "Veer");
 		
 		Property idVeerSeed = Virtious.config.getItem("Veer Seeds Item Id", Config.idVeerSeed);
-		seedVeer = new VirtiousItem(idVeerSeed.getInt()).setUnlocalizedName("VeerSeeds");
+		seedVeer = new VirtiousSeedVeer(idVeerSeed.getInt(), VirtiousBlocks.plantVeer.blockID, VirtiousBlocks.tilledSoil.blockID).setUnlocalizedName("VeerSeeds");
 		LanguageRegistry.addName(seedVeer, "Veer Seeds");
 		
 		Property idVois = Virtious.config.getItem("Vois Item Id", Config.idVois);

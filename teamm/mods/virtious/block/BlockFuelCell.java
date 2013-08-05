@@ -36,14 +36,13 @@ public class BlockFuelCell extends VirtiousBlock{
 	    		{
 	    			for(int z = -1; z <= 1; z++)
 	    			{
-	    				if(world.getBlockId(i + x, j + 1, k + z) != Block.blockIron.blockID)//FIXME: titanium
+	    				if(world.getBlockId(i + x, j - 1, k + z) != Block.blockIron.blockID)//FIXME: titanium
 	    					return false;
 	    			}
 				}
 				if(!player.capabilities.isCreativeMode)
 					player.getCurrentEquippedItem().stackSize--;
-	    		world.setBlock(i, j + 2, k, VirtiousBlocks.portalBlock.blockID);
-	    		world.setBlockToAir(i, j, k);
+	    		world.setBlock(i, j, k, VirtiousBlocks.portalBlock.blockID);
 	    	}
     	}
     	return false;

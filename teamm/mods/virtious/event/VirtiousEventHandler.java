@@ -11,6 +11,7 @@ import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
 import teamm.mods.virtious.block.BlockSaplingAmber;
 import teamm.mods.virtious.block.BlockSaplingVirtian;
+import teamm.mods.virtious.block.VeerCrops;
 import teamm.mods.virtious.lib.VirtiousBlocks;
 import teamm.mods.virtious.lib.VirtiousItems;
 
@@ -33,6 +34,16 @@ public class VirtiousEventHandler
 			if (!event.world.isRemote) 
 			{
 				((BlockSaplingVirtian)VirtiousBlocks.saplingVirtian).markOrGrowMarked(event.world, event.X, event.Y, event.Z, new Random());			
+				event.setResult(Result.ALLOW);
+			}            
+		}
+		
+
+		if (event.ID == VirtiousBlocks.plantVeer.blockID) 
+		{
+			if (!event.world.isRemote) 
+			{
+				((VeerCrops)VirtiousBlocks.plantVeer).fertilize(event.world, event.X, event.Y, event.Z);			
 				event.setResult(Result.ALLOW);
 			}            
 		}

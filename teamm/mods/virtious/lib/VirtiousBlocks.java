@@ -68,6 +68,8 @@ public class VirtiousBlocks {
 	public static Block cytoidLampOn;
 	public static Block cytoidLightstrip;
 	public static Block cytoidWall;
+	public static Block tilledSoil;
+	public static Block plantVeer;
 	
 	/**
 	 * Loads all block objects
@@ -300,6 +302,14 @@ public class VirtiousBlocks {
 		Property idCytoidWall = Virtious.config.getBlock("Cytoid Wall Id", Config.idCytoidWall);
 		cytoidWall = new VirtiousBlock(idCytoidWall.getInt(), Material.rock).setHardness(3.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("CytoidWall");
 		registerBlock(cytoidWall, "Cytoid Wall");
+
+		Property idTilledSoil = Virtious.config.getBlock("Tilled Soil Id", Config.idTilledSoil);
+		tilledSoil = new VirtiousTilledBlock(idTilledSoil.getInt()).setHardness(0.6F).setStepSound(Block.soundGravelFootstep).setUnlocalizedName("TilledVirtianSoil");
+		registerBlock(tilledSoil, "Tilled Soil");
+		
+		Property idVeerPlant = Virtious.config.getBlock("Veer Plant Id", Config.idVeerPlant);
+		plantVeer = new VeerCrops(idVeerPlant.getInt()).setUnlocalizedName("VeerCrop");
+		registerBlock(plantVeer, "Veer Plant");
 		
 		LanguageRegistry.instance().addStringLocalization("tile.cytoidFloor.cytoidfloor.name", "Cytoid Floor");
 		
