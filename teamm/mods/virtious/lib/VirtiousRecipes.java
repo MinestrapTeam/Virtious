@@ -229,11 +229,17 @@ public class VirtiousRecipes
 				{
 			"M", "T", "S", Character.valueOf('T'), VirtiousItems.tak, Character.valueOf('M'), VirtiousBlocks.mushroomGreen, Character.valueOf('S'), Item.stick
 				});
+		GameRegistry.addSmelting(VirtiousItems.rawBurhanch.itemID, new ItemStack(VirtiousItems.cookedBurhanch, 1), 0.7F);
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(VirtiousItems.foodVois, 1),
 				new ItemStack(VirtiousItems.cookedBurhanch, 1), new ItemStack(VirtiousItems.dyeVeer, 1));//FIXME
 		GameRegistry.addShapelessRecipe(new ItemStack(VirtiousItems.foodVois, 1),
 				new ItemStack(VirtiousItems.rawBurhanch, 1), new ItemStack(VirtiousItems.dyeVeer, 1));
+		
+		GameRegistry.addRecipe(new ItemStack(VirtiousItems.itemStickyBomb, 1), new Object[]
+				{
+			"BBB", "BTB", "BBB", Character.valueOf('B'), VirtiousItems.ingotBrazeum, Character.valueOf('T'), VirtiousBlocks.blockTak
+				});
 		
 //		OreDictionary.registerOre("plankWood", VirtiousBlocks.plankAmber);
 //		OreDictionary.registerOre("plankWood", VirtiousBlocks.plankVirtian);

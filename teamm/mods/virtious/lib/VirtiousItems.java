@@ -277,8 +277,7 @@ public class VirtiousItems
 		Property idVois = Virtious.config.getItem("Vois Item Id", Config.idVois);
 		foodVois = new VirtiousFood(idVois.getInt(), 5, 2.5F).setUnlocalizedName("Vois");
 		LanguageRegistry.addName(foodVois, "Vois");
-		
-		
+				
 		//TODO load all item objects
 	}
 }
