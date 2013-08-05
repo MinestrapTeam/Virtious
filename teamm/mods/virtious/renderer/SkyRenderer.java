@@ -21,6 +21,7 @@ public class SkyRenderer extends IRenderHandler {
     private static final ResourceLocation TEXTURE_SUN = new ResourceLocation("virtious:textures/environment/sun.png");
     private static final ResourceLocation TEXTURE_CLOUDS = new ResourceLocation("textures/environment/clouds.png");
     private static final ResourceLocation TEXTURE_SKY = new ResourceLocation("virtious:textures/environment/nightsky.png");
+    private static final ResourceLocation TEXTURE_SKY2 = new ResourceLocation("virtious:textures/environment/nightsky_2.png");
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -250,6 +251,7 @@ public class SkyRenderer extends IRenderHandler {
 
             if (i == 5)
             {
+                FMLClientHandler.instance().getClient().renderEngine.func_110577_a(TEXTURE_SKY);
                 GL11.glRotatef(-90.0F, 0.0F, 0.0F, 1.0F);
             }
 

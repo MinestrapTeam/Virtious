@@ -2,6 +2,7 @@ package teamm.mods.virtious.world.biome;
 
 import java.util.Random;
 
+import teamm.mods.virtious.entity.EntityNativeSkeleton;
 import teamm.mods.virtious.lib.VirtiousBlocks;
 
 import cpw.mods.fml.relauncher.Side;
@@ -23,6 +24,7 @@ public class BiomeGenCanyon extends BiomeGenBase
 		this.setMinMaxHeight(0.3F, 1.5F);
         this.setDisableRain().setTemperatureRainfall(2.0F, 0.0F);
         this.spawnableMonsterList.clear();
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityNativeSkeleton.class, 10, 4, 4));
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();
         this.spawnableCaveCreatureList.clear();
