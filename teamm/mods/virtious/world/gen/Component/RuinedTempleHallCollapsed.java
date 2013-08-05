@@ -2,8 +2,12 @@
 *** MADE BY MITHION'S .SCHEMATIC TO JAVA CONVERTING TOOL v1.6 ***
 */
 
-package net.minecraft.src;
+package teamm.mods.virtious.world.gen.component;
 import java.util.Random;
+
+import net.minecraft.block.Block;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class RuinedTempleHallCollapsed extends WorldGenerator
 {
@@ -130,24 +134,24 @@ public class RuinedTempleHallCollapsed extends WorldGenerator
 		world.setBlock(i + 4, j + 4, k + 1, Block.stone.blockID);
 		world.setBlock(i + 4, j + 4, k + 2, Block.stone.blockID);
 		world.setBlock(i + 4, j + 4, k + 4, Block.stone.blockID);
-		world.setBlockWithNotify(i + 0, j + 1, k + 3, Block.gravel.blockID);
-		world.setBlockWithNotify(i + 1, j + 1, k + 1, Block.gravel.blockID);
-		world.setBlockWithNotify(i + 2, j + 1, k + 2, Block.gravel.blockID);
-		world.setBlockWithNotify(i + 2, j + 1, k + 3, Block.gravel.blockID);
-		world.setBlockWithNotify(i + 3, j + 1, k + 1, Block.gravel.blockID);
-		world.setBlockWithNotify(i + 3, j + 1, k + 2, Block.gravel.blockID);
-		world.setBlockWithNotify(i + 3, j + 1, k + 3, Block.gravel.blockID);
-		world.setBlockWithNotify(i + 3, j + 2, k + 2, Block.gravel.blockID);
-		world.setBlockWithNotify(i + 3, j + 2, k + 3, Block.gravel.blockID);
-		world.setBlockWithNotify(i + 4, j + 1, k + 1, Block.gravel.blockID);
-		world.setBlockWithNotify(i + 4, j + 1, k + 2, Block.gravel.blockID);
-		world.setBlockWithNotify(i + 4, j + 1, k + 3, Block.gravel.blockID);
-		world.setBlockWithNotify(i + 4, j + 2, k + 1, Block.gravel.blockID);
-		world.setBlockWithNotify(i + 4, j + 2, k + 2, Block.gravel.blockID);
-		world.setBlockWithNotify(i + 4, j + 2, k + 3, Block.gravel.blockID);
-		world.setBlockWithNotify(i + 4, j + 3, k + 2, Block.gravel.blockID);
-		world.setBlockWithNotify(i + 4, j + 3, k + 3, Block.gravel.blockID);
-		world.setBlockWithNotify(i + 4, j + 4, k + 3, Block.gravel.blockID);
+		world.setBlockMetadataWithNotify(i + 0, j + 1, k + 3, Block.gravel.blockID,0);
+		world.setBlockMetadataWithNotify(i + 1, j + 1, k + 1, Block.gravel.blockID,0);
+		world.setBlockMetadataWithNotify(i + 2, j + 1, k + 2, Block.gravel.blockID,0);
+		world.setBlockMetadataWithNotify(i + 2, j + 1, k + 3, Block.gravel.blockID,0);
+		world.setBlockMetadataWithNotify(i + 3, j + 1, k + 1, Block.gravel.blockID,0);
+		world.setBlockMetadataWithNotify(i + 3, j + 1, k + 2, Block.gravel.blockID,0);
+		world.setBlockMetadataWithNotify(i + 3, j + 1, k + 3, Block.gravel.blockID,0);
+		world.setBlockMetadataWithNotify(i + 3, j + 2, k + 2, Block.gravel.blockID,0);
+		world.setBlockMetadataWithNotify(i + 3, j + 2, k + 3, Block.gravel.blockID,0);
+		world.setBlockMetadataWithNotify(i + 4, j + 1, k + 1, Block.gravel.blockID,0);
+		world.setBlockMetadataWithNotify(i + 4, j + 1, k + 2, Block.gravel.blockID,0);
+		world.setBlockMetadataWithNotify(i + 4, j + 1, k + 3, Block.gravel.blockID,0);
+		world.setBlockMetadataWithNotify(i + 4, j + 2, k + 1, Block.gravel.blockID,0);
+		world.setBlockMetadataWithNotify(i + 4, j + 2, k + 2, Block.gravel.blockID,0);
+		world.setBlockMetadataWithNotify(i + 4, j + 2, k + 3, Block.gravel.blockID,0);
+		world.setBlockMetadataWithNotify(i + 4, j + 3, k + 2, Block.gravel.blockID,0);
+		world.setBlockMetadataWithNotify(i + 4, j + 3, k + 3, Block.gravel.blockID,0);
+		world.setBlockMetadataWithNotify(i + 4, j + 4, k + 3, Block.gravel.blockID,0);
 
 		return true;
 	}

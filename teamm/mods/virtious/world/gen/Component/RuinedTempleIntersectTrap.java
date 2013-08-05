@@ -2,8 +2,12 @@
 *** MADE BY MITHION'S .SCHEMATIC TO JAVA CONVERTING TOOL v1.6 ***
 */
 
-package net.minecraft.src;
+package teamm.mods.virtious.world.gen.component;
 import java.util.Random;
+
+import net.minecraft.block.Block;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class RuinedTempleIntersectTrap extends WorldGenerator
 {
@@ -82,7 +86,7 @@ public class RuinedTempleIntersectTrap extends WorldGenerator
 		world.setBlock(i + 2, j + 0, k + 2, Block.tnt.blockID);
 		world.setBlock(i + 2, j + 0, k + 3, Block.stoneBrick.blockID);
 		world.setBlock(i + 2, j + 0, k + 4, Block.stoneBrick.blockID);
-		world.setBlockAndMetadata(i + 2, j + 1, k + 2, -110, 3);
+		world.setBlockMetadataWithNotify(i + 2, j + 1, k + 2, Block.chestTrapped.blockID, 3);
 		world.setBlock(i + 2, j + 4, k + 0, Block.stoneBrick.blockID);
 		world.setBlock(i + 2, j + 4, k + 1, Block.stoneBrick.blockID);
 		world.setBlock(i + 2, j + 4, k + 2, Block.stoneBrick.blockID);

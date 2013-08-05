@@ -5,7 +5,7 @@ import java.util.Random;
 
 import teamm.mods.virtious.block.VirtiousBlock;
 import teamm.mods.virtious.lib.VirtiousBlocks;
-import teamm.mods.virtious.world.gen.WorldGenVirtiousLakes;
+import teamm.mods.virtious.world.gen.VirtiousGenVirtiousLakes;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
@@ -561,7 +561,7 @@ public class VirtiousChunkProvider extends ChunkProviderGenerate
             k1 = k + this.rand.nextInt(16) + 8;
             l1 = this.rand.nextInt(128);
             i2 = l + this.rand.nextInt(16) + 8;
-            (new WorldGenVirtiousLakes(VirtiousBlocks.virtiousAcid.blockID, VirtiousBlocks.virtianstone.blockID, VirtiousBlocks.virtianSoil.blockID)).generate(this.worldObj, this.rand, k1, l1, i2);
+            (new VirtiousGenVirtiousLakes(VirtiousBlocks.virtiousAcid.blockID, VirtiousBlocks.virtianstone.blockID, VirtiousBlocks.virtianSoil.blockID)).generate(this.worldObj, this.rand, k1, l1, i2);
         }
 
         if (TerrainGen.populate(par1IChunkProvider, worldObj, rand, par2, par3, flag, LAVA) &&
@@ -573,7 +573,7 @@ public class VirtiousChunkProvider extends ChunkProviderGenerate
 
             if (l1 < 63 || this.rand.nextInt(10) == 0)
             {
-                (new WorldGenVirtiousLakes(Block.lavaStill.blockID, VirtiousBlocks.virtianstone.blockID, VirtiousBlocks.virtianSoil.blockID)).generate(this.worldObj, this.rand, k1, l1, i2);
+                (new VirtiousGenVirtiousLakes(Block.lavaStill.blockID, VirtiousBlocks.virtianstone.blockID, VirtiousBlocks.virtianSoil.blockID)).generate(this.worldObj, this.rand, k1, l1, i2);
             }
         }
 

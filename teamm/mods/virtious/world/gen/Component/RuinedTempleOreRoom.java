@@ -2,8 +2,12 @@
 *** MADE BY MITHION'S .SCHEMATIC TO JAVA CONVERTING TOOL v1.6 ***
 */
 
-package net.minecraft.src;
+package teamm.mods.virtious.world.gen.component;
 import java.util.Random;
+
+import net.minecraft.block.Block;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class RuinedTempleOreRoom extends WorldGenerator
 {

@@ -2,8 +2,12 @@
 *** MADE BY MITHION'S .SCHEMATIC TO JAVA CONVERTING TOOL v1.6 ***
 */
 
-package net.minecraft.src;
+package teamm.mods.virtious.world.gen.component;
 import java.util.Random;
+
+import net.minecraft.block.Block;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class RuinedTempleStairs extends WorldGenerator
 {
@@ -104,18 +108,18 @@ public class RuinedTempleStairs extends WorldGenerator
 		world.setBlock(i + 1, j + 0, k + 4, Block.stone.blockID);
 		world.setBlock(i + 1, j + 1, k + 0, Block.stoneBrick.blockID);
 		world.setBlock(i + 1, j + 1, k + 2, Block.woodSingleSlab.blockID);
-		world.setBlockAndMetadata(i + 1, j + 1, k + 3, Block.woodSingleSlab.blockID, 8);
+		world.setBlockMetadataWithNotify(i + 1, j + 1, k + 3, Block.woodSingleSlab.blockID, 8);
 		world.setBlock(i + 1, j + 1, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 1, j + 2, k + 0, Block.stoneBrick.blockID);
 		world.setBlock(i + 1, j + 2, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 1, j + 3, k + 0, Block.stoneBrick.blockID);
 		world.setBlock(i + 1, j + 3, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 1, j + 4, k + 0, Block.stoneBrick.blockID);
-		world.setBlockAndMetadata(i + 1, j + 4, k + 1, Block.woodSingleSlab.blockID, 8);
+		world.setBlockMetadataWithNotify(i + 1, j + 4, k + 1, Block.woodSingleSlab.blockID, 8);
 		world.setBlock(i + 1, j + 4, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 1, j + 5, k + 0, Block.stoneBrick.blockID);
 		world.setBlock(i + 1, j + 5, k + 2, Block.woodSingleSlab.blockID);
-		world.setBlockAndMetadata(i + 1, j + 5, k + 3, Block.woodSingleSlab.blockID, 8);
+		world.setBlockMetadataWithNotify(i + 1, j + 5, k + 3, Block.woodSingleSlab.blockID, 8);
 		world.setBlock(i + 1, j + 5, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 1, j + 6, k + 0, Block.stoneBrick.blockID);
 		world.setBlock(i + 1, j + 6, k + 4, Block.stoneBrick.blockID);
@@ -178,10 +182,10 @@ public class RuinedTempleStairs extends WorldGenerator
 		world.setBlock(i + 3, j + 1, k + 0, Block.stoneBrick.blockID);
 		world.setBlock(i + 3, j + 1, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 3, j + 2, k + 0, Block.stoneBrick.blockID);
-		world.setBlockAndMetadata(i + 3, j + 2, k + 3, Block.woodSingleSlab.blockID, 8);
+		world.setBlockMetadataWithNotify(i + 3, j + 2, k + 3, Block.woodSingleSlab.blockID, 8);
 		world.setBlock(i + 3, j + 2, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 3, j + 3, k + 0, Block.stoneBrick.blockID);
-		world.setBlockAndMetadata(i + 3, j + 3, k + 1, Block.woodSingleSlab.blockID, 8);
+		world.setBlockMetadataWithNotify(i + 3, j + 3, k + 1, Block.woodSingleSlab.blockID, 8);
 		world.setBlock(i + 3, j + 3, k + 2, Block.woodSingleSlab.blockID);
 		world.setBlock(i + 3, j + 3, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 3, j + 4, k + 0, Block.stoneBrick.blockID);
@@ -189,8 +193,8 @@ public class RuinedTempleStairs extends WorldGenerator
 		world.setBlock(i + 3, j + 5, k + 0, Block.stoneBrick.blockID);
 		world.setBlock(i + 3, j + 5, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 3, j + 6, k + 0, Block.stoneBrick.blockID);
-		world.setBlockAndMetadata(i + 3, j + 6, k + 2, Block.woodSingleSlab.blockID, 8);
-		world.setBlockAndMetadata(i + 3, j + 6, k + 3, Block.woodSingleSlab.blockID, 8);
+		world.setBlockMetadataWithNotify(i + 3, j + 6, k + 2, Block.woodSingleSlab.blockID, 8);
+		world.setBlockMetadataWithNotify(i + 3, j + 6, k + 3, Block.woodSingleSlab.blockID, 8);
 		world.setBlock(i + 3, j + 6, k + 4, Block.stoneBrick.blockID);
 		world.setBlock(i + 3, j + 7, k + 0, Block.stoneBrick.blockID);
 		world.setBlock(i + 3, j + 7, k + 4, Block.stoneBrick.blockID);

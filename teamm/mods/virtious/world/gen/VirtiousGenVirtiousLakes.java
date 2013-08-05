@@ -10,18 +10,18 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class WorldGenVirtiousLakes extends WorldGenerator
+public class VirtiousGenVirtiousLakes extends WorldGenerator
 {
     private int blockIndex;
     private int blockStone;
     private int blockDirt;
 
-    public WorldGenVirtiousLakes(int liquidID)
+    public VirtiousGenVirtiousLakes(int liquidID)
     {
         this.blockIndex = liquidID;
     }
     
-    public WorldGenVirtiousLakes(int liquidID, int stoneID, int dirtID)
+    public VirtiousGenVirtiousLakes(int liquidID, int stoneID, int dirtID)
     {
         this.blockIndex = liquidID;
         this.blockStone = stoneID;

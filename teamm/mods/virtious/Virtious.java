@@ -54,7 +54,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @NetworkMod(channels = {Virtious.CHANNEL_NAME}, packetHandler = PacketHandler.class, clientSideRequired = true, serverSideRequired = true)
 public class Virtious {
 	public static final String modId = "virtious";
-	public static final String modName = "Virtious mod";
+	public static final String modName = "Virtious Mod";
 	public static final String CHANNEL_NAME = "virtious_chan";
 	
 	public static Fluid virtiousFluid;

@@ -2,8 +2,12 @@
 *** MADE BY MITHION'S .SCHEMATIC TO JAVA CONVERTING TOOL v1.6 ***
 */
 
-package net.minecraft.src;
+package teamm.mods.virtious.world.gen.component;
 import java.util.Random;
+
+import net.minecraft.block.Block;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class RuinedTempleMain extends WorldGenerator
 {
@@ -213,16 +217,16 @@ public class RuinedTempleMain extends WorldGenerator
 		world.setBlock(i + 3, j + 2, k + 3, Block.cobblestone.blockID);
 		world.setBlock(i + 3, j + 2, k + 5, Block.cobblestone.blockID);
 		world.setBlock(i + 3, j + 3, k + 3, Block.cobblestone.blockID);
-		world.setBlockAndMetadata(i + 3, j + 3, k + 5, Block.stairCompactCobblestone.blockID, 1);
+		world.setBlockMetadataWithNotify(i + 3, j + 3, k + 5, Block.stairsCobblestone.blockID, 1);
 		world.setBlock(i + 3, j + 4, k + 0, Block.stoneBrick.blockID);
-		world.setBlockAndMetadata(i + 3, j + 4, k + 3, Block.stairCompactCobblestone.blockID, 3);
+		world.setBlockMetadataWithNotify(i + 3, j + 4, k + 3, Block.stairsCobblestone.blockID, 3);
 		world.setBlock(i + 3, j + 4, k + 8, Block.stoneBrick.blockID);
 		world.setBlock(i + 3, j + 5, k + 0, Block.stoneBrick.blockID);
-		world.setBlockAndMetadata(i + 3, j + 5, k + 5, Block.stairCompactCobblestone.blockID, 7);
+		world.setBlockMetadataWithNotify(i + 3, j + 5, k + 5, Block.stairsCobblestone.blockID, 7);
 		world.setBlock(i + 3, j + 5, k + 8, Block.stoneBrick.blockID);
 		world.setBlock(i + 3, j + 6, k + 0, Block.stone.blockID);
 		world.setBlock(i + 3, j + 6, k + 1, Block.stone.blockID);
-		world.setBlockAndMetadata(i + 3, j + 6, k + 3, Block.stairCompactCobblestone.blockID, 5);
+		world.setBlockMetadataWithNotify(i + 3, j + 6, k + 3, Block.stairsCobblestone.blockID, 5);
 		world.setBlock(i + 3, j + 6, k + 5, Block.cobblestone.blockID);
 		world.setBlock(i + 3, j + 6, k + 7, Block.stone.blockID);
 		world.setBlock(i + 3, j + 6, k + 8, Block.stone.blockID);
@@ -273,15 +277,15 @@ public class RuinedTempleMain extends WorldGenerator
 		world.setBlock(i + 5, j + 0, k + 7, Block.stoneBrick.blockID);
 		world.setBlock(i + 5, j + 0, k + 8, Block.stoneBrick.blockID);
 		world.setBlock(i + 5, j + 1, k + 3, Block.cobblestone.blockID);
-		world.setBlock(i + 5, j + 1, k + 5, Block.stairCompactCobblestone.blockID);
-		world.setBlockAndMetadata(i + 5, j + 2, k + 3, Block.stairCompactCobblestone.blockID, 3);
+		world.setBlock(i + 5, j + 1, k + 5, Block.stairsCobblestone.blockID);
+		world.setBlockMetadataWithNotify(i + 5, j + 2, k + 3, Block.stairsCobblestone.blockID, 3);
 		world.setBlock(i + 5, j + 4, k + 0, Block.stoneBrick.blockID);
 		world.setBlock(i + 5, j + 4, k + 8, Block.stoneBrick.blockID);
 		world.setBlock(i + 5, j + 5, k + 0, Block.stoneBrick.blockID);
 		world.setBlock(i + 5, j + 5, k + 8, Block.stoneBrick.blockID);
 		world.setBlock(i + 5, j + 6, k + 0, Block.stone.blockID);
 		world.setBlock(i + 5, j + 6, k + 1, Block.stone.blockID);
-		world.setBlockAndMetadata(i + 5, j + 6, k + 5, Block.stairCompactCobblestone.blockID, 6);
+		world.setBlockMetadataWithNotify(i + 5, j + 6, k + 5, Block.stairsCobblestone.blockID, 6);
 		world.setBlock(i + 5, j + 6, k + 6, Block.stone.blockID);
 		world.setBlock(i + 5, j + 6, k + 7, Block.stone.blockID);
 		world.setBlock(i + 5, j + 6, k + 8, Block.stone.blockID);
