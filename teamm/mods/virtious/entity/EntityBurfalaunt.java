@@ -44,7 +44,7 @@ public class EntityBurfalaunt extends EntityAnimal
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(0, new EntityAIPanic(this, 1.25D));
         this.tasks.addTask(1, new EntityAIMate(this, 1.0D));
-        this.tasks.addTask(2, new EntityAITempt(this, 1.1D, VirtiousBlocks.flowerVeer.blockID, false));
+        this.tasks.addTask(2, new EntityAITempt(this, 1.1D, VirtiousItems.dyeVeer.itemID, false));
         this.tasks.addTask(3, new EntityAIFollowParent(this, 1.2D));
         this.tasks.addTask(4, this.aiEatGrass);
         this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
