@@ -1,6 +1,7 @@
 package teamm.mods.virtious.item;
 
 import teamm.mods.virtious.Virtious;
+import teamm.mods.virtious.lib.VirtiousBlocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -53,9 +54,9 @@ public class VirtiousHoe extends VirtiousItem
             int i1 = par3World.getBlockId(par4, par5, par6);
             boolean air = par3World.isAirBlock(par4, par5 + 1, par6);
 
-            if (par7 != 0 && air && (i1 == Block.grass.blockID || i1 == Block.dirt.blockID))
+            if (par7 != 0 && air && (i1 == VirtiousBlocks.virtianGrass.blockID || i1 == VirtiousBlocks.virtianSoil.blockID))
             {
-                Block block = Block.tilledField;
+                Block block = VirtiousBlocks.tilledSoil;
                 par3World.playSoundEffect((double)((float)par4 + 0.5F), (double)((float)par5 + 0.5F), (double)((float)par6 + 0.5F), block.stepSound.getStepSound(), (block.stepSound.getVolume() + 1.0F) / 2.0F, block.stepSound.getPitch() * 0.8F);
 
                 if (par3World.isRemote)

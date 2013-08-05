@@ -171,7 +171,7 @@ public class VirtiousTeleporter extends Teleporter
 						this.worldServerInstance.getBlockId(x, y - 1, z) == VirtiousBlocks.virtianSoil.blockID ||
 						this.worldServerInstance.getBlockId(x, y - 1, z) == Block.grass.blockID ||
 						(this.worldServerInstance.getBiomeGenForCoords(x, z) != null && 
-						this.worldServerInstance.getBiomeGenForCoords(x, z).topBlock == this.worldServerInstance.getBlockId(x, y - 1, z))){
+						((int)this.worldServerInstance.getBiomeGenForCoords(x, z).topBlock & 0xFF) == this.worldServerInstance.getBlockId(x, y - 1, z))){
 					for(int x2 = x - 1; x2 <= x + 1; x2++)
 					{
 						for(int z2 = z - 1; z2 <= z + 1; z2++)
@@ -182,7 +182,6 @@ public class VirtiousTeleporter extends Teleporter
 					}
 					
 					worldServerInstance.setBlock(x, y+1, z, VirtiousBlocks.portalBlock.blockID, 0, 2);
-					System.out.println("X: " + x + " Y: " + (y + 1) + " Z: " + z);
 					break;
 				} else {
         			continue label274;

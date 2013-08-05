@@ -62,6 +62,8 @@ public class Config {
 	public static int idCytoidLampOn = 2042;
 	public static int idCytoidLightstrip = 2043;
 	public static int idCytoidWall = 2044;
+	public static int idTilledSoil = 2045;
+	public static int idVeerPlant = 2046;
 
 	//Items
 	public static int idTeleporterWand = 5500;
@@ -115,5 +117,6 @@ public class Config {
 	public static int idVeerSeed = 5046;
 	public static int idVois = 5047;
 	public static int idLaserRifle = 5048;
+	public static int idBinnegan = 5049;
 	
 }

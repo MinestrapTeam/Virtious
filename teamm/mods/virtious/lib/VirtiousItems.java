@@ -16,7 +16,9 @@ import teamm.mods.virtious.item.VirtiousItem;
 import teamm.mods.virtious.item.VirtiousPickaxe;
 import teamm.mods.virtious.item.VirtiousShovel;
 import teamm.mods.virtious.item.VirtiousSword;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraftforge.common.Property;
 import net.minecraftforge.fluids.ItemFluidContainer;
 
@@ -72,6 +74,7 @@ public class VirtiousItems
 	public static Item seedVeer;
 	public static Item foodVois;
 	public static Item laserRifle;
+	public static Item fruitBinnegan;
 	
 	/**
 	 * Loads all item objects
@@ -273,7 +276,7 @@ public class VirtiousItems
 		LanguageRegistry.addName(dyeVeer, "Veer");
 		
 		Property idVeerSeed = Virtious.config.getItem("Veer Seeds Item Id", Config.idVeerSeed);
-		seedVeer = new VirtiousItem(idVeerSeed.getInt()).setUnlocalizedName("VeerSeeds");
+		seedVeer = new VirtiousSeedVeer(idVeerSeed.getInt(), VirtiousBlocks.plantVeer.blockID, VirtiousBlocks.tilledSoil.blockID).setUnlocalizedName("VeerSeeds");
 		LanguageRegistry.addName(seedVeer, "Veer Seeds");
 		
 		Property idVois = Virtious.config.getItem("Vois Item Id", Config.idVois);
@@ -283,6 +286,11 @@ public class VirtiousItems
 		Property idLaserRifle = Virtious.config.getItem("Laser Rifle Id", Config.idLaserRifle);
 		laserRifle = new ItemGun(idLaserRifle.getInt(), 10, 1, "").setUnlocalizedName("LaserRifle");
 		LanguageRegistry.addName(laserRifle, "Cytoid Laser Rifle");
+
+		
+		Property idBinnegan = Virtious.config.getItem("Binnegan Id", Config.idBinnegan);
+		fruitBinnegan = new ItemFood(idBinnegan.getInt(), 3, 2.5F, false).setUnlocalizedName("Binnegan");
+		LanguageRegistry.addName(fruitBinnegan, "Binnegan");
 		
 		//TODO load all item objects
 	}

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import teamm.mods.virtious.lib.VirtiousBlocks;
+import teamm.mods.virtious.lib.VirtiousItems;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -152,10 +153,10 @@ public class BlockLeavesVirtian extends VirtiousBlock implements IShearable
                 }
             }
 
-//            if ((par5 & 3) == 0 && par1World.rand.nextInt(j1) == 0)
-//            {
-//                this.dropBlockAsItem_do(par1World, par2, par3, par4, new ItemStack(Item.appleRed, 1, 0));
-//            }
+            if ((par5 & 3) == 0 && par1World.rand.nextInt(j1) == 0)
+            {
+                this.dropBlockAsItem_do(par1World, par2, par3, par4, new ItemStack(VirtiousItems.fruitBinnegan, 1, 0));
+            }
         }
     }
     
