@@ -118,5 +118,6 @@ public class Config {
 	public static int idVeerSeed = 5046;
 	public static int idVois = 5047;
 	public static int idLaserRifle = 5048;
+	public static int idBinnegan = 5049;
 	
 }
