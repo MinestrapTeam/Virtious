@@ -57,7 +57,7 @@ public class BlockCytoidControlPanelOn extends Block
      */
     public Icon getIcon(int par1, int par2)
     {
-    	return par1 == 1 ? this.blockIcon : (par1 == 0 ? this.blockIcon : (par1 != par2 ? this.blockIcon : this.front));
+    	return par1 == 1 ? this.blockIcon : par1 == 0 ? this.blockIcon : this.front;
     }
     
     /**

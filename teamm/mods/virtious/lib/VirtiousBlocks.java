@@ -63,6 +63,9 @@ public class VirtiousBlocks {
 	public static Block cytoidDoor;
 	public static BlockHalfSlab cytoidFloorDouble;
 	public static BlockHalfSlab cytoidFloor;
+	public static Block cytoidGlass;
+	public static Block cytoidLampIdle;
+	public static Block cytoidLampOn;
 	
 	/**
 	 * Loads all block objects
@@ -273,6 +276,18 @@ public class VirtiousBlocks {
 		Property idCytoidFloorDouble = Virtious.config.getBlock("Cytoid Floor Double Id", Config.idCytoidFloorDouble);
 		cytoidFloorDouble = (BlockHalfSlab)new BlockCytoidFloor(idCytoidFloorDouble.getInt(), true).setUnlocalizedName("cytoidFloorDouble").setHardness(3.0F);
 		registerBlock(cytoidFloorDouble, "Cytoid Floor Double");
+		
+		Property idCytoidGlass = Virtious.config.getBlock("Cytoid Glass Id", Config.idCytoidGlass);
+		cytoidGlass = new VirtiousGlass(idCytoidGlass.getInt()).setUnlocalizedName("CytoidGlass").setHardness(0.4F);
+		registerBlock(cytoidGlass, "Cytoid Glass");
+		
+		Property idCytoidLampIdle = Virtious.config.getBlock("Cytoid Lamp Idle Id", Config.idCytoidLampIdle);
+		cytoidLampIdle = new BlockCytoidLamp(idCytoidLampIdle.getInt(), false).setCreativeTab(Virtious.tabVirtiousBlocks).setHardness(1.0F).setUnlocalizedName("CytoidLampOff").setStepSound(Block.soundGlassFootstep);
+		registerBlock(cytoidLampIdle, "Cytoid Lamp");
+		
+		Property idCytoidLampOn = Virtious.config.getBlock("Cytoid Lamp On", Config.idCytoidLampOn);
+		cytoidLampOn = new BlockCytoidLamp(idCytoidLampOn.getInt(), true).setHardness(1.0F).setUnlocalizedName("CytoidLampOn").setStepSound(Block.soundGlassFootstep);
+		registerBlock(cytoidLampOn, "Cytoid Lamp On");
 		
 		LanguageRegistry.instance().addStringLocalization("tile.cytoidFloor.cytoidfloor.name", "Cytoid Floor");
 		

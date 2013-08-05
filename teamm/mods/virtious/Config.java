@@ -57,6 +57,9 @@ public class Config {
 	public static int idCytoidDoor = 2037;
 	public static int idCytoidFloor = 2038;
 	public static int idCytoidFloorDouble = 2039;
+	public static int idCytoidGlass = 2040;
+	public static int idCytoidLampIdle = 2041;
+	public static int idCytoidLampOn = 2042;
 	
 	//Items
 	public static int idIngotBrazeum = 5000;
