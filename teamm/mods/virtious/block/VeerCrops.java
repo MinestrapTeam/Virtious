@@ -239,7 +239,7 @@ public class VeerCrops extends BlockCrops{
     @Override
     public void registerIcons(IconRegister par1IconRegister)
     {
-        this.iconArray = new Icon[8];
+        this.iconArray = new Icon[7];
 
         for (int i = 0; i < this.iconArray.length; ++i)
         {

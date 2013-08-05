@@ -193,8 +193,8 @@ public class Virtious {
 		EntityRegistry.registerGlobalEntityID(EntityBurfalaunt.class, "Burfalaunt", EntityRegistry.findGlobalUniqueEntityId(), 0x110802, 0x3f1e06);
 		LanguageRegistry.instance().addStringLocalization("entity.Burfalaunt.name", "en_US", "Burfalaunt");
 
-		EntityRegistry.registerGlobalEntityID(EntityNative.class, "Native", EntityRegistry.findGlobalUniqueEntityId(), 0x59563e, 0x2d3c21);
-		LanguageRegistry.instance().addStringLocalization("entity.Native.name", "en_US", "Native Alien");
+		EntityRegistry.registerGlobalEntityID(EntityNative.class, "NativeAlien", EntityRegistry.findGlobalUniqueEntityId(), 0x59563e, 0x2d3c21);
+		LanguageRegistry.instance().addStringLocalization("entity.NativeAlien.name", "en_US", "Native Alien");
 
 		EntityRegistry.registerGlobalEntityID(EntityNativeSkeleton.class, "NativeSkeleton", EntityRegistry.findGlobalUniqueEntityId(), 0x494949, 0xd8d8d8);
 		LanguageRegistry.instance().addStringLocalization("entity.NativeSkeleton.name", "en_US", "Native Skeleton");

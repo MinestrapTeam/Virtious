@@ -5,6 +5,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlowerPot;
+import net.minecraft.block.BlockGlass;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -74,6 +75,9 @@ public class VirtiousBlocks {
 	public static Block cytoidWallDark2;
 	public static Block cytoidWallDark3;
 	public static Block cytoidWallDark4;
+	public static Block roughGlass;
+	public static Block reinforcedDeepstone;
+	public static Block reinforcedStone;
 	
 	/**
 	 * Loads all block objects
@@ -314,10 +318,22 @@ public class VirtiousBlocks {
 		Property idVeerPlant = Virtious.config.getBlock("Veer Plant Id", Config.idVeerPlant);
 		plantVeer = new VeerCrops(idVeerPlant.getInt()).setUnlocalizedName("VeerCrop");
 		registerBlock(plantVeer, "Veer Plant");
+
+		Property idRoughGlass = Virtious.config.getBlock("Rough Glass Id", Config.idRoughGlass);
+		roughGlass = new BlockRoughGlass(idRoughGlass.getInt(), Material.glass).setHardness(0.3F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("RoughGlass");
+		registerBlock(roughGlass, "Rough Glass");
 		
 		Property idCytoidWallDark = Virtious.config.getBlock("Dark Cytoid Wall", Config.idCytoidWallDark);
 		cytoidWallDark = new VirtiousBlock(idCytoidWallDark.getInt(), Material.iron).setHardness(3.0F).setResistance(8.0F).setUnlocalizedName("CytoidWallDark1");
 		registerBlock(cytoidWallDark, "Dark Cytoid Wall");
+
+		Property idReinforcedDeepstone = Virtious.config.getBlock("Reinforced Deepstone Id", Config.idReinforcedDeepstone);
+		reinforcedDeepstone = new VirtiousBlock(idReinforcedDeepstone.getInt(), Material.rock).setResistance(2000.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("ReinforcedDeepstone");
+		registerBlock(reinforcedDeepstone, "Reinforced Deepstone");
+
+		Property idReinforcedStone = Virtious.config.getBlock("Reinforced Stone Id", Config.idReinforcedStone);
+		reinforcedStone = new VirtiousBlock(idReinforcedStone.getInt(), Material.rock).setResistance(2000.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("ReinforcedVirtianstone");
+		registerBlock(reinforcedStone, "Reinforced Virtious Sone");
 		
 		Property idCytoidWallDark2 = Virtious.config.getBlock("Dark Cytoid Wall 2", Config.idCytoidWallDark2);
 		cytoidWallDark2 = new VirtiousBlock(idCytoidWallDark2.getInt(), Material.iron).setHardness(3.0F).setResistance(8.0F).setUnlocalizedName("CytoidWallDark2");
