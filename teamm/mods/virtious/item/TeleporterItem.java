@@ -41,7 +41,7 @@ public class TeleporterItem extends VirtiousItem{
 		if(!world.isRemote){
 //			player.addChatMessage("Metadata: " + world.getBlockMetadata(i, j, k));
 			
-			new VirtiousGenCytoidCommandCenter().generate(world, new Random(), i, world.getFirstUncoveredBlock(i, k), k);
+//			new VirtiousGenCytoidCommandCenter().generate(world, new Random(), i, world.getFirstUncoveredBlock(i, k), k);
 
 		}
 		return false;
