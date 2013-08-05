@@ -220,13 +220,13 @@ public class VirtiousRecipes
 				{
 			"SS", "SS", Character.valueOf('S'), VirtiousBlocks.canyonstone
 				});
-		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.torchBlue, 6), new Object[]
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.torchBlue, 8), new Object[]
 				{
-			"M", "T", Character.valueOf('T'), VirtiousItems.tak, Character.valueOf('M'), VirtiousBlocks.mushroomBlue
+			 "M", "T", "S", Character.valueOf('T'), VirtiousItems.tak, Character.valueOf('M'), VirtiousBlocks.mushroomBlue, Character.valueOf('S'), Item.stick
 				});
-		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.torchGreen, 6), new Object[]
+		GameRegistry.addRecipe(new ItemStack(VirtiousBlocks.torchGreen, 8), new Object[]
 				{
-			"M", "T", Character.valueOf('T'), VirtiousItems.tak, Character.valueOf('M'), VirtiousBlocks.mushroomGreen
+			"M", "T", "S", Character.valueOf('T'), VirtiousItems.tak, Character.valueOf('M'), VirtiousBlocks.mushroomGreen, Character.valueOf('S'), Item.stick
 				});
 		
 //		OreDictionary.registerOre("plankWood", VirtiousBlocks.plankAmber);

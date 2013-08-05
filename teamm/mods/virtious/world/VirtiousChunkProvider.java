@@ -578,6 +578,9 @@ public class VirtiousChunkProvider extends ChunkProviderGenerate
         }
 
         boolean doGen = TerrainGen.populate(par1IChunkProvider, worldObj, rand, par2, par3, flag, DUNGEON);
+        biomegenbase.decorate(this.worldObj, this.rand, k, l);
+        SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
+        
 //        for (k1 = 0; doGen && k1 < 8; ++k1)
 //        {
 //            l1 = k + this.rand.nextInt(16) + 8;
