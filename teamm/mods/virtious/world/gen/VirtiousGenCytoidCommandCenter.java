@@ -1590,14 +1590,14 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 
 	private int getDarkWallId() {
 		Random random = new Random();
-		
-		if (random.nextInt() == 0)
+		int rand = random.nextInt(4);
+		if (rand == 0)
 			return VirtiousBlocks.cytoidWallDark2.blockID;
 		
-		if (random.nextInt() == 1)
+		if (rand == 1)
 			return VirtiousBlocks.cytoidWallDark3.blockID;
 
-		if (random.nextInt() == 2)
+		if (rand == 2)
 			return VirtiousBlocks.cytoidWallDark4.blockID;
 
 		return VirtiousBlocks.cytoidWallDark.blockID;

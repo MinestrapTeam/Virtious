@@ -19,6 +19,7 @@ import teamm.mods.virtious.renderer.RenderNativeSkeleton;
 import teamm.mods.virtious.renderer.RenderStickyBomb;
 import teamm.mods.virtious.renderer.RenderVirtiousFish;
 import teamm.mods.virtious.renderer.StickyBombItemRenderer;
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy
@@ -27,8 +28,9 @@ public class ClientProxy extends CommonProxy
 	public void registerRenderThings()
 	{
 		MinecraftForge.EVENT_BUS.register(new VirtiousSound());
+      
+//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLightStrip.class, new MyTESR());
 
-		
 		RenderingRegistry.registerEntityRenderingHandler(EntityStickyBomb.class, new RenderStickyBomb());
 		RenderingRegistry.registerEntityRenderingHandler(EntityVirtiousFishHook.class, new RenderVirtiousFish());
 		
