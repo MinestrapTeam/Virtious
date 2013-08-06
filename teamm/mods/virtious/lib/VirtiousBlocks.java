@@ -314,7 +314,7 @@ public class VirtiousBlocks {
 		registerBlock(cytoidWall, "Cytoid Wall");
 
 		Property idTilledSoil = Virtious.config.getBlock("Tilled Soil Id", Config.idTilledSoil);
-		tilledSoil = new VirtiousTilledBlock(idTilledSoil.getInt()).setStepSound(Block.soundGravelFootstep).setUnlocalizedName("TilledVirtianSoil");
+		tilledSoil = new VirtiousTilledBlock(idTilledSoil.getInt()).setHardness(0.6F).setStepSound(Block.soundGravelFootstep).setUnlocalizedName("TilledVirtianSoil");
 		registerBlock(tilledSoil, "Tilled Soil");
 		
 		Property idVeerPlant = Virtious.config.getBlock("Veer Plant Id", Config.idVeerPlant);

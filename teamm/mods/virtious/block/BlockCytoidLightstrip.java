@@ -23,4 +23,11 @@ public class BlockCytoidLightstrip extends VirtiousBlock
 	{
 		return side == 0 ? topbottom : side == 1 ? topbottom : blockIcon;
 	}
+	
+	
+	
+	@Override
+	public boolean isOpaqueCube(){
+		 return false;
+	}
 }

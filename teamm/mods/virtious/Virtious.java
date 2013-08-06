@@ -67,7 +67,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(name = Virtious.modName, modid = Virtious.modId, useMetadata = false, version = "B1.0")
-@NetworkMod(channels = {Virtious.CHANNEL_NAME}, packetHandler = PacketHandler.class, clientSideRequired = true, serverSideRequired = true)
+@NetworkMod(/*channels = {Virtious.CHANNEL_NAME}, packetHandler = PacketHandler.class, */clientSideRequired = true, serverSideRequired = true)
 public class Virtious {
 	public static final String modId = "virtious";
 	public static final String modName = "Virtious Mod";
@@ -164,18 +164,10 @@ public class Virtious {
 	public void init(FMLInitializationEvent evt)
 	{	
 		GameRegistry.registerWorldGenerator(new VirtiousStructureGenerator());
-//		FluidContainerRegistry.registerFluidContainer(
-//				new FluidContainerData(
-//					FluidRegistry.getFluidStack(Virtious.virtiousFluid.getName(), FluidContainerRegistry.BUCKET_VOLUME),
-//					new ItemStack(VirtiousItems.bucketAcid),
-//					new ItemStack(Item.bucketEmpty)
-//				)
-//			);
 		
 		FluidContainerRegistry.registerFluidContainer(virtiousFluid, new ItemStack(VirtiousItems.bucketAcid), new ItemStack(Item.bucketEmpty));
 		
 		MinecraftForge.EVENT_BUS.register(new VirtiousEventHandler());
-		MinecraftForge.EVENT_BUS.register(new VirtiousSound());
 		
 		GameRegistry.registerFuelHandler(new VirtiousFuelHandler());	
 				
