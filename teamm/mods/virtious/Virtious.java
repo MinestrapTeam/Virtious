@@ -162,18 +162,10 @@ public class Virtious {
 	public void init(FMLInitializationEvent evt)
 	{	
 		GameRegistry.registerWorldGenerator(new VirtiousStructureGenerator());
-//		FluidContainerRegistry.registerFluidContainer(
-//				new FluidContainerData(
-//					FluidRegistry.getFluidStack(Virtious.virtiousFluid.getName(), FluidContainerRegistry.BUCKET_VOLUME),
-//					new ItemStack(VirtiousItems.bucketAcid),
-//					new ItemStack(Item.bucketEmpty)
-//				)
-//			);
 		
 		FluidContainerRegistry.registerFluidContainer(virtiousFluid, new ItemStack(VirtiousItems.bucketAcid), new ItemStack(Item.bucketEmpty));
 		
 		MinecraftForge.EVENT_BUS.register(new VirtiousEventHandler());
-		//Sound to proxy
 		
 		GameRegistry.registerFuelHandler(new VirtiousFuelHandler());						
 		

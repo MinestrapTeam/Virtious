@@ -200,7 +200,7 @@ public class VirtiousItems
 		
 		Property idbrazeumAxe = Virtious.config.getItem("Brazeum Axe Id", Config.idbrazeumAxe);
 		brazeumAxe = new VirtiousAxe(idbrazeumAxe.getInt(), EnumVirtiousToolMaterial.BRAZEUM).setUnlocalizedName("BrazeumAxe");
-		LanguageRegistry.addName(deepstoneAxe, "Deep Stone Axe");
+		LanguageRegistry.addName(brazeumAxe, "Brazeum Axe");
 		
 		Property idbrazeumShovel = Virtious.config.getItem("Brazeum Shovel Id", Config.idbrazeumShovel);
 		brazeumShovel = new VirtiousShovel(idbrazeumShovel.getInt(), EnumVirtiousToolMaterial.BRAZEUM).setUnlocalizedName("BrazeumShovel");
