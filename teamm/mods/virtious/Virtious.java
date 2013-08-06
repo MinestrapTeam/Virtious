@@ -20,6 +20,7 @@ import teamm.mods.virtious.lib.VirtiousSound;
 import teamm.mods.virtious.misc.VirtiousFuelHandler;
 import teamm.mods.virtious.network.PacketHandler;
 import teamm.mods.virtious.proxy.CommonProxy;
+import teamm.mods.virtious.renderer.StickyBombItemRenderer;
 import teamm.mods.virtious.world.TileEntityPortal;
 import teamm.mods.virtious.world.VirtiousProvider;
 import teamm.mods.virtious.world.biome.BiomeGenCanyon;
@@ -37,6 +38,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.src.ModLoader;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
@@ -136,7 +138,7 @@ public class Virtious {
 			Property idwhiskerfieldBiome = Virtious.config.get("Special", "Whiskerfield Biome Id", Config.whiskerfieldBiomeID);
 			whiskerfieldBiomeID = idwhiskerfieldBiome.getInt();
 			
-			Property idVirtiousOcean = Virtious.config.get("Specialk", "Virtious Ocean Biome Id", Config.virtiousOceanID);
+			Property idVirtiousOcean = Virtious.config.get("Special", "Virtious Ocean Biome Id", Config.virtiousOceanID);
 			virtiousOceanID = idVirtiousOcean.getInt();
 			
 			//ItemStack config
@@ -175,8 +177,8 @@ public class Virtious {
 		MinecraftForge.EVENT_BUS.register(new VirtiousEventHandler());
 		MinecraftForge.EVENT_BUS.register(new VirtiousSound());
 		
-		GameRegistry.registerFuelHandler(new VirtiousFuelHandler());						
-		
+		GameRegistry.registerFuelHandler(new VirtiousFuelHandler());	
+				
 		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
 		
