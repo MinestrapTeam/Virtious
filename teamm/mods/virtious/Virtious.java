@@ -91,6 +91,8 @@ public class Virtious {
 	public static int whiskerfieldBiomeID;
 	public static int GravelBeachBiomeID;
 	public static int virtiousOceanID;
+	
+	public static int lightStripRendererID;
 
 	/* Biomes */
 	public static BiomeGenBase virtiousBiome = null;
