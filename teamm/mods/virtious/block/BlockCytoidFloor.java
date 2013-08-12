@@ -15,6 +15,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import net.minecraft.world.World;
 
 public class BlockCytoidFloor extends BlockHalfSlab
 {
@@ -26,8 +27,9 @@ public class BlockCytoidFloor extends BlockHalfSlab
     public BlockCytoidFloor(int par1, boolean par2)
     {
         super(par1, par2, Material.rock);
+        this.setLightOpacity(0);
     }
-
+    
     @SideOnly(Side.CLIENT)
 
     /**
@@ -42,7 +44,7 @@ public class BlockCytoidFloor extends BlockHalfSlab
             par1 = 1;
         }
 
-        return k == 0 ? (par1 != 1 && par1 != 0 ? this.theIcon : this.blockIcon) : (k == 1 ? Block.sandStone.getBlockTextureFromSide(par1) : (k == 2 ? Block.planks.getBlockTextureFromSide(par1) : (k == 3 ? Block.cobblestone.getBlockTextureFromSide(par1) : (k == 4 ? Block.brick.getBlockTextureFromSide(par1) : (k == 5 ? Block.stoneBrick.getIcon(par1, 0) : (k == 6 ? Block.netherBrick.getBlockTextureFromSide(1) : (k == 7 ? Block.blockNetherQuartz.getBlockTextureFromSide(par1) : this.blockIcon)))))));
+        return par1 != 1 && par1 != 0 ? this.theIcon : this.blockIcon;
     }
 
     @SideOnly(Side.CLIENT)
@@ -107,5 +109,14 @@ public class BlockCytoidFloor extends BlockHalfSlab
             }
         }
         */
+    }
+    
+    /**
+     * only called by clickMiddleMouseButton , and passed to inventory.setCurrentItem (along with isCreative)
+     */
+    @Override
+    public int idPicked(World par1World, int par2, int par3, int par4)
+    {
+        return VirtiousBlocks.cytoidFloor.blockID;
     }
 }

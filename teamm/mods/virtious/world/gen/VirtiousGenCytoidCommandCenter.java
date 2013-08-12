@@ -7659,22 +7659,22 @@ public class VirtiousGenCytoidCommandCenter extends WorldGenerator
 		
 		for(int y = 0; y < 11; y++)
 		{
-			for(int x = 2 - y; x <= 18 + y; x++)
+			for(int x = -2 - y; x <= 28 + y; x++)
 			{
-				for(int z = 3 - y; z <= 17 + y ; z++)
+				for(int z = -2 - y; z <= 29 + y ; z++)
 				{
-					if (world.isAirBlock(i + x, j - y, k + z) ||
+					if (world.isAirBlock(i + x, j - y - 1, k + z) ||
 							(Block.blocksList[world.getBlockId(i + x, j - y, k + z)] != null && Block.blocksList[world.getBlockId(i + x, j - y, k + z)] instanceof VirtiousFlower))
 					{
-						world.setBlock(i + x, j - y, k + z, (int) world.getBiomeGenForCoords(i + x, k + z).topBlock & 0xFF);
+						world.setBlock(i + x, j - y - 1, k + z, (int) world.getBiomeGenForCoords(i + x, k + z).topBlock & 0xFF);
 					}
 				}
 			}
 			
 
 		}
-		for (int x = 2 - 10; x <= 18 + 10; x++) {
-			for (int z = 2 - 10; z <= 16 + 10; z++) {
+		for (int x = -2 - 10; x <= 28 + 10; x++) {
+			for (int z = -2 - 10; z <= 29 + 10; z++) {
 				for (int y = -11; y < 0; y--) {
 					world.setBlock( i + x, j + y, k + z, (int) world.getBiomeGenForCoords(i + x, k + z).fillerBlock & 0xFF);
 					if (!world.isAirBlock(i + x, j + y - 1, k + z)) {

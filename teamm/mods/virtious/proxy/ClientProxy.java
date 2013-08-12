@@ -2,6 +2,7 @@ package teamm.mods.virtious.proxy;
 
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
+import teamm.mods.virtious.Virtious;
 import teamm.mods.virtious.entity.EntityBurfalaunt;
 import teamm.mods.virtious.entity.EntityLaser;
 import teamm.mods.virtious.entity.EntityNative;
@@ -13,6 +14,7 @@ import teamm.mods.virtious.lib.VirtiousSound;
 import teamm.mods.virtious.model.ModelBurfalaunt;
 import teamm.mods.virtious.model.ModelNative;
 import teamm.mods.virtious.renderer.RenderBurfalaunt;
+import teamm.mods.virtious.renderer.RenderGlowingBlock;
 import teamm.mods.virtious.renderer.RenderLaser;
 import teamm.mods.virtious.renderer.RenderNative;
 import teamm.mods.virtious.renderer.RenderNativeSkeleton;
@@ -27,10 +29,12 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerRenderThings()
 	{
+		Virtious.lightStripRendererID = RenderingRegistry.getNextAvailableRenderId();
+		
 		MinecraftForge.EVENT_BUS.register(new VirtiousSound());
       
-//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLightStrip.class, new MyTESR());
-
+		RenderingRegistry.registerBlockHandler(Virtious.lightStripRendererID, new RenderGlowingBlock());
+		
 		RenderingRegistry.registerEntityRenderingHandler(EntityStickyBomb.class, new RenderStickyBomb());
 		RenderingRegistry.registerEntityRenderingHandler(EntityVirtiousFishHook.class, new RenderVirtiousFish());
 		
