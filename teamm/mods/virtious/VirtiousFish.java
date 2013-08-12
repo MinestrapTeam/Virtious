@@ -10,7 +10,7 @@ public class VirtiousFish
 	static
 	{
 		lootSet = new VirtiousLootSet();
-		addFish(new ItemStack(VirtiousItems.fishEbulus), 50);
+		addFish(new ItemStack(VirtiousItems.fishEvulus), 50);
 		//TODO Add fish
 	}
 	

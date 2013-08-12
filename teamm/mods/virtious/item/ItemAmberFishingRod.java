@@ -77,7 +77,7 @@ public class ItemAmberFishingRod extends Item
     public void registerIcons(IconRegister par1IconRegister)
     {
         this.itemIcon = par1IconRegister.registerIcon("virtious:AmberRodUncast");
-        this.theIcon = par1IconRegister.registerIcon("viritous:AmberWoodRodCast");
+        this.theIcon = par1IconRegister.registerIcon("viritous:AmberRodCast");
     }
 
     @SideOnly(Side.CLIENT)

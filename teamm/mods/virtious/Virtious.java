@@ -32,6 +32,7 @@ import teamm.mods.virtious.world.gen.VirtiousWorldGenerator;
 
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
@@ -192,6 +193,8 @@ public class Virtious {
 
 		EntityRegistry.registerGlobalEntityID(EntityNativeSkeleton.class, "NativeSkeleton", EntityRegistry.findGlobalUniqueEntityId(), 0x494949, 0xd8d8d8);
 		LanguageRegistry.instance().addStringLocalization("entity.NativeSkeleton.name", "en_US", "Native Skeleton");
+		
+		EntityRegistry.registerModEntity(EntityFishHook.class, "EntityVirtiousFishHook", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
 		
 		proxy.registerRenderThings();
 	}

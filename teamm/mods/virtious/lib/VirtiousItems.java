@@ -76,7 +76,7 @@ public class VirtiousItems
 	public static Item foodVois;
 	public static Item laserRifle;
 	public static Item fruitBinnegan;
-	public static Item fishEbulus;
+	public static Item fishEvulus;
 	public static Item fishingPoleAmber;
 	
 	/**
@@ -294,13 +294,13 @@ public class VirtiousItems
 		fruitBinnegan = new VirtiousFood(idBinnegan.getInt(), 3, 0.25F).setUnlocalizedName("Binnegan");
 		LanguageRegistry.addName(fruitBinnegan, "Binnegan");
 		
-		Property idfishEbulus = Virtious.config.getItem("Ebulus Fish", Config.idfishEbulus);
-		//fishEbulus = new VirtiousFood(idfishEbulus.getInt(), 5, 0.5F).setUnlocalizedName("EvulousFish");
-		//LanguageRegistry.addName(fishEbulus, "Evulous Fish");
+		Property idfishEvulus = Virtious.config.getItem("Evulus Fish", Config.idfishEvulus);
+		fishEvulus = new VirtiousFood(idfishEvulus.getInt(), 5, 0.5F).setUnlocalizedName("EvulousFish");
+		LanguageRegistry.addName(fishEvulus, "Evulous Fish");
 		
 		Property idfishingpoleAmber = Virtious.config.getItem("Amber Fish Pole id", Config.idamberfishingpole);
-		//fishingPoleAmber = new ItemAmberFishingRod(idfishingpoleAmber.getInt()).setUnlocalizedName("fishingPoleAmber");
-		//LanguageRegistry.addName(fishingPoleAmber, "Amber Fishing Pole");
+		fishingPoleAmber = new ItemAmberFishingRod(idfishingpoleAmber.getInt()).setUnlocalizedName("fishingPoleAmber");
+		LanguageRegistry.addName(fishingPoleAmber, "Amber Fishing Pole");
 		
 		//TODO load all item objects
 	}
