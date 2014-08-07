@@ -1,0 +1,40 @@
+package minestrapteam.virtious.world.biome;
+
+import java.util.Random;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import minestrapteam.virtious.entity.EntityNativeSkeleton;
+import minestrapteam.virtious.lib.VirtiousBlocks;
+
+import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.world.ColorizerFoliage;
+import net.minecraft.world.ColorizerGrass;
+import net.minecraft.world.biome.BiomeDecorator;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.SpawnListEntry;
+import net.minecraft.world.gen.feature.WorldGenerator;
+
+public class BiomeGenCanyon extends BiomeGenBase 
+{
+
+	public BiomeGenCanyon(int par1) {
+		super(par1);
+		
+		this.setMinMaxHeight(0.3F, 1.5F);
+        this.setDisableRain().setTemperatureRainfall(2.0F, 0.0F);
+        this.spawnableMonsterList.clear();
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityNativeSkeleton.class, 10, 4, 4));
+        this.spawnableCreatureList.clear();
+        this.spawnableWaterCreatureList.clear();
+        this.spawnableCaveCreatureList.clear();
+        
+		this.topBlock = (byte) VirtiousBlocks.canyonstone.blockID;
+		this.fillerBlock = (byte) VirtiousBlocks.canyonstone.blockID;
+        
+        this.setBiomeName("Canyon Biome");
+        
+        //TODO New biome decorator
+        //this.theBiomeDecorator = new BiomeDecoratorVirtious(this);
+    }
+}
