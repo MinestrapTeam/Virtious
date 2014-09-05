@@ -19,7 +19,9 @@ import minestrapteam.virtious.entity.EntityLaser;
 import minestrapteam.virtious.entity.EntityNative;
 import minestrapteam.virtious.entity.EntityNativeSkeleton;
 import minestrapteam.virtious.entity.item.EntityStickyBomb;
+import minestrapteam.virtious.lib.VBlocks;
 import minestrapteam.virtious.lib.VItems;
+import minestrapteam.virtious.lib.VRecipes;
 import minestrapteam.virtious.lib.VWorld;
 import minestrapteam.virtious.world.gen.VirtiousWorldGenerator;
 
@@ -65,6 +67,14 @@ public class Virtious extends BaseMod
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		super.preInit(event);
+		
+		VItems.init();
+		VBlocks.init();
+		VItems.load();
+		VBlocks.load();
+		
+		VRecipes.load();
+		VWorld.load();
 		
 		GameRegistry.registerWorldGenerator(new VirtiousWorldGenerator(), 0);
 		

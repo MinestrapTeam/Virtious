@@ -9,7 +9,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class VRecipes
 {
-	public VRecipes()
+	public static void load()
 	{
 		GameRegistry.addSmelting(VBlocks.virtian_iron_ore, new ItemStack(Items.iron_ingot), 0.7F);
 		GameRegistry.addSmelting(VBlocks.brazeum_ore, new ItemStack(VItems.brazeum_ingot), 0.7F);
