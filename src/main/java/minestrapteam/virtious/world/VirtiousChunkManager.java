@@ -35,7 +35,6 @@ public class VirtiousChunkManager extends CustomChunkManager
 	@Override
 	public GenLayer[] getGenLayers(long seed, WorldType worldType)
 	{
-		// FIXME
-		return null;
+		return new GenLayerVirtious().createWorld(seed, worldType);
 	}
 }

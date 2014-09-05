@@ -208,7 +208,7 @@ public class VItems
 		CSItems.addItem(veer_seed, "veer_seed");
 		CSItems.addItem(veer_dye, "veer_dye");
 		
-		CSItems.addItem(cytoid_door, "cytoid_door");
+		CSItems.addItem(cytoid_door, "cytoid_door_item");
 	}
 	
 	public static String getTexture(String name)

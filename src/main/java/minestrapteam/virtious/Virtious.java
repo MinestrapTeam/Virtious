@@ -23,6 +23,7 @@ import minestrapteam.virtious.lib.VBlocks;
 import minestrapteam.virtious.lib.VItems;
 import minestrapteam.virtious.lib.VRecipes;
 import minestrapteam.virtious.lib.VWorld;
+import minestrapteam.virtious.network.VNetHandler;
 import minestrapteam.virtious.world.gen.VirtiousWorldGenerator;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -54,6 +55,8 @@ public class Virtious extends BaseMod
 	public Virtious()
 	{
 		super(proxy, MOD_ID, MOD_NAME, VERSION);
+		this.netHandlerClass = VNetHandler.class;
+		this.hasConfig = true;
 	}
 	
 	@Override
@@ -68,18 +71,18 @@ public class Virtious extends BaseMod
 	{
 		super.preInit(event);
 		
-		VItems.init();
+		virtiousFluid = new Fluid("Virtian Acid");
+		FluidRegistry.registerFluid(virtiousFluid);
+		
 		VBlocks.init();
-		VItems.load();
+		VItems.init();
 		VBlocks.load();
+		VItems.load();
 		
 		VRecipes.load();
 		VWorld.load();
 		
 		GameRegistry.registerWorldGenerator(new VirtiousWorldGenerator(), 0);
-		
-		virtiousFluid = new Fluid("Virtian Acid");
-		FluidRegistry.registerFluid(virtiousFluid);
 	}
 	
 	@Override

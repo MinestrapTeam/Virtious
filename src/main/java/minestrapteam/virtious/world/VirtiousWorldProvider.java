@@ -5,6 +5,7 @@ import minestrapteam.virtious.client.renderer.VirtiousSkyRenderer;
 import minestrapteam.virtious.lib.VWorld;
 
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraftforge.client.IRenderHandler;
 
 public class VirtiousWorldProvider extends CustomWorldProvider
 {
@@ -12,11 +13,6 @@ public class VirtiousWorldProvider extends CustomWorldProvider
 	{
 		super(VWorld.dimensionID);
 		this.hasNoSky = false;
-		
-		if (this.worldObj.isRemote)
-		{
-			this.setSkyRenderer(new VirtiousSkyRenderer());
-		}
 	}
 
 	@Override
@@ -36,5 +32,17 @@ public class VirtiousWorldProvider extends CustomWorldProvider
 	public String getDimensionName()
 	{
 		return "Virtious";
+	}
+	
+	@Override
+	public String getSaveFolder()
+	{
+		return "VIRTIOUS";
+	}
+	
+	@Override
+	public IRenderHandler getSkyRenderer()
+	{
+		return VirtiousSkyRenderer.instance;
 	}
 }

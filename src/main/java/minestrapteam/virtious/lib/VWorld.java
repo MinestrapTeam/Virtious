@@ -26,6 +26,8 @@ public class VWorld
 	public static BiomeGenBase	gravelBeachBiome;
 	public static BiomeGenBase	virtiousOceanBiome;
 	
+	public static BiomeGenBase[] biomes;
+	
 	public static void readConfig()
 	{
 		dimensionID = CSConfig.getDimension("Virtious Dimension ID", dimensionID);
@@ -47,5 +49,7 @@ public class VWorld
 		whiskerfieldBiome = new BiomeGenWhiskerfield(whiskerfieldBiomeID);
 		gravelBeachBiome = new BiomeGenCanyon(canyonBiomeID);
 		virtiousOceanBiome = new BiomeGenVirtiousOcean(virtiousOceanID);
+		
+		biomes = new BiomeGenBase[] { virtiousBiome, canyonBiome, whiskerfieldBiome, gravelBeachBiome, virtiousOceanBiome };
 	}
 }

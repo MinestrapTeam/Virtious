@@ -17,6 +17,8 @@ import net.minecraftforge.client.IRenderHandler;
 
 public class VirtiousSkyRenderer extends IRenderHandler
 {
+	public static VirtiousSkyRenderer		instance		= new VirtiousSkyRenderer();
+	
 	private static final ResourceLocation	TEXTURE_MOON	= new ResourceLocation("virtious:textures/environment/Earth.png");
 	private static final ResourceLocation	TEXTURE_SUN		= new ResourceLocation("virtious:textures/environment/Sun.png");
 	private static final ResourceLocation	TEXTURE_CLOUDS	= new ResourceLocation("textures/environment/clouds.png");

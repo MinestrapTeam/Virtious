@@ -1,6 +1,5 @@
 package minestrapteam.virtious.item;
 
-import minestrapteam.virtious.Virtious;
 import minestrapteam.virtious.entity.EntityLaser;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,11 +9,11 @@ import net.minecraft.world.World;
 
 public class ItemGun extends Item
 {
-	private int firetick;
+	private int			firetick;
 	
-	protected int damage;
-	protected int firemax;
-	protected String sound;
+	protected int		damage;
+	protected int		firemax;
+	protected String	sound;
 	
 	public ItemGun(int damage, int firemax, String sound)
 	{
@@ -23,19 +22,15 @@ public class ItemGun extends Item
 		this.firemax = firemax;
 		this.setMaxStackSize(1);
 		this.setMaxDamage(3000);
-		this.setCreativeTab(Virtious.tabVirtiousItems);
 	}
 	
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(!world.isRemote)
+		if (!world.isRemote)
 		{
-			if (this.firetick == this.firemax)
-			{
-				world.spawnEntityInWorld(new EntityLaser(world, player, this.damage));
-				//TODO Gun sound
-			}
+			world.spawnEntityInWorld(new EntityLaser(world, player, this.damage));
+			stack.damageItem(this.damage, player);
 		}
 		return stack;
 	}
@@ -45,7 +40,7 @@ public class ItemGun extends Item
 	{
 		this.firetick = this.firemax;
 	}
-
+	
 	@Override
 	public boolean isFull3D()
 	{

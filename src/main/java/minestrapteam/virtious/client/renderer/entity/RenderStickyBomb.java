@@ -16,7 +16,7 @@ import net.minecraftforge.client.model.IModelCustom;
 public class RenderStickyBomb extends Render
 {
 	private static final ResourceLocation	texture	= new ResourceLocation("virtious", "textures/models/sticky_bomb.png");
-	private static final ResourceLocation	model	= new ResourceLocation("virtious", "/assets/virtious/models/sticky_bomb.obj");
+	private static final ResourceLocation	model	= new ResourceLocation("virtious", "models/sticky_bomb.obj");
 	
 	private static IModelCustom				renderModel;
 	

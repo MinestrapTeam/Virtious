@@ -68,8 +68,8 @@ public class VBlocks
 	public static Block				cytoid_glass;
 	public static Block				cytoid_door;
 	public static Block				cytoid_control_panel;
-	public static Block				cytoid_lamp_off;
-	public static Block				cytoid_lamp_on;
+	public static BlockCustomLamp				cytoid_lamp_off;
+	public static BlockCustomLamp				cytoid_lamp_on;
 	public static Block				cytoid_lightstrip;
 	
 	public static void init()
@@ -134,11 +134,11 @@ public class VBlocks
 		
 		cytoid_glass = new BlockGlass(Material.glass, false).setStepSound(Block.soundTypeGlass);
 		cytoid_door = new BlockCytoidDoor(Material.iron).setHardness(5.0F).setStepSound(Block.soundTypeMetal).setBlockTextureName("virtious:cytoid_door");
-		;
 		cytoid_control_panel = new BlockCytoidControlPanel().setCreativeTab(Virtious.tabVirtiousBlocks).setHardness(3.0F);
 		
-		cytoid_lamp_off = new BlockCytoidLamp(false).setCreativeTab(Virtious.tabVirtiousBlocks);
-		cytoid_lamp_on = new BlockCytoidLamp(true).setLightLevel(0.8F);
+		cytoid_lamp_off = (BlockCustomLamp) new BlockCytoidLamp(false).setCreativeTab(Virtious.tabVirtiousBlocks);
+		cytoid_lamp_on = (BlockCustomLamp) new BlockCytoidLamp(true).setLightLevel(0.8F);
+		BlockCustomLamp.bind(cytoid_lamp_off, cytoid_lamp_on);
 		cytoid_lightstrip = new BlockCytoidLightstrip();
 		
 		tak_ore.setHarvestLevel("pickaxe", 1);
