@@ -1,201 +1,101 @@
-package minestrapteam.virtious; 
+package minestrapteam.virtious;
 
-import java.io.File;
-import java.util.logging.Level;
-
+import clashsoft.cslib.minecraft.init.BaseMod;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
+import minestrapteam.virtious.common.VCommonProxy;
+import minestrapteam.virtious.common.VEventHandler;
+import minestrapteam.virtious.common.VFuelHandler;
+import minestrapteam.virtious.creativetab.TabVirtiousBlocks;
+import minestrapteam.virtious.creativetab.TabVirtiousItems;
 import minestrapteam.virtious.entity.EntityBurfalaunt;
 import minestrapteam.virtious.entity.EntityLaser;
 import minestrapteam.virtious.entity.EntityNative;
 import minestrapteam.virtious.entity.EntityNativeSkeleton;
 import minestrapteam.virtious.entity.item.EntityStickyBomb;
-import minestrapteam.virtious.entity.item.EntityVirtiousFishHook;
-import minestrapteam.virtious.event.VirtiousEventHandler;
-import minestrapteam.virtious.fluids.VirtiousFluids;
-import minestrapteam.virtious.lib.*;
-import minestrapteam.virtious.misc.VirtiousFuelHandler;
-import minestrapteam.virtious.network.PacketHandler;
-import minestrapteam.virtious.proxy.CommonProxy;
-import minestrapteam.virtious.renderer.StickyBombItemRenderer;
-import minestrapteam.virtious.world.TileEntityPortal;
-import minestrapteam.virtious.world.VirtiousProvider;
-import minestrapteam.virtious.world.biome.BiomeGenCanyon;
-import minestrapteam.virtious.world.biome.BiomeGenVirtious;
-import minestrapteam.virtious.world.biome.BiomeGenVirtiousOcean;
-import minestrapteam.virtious.world.biome.BiomeGenWhiskerfield;
-import minestrapteam.virtious.world.gen.VirtiousStructureGenerator;
+import minestrapteam.virtious.lib.VItems;
+import minestrapteam.virtious.lib.VWorld;
 import minestrapteam.virtious.world.gen.VirtiousWorldGenerator;
 
-import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.projectile.EntityFishHook;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemSlab;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.src.ModLoader;
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.chunk.Chunk;
-import net.minecraftforge.client.MinecraftForgeClient;
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.Property;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.liquids.LiquidEvent.LiquidMotionEvent;
 
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-
-@Mod(name = Virtious.modName, modid = Virtious.modId, useMetadata = false, version = "B1.0")
-@NetworkMod(/*channels = {Virtious.CHANNEL_NAME}, packetHandler = PacketHandler.class, */clientSideRequired = true, serverSideRequired = true)
-public class Virtious {
-	public static final String modId = "virtious";
-	public static final String modName = "Virtious Mod";
-	public static final String CHANNEL_NAME = "virtious_chan";
+@Mod(name = Virtious.MOD_NAME, modid = Virtious.MOD_ID, version = Virtious.VERSION)
+public class Virtious extends BaseMod
+{
+	public static final String		MOD_ID				= "virtious";
+	public static final String		MOD_NAME			= "Virtious";
+	public static final String		VERSION				= "1.7.10-0.8.0";
 	
-	public static Fluid virtiousFluid;
-	public static EntityVirtiousFishHook fishEntity;
+	public static Fluid				virtiousFluid;
 	
-	@Instance(Virtious.modId)
-	private static Virtious instance;
+	@Instance(Virtious.MOD_ID)
+	public static Virtious			instance;
 	
-	public static Virtious getInstance()
+	public static TabVirtiousBlocks	tabVirtiousBlocks	= new TabVirtiousBlocks(CreativeTabs.getNextID(), "Virtious Mod - Blocks");
+	public static TabVirtiousItems	tabVirtiousItems	= new TabVirtiousItems(CreativeTabs.getNextID(), "Virtious Mod - Items");
+	
+	public static VCommonProxy		proxy				= createProxy("minestrapteam.virtious.client.VClientProxy", "minestrapteam.virtious.common.VCommonProxy");
+	
+	public Virtious()
 	{
-		return instance;
+		super(proxy, MOD_ID, MOD_NAME, VERSION);
 	}
 	
-	public static int dimensionID;
+	@Override
+	public void readConfig()
+	{
+		VWorld.readConfig();
+	}
 	
-	public static int virtiousBiomeID;
-	public static int canyonBiomeID;
-	public static int whiskerfieldBiomeID;
-	public static int GravelBeachBiomeID;
-	public static int virtiousOceanID;
-	
-	public static int lightStripRendererID;
-
-	/* Biomes */
-	public static BiomeGenBase virtiousBiome = null;
-	public static BiomeGenBase biomeCanyon = null;
-	public static BiomeGenBase biomeWhiskerfield = null;
-	public static BiomeGenBase biomeGravelBeach = null;
-	public static BiomeGenBase virtiousOceanBiome = null;
-
-	public static Configuration config;
-	
-	public static VirtiousCreativeTabBlocks tabVirtiousBlocks = new VirtiousCreativeTabBlocks(CreativeTabs.getNextID(), "Virtious Mod - Blocks");
-	public static VirtiousCreativeTabItems tabVirtiousItems = new VirtiousCreativeTabItems(CreativeTabs.getNextID(), "Virtious Mod - Items");
-
-	@SidedProxy(clientSide = "teamm.mods.virtious.proxy.ClientProxy", serverSide = "teamm.mods.virtious.proxy.CommonProxy")
-	public static CommonProxy proxy;
-	
+	@Override
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		GameRegistry.registerTileEntity(TileEntityPortal.class, "VirtiousPortalTile");
-
-		GameRegistry.registerWorldGenerator(new VirtiousWorldGenerator());
+		super.preInit(event);
 		
-		virtiousFluid = new VirtiousFluids("Virtian Acid");
+		GameRegistry.registerWorldGenerator(new VirtiousWorldGenerator(), 0);
 		
-		config = new Configuration(new File(event.getModConfigurationDirectory(), "Virtious.cfg"));
-		
-		try
-		{
-			config.load();
-			
-			//Other config
-			Property idDim = Virtious.config.get("Special", "dimensionID", DimensionManager.getNextFreeDimId());
-			dimensionID = idDim.getInt();
-
-			Property idVirtiousBiome = Virtious.config.get("Special", "virtiousBiomeID", Config.virtiousBiomeID);
-			virtiousBiomeID = idVirtiousBiome.getInt();
-
-			Property idCanyonBiome = Virtious.config.get("Special", "Canyon Biome Id", Config.canyoneBiomeID);
-			canyonBiomeID = idCanyonBiome.getInt();
-
-			Property idGravelBeachBiome = Virtious.config.get("Special", "Gravel Beach Biome Id", Config.gravelBeachBiomeID);
-			GravelBeachBiomeID = idGravelBeachBiome.getInt();
-			
-			Property idwhiskerfieldBiome = Virtious.config.get("Special", "Whiskerfield Biome Id", Config.whiskerfieldBiomeID);
-			whiskerfieldBiomeID = idwhiskerfieldBiome.getInt();
-			
-			Property idVirtiousOcean = Virtious.config.get("Special", "Virtious Ocean Biome Id", Config.virtiousOceanID);
-			virtiousOceanID = idVirtiousOcean.getInt();
-			
-			//ItemStack config
-			new VirtiousBlocks();
-			new VirtiousItems();
-			
-			new VirtiousRecipes();
-		
-		} catch(Exception e)
-		{
-			System.err.println("Virtious: Could not load id's.");
-			System.out.println(e.getMessage());
-		} 
-		finally 
-		{
-			config.save();
-		}
-		
+		virtiousFluid = new Fluid("Virtian Acid");
+		FluidRegistry.registerFluid(virtiousFluid);
 	}
 	
-	
+	@Override
 	@EventHandler
-	public void init(FMLInitializationEvent evt)
-	{	
-		GameRegistry.registerWorldGenerator(new VirtiousStructureGenerator());
+	public void init(FMLInitializationEvent event)
+	{
+		super.init(event);
 		
-		FluidContainerRegistry.registerFluidContainer(virtiousFluid, new ItemStack(VirtiousItems.bucketAcid), new ItemStack(Item.bucketEmpty));
+		FluidContainerRegistry.registerFluidContainer(virtiousFluid, new ItemStack(VItems.acid_bucket), new ItemStack(Items.bucket));
 		
-		MinecraftForge.EVENT_BUS.register(new VirtiousEventHandler());
+		MinecraftForge.EVENT_BUS.register(new VEventHandler());
 		
-		GameRegistry.registerFuelHandler(new VirtiousFuelHandler());	
-				
-		DimensionManager.registerProviderType(dimensionID, VirtiousProvider.class, true);
-		DimensionManager.registerDimension(dimensionID, dimensionID);
-		
-		virtiousBiome = new BiomeGenVirtious(Virtious.virtiousBiomeID);
-		biomeCanyon = new BiomeGenCanyon(Virtious.canyonBiomeID);
-		biomeWhiskerfield = new BiomeGenWhiskerfield(Virtious.whiskerfieldBiomeID);
-		biomeGravelBeach = new BiomeGenCanyon(Virtious.canyonBiomeID);
-		virtiousOceanBiome = new BiomeGenVirtiousOcean(Virtious.virtiousOceanID);
+		GameRegistry.registerFuelHandler(new VFuelHandler());
 		
 		EntityRegistry.registerModEntity(EntityStickyBomb.class, "StickyBomb", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityVirtiousFishHook.class, "VirtiousFishingHook", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityLaser.class, "entityLaser", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
-		
 		EntityRegistry.registerGlobalEntityID(EntityBurfalaunt.class, "Burfalaunt", EntityRegistry.findGlobalUniqueEntityId(), 0x110802, 0x3f1e06);
-		LanguageRegistry.instance().addStringLocalization("entity.Burfalaunt.name", "en_US", "Burfalaunt");
-
 		EntityRegistry.registerGlobalEntityID(EntityNative.class, "NativeAlien", EntityRegistry.findGlobalUniqueEntityId(), 0x59563e, 0x2d3c21);
-		LanguageRegistry.instance().addStringLocalization("entity.NativeAlien.name", "en_US", "Native Alien");
-
 		EntityRegistry.registerGlobalEntityID(EntityNativeSkeleton.class, "NativeSkeleton", EntityRegistry.findGlobalUniqueEntityId(), 0x494949, 0xd8d8d8);
-		LanguageRegistry.instance().addStringLocalization("entity.NativeSkeleton.name", "en_US", "Native Skeleton");
-		
 		EntityRegistry.registerModEntity(EntityFishHook.class, "EntityVirtiousFishHook", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
-		
-		proxy.registerRenderThings();
 	}
 	
+	@Override
 	@EventHandler
-	public void initPost(FMLPostInitializationEvent evt)
+	public void postInit(FMLPostInitializationEvent event)
 	{
-		Item.itemsList[VirtiousBlocks.cytoidFloor.blockID] = (new ItemSlab(VirtiousBlocks.cytoidFloor.blockID - 256, (BlockHalfSlab)VirtiousBlocks.cytoidFloor, (BlockHalfSlab)VirtiousBlocks.cytoidFloorDouble, false));
+		super.postInit(event);
 	}
 }

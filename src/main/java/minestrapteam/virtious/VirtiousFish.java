@@ -1,6 +1,6 @@
 package minestrapteam.virtious;
 
-import minestrapteam.virtious.lib.VirtiousItems;
+import minestrapteam.virtious.lib.VItems;
 
 import net.minecraft.item.ItemStack;
 
@@ -11,7 +11,7 @@ public class VirtiousFish
 	static
 	{
 		lootSet = new VirtiousLootSet();
-		addFish(new ItemStack(VirtiousItems.fishEvulus), 50);
+		addFish(new ItemStack(VItems.evulus_fish), 50);
 		//TODO Add fish
 	}
 	

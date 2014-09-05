@@ -1,40 +1,61 @@
 package minestrapteam.virtious.block;
 
-import minestrapteam.virtious.Virtious;
+import clashsoft.cslib.minecraft.block.IBlockRenderPass;
+import clashsoft.cslib.minecraft.client.renderer.block.RenderBlockMulti;
+import minestrapteam.virtious.client.VClientProxy;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.util.IIcon;
 
-public class BlockCytoidLightstrip extends VirtiousBlock
+public class BlockCytoidLightstrip extends VBlock implements IBlockRenderPass
 {
-	public Icon[] icon = new Icon[3];
+	public IIcon	lightStripIcon;
+	public IIcon	lightStripGlowIcon;
 	
-	public BlockCytoidLightstrip(int id)
+	public BlockCytoidLightstrip()
 	{
-		super(id, Material.iron);
+		super(Material.iron);
 	}
 	
-	public void registerIcons(IconRegister r)
+	@Override
+	public void registerBlockIcons(IIconRegister iconRegister)
 	{
-		icon[0] = r.registerIcon("virtious:CytoidWall");
-		icon[1] = r.registerIcon("virtious:CytoidLightstrip");
-		icon[2] = r.registerIcon("virtious:CytoidLightstrip_light");
+		this.blockIcon = iconRegister.registerIcon("virtious:cytoid_wall");
+		this.lightStripIcon = iconRegister.registerIcon("virtious:cytoid_lightstrip");
+		this.lightStripGlowIcon = iconRegister.registerIcon("virtious:cytoid_lightstrip_light");
 		
 	}
 	
-	public Icon getIcon(int side, int meta)
+	@Override
+	public IIcon getIcon(int side, int metadata)
 	{
-		return side == 0 ? icon[0] : side == 1 ? icon[0] : icon[1];
+		if (side > 1)
+		{
+			if (RenderBlockMulti.renderPass == 1)
+			{
+				return this.lightStripGlowIcon;
+			}
+			return this.lightStripIcon;
+		}
+		return this.blockIcon;
 	}
 	
 	@Override
-	public int getRenderType(){
-		return Virtious.lightStripRendererID;
+	public int getRenderPasses(int metadata)
+	{
+		return 2;
 	}
 	
 	@Override
-	public boolean isOpaqueCube(){
-		 return false;
+	public int getRenderType()
+	{
+		return VClientProxy.lightStripRendererID;
+	}
+	
+	@Override
+	public boolean isOpaqueCube()
+	{
+		return false;
 	}
 }

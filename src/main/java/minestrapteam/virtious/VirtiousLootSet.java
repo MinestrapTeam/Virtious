@@ -7,56 +7,56 @@ import java.util.Random;
 import java.util.Set;
 import net.minecraft.item.ItemStack;
 
-public class VirtiousLootSet 
+public class VirtiousLootSet
 {
-	public Map<Integer, ItemStack> loot;
-	public Map<Integer, Integer> lootMin;
-	public Map<Integer, Integer> lootMax;
-	public int totalWeight;
-
+	public Map<Integer, ItemStack>	loot;
+	public Map<Integer, Integer>	lootMin;
+	public Map<Integer, Integer>	lootMax;
+	public int						totalWeight;
+	
 	public VirtiousLootSet()
 	{
-		loot = new HashMap<Integer, ItemStack>();
-		lootMin = new HashMap<Integer, Integer>();
-		lootMax = new HashMap<Integer, Integer>();
-		totalWeight = 0;
+		this.loot = new HashMap<Integer, ItemStack>();
+		this.lootMin = new HashMap<Integer, Integer>();
+		this.lootMax = new HashMap<Integer, Integer>();
+		this.totalWeight = 0;
 	}
-
+	
 	public void addLoot(ItemStack stack, int weight, int min, int max)
 	{
-		if(weight <= 0 || stack == null)
+		if (weight <= 0 || stack == null)
 			return;
-
-		loot.put(totalWeight + weight, stack);
-		lootMin.put(totalWeight + weight, min);
-		lootMax.put(totalWeight + weight, max);
-		totalWeight += weight;
+		
+		this.totalWeight += weight;
+		this.loot.put(this.totalWeight, stack);
+		this.lootMin.put(this.totalWeight, min);
+		this.lootMax.put(this.totalWeight, max);
 	}
-
+	
 	public ItemStack getRandomLoot()
 	{
 		Random rand = new Random();
-		int weight = rand.nextInt(totalWeight);
-
+		int weight = rand.nextInt(this.totalWeight);
+		
 		ItemStack stack = null;
-
-		Set<Integer> keySet = loot.keySet();
+		
+		Set<Integer> keySet = this.loot.keySet();
 		Integer[] keys = keySet.toArray(new Integer[keySet.size()]);
 		Arrays.sort(keys);
-
-		for(Integer key : keys)
+		
+		for (Integer key : keys)
 		{
-			if(key >= weight)
+			if (key >= weight)
 			{
-				stack = loot.get(key).copy();
-				int min = lootMin.get(key);
-				int max = lootMax.get(key);
+				stack = this.loot.get(key).copy();
+				int min = this.lootMin.get(key);
+				int max = this.lootMax.get(key);
 				int amount = rand.nextInt(max - min + 1) + min;
 				stack.stackSize = amount;
 				break;
 			}
 		}
-
+		
 		return stack;
 	}
 }

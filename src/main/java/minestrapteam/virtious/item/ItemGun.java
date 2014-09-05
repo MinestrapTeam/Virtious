@@ -4,19 +4,20 @@ import minestrapteam.virtious.Virtious;
 import minestrapteam.virtious.entity.EntityLaser;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemGun extends VirtiousItem
+public class ItemGun extends Item
 {
-	private int damage;
 	private int firetick;
-	private int firemax;
-	private String sound;
 	
-	public ItemGun(int id, int damage, int firemax, String sound)
+	protected int damage;
+	protected int firemax;
+	protected String sound;
+	
+	public ItemGun(int damage, int firemax, String sound)
 	{
-		super(id);
 		this.firetick = this.firemax;
 		this.damage = damage;
 		this.firemax = firemax;
@@ -26,24 +27,21 @@ public class ItemGun extends VirtiousItem
 	}
 	
 	@Override
-	public ItemStack onItemRightClick(ItemStack var1, World var2, EntityPlayer var3)
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(!var2.isRemote)
+		if(!world.isRemote)
 		{
-			if (this.firetick == this.firemax && this.firemax != 0)
+			if (this.firetick == this.firemax)
 			{
-				var2.spawnEntityInWorld(new EntityLaser(var2, var3, damage));
+				world.spawnEntityInWorld(new EntityLaser(world, player, this.damage));
 				//TODO Gun sound
 			}
 		}
-		return var1;
+		return stack;
 	}
 	
-	/**
-	 * called when the player releases the use item button. Args: itemstack, world, entityplayer, itemInUseCount
-	 */
 	@Override
-	public void onPlayerStoppedUsing(ItemStack var1, World var2, EntityPlayer var3, int var4)
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int ticks)
 	{
 		this.firetick = this.firemax;
 	}

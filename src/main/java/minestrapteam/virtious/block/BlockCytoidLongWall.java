@@ -1,45 +1,40 @@
 package minestrapteam.virtious.block;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.util.IIcon;
 
-public class BlockCytoidLongWall extends VirtiousBlock
+public class BlockCytoidLongWall extends VBlock
 {
-	private String direction;
-	private Icon inside;
-	private Icon otherInside;
-	private Icon upper;
-	private Icon lower;
+	private IIcon insideIcon;
+	private IIcon upper;
+	private IIcon lower;
 	
-	public BlockCytoidLongWall(int id, String direction) 
+	public BlockCytoidLongWall() 
 	{
-		super(id, Material.iron);
-		this.direction = direction;
+		super(Material.iron);
 	}
 	
-	public void registerIcons(IconRegister r)
+	@Override
+	public void registerBlockIcons(IIconRegister iconRegister)
 	{
-		inside = r.registerIcon("virtious:CytoidWallInside");
-		otherInside = r.registerIcon("virtious:CytoidWall");
-		upper = r.registerIcon("virtious:CytoidWallUpper");
-		lower = r.registerIcon("virtious:CytoidWallLower");
+		this.blockIcon = iconRegister.registerIcon("virtious:cytoid_wall");
+		this.insideIcon = iconRegister.registerIcon("virtious:cytoid_wall_inside");
+		this.upper = iconRegister.registerIcon("virtious:cytoid_wall_upper");
+		this.lower = iconRegister.registerIcon("virtious:cytoid_wall_lower");
 	}
 	
-	public Icon getIcon(int side, int meta)
+	@Override
+	public IIcon getIcon(int side, int metadata)
 	{
-		if(direction.equals("up"))
+		if(metadata == 0)
 		{
-			return side == 0 ? inside : side == 1 ? otherInside : upper; 
+			return side == 0 ? this.insideIcon : side == 1 ? this.blockIcon : this.upper; 
 		}
-		if(direction.equals("down"))
+		if(metadata == 1)
 		{
-			return side == 1 ? inside : side == 0 ? otherInside : lower; 
+			return side == 1 ? this.insideIcon : side == 0 ? this.blockIcon : this.lower; 
 		}
-		else
-		{
-			System.err.println("Virtious: Could not load wall textures do to mis-naming.");
-		}
-		return upper;
+		return this.blockIcon;
 	}
 }

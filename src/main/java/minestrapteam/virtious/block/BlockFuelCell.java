@@ -1,72 +1,80 @@
 package minestrapteam.virtious.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import minestrapteam.virtious.lib.VirtiousBlocks;
+import minestrapteam.virtious.lib.VBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-public class BlockFuelCell extends VirtiousBlock{
-
-	@SideOnly(Side.CLIENT)
-	private static Icon top;
+public class BlockFuelCell extends VBlock
+{
+	private IIcon	topIcon;
+	private IIcon	bottomIcon;
 	
-	@SideOnly(Side.CLIENT)
-	private static Icon bottom;
-	
-	public BlockFuelCell(int id, Material mat) {
-		super(id, mat);
-	}
-	
-	@Override
-    public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer player, int par6, float par7, float par8, float par9){
-    	if(player.getCurrentEquippedItem() != null)
-    	{
-    		if(player.getCurrentEquippedItem().isItemEqual(new ItemStack(Item.blazePowder, 1)))//FIXME
-        	{
-				if(world.getBlockId(i, j + 2, k) == VirtiousBlocks.portalBlock.blockID || (Block.blocksList[world.getBlockId(i, j + 2, k)] != null && !Block.blocksList[world.getBlockId(i, j + 2, k)].canBeReplacedByLeaves(world, i, j + 2, k)))
-					return false;
-				for(int x = -1; x <= 1; x++)
-	    		{
-	    			for(int z = -1; z <= 1; z++)
-	    			{
-	    				if(world.getBlockId(i + x, j - 1, k + z) != Block.blockIron.blockID)//FIXME: titanium
-	    					return false;
-	    			}
-				}
-				if(!player.capabilities.isCreativeMode)
-					player.getCurrentEquippedItem().stackSize--;
-	    		world.setBlock(i, j, k, VirtiousBlocks.portalBlock.blockID);
-	    	}
-    	}
-    	return false;
-    }
-	@Override
-    public void registerIcons(IconRegister r)
+	public BlockFuelCell(Material material)
 	{
-		super.registerIcons(r);
-		this.top = r.registerIcon("virtious:FuelBlockTop");
-		this.bottom = r.registerIcon("virtious:FuelBlockBottom");
+		super(material);
 	}
 	
-	@SideOnly(Side.CLIENT)
-
-    /**
-     * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
-     */
-    public Icon getIcon(int side, int meta)
-    {
-		if(side == 1)
-			return this.top;
-		if(side == 0)
-			return this.bottom;
-        return this.blockIcon;
-    }
+	@Override
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
+	{
+		ItemStack stack = player.getHeldItem();
+		if (stack != null && stack.getItem() == Items.blaze_powder)
+		{
+			Block block = world.getBlock(x, y + 2, z);
+			if (block == VBlocks.virtious_portal || !block.canBeReplacedByLeaves(world, x, y + 2, z))
+			{
+				return false;
+			}
+			
+			for (int x1 = -1; x <= 1; x++)
+			{
+				for (int z1 = -1; z <= 1; z++)
+				{
+					if (world.getBlock(x + x1, y - 1, z + z1) != Blocks.iron_block)
+					{
+						return false;
+					}
+				}
+			}
+			
+			if (!player.capabilities.isCreativeMode)
+			{
+				stack.stackSize--;
+			}
+			
+			world.setBlock(x, y, z, VBlocks.virtious_portal);
+			
+		}
+		return false;
+	}
+	
+	@Override
+	public void registerBlockIcons(IIconRegister iconRegister)
+	{
+		this.blockIcon = iconRegister.registerIcon("virtious:fuel_block_side");
+		this.topIcon = iconRegister.registerIcon("virtious:fuel_block_top");
+		this.bottomIcon = iconRegister.registerIcon("virtious:fuel_block_bottom");
+	}
+	
+	@Override
+	public IIcon getIcon(int side, int meta)
+	{
+		if (side == 1)
+		{
+			return this.topIcon;
+		}
+		if (side == 0)
+		{
+			return this.bottomIcon;
+		}
+		return this.blockIcon;
+	}
 }

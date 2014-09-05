@@ -2,86 +2,54 @@ package minestrapteam.virtious.world.gen;
 
 import java.util.Random;
 
-import minestrapteam.virtious.block.VirtiousFlower;
-import minestrapteam.virtious.lib.VirtiousBlocks;
+import clashsoft.cslib.minecraft.world.gen.CustomTreeGen;
+import minestrapteam.virtious.lib.VBlocks;
 
-import net.minecraft.block.Block;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class VirtiousGenAmberTree extends WorldGenerator
+public class VirtiousGenAmberTree extends CustomTreeGen
 {
-	int leavesId,logId;
-	boolean fromSapling;
-
-	public VirtiousGenAmberTree(int leavesId, int logId, boolean fromSapling)
+	public VirtiousGenAmberTree(boolean update)
 	{
-		super(fromSapling);
-		this.leavesId = leavesId;
-		this.logId = logId;
-		this.fromSapling = fromSapling;
+		super(update, 8, VBlocks.virtious_logs, VBlocks.virtious_leaves, 0, 0);
 	}
-
+	
 	@Override
-	public boolean generate(World world, Random random, int i, int j, int k) 
+	public boolean generate(World world, Random random, int i, int j, int k)
 	{
-		if(!((VirtiousFlower)VirtiousBlocks.saplingVirtian).canThisPlantGrowOnThisBlockID(world.getBlockId(i, j - 1, k)))
-			return false;
-		
 		int leavesHeight = (random.nextInt(2) + 3) * 2;
 		int trunk = random.nextInt(2) + 2;
-				
+		int radius = Math.round(leavesHeight / 2);
+		int center = trunk + radius;
+		int radius2 = radius * radius;
+		
 		int treeHeight = trunk + leavesHeight;
 		
-		if(this.fromSapling)
-		{
-			for(int h = 1; h <= treeHeight; h++){
-			    Block block = Block.blocksList[world.getBlockId(i, j + h, k)];
-				if(block != null)
-				{
-					if(!block.canBeReplacedByLeaves(world, i, j + h, k))
-						return false;
-				}
-			}
-		}
-		
 		int cycleCount = random.nextInt();
-
-		for(int y = 0; y < treeHeight; y++)
+		
+		for (int y1 = 0; y1 < treeHeight; y1++)
 		{
-			world.setBlock(i, j + y, k, logId);
-				
-			int radius = Math.round(leavesHeight / 2);
-			int center = trunk + radius;
-
-			int radius2 = radius * radius;
-			if(y >= trunk)
+			this.setBlock(world, i, j + y1, k, this.logBlock, this.logMetadata);
+			
+			
+			int y2 = (center - y1) * (center - y1);
+			
+			if (y1 >= trunk)
 			{
-				world.setBlock(i, j + y, k, logId);
-
-				for(int x = -radius; x <= radius; x++)
+				for (int x1 = -radius; x1 <= radius; x1++)
 				{
-					for(int z = -radius; z <= radius; z++)
+					for (int z1 = -radius; z1 <= radius; z1++)
 					{
-						if(/*(x % 2 == 0 || z % 2 == 0) &&*/ cycleCount++ % 2 == 0 && x*x + (center - y) * (center - y) + z*z <= radius2)
-							addLeaves(world, i + x, j + y, k + z);
+						if (cycleCount++ % 2 == 0 && x1 * x1 + y2 + z1 * z1 <= radius2)
+						{
+							this.setBlock(world, i + x1, j + y1, k + z1, this.leafBlock, this.leafMetadata);
+						}
 					}
 				}
 			}
 		}
-		world.setBlock(i, j + treeHeight , k, leavesId);
+		
+		this.setBlock(world, i, j + treeHeight, k, this.leafBlock, this.leafMetadata);
 		return true;
-	}
-
-	private boolean addLeaves(World world, int x, int y, int z)
-	{
-		int id = world.getBlockId(x, y, z);
-	    Block block = Block.blocksList[id];
-		if(block == null || block.canBeReplacedByLeaves(world, x, y, z))
-		{
-			world.setBlock(x, y, z, leavesId);
-			return true;
-		}
-		return false;
 	}
 }
