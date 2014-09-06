@@ -6,9 +6,9 @@ import minestrapteam.virtious.Virtious;
 import minestrapteam.virtious.block.*;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockGlass;
-import net.minecraft.block.BlockGravel;
+import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemSlab;
 
 public class VBlocks
 {
@@ -89,10 +89,10 @@ public class VBlocks
 		canyonstone = new VBlock(Material.rock).setHardness(2.0F).setResistance(0.3F).setBlockTextureName(getTexture("canyonstone"));
 		canyonstone_bricks = new VBlock(Material.rock).setHardness(3.0F).setBlockTextureName(getTexture("canyonstone_bricks"));
 		
-		virtian_grass = new BlockCustomGrass("virtiangrass", getTexture("mossy_soil")).setHardness(0.6F).setStepSound(Block.soundTypeGrass);
+		virtian_grass = new BlockCustomGrass(ICustomBlock.DEFAULT_NAMES, getTexture("mossy_soil")).setHardness(0.6F).setStepSound(Block.soundTypeGrass).setCreativeTab(Virtious.tabVirtiousBlocks);
 		virtian_soil = new VBlock(Material.ground).setHardness(0.6F).setStepSound(Block.soundTypeGravel).setBlockTextureName(getTexture("virtian_soil"));
 		virtian_soil_tilled = new BlockCustomFarmland(virtian_soil).setHardness(0.6F).setStepSound(Block.soundTypeGravel).setBlockTextureName(getTexture("virtian_soil_tilled"));
-		fine_gravel = new BlockGravel().setHardness(0.6F).setStepSound(Block.soundTypeGravel).setCreativeTab(Virtious.tabVirtiousBlocks).setBlockTextureName(getTexture("fine_gravel"));
+		fine_gravel = new BlockFalling().setHardness(0.6F).setStepSound(Block.soundTypeGravel).setCreativeTab(Virtious.tabVirtiousBlocks).setBlockTextureName(getTexture("fine_gravel"));
 		
 		virtian_iron_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(3.0F).setResistance(5.0F).setBlockTextureName(getTexture("virtian_iron_ore"));
 		tak_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(3.2F).setResistance(5.2F).setBlockTextureName(getTexture("tak_ore"));
@@ -112,10 +112,10 @@ public class VBlocks
 		illuminous_block = new VBlock(Material.rock).setHardness(3.0F).setLightLevel(1.0F).setBlockTextureName(getTexture("illuminous_block"));
 		
 		String[] woodTypes = new String[] { "virtianwood", "amberwood" };
-		virtious_logs = new BlockCustomLog(woodTypes, new String[] { getTexture("virtianwood_log_top"), getTexture("amberwood_log_top") }, new String[] { getTexture("virtianwood_log_side"), getTexture("amberwood_log_side") }).setHardness(2.0F).setStepSound(Block.soundTypeWood);
-		virtious_leaves = new BlockCustomLeaves(woodTypes, new String[] { getTexture("virtianwood_leaves"), getTexture("amberwood_leaves") }).setHardness(0.2F).setStepSound(Block.soundTypeGrass);
-		virtious_saplings = new BlockVirtiousSapling(woodTypes, new String[] { getTexture("virtianwood_sapling"), getTexture("amberwood_sapling") }).setStepSound(Block.soundTypeGrass);
-		virtious_planks = new CustomBlock(Material.wood, woodTypes, new String[] { getTexture("virtianwood_planks"), getTexture("amberwood_planks") }, null).setHardness(2.0F).setResistance(5.0F).setStepSound(Block.soundTypeWood);
+		virtious_logs = new BlockCustomLog(woodTypes, new String[] { getTexture("virtianwood_log_top"), getTexture("amberwood_log_top") }, new String[] { getTexture("virtianwood_log_side"), getTexture("amberwood_log_side") }).setHardness(2.0F).setCreativeTab(Virtious.tabVirtiousBlocks);
+		virtious_leaves = new BlockCustomLeaves(woodTypes, new String[] { getTexture("virtianwood_leaves"), getTexture("amberwood_leaves") }).setHardness(0.2F).setCreativeTab(Virtious.tabVirtiousBlocks);
+		virtious_saplings = new BlockVirtiousSapling(woodTypes, new String[] { getTexture("virtianwood_sapling"), getTexture("amberwood_sapling") });
+		virtious_planks = new CustomBlock(Material.wood, woodTypes, new String[] { getTexture("virtianwood_planks"), getTexture("amberwood_planks") }, null).setHardness(2.0F).setResistance(5.0F).setStepSound(Block.soundTypeWood).setCreativeTab(Virtious.tabVirtiousBlocks);
 		
 		blue_torch = new VBlockTorch().setHardness(0.0F).setLightLevel(0.85F).setStepSound(Block.soundTypeWood).setBlockTextureName(getTexture("blue_mushroom_torch"));
 		green_torch = new VBlockTorch().setHardness(0.0F).setLightLevel(0.8F).setStepSound(Block.soundTypeWood).setBlockTextureName(getTexture("green_mushroom_torch"));
@@ -126,16 +126,16 @@ public class VBlocks
 		virtious_acid = new BlockVirtiousAcid().setHardness(100.0F).setLightOpacity(3);
 		
 		fuel_cell = new BlockFuelCell(Material.rock).setHardness(3.0F);
-		rough_glass = new BlockGlass(Material.glass, true).setStepSound(Block.soundTypeGlass);
+		rough_glass = new BlockCustomGlass(Material.glass, ICustomBlock.DEFAULT_NAMES, getTexture("rough_glass")).setTransparent(true).setCreativeTab(Virtious.tabVirtiousBlocks);
 		
 		cytoid_wall = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setBlockTextureName(getTexture("cytoid_wall"));
 		cytoid_wall_dark = new CustomBlock(Material.iron, new String[] { null, "2", "3", "4" }, new String[] { getTexture("cytoid_wall_dark_1"), getTexture("cytoid_wall_dark_2"), getTexture("cytoid_wall_dark_3"), getTexture("cytoid_wall_dark_4") }, null).setHardness(3.0F).setResistance(8.0F).setStepSound(Block.soundTypeStone).setCreativeTab(Virtious.tabVirtiousBlocks);
 		cytoid_wall_long = new BlockCytoidLongWall().setHardness(3F).setResistance(8F);
 		cytoid_floor = (BlockCustomSlab) new BlockCytoidFloor(false).setHardness(1.8F).setCreativeTab(Virtious.tabVirtiousBlocks);
-		cytoid_floor_double = (BlockCustomSlab) new BlockCytoidFloor(true).setHardness(1.8F);
+		cytoid_floor_double = (BlockCustomSlab) new BlockCytoidFloor(true).setHardness(1.8F).setCreativeTab(null);
 		BlockCustomSlab.bind(cytoid_floor, cytoid_floor_double);
 		
-		cytoid_glass = new BlockGlass(Material.glass, false).setStepSound(Block.soundTypeGlass);
+		cytoid_glass = new BlockCustomGlass(Material.glass, ICustomBlock.DEFAULT_NAMES, getTexture("cytoid_glass")).setCreativeTab(Virtious.tabVirtiousBlocks);
 		cytoid_door = new BlockCytoidDoor(Material.iron).setHardness(5.0F).setStepSound(Block.soundTypeMetal).setBlockTextureName(getTexture("cytoid_door"));
 		cytoid_control_panel = new BlockCytoidControlPanel().setCreativeTab(Virtious.tabVirtiousBlocks).setHardness(3.0F);
 		
@@ -208,7 +208,7 @@ public class VBlocks
 		CSBlocks.addBlock(cytoid_wall, "cytoid_wall");
 		CSBlocks.addBlock(cytoid_wall_dark, "cytoid_wall_dark");
 		CSBlocks.addBlock(cytoid_wall_long, "cytoid_wall_long");
-		CSBlocks.addBlock(cytoid_floor, "cytoid_floor");
+		CSBlocks.addBlock(cytoid_floor, ItemSlab.class, "cytoid_floor");
 		CSBlocks.addBlock(cytoid_floor_double, "cytoid_floor_double");
 		
 		CSBlocks.addBlock(cytoid_glass, "cytoid_glass");
