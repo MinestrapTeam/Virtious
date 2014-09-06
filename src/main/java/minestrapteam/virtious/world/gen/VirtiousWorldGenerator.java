@@ -3,9 +3,9 @@ package minestrapteam.virtious.world.gen;
 import java.util.Random;
 
 import cpw.mods.fml.common.IWorldGenerator;
+import minestrapteam.virtious.biome.BiomeGenVirtious;
 import minestrapteam.virtious.lib.VBlocks;
 import minestrapteam.virtious.world.VirtiousChunkProvider;
-import minestrapteam.virtious.world.biome.BiomeGenVirtious;
 
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;

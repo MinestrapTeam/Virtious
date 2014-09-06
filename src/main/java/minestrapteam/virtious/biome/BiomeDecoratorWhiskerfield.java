@@ -1,4 +1,4 @@
-package minestrapteam.virtious.world.biome;
+package minestrapteam.virtious.biome;
 
 import static net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.FLOWERS;
 import static net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS;

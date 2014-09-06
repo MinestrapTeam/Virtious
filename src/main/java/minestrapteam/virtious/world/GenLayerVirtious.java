@@ -1,16 +1,22 @@
 package minestrapteam.virtious.world;
 
-import clashsoft.cslib.minecraft.world.CustomGenLayer;
+import clashsoft.cslib.minecraft.world.CustomBiomeLayer;
+import minestrapteam.virtious.lib.VWorld;
 
 import net.minecraft.world.WorldType;
-import net.minecraft.world.gen.layer.GenLayer;
+import net.minecraft.world.biome.BiomeGenBase;
 
-public class GenLayerVirtious extends CustomGenLayer
+public class GenLayerVirtious extends CustomBiomeLayer
 {
-	@Override
-	public GenLayer getBiomeGenLayer(long seed, WorldType worldType)
+	public GenLayerVirtious(long seed)
 	{
-		return new GenLayerBiomesVirtious(seed);
+		super(seed);
+	}
+
+	@Override
+	public BiomeGenBase[] getBiomes()
+	{
+		return VWorld.biomes;
 	}
 	
 	@Override
