@@ -75,7 +75,7 @@ public class VBlocks
 	
 	public static void init()
 	{
-		virtious_portal = new BlockVirtiousPortal("virtious_portal", null).setHardness(5.0F).setStepSound(Block.soundTypeStone);
+		virtious_portal = new BlockVirtiousPortal(null).setHardness(5.0F).setStepSound(Block.soundTypeStone);
 		
 		virtianstone = new VBlock(Material.rock).setHardness(1.5F).setStepSound(Block.soundTypeStone).setBlockTextureName(getTexture("virtianstone"));
 		virtianstone_cobbled = new VBlock(Material.rock).setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundTypeStone).setBlockTextureName(getTexture("virtianstone_cobbled"));

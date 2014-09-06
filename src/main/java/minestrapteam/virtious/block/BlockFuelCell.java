@@ -27,18 +27,23 @@ public class BlockFuelCell extends VBlock
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
 	{
+		if (world.isRemote)
+		{
+			return false;
+		}
+		
 		ItemStack stack = player.getHeldItem();
 		if (stack != null && stack.getItem() == Items.blaze_powder)
 		{
-			Block block = world.getBlock(x, y + 2, z);
-			if (block == VBlocks.virtious_portal || !block.canBeReplacedByLeaves(world, x, y + 2, z))
+			Block block = world.getBlock(x, y + 1, z);
+			if (block == VBlocks.virtious_portal || !block.isReplaceable(world, x, y + 1, z))
 			{
 				return false;
 			}
 			
-			for (int x1 = -1; x <= 1; x++)
+			for (int x1 = -1; x1 <= 1; x1++)
 			{
-				for (int z1 = -1; z <= 1; z++)
+				for (int z1 = -1; z1 <= 1; z1++)
 				{
 					if (world.getBlock(x + x1, y - 1, z + z1) != Blocks.iron_block)
 					{
@@ -52,7 +57,8 @@ public class BlockFuelCell extends VBlock
 				stack.stackSize--;
 			}
 			
-			world.setBlock(x, y, z, VBlocks.virtious_portal);	
+			world.setBlock(x, y + 1, z, VBlocks.virtious_portal);
+			return true;
 		}
 		return false;
 	}
