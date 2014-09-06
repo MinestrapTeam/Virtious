@@ -34,7 +34,7 @@ public class RenderStickyBomb extends Render
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) x, (float) y, (float) z);
 		
-		
+		render();
 		
 		GL11.glPopMatrix();
 	}

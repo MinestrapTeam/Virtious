@@ -28,15 +28,14 @@ public class VClientProxy extends VCommonProxy
 		
 		RenderingRegistry.registerBlockHandler(lightStripRendererID, RenderGlowingBlock.instance);
 		
-		RenderingRegistry.registerEntityRenderingHandler(EntityStickyBomb.class, new RenderStickyBomb());
 		
 		MinecraftForgeClient.registerItemRenderer(VItems.sticky_bomb, new RenderItemStickyBomb());
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityBurfalaunt.class, new RenderBurfalaunt(new ModelBurfalaunt(), 1F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityNative.class, new RenderNative(new ModelNative(), 1F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityNativeSkeleton.class, new RenderNativeSkeleton(new ModelNative(), 1F));
-		
 		RenderingRegistry.registerEntityRenderingHandler(EntityLaser.class, new RenderLaser());
+		RenderingRegistry.registerEntityRenderingHandler(EntityStickyBomb.class, new RenderStickyBomb());		
 	}
 	
 	@Override
