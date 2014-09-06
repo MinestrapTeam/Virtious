@@ -2,7 +2,8 @@ package minestrapteam.virtious.block;
 
 import clashsoft.cslib.minecraft.block.IBlockRenderPass;
 import clashsoft.cslib.minecraft.client.renderer.block.RenderBlockMulti;
-import minestrapteam.virtious.client.VClientProxy;
+import minestrapteam.virtious.Virtious;
+import minestrapteam.virtious.client.renderer.block.RenderGlowingBlock;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -16,6 +17,8 @@ public class BlockCytoidLightstrip extends VBlock implements IBlockRenderPass
 	public BlockCytoidLightstrip()
 	{
 		super(Material.iron);
+		this.setCreativeTab(Virtious.tabVirtiousBlocks);
+		this.setLightLevel(1F);
 	}
 	
 	@Override
@@ -24,7 +27,6 @@ public class BlockCytoidLightstrip extends VBlock implements IBlockRenderPass
 		this.blockIcon = iconRegister.registerIcon("virtious:cytoid_wall");
 		this.lightStripIcon = iconRegister.registerIcon("virtious:cytoid_lightstrip");
 		this.lightStripGlowIcon = iconRegister.registerIcon("virtious:cytoid_lightstrip_light");
-		
 	}
 	
 	@Override
@@ -50,7 +52,7 @@ public class BlockCytoidLightstrip extends VBlock implements IBlockRenderPass
 	@Override
 	public int getRenderType()
 	{
-		return VClientProxy.lightStripRendererID;
+		return RenderGlowingBlock.instance.getRenderId();
 	}
 	
 	@Override

@@ -12,33 +12,36 @@ public class ItemGun extends Item
 	private int			firetick;
 	
 	protected int		damage;
-	protected int		firemax;
+	protected int		cooldown;
 	protected String	sound;
 	
-	public ItemGun(int damage, int firemax, String sound)
+	public ItemGun(int uses, int damage, int cooldown, String sound)
 	{
-		this.firetick = this.firemax;
 		this.damage = damage;
-		this.firemax = firemax;
+		this.cooldown = cooldown;
+		
 		this.setMaxStackSize(1);
-		this.setMaxDamage(3000);
+		this.setMaxDamage(uses);
 	}
 	
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if (!world.isRemote)
-		{
-			world.spawnEntityInWorld(new EntityLaser(world, player, this.damage));
-			stack.damageItem(this.damage, player);
-		}
+		player.setItemInUse(stack, 2000);
 		return stack;
 	}
 	
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int ticks)
 	{
-		this.firetick = this.firemax;
+		world.spawnEntityInWorld(new EntityLaser(world, player, this.damage));
+		stack.damageItem(this.damage, player);
+	}
+	
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack)
+	{
+		return this.cooldown;
 	}
 	
 	@Override

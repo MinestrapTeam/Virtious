@@ -9,5 +9,4 @@ public class BlockCytoidFloor extends BlockCustomSlab
 	{
 		super(new String[] { null }, new SlabIconSupplier("virtious:cytoid_floor", "virtious:cytoid_floor_side"), doubleSlab);
 	}
-	
 }

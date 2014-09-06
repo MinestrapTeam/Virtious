@@ -17,6 +17,11 @@ public class RenderLaser extends Render
 {
 	private static final ResourceLocation	texture	= new ResourceLocation("virtious:textures/models/laser.png");
 	
+	public RenderLaser()
+	{
+		this.shadowSize = 0F;
+	}
+	
 	public void renderArrow(EntityLaser entity, double x, double y, double z, float yaw, float partialTickTime)
 	{
 		this.bindEntityTexture(entity);

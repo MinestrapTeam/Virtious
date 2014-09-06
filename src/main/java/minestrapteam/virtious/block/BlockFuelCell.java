@@ -1,5 +1,6 @@
 package minestrapteam.virtious.block;
 
+import minestrapteam.virtious.Virtious;
 import minestrapteam.virtious.lib.VBlocks;
 
 import net.minecraft.block.Block;
@@ -20,6 +21,7 @@ public class BlockFuelCell extends VBlock
 	public BlockFuelCell(Material material)
 	{
 		super(material);
+		this.setCreativeTab(Virtious.tabVirtiousBlocks);
 	}
 	
 	@Override
@@ -50,8 +52,7 @@ public class BlockFuelCell extends VBlock
 				stack.stackSize--;
 			}
 			
-			world.setBlock(x, y, z, VBlocks.virtious_portal);
-			
+			world.setBlock(x, y, z, VBlocks.virtious_portal);	
 		}
 		return false;
 	}

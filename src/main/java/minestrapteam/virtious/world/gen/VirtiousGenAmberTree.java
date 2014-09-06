@@ -11,7 +11,7 @@ public class VirtiousGenAmberTree extends CustomTreeGen
 {
 	public VirtiousGenAmberTree(boolean update)
 	{
-		super(update, 8, VBlocks.virtious_logs, VBlocks.virtious_leaves, 0, 0);
+		super(update, 8, VBlocks.virtious_logs, VBlocks.virtious_leaves, 1, 1);
 	}
 	
 	@Override

@@ -16,6 +16,6 @@ public class GenLayerVirtious extends CustomGenLayer
 	@Override
 	public int getBiomeSize(long seed, WorldType worldType)
 	{
-		return 3;
+		return 5;
 	}
 }

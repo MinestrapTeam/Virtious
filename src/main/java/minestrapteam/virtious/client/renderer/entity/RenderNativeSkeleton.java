@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 @SideOnly(Side.CLIENT)
 public class RenderNativeSkeleton extends RenderLiving
 {
-	private static final ResourceLocation	texture	= new ResourceLocation("virtious:textures/models/NativeSkeleton.png");
+	private static final ResourceLocation	texture	= new ResourceLocation("virtious", "textures/models/native_skeleton.png");
 	
 	public RenderNativeSkeleton(ModelBase modelBase, float size)
 	{

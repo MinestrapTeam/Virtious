@@ -62,84 +62,86 @@ public class VBlocks
 	
 	public static Block				cytoid_wall;
 	public static Block				cytoid_wall_dark;
+	public static Block cytoid_wall_long;
 	public static BlockCustomSlab	cytoid_floor;
 	public static BlockCustomSlab	cytoid_floor_double;
 	
 	public static Block				cytoid_glass;
 	public static Block				cytoid_door;
 	public static Block				cytoid_control_panel;
-	public static BlockCustomLamp				cytoid_lamp_off;
-	public static BlockCustomLamp				cytoid_lamp_on;
+	public static BlockCustomLamp	cytoid_lamp_off;
+	public static BlockCustomLamp	cytoid_lamp_on;
 	public static Block				cytoid_lightstrip;
 	
 	public static void init()
 	{
 		virtious_portal = new BlockVirtiousPortal("virtious_portal", null).setHardness(5.0F).setStepSound(Block.soundTypeStone);
 		
-		virtianstone = new VBlock(Material.rock).setHardness(1.5F).setStepSound(Block.soundTypeStone);
-		virtianstone_cobbled = new VBlock(Material.rock).setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundTypeStone);
-		virtianstone_bricks = new VBlock(Material.rock).setHardness(3.0F);
+		virtianstone = new VBlock(Material.rock).setHardness(1.5F).setStepSound(Block.soundTypeStone).setBlockTextureName(getTexture("virtianstone"));
+		virtianstone_cobbled = new VBlock(Material.rock).setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundTypeStone).setBlockTextureName(getTexture("virtianstone_cobbled"));
+		virtianstone_bricks = new VBlock(Material.rock).setHardness(3.0F).setBlockTextureName(getTexture("virtianstone_bricks"));
 		
-		deepstone = new VBlock(Material.rock).setHardness(5.0F).setStepSound(Block.soundTypeStone);
-		deepstone_mossy = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(5.0F);
-		deepstone_bricks = new VBlock(Material.rock).setHardness(5.0F);
+		deepstone = new VBlock(Material.rock).setHardness(5.0F).setStepSound(Block.soundTypeStone).setBlockTextureName(getTexture("deepstone"));
+		deepstone_mossy = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(5.0F).setBlockTextureName(getTexture("deepstone_mossy"));
+		deepstone_bricks = new VBlock(Material.rock).setHardness(5.0F).setBlockTextureName(getTexture("deepstone_bricks"));
 		
-		canyonstone = new VBlock(Material.rock).setHardness(2.0F).setResistance(0.3F);
-		canyonstone_bricks = new VBlock(Material.rock).setHardness(3.0F);
+		canyonstone = new VBlock(Material.rock).setHardness(2.0F).setResistance(0.3F).setBlockTextureName(getTexture("canyonstone"));
+		canyonstone_bricks = new VBlock(Material.rock).setHardness(3.0F).setBlockTextureName(getTexture("canyonstone_bricks"));
 		
-		virtian_grass = new BlockCustomGrass("virtiangrass", "virtious:mossy_soil").setHardness(0.6F).setStepSound(Block.soundTypeGrass);
-		virtian_soil = new VBlock(Material.ground).setHardness(0.6F).setStepSound(Block.soundTypeGravel);
-		virtian_soil_tilled = new BlockCustomFarmland(virtian_soil).setHardness(0.6F).setStepSound(Block.soundTypeGravel);
-		fine_gravel = new BlockGravel().setHardness(0.6F).setStepSound(Block.soundTypeGravel);
+		virtian_grass = new BlockCustomGrass("virtiangrass", getTexture("mossy_soil")).setHardness(0.6F).setStepSound(Block.soundTypeGrass);
+		virtian_soil = new VBlock(Material.ground).setHardness(0.6F).setStepSound(Block.soundTypeGravel).setBlockTextureName(getTexture("virtian_soil"));
+		virtian_soil_tilled = new BlockCustomFarmland(virtian_soil).setHardness(0.6F).setStepSound(Block.soundTypeGravel).setBlockTextureName(getTexture("virtian_soil_tilled"));
+		fine_gravel = new BlockGravel().setHardness(0.6F).setStepSound(Block.soundTypeGravel).setCreativeTab(Virtious.tabVirtiousBlocks).setBlockTextureName(getTexture("fine_gravel"));
 		
-		virtian_iron_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(3.0F).setResistance(5.0F);
-		tak_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(3.2F).setResistance(5.2F);
-		brazeum_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(3.0F).setResistance(5.0F);
-		aquieus_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(4.0F).setResistance(6.0F);
-		pluthorium_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(4.0F).setResistance(6.0F);
-		illuminous_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(3.0F).setLightLevel(0.8F);
+		virtian_iron_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(3.0F).setResistance(5.0F).setBlockTextureName(getTexture("virtian_iron_ore"));
+		tak_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(3.2F).setResistance(5.2F).setBlockTextureName(getTexture("tak_ore"));
+		brazeum_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(3.0F).setResistance(5.0F).setBlockTextureName(getTexture("brazeum_ore"));
+		aquieus_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(4.0F).setResistance(6.0F).setBlockTextureName(getTexture("aquieus_ore"));
+		pluthorium_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(4.0F).setResistance(6.0F).setBlockTextureName(getTexture("pluthorium_ore"));
+		illuminous_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(3.0F).setLightLevel(0.8F).setBlockTextureName(getTexture("illuminous_ore"));
 		
-		deep_iron_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(5.5F).setResistance(8.5F);
-		deep_tak_ore = new BlockTakOre(Material.rock).setStepSound(Block.soundTypeStone).setHardness(5.0F).setResistance(0.8F);
-		deep_illuminous_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(5.0F).setResistance(8.0F).setLightLevel(0.8F);
+		deep_iron_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(5.5F).setResistance(8.5F).setBlockTextureName(getTexture("deep_iron_ore"));
+		deep_tak_ore = new BlockTakOre(Material.rock).setStepSound(Block.soundTypeStone).setHardness(5.0F).setResistance(0.8F).setBlockTextureName(getTexture("deep_tak_ore"));
+		deep_illuminous_ore = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setHardness(5.0F).setResistance(8.0F).setLightLevel(0.8F).setBlockTextureName(getTexture("deep_illuminous_ore"));
 		
-		tak_block = new BlockTakOre(Material.rock).setHardness(5.0F).setStepSound(Block.soundTypeStone);
-		brazeum_block = new VBlock(Material.iron).setHardness(3.0F);
-		aquieus_block = new VBlock(Material.iron).setHardness(3.0F);
-		pluthorium_block = new VBlock(Material.iron).setHardness(3.0F);
-		illuminous_block = new VBlock(Material.rock).setHardness(3.0F).setLightLevel(1.0F);
+		tak_block = new BlockTakOre(Material.rock).setHardness(5.0F).setStepSound(Block.soundTypeStone).setBlockTextureName(getTexture("tak_block"));
+		brazeum_block = new VBlock(Material.iron).setHardness(3.0F).setBlockTextureName(getTexture("brazeum_block"));
+		aquieus_block = new VBlock(Material.iron).setHardness(3.0F).setBlockTextureName(getTexture("aquieus_block"));
+		pluthorium_block = new VBlock(Material.iron).setHardness(3.0F).setBlockTextureName(getTexture("pluthorium_block"));
+		illuminous_block = new VBlock(Material.rock).setHardness(3.0F).setLightLevel(1.0F).setBlockTextureName(getTexture("illuminous_block"));
 		
 		String[] woodTypes = new String[] { "virtianwood", "amberwood" };
-		virtious_logs = new BlockCustomLog(woodTypes, new String[] { "virtious:virtianwood_log_top", "virtious:amberwood_log_top" }, new String[] { "virtious:virtianwood_log_side", "virtious:amberwood_log_side" }).setHardness(2.0F).setStepSound(Block.soundTypeWood);
-		virtious_leaves = new BlockCustomLeaves(woodTypes, new String[] { "virtious:virtianwood_leaves", "virtious:amberwood_leaves" }).setHardness(0.2F).setStepSound(Block.soundTypeGrass);
-		virtious_saplings = new BlockVirtiousSapling(woodTypes, new String[] { "virtious:virtianwood_sapling", "virtious:amberwood_sapling" }).setStepSound(Block.soundTypeGrass);
-		virtious_planks = new CustomBlock(Material.wood, woodTypes, new String[] { "virtious:virtianwood_planks", "virtious:amberwood_planks" }, null).setHardness(2.0F).setResistance(5.0F).setStepSound(Block.soundTypeWood);
+		virtious_logs = new BlockCustomLog(woodTypes, new String[] { getTexture("virtianwood_log_top"), getTexture("amberwood_log_top") }, new String[] { getTexture("virtianwood_log_side"), getTexture("amberwood_log_side") }).setHardness(2.0F).setStepSound(Block.soundTypeWood);
+		virtious_leaves = new BlockCustomLeaves(woodTypes, new String[] { getTexture("virtianwood_leaves"), getTexture("amberwood_leaves") }).setHardness(0.2F).setStepSound(Block.soundTypeGrass);
+		virtious_saplings = new BlockVirtiousSapling(woodTypes, new String[] { getTexture("virtianwood_sapling"), getTexture("amberwood_sapling") }).setStepSound(Block.soundTypeGrass);
+		virtious_planks = new CustomBlock(Material.wood, woodTypes, new String[] { getTexture("virtianwood_planks"), getTexture("amberwood_planks") }, null).setHardness(2.0F).setResistance(5.0F).setStepSound(Block.soundTypeWood);
 		
-		blue_torch = new VBlockTorch().setHardness(0.0F).setLightLevel(0.85F).setStepSound(Block.soundTypeWood);
-		green_torch = new VBlockTorch().setHardness(0.0F).setLightLevel(0.8F).setStepSound(Block.soundTypeWood);
+		blue_torch = new VBlockTorch().setHardness(0.0F).setLightLevel(0.85F).setStepSound(Block.soundTypeWood).setBlockTextureName(getTexture("blue_mushroom_torch"));
+		green_torch = new VBlockTorch().setHardness(0.0F).setLightLevel(0.8F).setStepSound(Block.soundTypeWood).setBlockTextureName(getTexture("green_mushroom_torch"));
 		
-		virtious_flowers = new BlockVirtiousFlowers(new String[] { "veer_flower", "nightwhisker", "blue_mushroom", "green_mushroom" }, new String[] { "virtious:veer_flower", "virtious:nightwhisker", "virtious:blue_mushroom", "virtious:green_mushroom" }).setStepSound(Block.soundTypeGrass).setLightLevel(0.4F);
-		veer_plant = new BlockCustomCrops(6);
+		virtious_flowers = new BlockVirtiousFlowers(new String[] { "veer_flower", "nightwhisker", "blue_mushroom", "green_mushroom" }, new String[] { getTexture("veer_flower"), getTexture("nightwhisker"), getTexture("glowing_blue_mushroom"), getTexture("glowing_green_mushroom") }).setStepSound(Block.soundTypeGrass).setLightLevel(0.4F);
+		veer_plant = new BlockCustomCrops(6).setBlockTextureName("veer_plant");
 		
 		virtious_acid = new BlockVirtiousAcid().setHardness(100.0F).setLightOpacity(3);
 		
 		fuel_cell = new BlockFuelCell(Material.rock).setHardness(3.0F);
 		rough_glass = new BlockGlass(Material.glass, true).setStepSound(Block.soundTypeGlass);
 		
-		cytoid_wall = new VBlock(Material.rock).setStepSound(Block.soundTypeStone);
-		cytoid_wall_dark = new VBlock(Material.iron).setHardness(3.0F).setResistance(8.0F);
+		cytoid_wall = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setBlockTextureName(getTexture("cytoid_wall"));
+		cytoid_wall_dark = new CustomBlock(Material.iron, new String[] { null, "2", "3", "4" }, new String[] { getTexture("cytoid_wall_dark_1"), getTexture("cytoid_wall_dark_2"), getTexture("cytoid_wall_dark_3"), getTexture("cytoid_wall_dark_4") }, null).setHardness(3.0F).setResistance(8.0F).setStepSound(Block.soundTypeStone).setCreativeTab(Virtious.tabVirtiousBlocks);
+		cytoid_wall_long = new BlockCytoidLongWall().setHardness(3F).setResistance(8F);
 		cytoid_floor = (BlockCustomSlab) new BlockCytoidFloor(false).setHardness(1.8F).setCreativeTab(Virtious.tabVirtiousBlocks);
 		cytoid_floor_double = (BlockCustomSlab) new BlockCytoidFloor(true).setHardness(1.8F);
 		BlockCustomSlab.bind(cytoid_floor, cytoid_floor_double);
 		
 		cytoid_glass = new BlockGlass(Material.glass, false).setStepSound(Block.soundTypeGlass);
-		cytoid_door = new BlockCytoidDoor(Material.iron).setHardness(5.0F).setStepSound(Block.soundTypeMetal).setBlockTextureName("virtious:cytoid_door");
+		cytoid_door = new BlockCytoidDoor(Material.iron).setHardness(5.0F).setStepSound(Block.soundTypeMetal).setBlockTextureName(getTexture("cytoid_door"));
 		cytoid_control_panel = new BlockCytoidControlPanel().setCreativeTab(Virtious.tabVirtiousBlocks).setHardness(3.0F);
 		
-		cytoid_lamp_off = (BlockCustomLamp) new BlockCytoidLamp(false).setCreativeTab(Virtious.tabVirtiousBlocks);
-		cytoid_lamp_on = (BlockCustomLamp) new BlockCytoidLamp(true).setLightLevel(0.8F);
+		cytoid_lamp_off = (BlockCustomLamp) new BlockCytoidLamp(false).setHardness(0.8F).setCreativeTab(Virtious.tabVirtiousBlocks);
+		cytoid_lamp_on = (BlockCustomLamp) new BlockCytoidLamp(true).setHardness(0.8F);
 		BlockCustomLamp.bind(cytoid_lamp_off, cytoid_lamp_on);
-		cytoid_lightstrip = new BlockCytoidLightstrip();
+		cytoid_lightstrip = new BlockCytoidLightstrip().setHardness(0.8F);
 		
 		tak_ore.setHarvestLevel("pickaxe", 1);
 		brazeum_ore.setHarvestLevel("pickaxe", 1);
@@ -204,6 +206,7 @@ public class VBlocks
 		
 		CSBlocks.addBlock(cytoid_wall, "cytoid_wall");
 		CSBlocks.addBlock(cytoid_wall_dark, "cytoid_wall_dark");
+		CSBlocks.addBlock(cytoid_wall_long, "cytoid_wall_long");
 		CSBlocks.addBlock(cytoid_floor, "cytoid_floor");
 		CSBlocks.addBlock(cytoid_floor_double, "cytoid_floor_double");
 		
@@ -213,5 +216,10 @@ public class VBlocks
 		CSBlocks.addBlock(cytoid_lamp_off, "cytoid_lamp_off");
 		CSBlocks.addBlock(cytoid_lamp_on, "cytoid_lamp_on");
 		CSBlocks.addBlock(cytoid_lightstrip, "cytoid_lightstrip");
+	}
+	
+	public static String getTexture(String name)
+	{
+		return "virtious:" + name;
 	}
 }

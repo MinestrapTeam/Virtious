@@ -62,6 +62,7 @@ public class VItems
 	
 	public static Item	amberwood_fishing_rod;
 	public static Item	sticky_bomb;
+	public static Item laser_pistol;
 	public static Item	laser_rifle;
 	public static Item	acid_bucket;
 	
@@ -81,7 +82,7 @@ public class VItems
 		
 		brazeum_ingot = new Item().setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("brazeum_ingot"));
 		aquieus_shard = new Item().setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("aquieus_shard"));
-		pluthorium_gem = new Item().setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("pluthorium"));
+		pluthorium_gem = new Item().setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("pluthorium_gem"));
 		illuminous_gem = new Item().setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("illuminous_gem"));
 		tak = new Item().setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("tak"));
 		
@@ -127,18 +128,19 @@ public class VItems
 		pluthorium_axe = new VItemAxe(VToolMaterials.PLUTHORIUM).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("pluthorium_axe"));
 		pluthorium_hoe = new ItemHoe(VToolMaterials.PLUTHORIUM).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("pluthorium_hoe"));
 		
-		amberwood_fishing_rod = new ItemFishingRod().setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("amberwood_fishing_rod"));
+		amberwood_fishing_rod = new ItemFishingRod().setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("amberwood_rod"));
 		sticky_bomb = new ItemStickyBomb().setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("sticky_bomb"));
-		laser_rifle = new ItemGun(10, 1, "").setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("laser_rifle"));
+		laser_pistol = new ItemGun(2000, 4, 2, "").setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("laser_pistol"));
+		laser_rifle = new ItemGun(3000, 2, 1, "").setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("laser_rifle"));
 		acid_bucket = new ItemCustomBucket(VBlocks.virtious_acid).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("acid_bucket"));
 		
 		burhaunch_cooked = new ItemFood(4, 0.4F, true).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("burhaunch_cooked"));
 		burhaunch_raw = new ItemFood(9, 0.8F, true).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("burhaunch_raw"));
 		evulus_fish = new ItemFood(5, 0.5F, false).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("evulus_fish"));
 		vois_food = new ItemFood(5, 0.25F, false).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("vois_food"));
-		binnegan_fruit = new ItemFood(3, 0.25F, false).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("binnegan_fruit"));
-		veer_seed = new ItemReed(VBlocks.veer_plant).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("veer_seed"));
-		veer_dye = new ItemFood(1, 0.3F, false).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("veer_dye"));
+		binnegan_fruit = new ItemFood(3, 0.25F, false).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("binnegan"));
+		veer_seed = new ItemReed(VBlocks.veer_plant).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("veer_seeds"));
+		veer_dye = new ItemFood(1, 0.3F, false).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("veer"));
 		
 		cytoid_door = new ItemCustomDoor(VBlocks.cytoid_door).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("cytoid_door"));
 	}
@@ -197,6 +199,7 @@ public class VItems
 		
 		CSItems.addItem(amberwood_fishing_rod, "amberwood_fishing_rod");
 		CSItems.addItem(sticky_bomb, "sticky_bomb");
+		CSItems.addItem(laser_pistol, "laser_pistol");
 		CSItems.addItem(laser_rifle, "laser_rifle");
 		CSItems.addItem(acid_bucket, "acid_bucket");
 		

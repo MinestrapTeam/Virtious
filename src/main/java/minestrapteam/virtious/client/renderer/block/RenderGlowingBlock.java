@@ -10,6 +10,8 @@ import minestrapteam.virtious.client.VClientProxy;
 
 public class RenderGlowingBlock extends RenderBlockMulti
 {
+	public static RenderGlowingBlock instance = new RenderGlowingBlock();
+	
 	@Override
 	protected void renderPass(int pass, IBlockAccess world, int x, int y, int z, Block block, RenderBlocks renderer)
 	{
@@ -21,7 +23,7 @@ public class RenderGlowingBlock extends RenderBlockMulti
 	}
 	
 	@Override
-	public int getRenderId()
+	public int getRenderID()
 	{
 		return VClientProxy.lightStripRendererID;
 	}

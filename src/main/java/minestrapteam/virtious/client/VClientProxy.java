@@ -26,7 +26,7 @@ public class VClientProxy extends VCommonProxy
 	{
 		lightStripRendererID = RenderingRegistry.getNextAvailableRenderId();
 		
-		RenderingRegistry.registerBlockHandler(lightStripRendererID, new RenderGlowingBlock());
+		RenderingRegistry.registerBlockHandler(lightStripRendererID, RenderGlowingBlock.instance);
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityStickyBomb.class, new RenderStickyBomb());
 		

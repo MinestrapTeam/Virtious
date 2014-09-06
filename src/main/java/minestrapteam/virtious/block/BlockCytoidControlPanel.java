@@ -1,5 +1,7 @@
 package minestrapteam.virtious.block;
 
+import minestrapteam.virtious.Virtious;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -15,6 +17,7 @@ public class BlockCytoidControlPanel extends Block
 	public BlockCytoidControlPanel()
 	{
 		super(Material.iron);
+		this.setCreativeTab(Virtious.tabVirtiousBlocks);
 	}
 	
 	@Override
@@ -36,6 +39,7 @@ public class BlockCytoidControlPanel extends Block
 	{
 		this.blockIcon = iconRegister.registerIcon("virtious:cytoid_wall");
 		this.frontIconOn = iconRegister.registerIcon("virtious:cytoid_control_panel_on");
+		this.frontIconOff = iconRegister.registerIcon("virtious:cytoid_control_panel_off");
 	}
 	
 	@Override

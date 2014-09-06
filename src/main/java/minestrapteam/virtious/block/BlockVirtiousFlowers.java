@@ -3,6 +3,7 @@ package minestrapteam.virtious.block;
 import java.util.Random;
 
 import clashsoft.cslib.minecraft.block.BlockCustomPlant;
+import minestrapteam.virtious.Virtious;
 import minestrapteam.virtious.lib.VItems;
 
 import net.minecraft.item.Item;
@@ -14,6 +15,7 @@ public class BlockVirtiousFlowers extends BlockCustomPlant
 	public BlockVirtiousFlowers(String[] names, Object icons)
 	{
 		super(names, icons);
+		this.setCreativeTab(Virtious.tabVirtiousBlocks);
 	}
 	
 	@Override

@@ -2,6 +2,7 @@ package minestrapteam.virtious.block;
 
 import java.util.Random;
 
+import minestrapteam.virtious.Virtious;
 import minestrapteam.virtious.lib.VBlocks;
 import minestrapteam.virtious.lib.VItems;
 
@@ -14,6 +15,7 @@ public class VBlock extends Block
 	public VBlock(Material material)
 	{
 		super(material);
+		this.setCreativeTab(Virtious.tabVirtiousBlocks);
 	}
 	
 	@Override
