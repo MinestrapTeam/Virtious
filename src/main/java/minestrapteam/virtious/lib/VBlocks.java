@@ -1,6 +1,7 @@
 package minestrapteam.virtious.lib;
 
 import clashsoft.cslib.minecraft.block.*;
+import clashsoft.cslib.minecraft.stack.StackFactory;
 import minestrapteam.virtious.Virtious;
 import minestrapteam.virtious.block.*;
 
@@ -53,7 +54,7 @@ public class VBlocks
 	public static Block				green_torch;
 	
 	public static Block				virtious_flowers;
-	public static Block				veer_crops;
+	public static BlockCustomCrops	veer_crops;
 	
 	public static Block				virtious_acid;
 	
@@ -62,7 +63,7 @@ public class VBlocks
 	
 	public static Block				cytoid_wall;
 	public static Block				cytoid_wall_dark;
-	public static Block cytoid_wall_long;
+	public static Block				cytoid_wall_long;
 	public static BlockCustomSlab	cytoid_floor;
 	public static BlockCustomSlab	cytoid_floor_double;
 	
@@ -120,7 +121,7 @@ public class VBlocks
 		green_torch = new VBlockTorch().setHardness(0.0F).setLightLevel(0.8F).setStepSound(Block.soundTypeWood).setBlockTextureName(getTexture("green_mushroom_torch"));
 		
 		virtious_flowers = new BlockVirtiousFlowers(new String[] { "veer_flower", "nightwhisker", "blue_mushroom", "green_mushroom" }, new String[] { getTexture("veer_flower"), getTexture("nightwhisker"), getTexture("glowing_blue_mushroom"), getTexture("glowing_green_mushroom") }).setStepSound(Block.soundTypeGrass).setLightLevel(0.4F);
-		veer_crops = new BlockCustomCrops(6).setBlockTextureName("veer_crops");
+		veer_crops = (BlockCustomCrops) new BlockVeerCrops().setBlockTextureName(getTexture("veer_crops"));
 		
 		virtious_acid = new BlockVirtiousAcid().setHardness(100.0F).setLightOpacity(3);
 		
@@ -216,6 +217,8 @@ public class VBlocks
 		CSBlocks.addBlock(cytoid_lamp_off, "cytoid_lamp_off");
 		CSBlocks.addBlock(cytoid_lamp_on, "cytoid_lamp_on");
 		CSBlocks.addBlock(cytoid_lightstrip, "cytoid_lightstrip");
+		
+		veer_crops.setSeed(StackFactory.create(VItems.veer_seed)).setCrop(StackFactory.create(VItems.veer_dye));
 	}
 	
 	public static String getTexture(String name)
