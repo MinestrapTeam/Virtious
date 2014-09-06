@@ -2,6 +2,7 @@ package minestrapteam.virtious.item;
 
 import java.util.List;
 
+import clashsoft.cslib.minecraft.lang.I18n;
 import minestrapteam.virtious.lib.VWorld;
 import minestrapteam.virtious.world.VirtiousTeleporter;
 
@@ -9,7 +10,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
 public class ItemTeleporter extends Item
@@ -37,6 +37,6 @@ public class ItemTeleporter extends Item
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
-		list.add(EnumChatFormatting.BLUE + "Too lazy to make a portal? Shift, then right click to insta-warp.");
+		list.add(I18n.getString("item.teleporter_wand.desc"));
 	}
 }

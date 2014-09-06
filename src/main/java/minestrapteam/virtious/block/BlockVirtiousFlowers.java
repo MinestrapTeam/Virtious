@@ -31,7 +31,7 @@ public class BlockVirtiousFlowers extends BlockCustomPlant
 	{
 		if (metadata == 0)
 		{
-			return VItems.veer_seed;
+			return VItems.veer_seeds;
 		}
 		else if (metadata == 1)
 		{

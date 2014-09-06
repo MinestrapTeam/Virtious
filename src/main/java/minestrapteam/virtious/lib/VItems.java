@@ -10,8 +10,6 @@ import net.minecraft.item.*;
 
 public class VItems
 {
-	public static Item	teleporter_wand;
-	
 	public static Item	brazeum_ingot;
 	public static Item	aquieus_shard;
 	public static Item	pluthorium_gem;
@@ -60,6 +58,7 @@ public class VItems
 	public static Item	pluthorium_hoe;
 	public static Item	pluthorium_sword;
 	
+	public static Item	teleporter_wand;
 	public static Item	amberwood_fishing_rod;
 	public static Item	sticky_bomb;
 	public static Item laser_pistol;
@@ -71,15 +70,13 @@ public class VItems
 	public static Item	evulus_fish;
 	public static Item	vois_food;
 	public static Item	binnegan_fruit;
-	public static Item	veer_seed;
+	public static Item	veer_seeds;
 	public static Item	veer_dye;
 	
 	public static Item	cytoid_door;
 	
 	public static void init()
 	{
-		teleporter_wand = new ItemTeleporter().setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("teleporter_wand"));
-		
 		brazeum_ingot = new Item().setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("brazeum_ingot"));
 		aquieus_shard = new Item().setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("aquieus_shard"));
 		pluthorium_gem = new Item().setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("pluthorium_gem"));
@@ -128,6 +125,7 @@ public class VItems
 		pluthorium_axe = new VItemAxe(VToolMaterials.PLUTHORIUM).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("pluthorium_axe"));
 		pluthorium_hoe = new ItemHoe(VToolMaterials.PLUTHORIUM).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("pluthorium_hoe"));
 		
+		teleporter_wand = new ItemTeleporter().setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("teleporter_wand"));
 		amberwood_fishing_rod = new ItemFishingRod().setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("amberwood_rod"));
 		sticky_bomb = new ItemStickyBomb().setCreativeTab(Virtious.tabVirtiousItems);
 		laser_pistol = new ItemGun(2000, 4, 2, "").setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("laser_pistol"));
@@ -139,7 +137,7 @@ public class VItems
 		evulus_fish = new ItemFood(5, 0.5F, false).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("evulus_fish"));
 		vois_food = new ItemFood(5, 0.25F, false).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("vois_food"));
 		binnegan_fruit = new ItemFood(3, 0.25F, false).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("binnegan"));
-		veer_seed = new ItemReed(VBlocks.veer_crops).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("veer_seeds"));
+		veer_seeds = new ItemReed(VBlocks.veer_crops).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("veer_seeds"));
 		veer_dye = new ItemFood(1, 0.3F, false).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("veer"));
 		
 		cytoid_door = new ItemCustomDoor(VBlocks.cytoid_door).setCreativeTab(Virtious.tabVirtiousItems).setTextureName(getTexture("cytoid_door"));
@@ -147,8 +145,6 @@ public class VItems
 	
 	public static void load()
 	{
-		CSItems.addItem(teleporter_wand, "teleporter_wand");
-		
 		CSItems.addItem(brazeum_ingot, "brazeum_ingot");
 		CSItems.addItem(aquieus_shard, "aquieus_shard");
 		CSItems.addItem(pluthorium_gem, "pluthorium_gem");
@@ -197,6 +193,7 @@ public class VItems
 		CSItems.addItem(pluthorium_hoe, "pluthorium_hoe");
 		CSItems.addItem(pluthorium_sword, "pluthorium_sword");
 		
+		CSItems.addItem(teleporter_wand, "teleporter_wand");
 		CSItems.addItem(amberwood_fishing_rod, "amberwood_fishing_rod");
 		CSItems.addItem(sticky_bomb, "sticky_bomb");
 		CSItems.addItem(laser_pistol, "laser_pistol");
@@ -208,7 +205,7 @@ public class VItems
 		CSItems.addItem(evulus_fish, "evulus_fish");
 		CSItems.addItem(vois_food, "vois_food");
 		CSItems.addItem(binnegan_fruit, "binnegan_fruit");
-		CSItems.addItem(veer_seed, "veer_seed");
+		CSItems.addItem(veer_seeds, "veer_seeds");
 		CSItems.addItem(veer_dye, "veer_dye");
 		
 		CSItems.addItem(cytoid_door, "cytoid_door_item");

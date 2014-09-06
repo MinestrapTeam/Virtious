@@ -129,7 +129,7 @@ public class VBlocks
 		rough_glass = new BlockCustomGlass(Material.glass, ICustomBlock.DEFAULT_NAMES, getTexture("rough_glass")).setTransparent(true).setCreativeTab(Virtious.tabVirtiousBlocks);
 		
 		cytoid_wall = new VBlock(Material.rock).setStepSound(Block.soundTypeStone).setBlockTextureName(getTexture("cytoid_wall"));
-		cytoid_wall_dark = new CustomBlock(Material.iron, new String[] { null, "2", "3", "4" }, new String[] { getTexture("cytoid_wall_dark_1"), getTexture("cytoid_wall_dark_2"), getTexture("cytoid_wall_dark_3"), getTexture("cytoid_wall_dark_4") }, null).setHardness(3.0F).setResistance(8.0F).setStepSound(Block.soundTypeStone).setCreativeTab(Virtious.tabVirtiousBlocks);
+		cytoid_wall_dark = new CustomBlock(Material.iron, new String[] { null, null, null, null }, new String[] { getTexture("cytoid_wall_dark_1"), getTexture("cytoid_wall_dark_2"), getTexture("cytoid_wall_dark_3"), getTexture("cytoid_wall_dark_4") }, null).setHardness(3.0F).setResistance(8.0F).setStepSound(Block.soundTypeStone).setCreativeTab(Virtious.tabVirtiousBlocks);
 		cytoid_wall_long = new BlockCytoidLongWall().setHardness(3F).setResistance(8F);
 		cytoid_floor = (BlockCustomSlab) new BlockCytoidFloor(false).setHardness(1.8F).setCreativeTab(Virtious.tabVirtiousBlocks);
 		cytoid_floor_double = (BlockCustomSlab) new BlockCytoidFloor(true).setHardness(1.8F).setCreativeTab(null);
@@ -218,7 +218,7 @@ public class VBlocks
 		CSBlocks.addBlock(cytoid_lamp_on, "cytoid_lamp_on");
 		CSBlocks.addBlock(cytoid_lightstrip, "cytoid_lightstrip");
 		
-		veer_crops.setSeed(StackFactory.create(VItems.veer_seed)).setCrop(StackFactory.create(VItems.veer_dye));
+		veer_crops.setSeed(StackFactory.create(VItems.veer_seeds)).setCrop(StackFactory.create(VItems.veer_dye));
 	}
 	
 	public static String getTexture(String name)
