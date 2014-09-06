@@ -1,6 +1,7 @@
 package minestrapteam.virtious.lib;
 
 import clashsoft.cslib.minecraft.block.*;
+import clashsoft.cslib.minecraft.item.block.ItemCustomSlab;
 import clashsoft.cslib.minecraft.stack.StackFactory;
 import minestrapteam.virtious.Virtious;
 import minestrapteam.virtious.block.*;
@@ -8,7 +9,6 @@ import minestrapteam.virtious.block.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
-import net.minecraft.item.ItemSlab;
 
 public class VBlocks
 {
@@ -208,7 +208,7 @@ public class VBlocks
 		CSBlocks.addBlock(cytoid_wall, "cytoid_wall");
 		CSBlocks.addBlock(cytoid_wall_dark, "cytoid_wall_dark");
 		CSBlocks.addBlock(cytoid_wall_long, "cytoid_wall_long");
-		CSBlocks.addBlock(cytoid_floor, ItemSlab.class, "cytoid_floor");
+		CSBlocks.addBlock(cytoid_floor, ItemCustomSlab.class, "cytoid_floor");
 		CSBlocks.addBlock(cytoid_floor_double, "cytoid_floor_double");
 		
 		CSBlocks.addBlock(cytoid_glass, "cytoid_glass");
