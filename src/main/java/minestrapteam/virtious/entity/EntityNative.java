@@ -12,9 +12,9 @@ public class EntityNative extends EntityAgeable implements INpc
 {
 	private int		jumpDelay;
 	
-	public EntityNative(World par1World)
+	public EntityNative(World world)
 	{
-		super(par1World);
+		super(world);
 		
 		this.jumpDelay = this.rand.nextInt(20) + 10;
 		

@@ -10,8 +10,6 @@ import net.minecraft.world.World;
 
 public class EntityStickyBomb extends Entity
 {
-	
-	private String	Owner;
 	public boolean	activated;
 	public int		fuse	= 30;
 	
@@ -19,23 +17,18 @@ public class EntityStickyBomb extends Entity
 	{
 		super(world);
 		this.setSize(0.5F, 0.5F);
+		this.height = 1F;
 	}
 	
 	public EntityStickyBomb(World world, double i, double j, double k)
 	{
-		super(world);
-		this.height = 1F;
-		
-		this.setSize(0.5F, 0.5F);
-		this.yOffset = this.height / 2.0F;
+		this(world);
 		this.setPosition(i, j, k);
 	}
 	
 	public EntityStickyBomb(World world, double i, double j, double k, EntityPlayer owner)
 	{
-		super(world);
-		this.setSize(0.5F, 0.5F);
-		this.height = 1F;
+		this(world);
 		this.setPosition(i, j, k);
 	}
 	

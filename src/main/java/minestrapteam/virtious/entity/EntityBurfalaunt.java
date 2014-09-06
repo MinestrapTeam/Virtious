@@ -20,9 +20,9 @@ public class EntityBurfalaunt extends EntityAnimal
 	
 	private EntityAIEatVirtiousGrass	aiEatGrass	= new EntityAIEatVirtiousGrass(this);
 	
-	public EntityBurfalaunt(World par1World)
+	public EntityBurfalaunt(World world)
 	{
-		super(par1World);
+		super(world);
 		this.setSize(0.9F, 1.3F);
 		this.getNavigator().setAvoidsWater(true);
 		

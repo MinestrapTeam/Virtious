@@ -15,14 +15,14 @@ import net.minecraft.util.ResourceLocation;
 @SideOnly(Side.CLIENT)
 public class RenderLaser extends Render
 {
-	private static final ResourceLocation	texture	= new ResourceLocation("virtious:textures/models/laser.png");
+	private static final ResourceLocation	texture	= new ResourceLocation("virtious", "textures/models/laser.png");
 	
 	public RenderLaser()
 	{
 		this.shadowSize = 0F;
 	}
 	
-	public void renderArrow(EntityLaser entity, double x, double y, double z, float yaw, float partialTickTime)
+	public void renderLaser(EntityLaser entity, double x, double y, double z, float yaw, float partialTickTime)
 	{
 		this.bindEntityTexture(entity);
 		GL11.glPushMatrix();
@@ -75,6 +75,6 @@ public class RenderLaser extends Render
 	@Override
 	public void doRender(Entity entity, double x, double y, double z, float yaw, float partialTickTime)
 	{
-		this.renderArrow((EntityLaser) entity, x, y, z, yaw, partialTickTime);
+		this.renderLaser((EntityLaser) entity, x, y, z, yaw, partialTickTime);
 	}
 }
