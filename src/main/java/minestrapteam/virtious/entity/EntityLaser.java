@@ -1,7 +1,9 @@
 package minestrapteam.virtious.entity;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
@@ -33,12 +35,16 @@ public class EntityLaser extends EntityThrowable
 		if (mop.entityHit != null)
 		{
 			mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), this.damage);
-		}
-		
-		if (!this.worldObj.isRemote)
-		{
 			this.setDead();
 		}
+		else
+		{
+			Block block = this.worldObj.getBlock(mop.blockX, mop.blockY, mop.blockZ);
+			if (block != Blocks.glass && block != Blocks.stained_glass && block != Blocks.glass_pane && block != Blocks.stained_glass_pane)
+			{
+				this.setDead();
+			}
+		}		
 	}
 	
 	@Override

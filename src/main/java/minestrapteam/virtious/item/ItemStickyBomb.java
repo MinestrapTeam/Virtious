@@ -13,18 +13,14 @@ public class ItemStickyBomb extends Item
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
 	{
-		if (!world.isRemote)
+		EntityStickyBomb bomb = new EntityStickyBomb(world, x + 0.5D, y + 1D, z + 0.5D, player);
+		world.spawnEntityInWorld(bomb);
+		
+		if (!player.capabilities.isCreativeMode)
 		{
-			EntityStickyBomb bomb = new EntityStickyBomb(world, x + 0.5D, y + 1D, z + 0.5D, player);
-			world.spawnEntityInWorld(bomb);
-			
-			if (!player.capabilities.isCreativeMode)
-			{
-				stack.stackSize--;
-			}
-			return true;
+			stack.stackSize--;
 		}
-		return false;
+		return true;
 	}
 	
 	@Override

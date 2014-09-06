@@ -1,5 +1,6 @@
 package minestrapteam.virtious;
 
+import clashsoft.cslib.minecraft.entity.CSEntities;
 import clashsoft.cslib.minecraft.init.BaseMod;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -7,7 +8,6 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import minestrapteam.virtious.common.VCommonProxy;
 import minestrapteam.virtious.common.VEventHandler;
@@ -27,7 +27,6 @@ import minestrapteam.virtious.network.VNetHandler;
 import minestrapteam.virtious.world.gen.VirtiousWorldGenerator;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -94,15 +93,13 @@ public class Virtious extends BaseMod
 		FluidContainerRegistry.registerFluidContainer(virtiousFluid, new ItemStack(VItems.acid_bucket), new ItemStack(Items.bucket));
 		
 		MinecraftForge.EVENT_BUS.register(new VEventHandler());
-		
 		GameRegistry.registerFuelHandler(new VFuelHandler());
 		
-		EntityRegistry.registerModEntity(EntityStickyBomb.class, "StickyBomb", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityLaser.class, "entityLaser", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
-		EntityRegistry.registerGlobalEntityID(EntityBurfalaunt.class, "Burfalaunt", EntityRegistry.findGlobalUniqueEntityId(), 0x110802, 0x3f1e06);
-		EntityRegistry.registerGlobalEntityID(EntityNative.class, "NativeAlien", EntityRegistry.findGlobalUniqueEntityId(), 0x59563e, 0x2d3c21);
-		EntityRegistry.registerGlobalEntityID(EntityNativeSkeleton.class, "NativeSkeleton", EntityRegistry.findGlobalUniqueEntityId(), 0x494949, 0xd8d8d8);
-		EntityRegistry.registerModEntity(EntityFishHook.class, "EntityVirtiousFishHook", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 10, true);
+		CSEntities.register("StickyBomb", 100, EntityStickyBomb.class);
+		CSEntities.register("Laser", 101, EntityLaser.class);
+		CSEntities.register("Burfalaunt", 102, EntityBurfalaunt.class, 0x110802, 0x3F1E06);
+		CSEntities.register("NativeAlien", 103, EntityNative.class, 0x59563E, 0x2D3C21);
+		CSEntities.register("NativeSkeleton", 104, EntityNativeSkeleton.class, 0x494949, 0xD8D8D8);
 	}
 	
 	@Override
